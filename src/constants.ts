@@ -1,8 +1,8 @@
 export const SITE = {
-  name: 'Qimochi',
-  title: 'Nonton & Download Anime Batch',
-  description: 'Koleksi anime untuk streaming dan download batch. Ringan, cepat, tanpa ribet.',
-  url: 'https://qimochi-hub.github.io',
+  name: 'QimochiDB',
+  title: 'Qimochi',
+  description: 'Koleksi database anime terlengkap, cepat, tanpa ribet.',
+  url: 'https://qimochi-db.github.io',
   locale: 'id-ID',
   lang: 'id',
 } as const;
