@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://qimochi-hub.github.io/sitemap-index.xml

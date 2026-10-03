@@ -1,0 +1,187 @@
+---
+import Icon from '../user-components/Icons.astro';
+
+interface Server {
+  name: string;
+  url: string;
+}
+interface Stream {
+  quality: string;
+  servers: Server[];
+}
+
+interface Props {
+  streams: Stream[];
+}
+
+const { streams } = Astro.props;
+const defaultStream = streams[0];
+const defaultServer = defaultStream?.servers[0];
+---
+
+<details class="stream-picker" open>
+  <summary>
+    <span class="label">Server & Kualitas</span>
+    <span class="current" id="stream-current">
+      {defaultStream?.quality} · {defaultServer?.name ?? '—'}
+    </span>
+    <span class="chevron" aria-hidden="true">
+      <Icon name="chevron-down" size={16} />
+    </span>
+  </summary>
+
+  <div class="stream-body">
+    {streams.map((s, i) => (
+      <div class="quality-group">
+        <span class="quality-label">{s.quality}</span>
+        <div class="chips">
+          {s.servers.map((srv, j) => {
+            const id = `s-${i}-${j}`;
+            const isDefault = i === 0 && j === 0;
+            return (
+              <>
+                <input
+                  type="radio"
+                  name="stream"
+                  id={id}
+                  value={srv.url}
+                  data-quality={s.quality}
+                  data-server={srv.name}
+                  checked={isDefault}
+                  hidden
+                />
+                <label for={id} class="chip">{srv.name}</label>
+              </>
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </div>
+</details>
+
+<script>
+  const iframe = document.getElementById('player-iframe') as HTMLIFrameElement | null;
+  const currentLabel = document.getElementById('stream-current');
+  const radios = document.querySelectorAll<HTMLInputElement>('input[name="stream"]');
+
+  function selectStream(radio: HTMLInputElement) {
+    if (!iframe || !radio) return;
+
+    iframe.src = radio.value;
+
+    if (currentLabel) {
+      currentLabel.textContent = `${radio.dataset.quality} · ${radio.dataset.server}`;
+    }
+
+    localStorage.setItem('qimochi:stream', radio.id);
+  }
+
+  radios.forEach((radio) => {
+    radio.addEventListener('change', () => {
+      if (radio.checked) selectStream(radio);
+    });
+  });
+
+  const saved = localStorage.getItem('qimochi:stream');
+  if (saved) {
+    const savedRadio = document.getElementById(saved) as HTMLInputElement | null;
+    if (savedRadio) {
+      savedRadio.checked = true;
+      selectStream(savedRadio);
+    }
+  }
+</script>
+
+<style>
+  .stream-picker {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+  }
+
+  .stream-picker summary {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    padding: var(--s-3) var(--s-4);
+    cursor: pointer;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    list-style: none;
+    user-select: none;
+  }
+
+  .stream-picker summary::-webkit-details-marker { display: none; }
+
+  .stream-picker summary .current {
+    margin-left: auto;
+    padding: var(--s-1) var(--s-3);
+    background: var(--bg-surface);
+    color: var(--accent);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .stream-picker summary .chevron {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-muted);
+    transition: transform var(--t-base);
+  }
+
+  .stream-picker[open] summary .chevron {
+    transform: rotate(180deg);
+  }
+
+  .stream-body {
+    padding: 0 var(--s-4) var(--s-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+
+  .quality-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  .quality-label {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: var(--fw-semibold);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+
+  .chip {
+    display: inline-block;
+    padding: var(--s-1) var(--s-3);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--t-fast);
+  }
+
+  .chip:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .stream-picker input[type='radio']:checked + .chip {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-text);
+  }
+</style>

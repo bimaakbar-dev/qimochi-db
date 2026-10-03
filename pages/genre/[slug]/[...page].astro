@@ -1,0 +1,112 @@
+---
+import { getGenreData, paginate, allGenreSlugs } from '~/lib/genre';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Hero from '~/components/Hero.astro';
+import AnimeCard from '~/components/AnimeCard.astro';
+import Pagination from '~/components/Pagination.astro';
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (const { genre, slug } of allGenreSlugs()) {
+    const { anime, totalPages } = await getGenreData(genre);
+
+    if (anime.length === 0) continue;
+
+    paths.push({
+      params: { slug, page: undefined },
+      props: { genre, anime, totalPages, pageNumber: 1 },
+    });
+
+    for (let page = 2; page <= totalPages; page++) {
+      paths.push({
+        params: { slug, page: String(page) },
+        props: { genre, anime, totalPages, pageNumber: page },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { genre, anime, totalPages, pageNumber } = Astro.props;
+const items = paginate(anime, pageNumber);
+const slug = Astro.params.slug;
+const isFirstPage = pageNumber === 1;
+
+const title = isFirstPage
+  ? `Anime ${genre}`
+  : `Anime ${genre} — Halaman ${pageNumber}`;
+
+const description = isFirstPage
+  ? `Koleksi ${anime.length} anime genre ${genre}.`
+  : `${anime.length} anime · Halaman ${pageNumber} dari ${totalPages}`;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={`/genre/${slug}/`}
+  noindex={!isFirstPage}
+>
+  <div class="wrapper">
+
+    <Hero
+      title={genre}
+      description={description}
+    />
+
+    {items.length > 0 ? (
+      <div class="anime-grid">
+        {items.map(a => <AnimeCard anime={a} />)}
+      </div>
+    ) : (
+      <p class="empty">Belum ada anime untuk genre ini.</p>
+    )}
+
+    <Pagination
+      current={pageNumber}
+      total={totalPages}
+      base={`/genre/${slug}`}
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  /* ----------------------------------------------------------
+     WRAPPER
+     ---------------------------------------------------------- */
+  .wrapper {
+    padding-block: var(--s-6) var(--s-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+  }
+
+  /* ----------------------------------------------------------
+     GRID
+     ---------------------------------------------------------- */
+  .anime-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-3);
+  }
+
+  @media (min-width: 50rem) {
+    .anime-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--s-4);
+    }
+  }
+
+  /* ----------------------------------------------------------
+     EMPTY
+     ---------------------------------------------------------- */
+  .empty {
+    color: var(--text-muted);
+    text-align: center;
+    padding: var(--s-12) 0;
+    font-size: var(--fs-sm);
+  }
+</style>

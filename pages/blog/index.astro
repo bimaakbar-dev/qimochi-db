@@ -1,0 +1,105 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Hero from '~/components/Hero.astro';
+import PostCard from '~/components/PostCard.astro';
+import RssFeed from '~/components/RssFeed.astro';
+import { getPublishedPosts } from '~/lib/blog';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout
+  title="Blog"
+  description="Artikel, berita, dan review anime terbaru dari Qimochi."
+  canonical="/blog/"
+>
+  <div class="wrapper">
+
+    <Hero
+      title="Blog"
+      description="Artikel, berita, dan review anime terbaru dari Qimochi."
+    />
+
+    <div class="content-grid">
+      <section class="content-main">
+        {posts.length > 0 ? (
+          <div class="post-grid">
+            {posts.map((post, i) => (
+              <PostCard post={post} featured={i === 0} />
+            ))}
+          </div>
+        ) : (
+          <p class="empty">Belum ada artikel.</p>
+        )}
+      </section>
+
+      <aside class="content-aside">
+        <RssFeed />
+      </aside>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .wrapper {
+    padding-block: var(--s-6) var(--s-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-16);
+    align-items: start;
+  }
+
+  .content-main {
+    min-width: 0;
+  }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-4);
+    margin-inline: calc(var(--pad-x) * -1);
+  }
+
+  @media (min-width: 50rem) {
+    .content-grid {
+      gap: var(--s-8);
+      grid-template-columns: 1fr var(--aside-width);
+    }
+
+    .content-aside {
+      position: sticky;
+      top: var(--sticky-top);
+      max-height: calc(100vh - var(--sticky-top) - var(--s-4));
+      overflow-y: auto;
+    }
+
+    .post-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-inline: 0;
+    }
+
+    .post-grid > :global(:first-child) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .empty {
+    color: var(--text-muted);
+    text-align: center;
+    padding: var(--s-12) 0;
+    font-size: var(--fs-sm);
+  }
+
+  .content-aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+</style>

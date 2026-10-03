@@ -1,0 +1,80 @@
+---
+import { URLS } from '~/constants';
+import LinkButton from '~/user-components/LinkButton.astro';
+import Icon from '~/user-components/Icons.astro';
+
+interface Props {
+  slug: string;
+  episodeNumber: number;
+  totalEpisodes: number;
+}
+
+const { slug, episodeNumber, totalEpisodes } = Astro.props;
+
+const prevEp = episodeNumber > 1 ? episodeNumber - 1 : null;
+const nextEp = episodeNumber < totalEpisodes ? episodeNumber + 1 : null;
+---
+
+<nav class="action-bar" aria-label="Navigasi episode">
+  {prevEp ? (
+    <LinkButton
+      href={URLS.watch(slug, prevEp)}
+      variant="outline"
+      size="md"
+      icon="arrow-left"
+    >
+      Ep {prevEp}
+    </LinkButton>
+  ) : (
+    <span class="action-disabled" aria-disabled="true">
+      <Icon name="arrow-left" />
+      <span>Ep —</span>
+    </span>
+  )}
+
+  {nextEp ? (
+    <LinkButton
+      href={URLS.watch(slug, nextEp)}
+      variant="outline"
+      size="md"
+      icon="arrow-right"
+      iconPos="suffix"
+    >
+      Ep {nextEp}
+    </LinkButton>
+  ) : (
+    <span class="action-disabled" aria-disabled="true">
+      <span>Ep —</span>
+      <Icon name="arrow-right" />
+    </span>
+  )}
+</nav>
+
+<style>
+  .action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-2);
+  }
+
+  .action-disabled {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    padding: var(--s-2) var(--s-4);
+    min-height: 2.25rem;
+    color: var(--text-disabled);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .action-disabled :global(svg) {
+    width: 1.1em;
+    height: 1.1em;
+    flex-shrink: 0;
+  }
+</style>
