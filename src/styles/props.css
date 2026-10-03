@@ -4,9 +4,11 @@
   --bg-elevated: hsl(39, 8%, 92%);
   --bg-surface:  hsl(39, 6%, 78%);
   --bg-hover:    hsl(39, 6%, 72%);
+  --bg-primary: hsl(30, 3%, 5%);
+  --bg-secondary: hsl(30, 3%, 16%);
   
-  --bg-nav:     hsl(30, 3%, 5%);
-  --bg-footer: hsl(30, 3%, 16%);
+  --bg-nav: var(--bg-primary);
+  --bg-footer: var(--bg-secondary);
   
   --border:       hsl(30, 4%, 70%);
   --border-hover: hsl(30, 4%, 55%);
