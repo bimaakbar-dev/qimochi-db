@@ -1,0 +1,317 @@
+=== REPO TREE ===
+Generated: Sat Oct  3 12:48:34 UTC 2026
+Commit: 1f3aa2c
+
+=== STRUCTURE ===
+.
+├── .github
+│   └── workflows
+│       ├── deploy.yml
+│       ├── lock.yml
+│       └── snapshot.yml
+├── components
+│   ├── ActionBar.astro
+│   ├── AnimeCard.astro
+│   ├── Breadcrumb.astro
+│   ├── DownloadPanel.astro
+│   ├── EpisodeList.astro
+│   ├── Footer.astro
+│   ├── Head.astro
+│   ├── Header.astro
+│   ├── Hero.astro
+│   ├── Pagination.astro
+│   ├── Player.astro
+│   ├── PostCard.astro
+│   ├── RssFeed.astro
+│   ├── SectionLabel.astro
+│   ├── StreamSelector.astro
+│   └── WatchTitle.astro
+├── pages
+│   ├── anime
+│   │   ├── [slug]
+│   │   │   └── index.astro
+│   │   ├── completed
+│   │   │   └── [...page].astro
+│   │   ├── ongoing
+│   │   │   └── [...page].astro
+│   │   └── index.astro
+│   ├── blog
+│   │   ├── [slug]
+│   │   │   └── index.astro
+│   │   └── index.astro
+│   ├── genre
+│   │   ├── [slug]
+│   │   │   └── [...page].astro
+│   │   └── index.astro
+│   ├── search
+│   │   └── index.astro
+│   ├── watch
+│   │   └── [slug]
+│   │       └── [episode]
+│   │           └── index.astro
+│   ├── 404.astro
+│   ├── anime.json.ts
+│   ├── disclaimer.astro
+│   ├── dmca.astro
+│   ├── index.astro
+│   └── rss.xml.ts
+├── public
+│   ├── images
+│   │   └── favicon
+│   │       ├── apple-touch-icon.png
+│   │       ├── favicon-96x96.png
+│   │       ├── favicon.ico
+│   │       ├── favicon.svg
+│   │       ├── site.webmanifest
+│   │       ├── web-app-manifest-192x192.png
+│   │       └── web-app-manifest-512x512.png
+│   └── robots.txt
+├── src
+│   ├── assets
+│   │   ├── fonts
+│   │   │   ├── FiraCode.woff2
+│   │   │   ├── Inter.woff2
+│   │   │   └── Montserrat.woff2
+│   │   └── images
+│   │       ├── hero
+│   │       │   └── houston.webp
+│   │       └── logo
+│   │           ├── dark-logo.svg
+│   │           ├── light-logo.svg
+│   │           └── logo.png
+│   ├── components
+│   │   ├── ActionBar.astro
+│   │   ├── AnimeCard.astro
+│   │   ├── Breadcrumb.astro
+│   │   ├── DownloadPanel.astro
+│   │   ├── EpisodeList.astro
+│   │   ├── Footer.astro
+│   │   ├── Head.astro
+│   │   ├── Header.astro
+│   │   ├── Hero.astro
+│   │   ├── Pagination.astro
+│   │   ├── Player.astro
+│   │   ├── PostCard.astro
+│   │   ├── RssFeed.astro
+│   │   ├── SectionLabel.astro
+│   │   ├── StreamSelector.astro
+│   │   └── WatchTitle.astro
+│   ├── content
+│   │   ├── anime
+│   │   │   ├── demon-slayer.md
+│   │   │   ├── jujutsu-kaisen.md
+│   │   │   ├── spy-x-family.md
+│   │   │   └── tokyo-revangers-s4.md
+│   │   └── blog
+│   │       └── selamat-datang-di-qimochi.md
+│   ├── layouts
+│   │   └── BaseLayout.astro
+│   ├── lib
+│   │   ├── anime.ts
+│   │   ├── blog.ts
+│   │   ├── genre.ts
+│   │   └── status.ts
+│   ├── pages
+│   │   ├── anime
+│   │   │   ├── [slug]
+│   │   │   │   └── index.astro
+│   │   │   ├── completed
+│   │   │   │   └── [...page].astro
+│   │   │   ├── ongoing
+│   │   │   │   └── [...page].astro
+│   │   │   └── index.astro
+│   │   ├── blog
+│   │   │   ├── [slug]
+│   │   │   │   └── index.astro
+│   │   │   └── index.astro
+│   │   ├── genre
+│   │   │   ├── [slug]
+│   │   │   │   └── [...page].astro
+│   │   │   └── index.astro
+│   │   ├── search
+│   │   │   └── index.astro
+│   │   ├── watch
+│   │   │   └── [slug]
+│   │   │       └── [episode]
+│   │   │           └── index.astro
+│   │   ├── 404.astro
+│   │   ├── anime.json.ts
+│   │   ├── disclaimer.astro
+│   │   ├── dmca.astro
+│   │   ├── index.astro
+│   │   └── rss.xml.ts
+│   ├── styles
+│   │   ├── global.css
+│   │   ├── markdown.css
+│   │   ├── props.css
+│   │   └── reset.css
+│   ├── user-components
+│   │   ├── Badge.astro
+│   │   ├── Button.astro
+│   │   ├── Card.astro
+│   │   ├── Icons.astro
+│   │   ├── LinkButton.astro
+│   │   └── LinkCard.astro
+│   ├── constants.ts
+│   └── content.config.ts
+├── user-components
+│   ├── Badge.astro
+│   ├── Button.astro
+│   ├── Card.astro
+│   ├── Icons.astro
+│   ├── LinkButton.astro
+│   └── LinkCard.astro
+├── README.md
+├── astro.config.mjs
+├── package.json
+├── repo-tree.txt
+└── tsconfig.json
+
+48 directories, 115 files
+
+=== FILE LIST (with size & lines) ===
+FILE                                                               SIZE      LINES
+----                                                               ----      -----
+./.github/workflows/deploy.yml                                     4.0K         92
+./.github/workflows/lock.yml                                       4.0K         33
+./.github/workflows/snapshot.yml                                   4.0K        100
+./README.md                                                        4.0K          0
+./astro.config.mjs                                                 4.0K         70
+./components/ActionBar.astro                                       4.0K         79
+./components/AnimeCard.astro                                       4.0K        194
+./components/Breadcrumb.astro                                      4.0K         67
+./components/DownloadPanel.astro                                   4.0K        136
+./components/EpisodeList.astro                                     4.0K        114
+./components/Footer.astro                                          8.0K        244
+./components/Head.astro                                            4.0K         85
+./components/Header.astro                                          8.0K        295
+./components/Hero.astro                                            4.0K         69
+./components/Pagination.astro                                      4.0K        131
+./components/Player.astro                                          4.0K         53
+./components/PostCard.astro                                        4.0K        202
+./components/RssFeed.astro                                         4.0K         59
+./components/SectionLabel.astro                                    4.0K         66
+./components/StreamSelector.astro                                  8.0K        186
+./components/WatchTitle.astro                                      4.0K         61
+./package.json                                                     4.0K         26
+./pages/404.astro                                                  4.0K        113
+./pages/anime.json.ts                                              4.0K         22
+./pages/anime/[slug]/index.astro                                   8.0K        297
+./pages/anime/completed/[...page].astro                            4.0K         90
+./pages/anime/index.astro                                          8.0K        215
+./pages/anime/ongoing/[...page].astro                              4.0K         90
+./pages/blog/[slug]/index.astro                                    8.0K        259
+./pages/blog/index.astro                                           4.0K        104
+./pages/disclaimer.astro                                           4.0K         84
+./pages/dmca.astro                                                 4.0K         97
+./pages/genre/[slug]/[...page].astro                               4.0K        111
+./pages/genre/index.astro                                          4.0K        104
+./pages/index.astro                                                 12K        379
+./pages/rss.xml.ts                                                 4.0K         22
+./pages/search/index.astro                                          12K        482
+./pages/watch/[slug]/[episode]/index.astro                         4.0K        126
+./public/images/favicon/apple-touch-icon.png                        28K          -
+./public/images/favicon/favicon-96x96.png                           16K          -
+./public/images/favicon/favicon.ico                                 16K          -
+./public/images/favicon/favicon.svg                                256K          -
+./public/images/favicon/site.webmanifest                           4.0K         20
+./public/images/favicon/web-app-manifest-192x192.png                44K          -
+./public/images/favicon/web-app-manifest-512x512.png               116K          -
+./public/robots.txt                                                4.0K          3
+./src/assets/fonts/FiraCode.woff2                                  100K          -
+./src/assets/fonts/Inter.woff2                                     344K          -
+./src/assets/fonts/Montserrat.woff2                                208K          -
+./src/assets/images/hero/houston.webp                              100K          -
+./src/assets/images/logo/dark-logo.svg                             4.0K          -
+./src/assets/images/logo/light-logo.svg                            4.0K          -
+./src/assets/images/logo/logo.png                                  116K          -
+./src/components/ActionBar.astro                                   4.0K         79
+./src/components/AnimeCard.astro                                   4.0K        194
+./src/components/Breadcrumb.astro                                  4.0K         67
+./src/components/DownloadPanel.astro                               4.0K        136
+./src/components/EpisodeList.astro                                 4.0K        114
+./src/components/Footer.astro                                      8.0K        244
+./src/components/Head.astro                                        4.0K         85
+./src/components/Header.astro                                      8.0K        295
+./src/components/Hero.astro                                        4.0K         69
+./src/components/Pagination.astro                                  4.0K        131
+./src/components/Player.astro                                      4.0K         53
+./src/components/PostCard.astro                                    4.0K        202
+./src/components/RssFeed.astro                                     4.0K         58
+./src/components/SectionLabel.astro                                4.0K         66
+./src/components/StreamSelector.astro                              8.0K        186
+./src/components/WatchTitle.astro                                  4.0K         61
+./src/constants.ts                                                 4.0K         67
+./src/content.config.ts                                            4.0K         80
+./src/content/anime/demon-slayer.md                                4.0K         69
+./src/content/anime/jujutsu-kaisen.md                               12K        260
+./src/content/anime/spy-x-family.md                                4.0K        118
+./src/content/anime/tokyo-revangers-s4.md                          4.0K         45
+./src/content/blog/selamat-datang-di-qimochi.md                    4.0K         98
+./src/layouts/BaseLayout.astro                                     4.0K         50
+./src/lib/anime.ts                                                 4.0K         21
+./src/lib/blog.ts                                                  4.0K        127
+./src/lib/genre.ts                                                 4.0K         32
+./src/lib/status.ts                                                4.0K         52
+./src/pages/404.astro                                              4.0K        113
+./src/pages/anime.json.ts                                          4.0K         22
+./src/pages/anime/[slug]/index.astro                               8.0K        297
+./src/pages/anime/completed/[...page].astro                        4.0K         90
+./src/pages/anime/index.astro                                      8.0K        215
+./src/pages/anime/ongoing/[...page].astro                          4.0K         90
+./src/pages/blog/[slug]/index.astro                                8.0K        259
+./src/pages/blog/index.astro                                       4.0K        104
+./src/pages/disclaimer.astro                                       4.0K         84
+./src/pages/dmca.astro                                             4.0K         97
+./src/pages/genre/[slug]/[...page].astro                           4.0K        111
+./src/pages/genre/index.astro                                      4.0K        104
+./src/pages/index.astro                                             12K        379
+./src/pages/rss.xml.ts                                             4.0K         22
+./src/pages/search/index.astro                                      12K        482
+./src/pages/watch/[slug]/[episode]/index.astro                     4.0K        126
+./src/styles/global.css                                            4.0K        100
+./src/styles/markdown.css                                          4.0K        201
+./src/styles/props.css                                             4.0K        100
+./src/styles/reset.css                                             4.0K        134
+./src/user-components/Badge.astro                                  4.0K         95
+./src/user-components/Button.astro                                 4.0K        158
+./src/user-components/Card.astro                                   4.0K         52
+./src/user-components/Icons.astro                                  4.0K         55
+./src/user-components/LinkButton.astro                             4.0K        125
+./src/user-components/LinkCard.astro                               4.0K         79
+./tsconfig.json                                                    4.0K         11
+./user-components/Badge.astro                                      4.0K         95
+./user-components/Button.astro                                     4.0K        158
+./user-components/Card.astro                                       4.0K         52
+./user-components/Icons.astro                                      4.0K         55
+./user-components/LinkButton.astro                                 4.0K        125
+./user-components/LinkCard.astro                                   4.0K         79
+
+=== FILE COUNT BY TYPE ===
+     73 astro
+     10 ts
+      6 md
+      5 png
+      4 css
+      3 yml
+      3 woff2
+      3 svg
+      2 json
+      1 webp
+      1 webmanifest
+      1 txt
+      1 mjs
+      1 ico
+
+=== DIRECTORY SIZES ===
+1.3M	./src
+496K	./public
+152K	./package-lock.json
+144K	./pages
+80K	./components
+28K	./user-components
+16K	./repo-tree.txt
+4.0K	./tsconfig.json
+4.0K	./package.json
+4.0K	./astro.config.mjs
+4.0K	./README.md
