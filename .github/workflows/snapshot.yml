@@ -1,0 +1,101 @@
+name: Repo Tree
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  tree:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build tree
+        run: |
+          OUTPUT="repo-tree.txt"
+          {
+            echo "=== REPO TREE ==="
+            echo "Generated: $(date -u)"
+            echo "Commit: $(git rev-parse --short HEAD)"
+            echo ""
+
+            echo "=== STRUCTURE ==="
+            if command -v tree >/dev/null 2>&1; then
+              tree -a -I 'node_modules|.git|dist|.wrangler|.astro|.cache|.next|coverage|.DS_Store|package-lock.json' --dirsfirst
+            else
+              find . -type d \
+                -not -path "./.git*" \
+                -not -path "./node_modules*" \
+                -not -path "./dist*" \
+                -not -path "./.wrangler*" \
+                -not -path "./.astro*" \
+                -not -path "./.cache*" \
+                | sort
+            fi
+            echo ""
+
+            echo "=== FILE LIST (with size & lines) ==="
+            printf "%-60s %10s %10s\n" "FILE" "SIZE" "LINES"
+            printf "%-60s %10s %10s\n" "----" "----" "-----"
+
+            find . -type f \
+              -not -path "./.git/*" \
+              -not -path "./node_modules/*" \
+              -not -path "./dist/*" \
+              -not -path "./.wrangler/*" \
+              -not -path "./.astro/*" \
+              -not -path "./.cache/*" \
+              -not -name "repo-tree.txt" \
+              -not -name "package-lock.json" \
+              -not -name "*.log" \
+              -not -name ".DS_Store" \
+              | sort | while read -r file; do
+                size=$(du -h "$file" 2>/dev/null | cut -f1)
+                if file "$file" | grep -q text; then
+                  lines=$(wc -l < "$file" 2>/dev/null || echo "0")
+                else
+                  lines="-"
+                fi
+                printf "%-60s %10s %10s\n" "$file" "$size" "$lines"
+              done
+
+            echo ""
+
+            echo "=== FILE COUNT BY TYPE ==="
+            find . -type f \
+              -not -path "./.git/*" \
+              -not -path "./node_modules/*" \
+              -not -path "./dist/*" \
+              -not -path "./.wrangler/*" \
+              -not -path "./.astro/*" \
+              -not -name "repo-tree.txt" \
+              -not -name "package-lock.json" \
+              | sed 's/.*\.//' | sort | uniq -c | sort -rn
+
+            echo ""
+            echo "=== DIRECTORY SIZES ==="
+            du -sh --exclude='.git' --exclude='node_modules' --exclude='dist' --exclude='.wrangler' --exclude='.astro' ./* 2>/dev/null | sort -rh | head -30
+
+          } > "$OUTPUT"
+
+          echo "Generated $(wc -l < $OUTPUT) lines"
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add repo-tree.txt
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "chore: update repo-tree.txt [skip ci]"
+            git push
+          fi
