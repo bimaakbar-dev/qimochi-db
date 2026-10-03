@@ -34,11 +34,36 @@ const year = new Date().getFullYear();
         </ul>
       </nav>
 
-      <nav class="footer-nav" aria-label="Legal">
-        <SectionLabel as="h4" size="sm">Legal</SectionLabel>
+      <nav class="footer-nav" aria-label="Sumber">
+        <SectionLabel as="h4" size="sm">Sumber</SectionLabel>
         <ul>
-          <li><a href="/dmca/">DMCA</a></li>
-          <li><a href="/disclaimer/">Disclaimer</a></li>
+          <li>
+            <a
+              href="https://myanimelist.net"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MyAnimeList
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://kitsu.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Kitsu
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://anilist.co"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AniList
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -46,13 +71,13 @@ const year = new Date().getFullYear();
 
   <div class="footer-disclaimer">
     <div class="footer-disclaimer-inner">
-      <SectionLabel as="h4" size="sm" underlined={false}>Disclaimer</SectionLabel>
+      <SectionLabel as="h4" size="sm" underlined={false}>Tentang Data</SectionLabel>
       <p>
-        {SITE.name} tidak menyimpan file video apapun di server kami.
-        Semua konten video di-embed dari layanan pihak ketiga yang tersedia
-        secara publik di internet. Kami hanya menyediakan tautan untuk
-        keperluan referensi dan tidak bertanggung jawab atas konten
-        yang di-host oleh pihak ketiga.
+        {SITE.name} adalah database katalog anime Indonesia. Kami menyediakan
+        informasi publik (judul, studio, genre, rating, sinopsis) untuk
+        keperluan referensi dan riset. Data disediakan <strong>apa adanya</strong>
+        (as-is) tanpa jaminan akurasi. Kami tidak menyimpan file video atau
+        menautkan ke layanan streaming apapun.
       </p>
     </div>
   </div>
@@ -60,7 +85,8 @@ const year = new Date().getFullYear();
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
       <p class="copyright">
-        &copy; {year} {SITE.name}. All rights reserved.
+        &copy; {year} {SITE.name}. Data bersumber dari MyAnimeList, Kitsu,
+        dan AniList. All rights reserved.
       </p>
     </div>
   </div>
@@ -134,7 +160,6 @@ const year = new Date().getFullYear();
     & :is(h2, h3, h4) {
       color: var(--text-secondary);
       font-size: var(--fs-sm);
-      
     }
   }
 
@@ -211,13 +236,9 @@ const year = new Date().getFullYear();
     margin: 0;
   }
 
-  .footer-disclaimer a {
-    color: var(--accent);
-    transition: color var(--t-fast);
-  }
-
-  .footer-disclaimer a:hover {
-    color: var(--accent-hover);
+  .footer-disclaimer p strong {
+    color: var(--text-secondary);
+    font-weight: var(--fw-semibold);
   }
 
   .footer-bottom {
