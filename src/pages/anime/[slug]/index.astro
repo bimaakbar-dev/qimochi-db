@@ -2,9 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import { SITE, URLS, STATUS_VARIANT, type Status } from '~/constants';
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import EpisodeList from '~/components/EpisodeList.astro';
 import Badge from '~/user-components/Badge.astro';
-import LinkButton from '~/user-components/LinkButton.astro';
 
 export async function getStaticPaths() {
   const allAnime = await getCollection('anime');
@@ -18,11 +16,7 @@ const { anime } = Astro.props;
 const { data } = anime;
 const { Content } = await render(anime);
 
-const episodeNumbers = data.episodes
-  .map(e => e.number)
-  .sort((a, b) => a - b);
-
-const firstEpisode = episodeNumbers[0] ?? 1;
+const sortedEpisodes = [...data.episodes].sort((a, b) => a.number - b.number);
 const statusVariant = STATUS_VARIANT[data.status as Status] ?? 'default';
 
 const releaseDate = new Intl.DateTimeFormat(SITE.locale, {
@@ -32,13 +26,20 @@ const releaseDate = new Intl.DateTimeFormat(SITE.locale, {
 }).format(data.releaseDate);
 
 const year = data.releaseDate.getFullYear();
+const updatedDate = data.updatedAt
+  ? new Intl.DateTimeFormat(SITE.locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }).format(data.updatedAt)
+  : null;
 ---
 
 <BaseLayout
   title={data.title}
-  description={`Nonton dan download ${data.title} batch. ${data.studio}, ${year}.`}
+  description={`${data.title} — informasi lengkap, sinopsis, dan daftar episode. ${data.studio}, ${year}.`}
   image={data.cover}
-  type="video.other"
+  type="article"
 >
   <article>
     <section class="hero">
@@ -59,6 +60,10 @@ const year = data.releaseDate.getFullYear();
 
         <h1>{data.title}</h1>
 
+        {data.titleJp && (
+          <p class="title-alt">{data.titleJp}</p>
+        )}
+
         <dl class="hero-meta">
           <div class="meta-item">
             <dt>Tipe</dt>
@@ -70,7 +75,7 @@ const year = data.releaseDate.getFullYear();
           </div>
           <div class="meta-item">
             <dt>Episode</dt>
-            <dd>{data.episodes.length}</dd>
+            <dd>{data.episodes.length || '—'}</dd>
           </div>
           <div class="meta-item">
             <dt>Rilis</dt>
@@ -93,14 +98,30 @@ const year = data.releaseDate.getFullYear();
           </div>
         </dl>
 
-        <LinkButton
-          href={URLS.watch(anime.id, firstEpisode)}
-          variant="accent"
-          size="lg"
-          icon="play"
-        >
-          Mulai dari Episode {firstEpisode}
-        </LinkButton>
+        {(data.malId || data.anilistId) && (
+          <div class="external-links">
+            {data.malId && (
+              <a
+                href={`https://myanimelist.net/anime/${data.malId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ext-link"
+              >
+                MyAnimeList ↗
+              </a>
+            )}
+            {data.anilistId && (
+              <a
+                href={`https://anilist.co/anime/${data.anilistId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ext-link"
+              >
+                AniList ↗
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </section>
 
@@ -112,14 +133,53 @@ const year = data.releaseDate.getFullYear();
             <Content />
           </div>
         </section>
+
+        {sortedEpisodes.length > 0 && (
+          <section class="episodes-section">
+            <h2 class="section-title">Daftar Episode</h2>
+            <ol class="episode-list">
+              {sortedEpisodes.map(ep => (
+                <li class="episode-item">
+                  <span class="ep-number">Ep {ep.number}</span>
+                  {ep.title && <span class="ep-title">{ep.title}</span>}
+                  {ep.airDate && (
+                    <span class="ep-date">
+                      {new Intl.DateTimeFormat(SITE.locale, {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric',
+                      }).format(ep.airDate)}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
       </div>
 
       <aside class="content-aside">
-        <EpisodeList
-          slug={anime.id}
-          episodes={episodeNumbers}
-          currentEpisode={null}
-        />
+        <div class="meta-card">
+          <h3 class="aside-title">Info</h3>
+          <dl class="aside-meta">
+            <div>
+              <dt>Slug</dt>
+              <dd><code>{anime.id}</code></dd>
+            </div>
+            {data.source && (
+              <div>
+                <dt>Sumber Data</dt>
+                <dd>{data.source}</dd>
+              </div>
+            )}
+            {updatedDate && (
+              <div>
+                <dt>Update Terakhir</dt>
+                <dd>{updatedDate}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
       </aside>
     </div>
   </article>
@@ -174,9 +234,14 @@ const year = data.releaseDate.getFullYear();
       color: var(--text-primary);
     }
 
+    & .title-alt {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: var(--fs-sm);
+    }
+
     & .hero-meta {
       display: grid;
-      /* Mobile: 2 kolom × 3 baris */
       grid-template-columns: repeat(2, 1fr);
       gap: var(--s-4);
       width: 100%;
@@ -210,6 +275,7 @@ const year = data.releaseDate.getFullYear();
       }
     }
   }
+
   .genre-list {
     & a {
       position: relative;
@@ -241,25 +307,152 @@ const year = data.releaseDate.getFullYear();
       }
     }
   }
+
+  .external-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+    justify-content: center;
+    width: 100%;
+
+    .ext-link {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--s-2) var(--s-4);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-semibold);
+      color: var(--text-secondary);
+      transition: all var(--t-fast);
+
+      &:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+    }
+  }
+
   .content-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--s-6);
     align-items: start;
   }
+
   .content-main {
     min-width: 0;
   }
+
   .section-title {
     font-size: var(--fs-lg);
     margin: 0 0 var(--s-3);
     color: var(--text-primary);
   }
 
+  .episodes-section {
+    margin-top: var(--s-8);
+  }
+
+  .episode-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  .episode-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s-3);
+    padding: var(--s-3) var(--s-4);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    transition: all var(--t-fast);
+
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+
+  .ep-number {
+    font-weight: var(--fw-semibold);
+    color: var(--accent);
+    font-size: var(--fs-sm);
+    flex-shrink: 0;
+  }
+
+  .ep-title {
+    color: var(--text-primary);
+    font-size: var(--fs-sm);
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .ep-date {
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+    flex-shrink: 0;
+  }
+
+  .meta-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    padding: var(--s-4);
+  }
+
+  .aside-title {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--text-primary);
+    margin: 0 0 var(--s-3);
+    padding-bottom: var(--s-2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .aside-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    margin: 0;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-1);
+    }
+
+    & dt {
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-semibold);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    & dd {
+      font-size: var(--fs-sm);
+      color: var(--text-primary);
+      margin: 0;
+      overflow-wrap: anywhere;
+
+      & code {
+        font-family: var(--font-firaCode);
+        font-size: var(--fs-xs);
+        background: var(--bg-elevated);
+        padding: 0.15em 0.4em;
+      }
+    }
+  }
+
   @media (min-width: 50rem) {
     article {
       max-width: var(--content-max-desktop);
     }
+
     .hero {
       grid-template-columns: 200px 1fr;
       gap: var(--s-6);
@@ -267,11 +460,14 @@ const year = data.releaseDate.getFullYear();
       text-align: start;
       justify-items: start;
     }
+
     .cover {
       max-width: none;
     }
+
     .hero-info {
       align-items: flex-start;
+
       & .hero-meta {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--s-4) var(--s-6);
@@ -282,6 +478,10 @@ const year = data.releaseDate.getFullYear();
           align-items: flex-start;
         }
       }
+    }
+
+    .external-links {
+      justify-content: flex-start;
     }
 
     .content-grid {
