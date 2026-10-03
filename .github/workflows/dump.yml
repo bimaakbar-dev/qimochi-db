@@ -1,0 +1,82 @@
+name: Dump isi repo
+
+# Jalankan manual: tab Actions, pilih "Dump isi repo", klik Run workflow.
+# Hasilnya satu file repo-dump.txt di bagian Artifacts pada run tersebut.
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_kb:
+        description: Batas ukuran per file (KB)
+        default: '200'
+
+permissions:
+  contents: read
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Gabungkan isi repo
+        env:
+          MAX_KB: ${{ inputs.max_kb }}
+        run: |
+          OUT=repo-dump.txt
+          MAX=$(( ${MAX_KB:-200} * 1024 ))
+          SKIP='(^|/)(package-lock\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lockb?)$'
+
+          {
+            echo "# Repo: $GITHUB_REPOSITORY"
+            echo "# Commit: $GITHUB_SHA"
+            echo
+            echo "## Struktur file"
+            git ls-files | grep -Ev "$SKIP"
+            echo
+            echo "## Isi file"
+          } > "$OUT"
+
+          : > skipped.txt
+
+          # git ls-files hanya memuat file yang di-track, jadi .env, node_modules,
+          # dist, dan file di .gitignore otomatis tidak ikut.
+          git ls-files -z | while IFS= read -r -d '' f; do
+            if echo "$f" | grep -Eq "$SKIP"; then continue; fi
+            [ -f "$f" ] || continue
+
+            if ! grep -Iq . "$f"; then
+              echo "biner atau kosong: $f" >> skipped.txt
+              continue
+            fi
+
+            size=$(wc -c < "$f")
+            if [ "$size" -gt "$MAX" ]; then
+              echo "terlalu besar ($size byte): $f" >> skipped.txt
+              continue
+            fi
+
+            {
+              echo
+              echo "===== FILE: $f ====="
+              cat "$f"
+            } >> "$OUT"
+          done
+
+          {
+            echo
+            echo "## File yang dilewati"
+            cat skipped.txt
+          } >> "$OUT"
+
+          {
+            echo "### Dump selesai"
+            echo "Ukuran: $(wc -c < "$OUT") byte"
+            echo "Dilewati: $(wc -l < skipped.txt) file"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repo-dump
+          path: repo-dump.txt
+          retention-days: 3
