@@ -1,7 +1,7 @@
 name: Dump isi repo
 
 # Jalankan manual: tab Actions, pilih "Dump isi repo", klik Run workflow.
-# Hasilnya satu file repo-dump.txt di bagian Artifacts pada run tersebut.
+# Hasilnya file repo-dump.txt di branch "repo-dump" pada repo ini.
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
         default: '200'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   dump:
@@ -75,8 +75,17 @@ jobs:
             echo "Dilewati: $(wc -l < skipped.txt) file"
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: repo-dump
-          path: repo-dump.txt
-          retention-days: 3
+      - name: Simpan hasil ke branch repo-dump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Branch yatim piatu: hanya berisi repo-dump.txt, branch utama tidak tersentuh
+          # dan workflow deploy tidak ikut terpicu.
+          git checkout --orphan repo-dump
+          git rm -rf --quiet .
+          git add repo-dump.txt
+          git commit -m "Dump isi repo @ ${GITHUB_SHA::7}"
+          git push --force origin repo-dump
+
+          echo "File: https://github.com/$GITHUB_REPOSITORY/blob/repo-dump/repo-dump.txt" >> "$GITHUB_STEP_SUMMARY"
