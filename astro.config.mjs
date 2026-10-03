@@ -2,7 +2,7 @@ import { defineConfig, fontProviders, svgoOptimizer } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://qimochi-hub.github.io',
+  site: 'https://qimochi-db.github.io',
   trailingSlash: 'always',
   fonts: [
     {
