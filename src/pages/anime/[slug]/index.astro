@@ -1,0 +1,92 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Page from '~/components/Page.astro';
+import AnimeBanner from '~/components/AnimeBanner.astro';
+import AnimeDetailLayout from '~/components/AnimeDetailLayout.astro';
+import AnimeCover from '~/components/AnimeCover.astro';
+import AnimeTabs from '~/components/AnimeTabs.astro';
+import AnimeMeta from '~/components/AnimeMeta.astro';
+import AnimeSummary from '~/components/AnimeSummary.astro';
+import AnimeFranchise from '~/components/AnimeFranchise.astro';
+import AnimeEpisodes from '~/components/AnimeEpisodes.astro';
+import AnimeCharacters from '~/components/AnimeCharacters.astro';
+import EmptyState from '~/components/EmptyState.astro';
+
+export async function getStaticPaths() {
+  const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+  return allAnime.map((anime) => ({
+    params: { slug: anime.id },
+    props: { anime },
+  }));
+}
+
+const { anime } = Astro.props;
+const { data } = anime;
+const { Content } = await render(anime);
+---
+
+<BaseLayout title={data.title}>
+  <AnimeBanner image={data.banner} />
+
+  <Page>
+    <AnimeDetailLayout>
+      <AnimeCover slot="cover" image={data.image} title={data.title} />
+
+      <AnimeTabs>
+        <AnimeSummary
+          slot="summary"
+          title={data.title}
+          year={data.year}
+          genres={data.genres}
+        >
+          <Content />
+        </AnimeSummary>
+        <AnimeEpisodes slot="episodes" episodes={data.episodeList} />
+        <AnimeCharacters slot="characters" characters={data.characters} />
+        <AnimeFranchise
+          slot="franchise"
+          title={data.title}
+          related={data.related}
+        />
+      </AnimeTabs>
+
+      <AnimeMeta
+        slot="meta"
+        title={data.title}
+        titleEnglish={data.titleEnglish}
+        titleNative={data.titleNative}
+        synonyms={data.synonyms}
+        type={data.type}
+        status={data.status}
+        source={data.source}
+        season={data.season}
+        year={data.year}
+        episodes={data.episodes}
+        duration={data.duration}
+        rating={data.rating}
+        aired={data.aired}
+        studios={data.studios}
+        producers={data.producers}
+        licensors={data.licensors}
+        malId={data.malId}
+        anilistId={data.anilistId}
+        kitsuId={data.kitsuId}
+      />
+    </AnimeDetailLayout>
+  </Page>
+</BaseLayout>
+
+<style>
+  .summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+
+  .summary__body {
+    font-size: var(--fs-base);
+    line-height: var(--lh-relaxed);
+    color: var(--text-primary);
+  }
+</style>

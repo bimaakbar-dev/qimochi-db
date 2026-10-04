@@ -1,0 +1,53 @@
+---
+interface Props {
+  variant?: 'default' | 'outline' | 'flat';
+  padding?: 'none' | 'sm' | 'md' | 'lg';
+  as?: 'div' | 'section' | 'article' | 'aside';
+  class?: string;
+}
+
+const {
+  variant = 'default',
+  padding = 'md',
+  as: Tag = 'div',
+  class: className,
+} = Astro.props;
+---
+
+<Tag
+  class:list={[
+    'card',
+    `card-${variant}`,
+    `card-pad-${padding}`,
+    className,
+  ]}
+>
+  <slot />
+</Tag>
+
+<style>
+  .card {
+    border-radius: var(--r-md);
+    border: 1px solid transparent;
+  }
+
+  /* ---------- VARIANT ---------- */
+  .card-default {
+    background: var(--bg-elevated);
+  }
+
+  .card-outline {
+    background: transparent;
+    border-color: var(--border);
+  }
+
+  .card-flat {
+    background: var(--bg-surface);
+  }
+
+  /* ---------- PADDING ---------- */
+  .card-pad-none { padding: 0; }
+  .card-pad-sm   { padding: var(--s-3); }
+  .card-pad-md   { padding: var(--s-4); }
+  .card-pad-lg   { padding: var(--s-6); }
+</style>

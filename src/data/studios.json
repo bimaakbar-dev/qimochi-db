@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ufotable",
+    "name": "ufotable",
+    "founded": 2000,
+    "website": "https://www.ufotable.com",
+    "description": "Studio animasi Jepang yang dikenal dengan adaptasi Kimetsu no Yaiba dan Fate series."
+  },
+  {
+    "id": "mappa",
+    "name": "MAPPA",
+    "founded": 2011,
+    "website": "https://www.mappa.co.jp",
+    "description": "Studio yang didirikan oleh Maruyama Masao, dikenal dengan Jujutsu Kaisen dan Attack on Titan final season."
+  },
+  {
+    "id": "wit-studio",
+    "name": "WIT Studio",
+    "founded": 2012,
+    "website": "https://witstudio.co.jp",
+    "description": "Studio yang dikenal dengan Shingeki no Kyojin season 1-3 dan Spy x Family."
+  },
+  {
+    "id": "cloverworks",
+    "name": "CloverWorks",
+    "founded": 2018,
+    "website": "https://cloverworks.co.jp",
+    "description": "Studio spin-off A-1 Pictures, dikenal dengan Spy x Family dan Bocchi the Rock."
+  },
+  {
+    "id": "madhouse",
+    "name": "Madhouse",
+    "founded": 1972,
+    "website": "https://www.madhouse.co.jp",
+    "description": "Studio legendaris yang dikenal dengan Sousou no Frieren, One Punch Man, dan Death Note."
+  },
+  {
+    "id": "toei-animation",
+    "name": "Toei Animation",
+    "founded": 1948,
+    "website": "https://www.toei-anim.co.jp",
+    "description": "Studio tertua di Jepang, dikenal dengan One Piece, Dragon Ball, dan Sailor Moon."
+  }
+]

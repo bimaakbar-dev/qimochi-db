@@ -1,0 +1,38 @@
+[
+  {
+    "id": "demon-slayer",
+    "name": "Demon Slayer",
+    "rootSlug": "kimetsu-no-yaiba",
+    "description": "Franchise Kimetsu no Yaiba, mencakup serial TV, film, dan manga."
+  },
+  {
+    "id": "jujutsu-kaisen",
+    "name": "Jujutsu Kaisen",
+    "rootSlug": "jujutsu-kaisen",
+    "description": "Franchise Jujutsu Kaisen, mencakup serial TV, film, dan manga."
+  },
+  {
+    "id": "spy-x-family",
+    "name": "Spy x Family",
+    "rootSlug": "spy-x-family",
+    "description": "Franchise Spy x Family, mencakup serial TV, film, dan manga."
+  },
+  {
+    "id": "attack-on-titan",
+    "name": "Attack on Titan",
+    "rootSlug": "shingeki-no-kyojin",
+    "description": "Franchise Shingeki no Kyojin, mencakup semua season dan manga."
+  },
+  {
+    "id": "frieren",
+    "name": "Frieren",
+    "rootSlug": "sousou-no-frieren",
+    "description": "Franchise Sousou no Frieren, mencakup serial TV dan manga."
+  },
+  {
+    "id": "one-piece",
+    "name": "One Piece",
+    "rootSlug": "one-piece",
+    "description": "Franchise One Piece, mencakup anime ongoing, film, dan manga."
+  }
+]

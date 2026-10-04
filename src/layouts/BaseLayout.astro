@@ -1,0 +1,48 @@
+---
+import '~/styles/global.css';
+import Head from '~/components/Head.astro';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+}
+
+const {
+  title = 'Qimochi',
+  description,
+  image,
+  canonical,
+  noindex,
+  type,
+  publishedTime,
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <Head
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+      noindex={noindex}
+      type={type}
+      publishedTime={publishedTime}
+    />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Lewati ke konten</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
