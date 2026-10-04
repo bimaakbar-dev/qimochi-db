@@ -1,102 +1,203 @@
 ---
-import { getCollection, render } from 'astro:content';
-import BaseLayout from '~/layouts/BaseLayout.astro';
-import Page from '~/components/Page.astro';
-import AnimeBanner from '~/components/AnimeBanner.astro';
-import AnimeDetailLayout from '~/components/AnimeDetailLayout.astro';
-import AnimeCover from '~/components/AnimeCover.astro';
-import AnimeRating from '~/components/AnimeRating.astro';
-import AnimeTabs from '~/components/AnimeTabs.astro';
-import AnimeMeta from '~/components/AnimeMeta.astro';
-import AnimeSummary from '~/components/AnimeSummary.astro';
-import AnimeFranchise from '~/components/AnimeFranchise.astro';
-import AnimeEpisodes from '~/components/AnimeEpisodes.astro';
-import AnimeCharacters from '~/components/AnimeCharacters.astro';
-import AnimeTrailer from '~/components/AnimeTrailer.astro';
-
-export async function getStaticPaths() {
-  const allAnime = await getCollection('anime', ({ data }) => !data.draft);
-  return allAnime.map((anime) => ({
-    params: { slug: anime.id },
-    props: { anime },
-  }));
+interface Props {
+  animeId: string;
+  malScore?: number;
+  malVotes?: number;
 }
 
-const { anime } = Astro.props;
-const { data } = anime;
-const { Content } = await render(anime);
-
-const allStudios = await getCollection('studios');
-const studioMap = new Map(allStudios.map((s) => [s.data.id, s.data.name]));
-
-const studioItems = data.studios.map((slug) => ({
-  slug,
-  name: studioMap.get(slug) ?? slug,
-}));
+const { animeId, malScore, malVotes } = Astro.props;
+const hasMal = malScore != null && malVotes != null;
 ---
 
-<BaseLayout title={data.title}>
-  <AnimeBanner image={data.banner} />
+<div class="anime-rating" data-anime-rating data-anime-id={animeId}>
+  <div class="anime-rating__stars" data-stars role="group" aria-label="Rating 1-5 bintang">
+    <button type="button" data-score-value="1" aria-label="1 bintang">★</button>
+    <button type="button" data-score-value="2" aria-label="2 bintang">★</button>
+    <button type="button" data-score-value="3" aria-label="3 bintang">★</button>
+    <button type="button" data-score-value="4" aria-label="4 bintang">★</button>
+    <button type="button" data-score-value="5" aria-label="5 bintang">★</button>
+  </div>
 
-  <Page>
-    <AnimeDetailLayout>
-      <AnimeCover slot="cover" image={data.image} title={data.title}>
-        <AnimeRating
-          slot="action"
-          animeId={anime.id}
-          malScore={data.stats?.score}
-          malVotes={data.stats?.scoredBy}
-        />
-      </AnimeCover>
+  <button
+    type="button"
+    class="anime-rating__user"
+    data-user-vote
+    hidden
+    aria-label="Ubah rating kamu"
+  >
+    <span data-user-score>0</span>/10
+  </button>
 
-      <AnimeTabs>
-        <AnimeSummary
-          slot="summary"
-          title={data.title}
-          year={data.year}
-          genres={data.genres}
-        >
-          <Content />
-        </AnimeSummary>
-        <AnimeEpisodes slot="episodes" episodes={data.episodeList} />
-        <AnimeCharacters slot="characters" characters={data.characters} />
-        <AnimeFranchise
-          slot="franchise"
-          title={data.title}
-          related={data.related}
-        />
-      </AnimeTabs>
+  <p class="anime-rating__votes" data-votes>
+    {hasMal ? `${malVotes.toLocaleString('id-ID')} votes` : ''}
+  </p>
+</div>
 
-      <div slot="meta" class="detail-sidebar">
-        <AnimeTrailer trailer={data.trailer} title={data.title} />
+<script>
+  const API_BASE = 'https://qimochi-api.bimaakbar.workers.dev';
 
-        <AnimeMeta
-          title={data.title}
-          titleEnglish={data.titleEnglish}
-          titleNative={data.titleNative}
-          type={data.type}
-          status={data.status}
-          source={data.source}
-          season={data.season}
-          year={data.year}
-          episodes={data.episodes}
-          duration={data.duration}
-          rating={data.rating}
-          aired={data.aired}
-          studios={studioItems}
-          producers={data.producers}
-          malId={data.malId}
-          anilistId={data.anilistId}
-          kitsuId={data.kitsuId}
-        />
-      </div>
-    </AnimeDetailLayout>
-  </Page>
-</BaseLayout>
+  document.querySelectorAll<HTMLElement>('[data-anime-rating]').forEach((el) => {
+    const animeId = el.dataset.animeId!;
+    const starsEl = el.querySelector<HTMLElement>('[data-stars]')!;
+    const userBtnEl = el.querySelector<HTMLButtonElement>('[data-user-vote]')!;
+    const userScoreEl = el.querySelector<HTMLElement>('[data-user-score]')!;
+    const votesEl = el.querySelector<HTMLElement>('[data-votes]')!;
+
+    const STORAGE_KEY = `qimochi:rating:${animeId}`;
+
+    function showStars(prefill = 0) {
+      starsEl.hidden = false;
+      userBtnEl.hidden = true;
+      highlightStars(starsEl, prefill);
+    }
+
+    function showUserVote(stars: number) {
+      starsEl.hidden = true;
+      userBtnEl.hidden = false;
+      userScoreEl.textContent = String(stars * 2);
+    }
+
+    function highlightStars(container: HTMLElement, count: number) {
+      container.querySelectorAll<HTMLButtonElement>('[data-score-value]').forEach((btn) => {
+        const value = Number(btn.dataset.scoreValue);
+        btn.classList.toggle('is-active', value <= count);
+      });
+    }
+
+    function updateVotesText(votes: number) {
+      if (votes > 0) {
+        votesEl.textContent = `${votes.toLocaleString('id-ID')} votes`;
+      }
+    }
+
+    // Cek state tersimpan
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const stars = Number(saved);
+      if (stars >= 1 && stars <= 5) {
+        showUserVote(stars);
+      } else {
+        showStars();
+      }
+    } else {
+      showStars();
+    }
+
+    // Klik tombol "★ X/10" → kembali ke mode bintang (edit)
+    userBtnEl.addEventListener('click', () => {
+      const saved = Number(localStorage.getItem(STORAGE_KEY) ?? 0);
+      showStars(saved);
+    });
+
+    // Fetch skor komunitas dari Worker
+    (async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`);
+        if (!res.ok) return;
+        const json = await res.json();
+        updateVotesText(json.data.votes);
+      } catch {}
+    })();
+
+    // Klik bintang → submit vote
+    starsEl.addEventListener('click', async (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-score-value]');
+      if (!btn) return;
+
+      const stars = Number(btn.dataset.scoreValue);
+      highlightStars(starsEl, stars);
+
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ score: stars }),
+        });
+        const json = await res.json();
+
+        if (json.ok) {
+          localStorage.setItem(STORAGE_KEY, String(stars));
+          showUserVote(stars);
+          updateVotesText(json.data.votes);
+        }
+      } catch {}
+    });
+  });
+</script>
+
 <style>
-  .detail-sidebar {
+  .anime-rating {
     display: flex;
     flex-direction: column;
-    gap: var(--s-5);
+    align-items: center;
+    gap: var(--s-2);
+    padding-top: var(--s-2);
+  }
+
+  .anime-rating__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .anime-rating__stars[hidden] {
+    display: none;
+  }
+
+  .anime-rating__stars button {
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-disabled);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color var(--t-fast), transform var(--t-fast);
+  }
+
+  .anime-rating__stars button:hover,
+  .anime-rating__stars button.is-active {
+    color: var(--gold);
+  }
+
+  .anime-rating__stars button:hover {
+    transform: scale(1.15);
+  }
+
+  .anime-rating__user {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-1);
+    padding: var(--s-1) var(--s-3);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--gold);
+    background: var(--gold-soft);
+    border: 1px solid var(--gold);
+    border-radius: var(--r-full);
+    cursor: pointer;
+    transition: background-color var(--t-fast), color var(--t-fast);
+  }
+
+  .anime-rating__user::before {
+    content: '★';
+    font-size: 1em;
+    line-height: 1;
+  }
+
+  .anime-rating__user:hover {
+    background: var(--gold);
+    color: #1a1a1a;
+  }
+
+  .anime-rating__user[hidden] {
+    display: none;
+  }
+
+  .anime-rating__votes {
+    margin: 0;
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.2;
   }
 </style>
