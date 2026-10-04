@@ -2,7 +2,7 @@ export const SITE = {
   name: 'QimochiDB',
   title: 'QimochiDB',
   description: 'Database anime Indonesia — katalog lengkap, API gratis untuk developer.',
-  url: 'https://qimochi-db.github.io',
+  url: 'https://qimochi.pages.dev',
   locale: 'id-ID',
   lang: 'id',
 } as const;
