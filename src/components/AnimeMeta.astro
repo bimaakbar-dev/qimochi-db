@@ -22,7 +22,6 @@ interface Props {
   title: string;
   titleEnglish?: string;
   titleNative?: string;
-  synonyms?: string[];
   type: string;
   status: string;
   source?: string;
@@ -33,8 +32,6 @@ interface Props {
   rating?: string;
   aired?: { from: string; to?: string | null };
   studios?: StudioItem[];
-  producers?: string[];
-  licensors?: string[];
   malId?: number;
   anilistId?: number;
   kitsuId?: string;
@@ -44,7 +41,6 @@ const {
   title,
   titleEnglish,
   titleNative,
-  synonyms = [],
   type,
   status,
   source,
@@ -55,8 +51,6 @@ const {
   rating,
   aired,
   studios = [],
-  producers = [],
-  licensors = [],
   malId,
   anilistId,
   kitsuId,
@@ -180,14 +174,6 @@ const hasExternal =
         </dd>
       </div>
     )}
-
-    {producers.length > 0 && (
-      <div class="anime-meta__row">
-        <dt>Producer</dt>
-        <dd>{producers.join(', ')}</dd>
-      </div>
-    )}
-
   </dl>
 
   {hasExternal && (
@@ -225,8 +211,6 @@ const hasExternal =
     display: flex;
     flex-direction: column;
     gap: var(--s-4);
-    border-block-start: 1px solid var(--border);
-    padding-block-start: var(--s-4);
   }
 
   .anime-meta {
@@ -253,9 +237,6 @@ const hasExternal =
   }
 
   @media (min-width: 50rem) {
-    .anime-meta-wrap {
-      border: none
-    }
     .anime-meta__row {
       grid-template-columns: 6rem minmax(0, 1fr);
       column-gap: var(--s-3);
@@ -287,7 +268,8 @@ const hasExternal =
     margin: 0 0 var(--s-2);
     font-size: var(--fs-xs);
     font-weight: var(--fw-medium);
-    color: var(--text-primary);
+    color: var(--text-muted);
+    text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
