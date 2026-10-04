@@ -1,4 +1,3 @@
-// src/pages/api/v1/anime/[id].json.ts
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { jsonResponse, errorResponse, corsPreflightResponse } from '~/lib/api/response';
@@ -23,9 +22,9 @@ export const GET: APIRoute = async ({ params }) => {
 
   const d = anime.data;
 
-  // Resolve studio slug → name
   const allStudios = await getCollection('studios');
   const studioMap = new Map(allStudios.map((s) => [s.data.id, s.data.name]));
+
   const studios = d.studios.map((slug) => ({
     slug,
     name: studioMap.get(slug) ?? slug,
@@ -33,8 +32,6 @@ export const GET: APIRoute = async ({ params }) => {
 
   const data = {
     id: anime.id,
-    slug: anime.id,
-    url: `/anime/${anime.id}/`,
 
     title: d.title,
     titleEnglish: d.titleEnglish ?? null,
@@ -57,23 +54,18 @@ export const GET: APIRoute = async ({ params }) => {
 
     aired: d.aired ?? null,
 
+    stats: d.stats ?? null,
+
     genres: d.genres,
     studios,
-    producers: d.producers,
     franchises: d.franchises,
-    related: d.related,
-
-    stats: d.stats ?? null,
 
     image: d.image ?? null,
     banner: d.banner ?? null,
     trailer: d.trailer ?? null,
 
-    streaming: d.streaming,
-    tags: d.tags,
-
-    nsfw: d.nsfw,
-    contributors: d.contributors,
+    episodeList: d.episodeList,
+    characters: d.characters,
   };
 
   return jsonResponse(data);
