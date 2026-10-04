@@ -122,7 +122,13 @@ Sinopsis ditulis ulang oleh kontributor — bukan copy-paste.
 
 ## License
 
-Data terbuka untuk developer. Atribusi ke QimochiDB diharapkan.
+- Kode: MIT (lihat LICENSE)
+- Data: CC BY 4.0 (lihat LICENSE-DATA)
+
+Atribusi minimal yang diminta:
+
+  Data dari QimochiDB (https://qimochi.pages.dev)
+  Lisensi: CC BY 4.0
 
 ---
 
