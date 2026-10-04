@@ -23,32 +23,21 @@ aired:
 stats:
   score: null
   scoredBy: null
-  rank: null
-  popularity: null
-  members: null
-  favorites: null
 
 genres: []
 studios: []
-producers: []
-franchises: []
 
-related: []
+franchises: []
 
 image: ""
 banner: ""
 trailer: ""
 
-streaming: []
-
 episodeList: []
 
 characters: []
 
-tags: []
-nsfw: false
 draft: false
-contributors: []
 ---
 
 Tulis sinopsis di sini.
@@ -80,6 +69,24 @@ Field wajib (3):
 - type — TV | Movie | OVA | ONA | Special | Music | Unknown
 - status — airing | finished | upcoming | hiatus | cancelled
 
-Field opsional: isi sesuai data. Tidak wajib lengkap.
+Field opsional: isi sesuai data. TIDAK WAJIB lengkap.
+
+Aturan penting:
+
+- Field optional JANGAN diisi dengan string kosong ("")
+- Kalau tidak ada data, hapus field-nya
+- Contoh SALAH: image: ""
+- Contoh BENAR: (hilangkan field image sepenuhnya)
+
+Format franchises (kalau ada):
+
+[
+  franchises:
+    - relation: sequel
+      slug: anime-target-slug
+      title: "Judul Anime Target"
+]
+
+Field title opsional — isi kalau anime target belum ada di database.
 
 Panduan lengkap: lihat CONTRIBUTING.md
