@@ -2,8 +2,6 @@
 title: "Sousou no Frieren"
 titleEnglish: "Frieren: Beyond Journey's End"
 titleNative: "葬送のフリーレン"
-synonyms:
-  - "Frieren"
 
 malId: 52991
 anilistId: 154587
@@ -25,10 +23,6 @@ aired:
 stats:
   score: 9.3
   scoredBy: 890000
-  rank: 1
-  popularity: 45
-  members: 1500000
-  favorites: 145000
 
 genres:
   - adventure
@@ -39,45 +33,15 @@ genres:
 studios:
   - madhouse
 
-producers:
-  - "Aniplex"
-  - "Shogakukan"
-
-licensors:
-  - "Crunchyroll"
-
-franchises:
-  - frieren
-
-related:
-  - relation: adaptation
-    slug: sousou-no-frieren-manga
-
 image: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg"
 banner: "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg"
 trailer: "ZE7cKZlwKnY"
-
-streaming:
-  - name: Crunchyroll
-    url: "https://www.crunchyroll.com/frieren-beyond-journeys-end"
-    region: global
-  - name: Bstation
-    url: "https://www.bilibili.tv/id/media/2055722"
-    region: ID
-    language: id
 
 tags:
   - elf
   - magic
   - journey
   - melancholy
-
-nsfw: false
-draft: false
-contributors:
-  - qimochi
-
-# src/content/anime/sousou-no-frieren.md — tambahkan di frontmatter
 
 characters:
   - name: "Frieren"
