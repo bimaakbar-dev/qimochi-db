@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Page from '~/components/Page.astro';
+import Hero from '~/components/Hero.astro';
+import AnimeGrid from '~/components/AnimeGrid.astro';
+import Pagination from '~/components/Pagination.astro';
+import { getGenreData, paginate } from '~/lib/genre';
+
+export async function getStaticPaths() {
+  const genres = await getCollection('genres');
+  const paths = [];
+
+  for (const g of genres) {
+    const { anime, totalPages } = await getGenreData(g.id);
+    for (let page = 1; page <= totalPages; page++) {
+      paths.push({
+        params: { slug: g.id, page: page === 1 ? undefined : String(page) },
+        props: {
+          name: g.data.name,
+          description: g.data.description,
+          anime,
+          totalPages,
+          pageNumber: page,
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { slug } = Astro.params;
+const { name, description, anime, totalPages, pageNumber } = Astro.props;
+const items = paginate(anime, pageNumber);
+---
+
+<BaseLayout
+  title={`Anime ${name}`}
+  description={description ?? `Daftar anime bergenre ${name}.`}
+  noindex={pageNumber > 1}
+>
+  <Page>
+    <Hero title={`Genre: ${name}`} description={description ?? `${anime.length} anime.`} />
+    <AnimeGrid items={items} emptyText={`Belum ada anime bergenre ${name}.`} />
+    <Pagination current={pageNumber} total={totalPages} base={`/genre/${slug}`} />
+  </Page>
+</BaseLayout>
