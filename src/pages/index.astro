@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Page from '~/components/Page.astro';
+import Hero from '~/components/Hero.astro';
+import SectionLabel from '~/components/SectionLabel.astro';
+import AnimeGrid from '~/components/AnimeGrid.astro';
+import LinkButton from '~/user-components/LinkButton.astro';
+import { SITE, URLS } from '~/constants';
+import { sortByRecent } from '~/lib/anime';
+import { getGenres } from '~/lib/genre';
+
+const all = sortByRecent(await getCollection('anime'));
+const recent = all.slice(0, 12);
+const ongoing = all.filter((a) => a.data.status === 'Ongoing').slice(0, 12);
+const genres = (await getGenres()).filter((g) => g.count > 0);
+---
+
+<BaseLayout title={SITE.name} description={SITE.description}>
+  <Page>
+    <Hero title="Database anime Indonesia" description={SITE.description} size="lg">
+      <div class="actions">
+        <LinkButton href="/anime/" variant="accent" size="lg">Jelajahi katalog</LinkButton>
+        <LinkButton href="/docs/" variant="gold" size="lg">Dokumentasi API</LinkButton>
+      </div>
+    </Hero>
+
+    <section class="block">
+      <div class="head">
+        <SectionLabel as="h2">Baru ditambahkan</SectionLabel>
+        <a href="/anime/">Lihat semua</a>
+      </div>
+      <AnimeGrid items={recent} emptyText="Belum ada anime di katalog." />
+    </section>
+
+    {
+      ongoing.length > 0 && (
+        <section class="block">
+          <div class="head">
+            <SectionLabel as="h2">Sedang tayang</SectionLabel>
+            <a href="/anime/ongoing/">Lihat semua</a>
+          </div>
+          <AnimeGrid items={ongoing} />
+        </section>
+      )
+    }
+
+    {
+      genres.length > 0 && (
+        <section class="block">
+          <div class="head">
+            <SectionLabel as="h2">Genre</SectionLabel>
+            <a href="/genre/">Semua genre</a>
+          </div>
+          <ul class="genres">
+            {genres.map((g) => (
+              <li>
+                <LinkButton href={URLS.genre(g.id)} variant="outline" size="sm">
+                  {g.name}
+                </LinkButton>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </Page>
+</BaseLayout>
+
+<style>
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+    margin-top: var(--s-2);
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+  }
+
+  .head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--s-4);
+  }
+
+  .head a {
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+  }
+  .head a:hover { color: var(--accent); }
+
+  .genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    margin: 0;
+    padding: 0;
+  }
+</style>
