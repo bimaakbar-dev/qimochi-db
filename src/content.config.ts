@@ -36,25 +36,21 @@ const RelationType = z.enum([
   'compilation', 'contains', 'other',
 ]);
 
-
 const anime = defineCollection({
   loader: glob({
-    pattern: '**/*.md',
+    pattern: ['**/*.md', '!**/_*.md'],
     base: './src/content/anime',
     deferRender: true,
   }),
   schema: z.object({
-    // ---------- IDENTITAS ----------
     title: z.string().min(1),
     titleEnglish: z.string().optional(),
     titleNative: z.string().optional(),
 
-    // ---------- EXTERNAL IDS ----------
     malId: z.number().int().positive().optional(),
     anilistId: z.number().int().positive().optional(),
     kitsuId: z.string().optional(),
 
-    // ---------- KLASIFIKASI ----------
     type: AnimeType,
     status: AnimeStatus,
     source: AnimeSource.optional(),
@@ -64,44 +60,27 @@ const anime = defineCollection({
     duration: z.number().int().positive().optional(),
     rating: AnimeRating.optional(),
 
-    // ---------- TANGGAL ----------
     aired: z.object({
       from: ISODate,
       to: ISODate.nullable().optional(),
     }).optional(),
 
-    // ---------- STATISTIK ----------
     stats: z.object({
       score: z.number().min(0).max(10).optional(),
       scoredBy: z.number().int().nonnegative().optional(),
-      rank: z.number().int().positive().optional(),
-      popularity: z.number().int().nonnegative().optional(),
-      members: z.number().int().nonnegative().optional(),
-      favorites: z.number().int().nonnegative().optional(),
     }).optional(),
 
-    // ---------- RELASI ----------
     genres: z.array(Slug).default([]),
     studios: z.array(Slug).default([]),
-    producers: z.array(z.string()).default([]),
-    franchises: z.array(Slug).default([]),
-    related: z.array(z.object({
+    franchises: z.array(z.object({
       relation: RelationType,
       slug: Slug,
+      title: z.string().optional(),
     })).default([]),
 
-    // ---------- MEDIA (URL eksternal) ----------
     image: ExternalUrl.optional(),
     banner: ExternalUrl.optional(),
     trailer: z.string().optional(),
-
-    // ---------- STREAMING ----------
-    streaming: z.array(z.object({
-      name: z.string(),
-      url: ExternalUrl,
-      region: z.string().default('global'),
-      language: z.string().optional(),
-    })).default([]),
 
     episodeList: z.array(z.object({
       number: z.number().int().positive(),
@@ -109,12 +88,6 @@ const anime = defineCollection({
       aired: ISODate.optional(),
       duration: z.number().int().positive().optional(),
     })).default([]),
-
-    // ---------- META ----------
-    tags: z.array(z.string()).default([]),
-    nsfw: z.boolean().default(false),
-    draft: z.boolean().default(false),
-    contributors: z.array(z.string()).default([]),
 
     characters: z.array(z.object({
       name: z.string(),
@@ -127,6 +100,8 @@ const anime = defineCollection({
         language: z.string().optional(),
       })).default([]),
     })).default([]),
+
+    draft: z.boolean().default(false),
   }),
 });
 
@@ -152,19 +127,8 @@ const studios = defineCollection({
   }),
 });
 
-const franchises = defineCollection({
-  loader: file('./src/data/franchises.json'),
-  schema: z.object({
-    id: Slug,
-    name: z.string(),
-    description: z.string().optional(),
-    rootSlug: Slug.optional(),
-  }),
-});
-
 export const collections = {
   anime,
   genres,
   studios,
-  franchises,
 };
