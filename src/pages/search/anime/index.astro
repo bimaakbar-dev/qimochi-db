@@ -14,21 +14,14 @@ import YearsCard from '~/components/YearsCard.astro';
 import Icon from '~/user-components/Icons.astro';
 import LinkButton from '~/user-components/LinkButton.astro';
 import Select from '~/user-components/Select.astro';
-import AnimeGrid from '~/components/AnimeGrid.astro';
 import { PER_PAGE } from '~/constants';
 
 const DEFAULT_SORT = 'recent';
-const DEFAULT_RANK = 'trending';
 
-const SORT_ORDER = [
+const SORTS = [
   { value: 'recent', label: 'Terbaru' },
   { value: 'oldest', label: 'Terlama' },
   { value: 'title', label: 'A-Z' },
-];
-
-const SORT_RANK = [
-  { value: 'trending', label: 'Trending' },
-  { value: 'popular', label: 'Popular' },
   { value: 'rating', label: 'Rating' },
 ];
 ---
@@ -77,21 +70,12 @@ const SORT_RANK = [
       <div class="controls-row">
         <div class="controls-row__sorts">
           <Select
-            id="sort-order"
+            id="sort"
             label="Urutkan"
-            options={SORT_ORDER}
+            options={SORTS}
             value={DEFAULT_SORT}
             size="sm"
-            data-sort-order
-          />
-
-          <Select
-            id="sort-rank"
-            label="Berdasarkan"
-            options={SORT_RANK}
-            value={DEFAULT_RANK}
-            size="sm"
-            data-sort-rank
+            data-sort
           />
         </div>
 
@@ -110,13 +94,13 @@ const SORT_RANK = [
 
       <div class="search-loading" data-loading>Memuat data...</div>
 
-      <AnimeGrid
+      <div
+        class="anime-grid"
         data-grid
         data-per-page={PER_PAGE}
         data-default-sort={DEFAULT_SORT}
-        data-default-rank={DEFAULT_RANK}
         hidden
-      />
+      ></div>
 
       <div data-empty-state hidden>
         <EmptyState
@@ -147,7 +131,6 @@ const SORT_RANK = [
   const gridEl = document.querySelector('[data-grid]');
   const PER_PAGE = Number(gridEl?.dataset.perPage ?? 24);
   const DEFAULT_SORT = gridEl?.dataset.defaultSort ?? 'recent';
-  const DEFAULT_RANK = gridEl?.dataset.defaultRank ?? 'trending';
 
   const grid = gridEl;
   const loading = document.querySelector('[data-loading]');
@@ -160,13 +143,10 @@ const SORT_RANK = [
   const resetBtn = document.querySelector('[data-reset]');
   const cardTemplate = document.getElementById('anime-card-template');
 
-  const sortOrderEl = document.querySelector('[data-sort-order]');
-  const sortRankEl = document.querySelector('[data-sort-rank]');
+  const sortEl = document.querySelector('[data-sort]');
 
-  const SORT_ORDER_VALUES = ['recent', 'oldest', 'title'];
-  const SORT_RANK_VALUES = ['trending', 'popular', 'rating'];
+  const SORT_VALUES = ['recent', 'oldest', 'title', 'rating'];
 
-  /** @type {{ item: any, search: string }[]} */
   let animeIndex = [];
 
   function readParams() {
@@ -180,7 +160,6 @@ const SORT_RANK = [
       season: sp.get('season') ?? '',
       year: sp.get('year') ?? '',
       sort: sp.get('sort') ?? DEFAULT_SORT,
-      rank: sp.get('rank') ?? DEFAULT_RANK,
       page: Math.max(1, Number(sp.get('page') ?? 1)),
     };
   }
@@ -195,7 +174,6 @@ const SORT_RANK = [
     if (p.season) sp.set('season', p.season);
     if (p.year) sp.set('year', p.year);
     if (p.sort && p.sort !== DEFAULT_SORT) sp.set('sort', p.sort);
-    if (p.rank && p.rank !== DEFAULT_RANK) sp.set('rank', p.rank);
     if (p.page > 1) sp.set('page', String(p.page));
     const qs = sp.toString();
     return qs ? `${location.pathname}?${qs}` : location.pathname;
@@ -213,29 +191,21 @@ const SORT_RANK = [
     return true;
   }
 
-  function cmpRank(a, b, rank) {
-    if (rank === 'rating')
-      return (b.stats?.score ?? 0) - (a.stats?.score ?? 0);
-    if (rank === 'popular')
-      return (b.stats?.members ?? 0) - (a.stats?.members ?? 0);
-    if (rank === 'trending')
-      return (a.stats?.popularity ?? 999999) - (b.stats?.popularity ?? 999999);
-    return 0;
-  }
-
-  function cmpSort(a, b, sort) {
-    if (sort === 'title') return a.title.localeCompare(b.title);
-    if (sort === 'recent') return (b.year ?? 0) - (a.year ?? 0);
-    if (sort === 'oldest') return (a.year ?? 9999) - (b.year ?? 9999);
-    return 0;
-  }
-
-  function sortList(list, sort, rank) {
+  function sortList(list, sort) {
     const copy = [...list];
-    return copy.sort((a, b) => {
-      const d = cmpSort(a, b, sort);
-      return d !== 0 ? d : cmpRank(a, b, rank);
-    });
+    switch (sort) {
+      case 'rating':
+        return copy.sort(
+          (a, b) => (b.stats?.score ?? 0) - (a.stats?.score ?? 0)
+        );
+      case 'oldest':
+        return copy.sort((a, b) => (a.year ?? 9999) - (b.year ?? 9999));
+      case 'title':
+        return copy.sort((a, b) => a.title.localeCompare(b.title));
+      case 'recent':
+      default:
+        return copy.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+    }
   }
 
   function createCard(a) {
@@ -282,12 +252,14 @@ const SORT_RANK = [
 
     return node.firstElementChild;
   }
+
   function renderPagination(current, total, p) {
     paginationEl.innerHTML = '';
     if (total <= 1) return;
 
     const pageUrl = (n) => buildUrl({ ...p, page: n });
     const pages = buildPages(current, total);
+
     if (current > 1) {
       const el = cloneTemplate('pg-prev');
       el.href = pageUrl(current - 1);
@@ -296,6 +268,7 @@ const SORT_RANK = [
     } else {
       paginationEl.appendChild(cloneTemplate('pg-prev-disabled'));
     }
+
     pages.forEach((pg) => {
       if (pg === '...') {
         paginationEl.appendChild(cloneTemplate('pg-ellipsis'));
@@ -312,7 +285,6 @@ const SORT_RANK = [
       }
     });
 
-    // Next
     if (current < total) {
       const el = cloneTemplate('pg-next');
       el.href = pageUrl(current + 1);
@@ -327,8 +299,7 @@ const SORT_RANK = [
     const filtered = animeIndex.filter((e) => matches(e, p));
     const sorted = sortList(
       filtered.map((e) => e.item),
-      p.sort,
-      p.rank
+      p.sort
     );
 
     const { items: pageItems, total, totalPages, currentPage: current } =
@@ -350,11 +321,8 @@ const SORT_RANK = [
 
     if (clearBtn) clearBtn.hidden = !searchInput.value;
 
-    if (sortOrderEl) {
-      sortOrderEl.value = SORT_ORDER_VALUES.includes(p.sort) ? p.sort : DEFAULT_SORT;
-    }
-    if (sortRankEl) {
-      sortRankEl.value = SORT_RANK_VALUES.includes(p.rank) ? p.rank : DEFAULT_RANK;
+    if (sortEl) {
+      sortEl.value = SORT_VALUES.includes(p.sort) ? p.sort : DEFAULT_SORT;
     }
 
     const isEmpty = total === 0;
@@ -371,7 +339,6 @@ const SORT_RANK = [
         p.season ||
         p.year ||
         p.sort !== DEFAULT_SORT ||
-        p.rank !== DEFAULT_RANK ||
         p.page > 1;
       resetBtn.hidden = !hasNonDefault;
     }
@@ -413,7 +380,6 @@ const SORT_RANK = [
           item.title,
           item.titleEnglish ?? '',
           item.titleNative ?? '',
-          ...(item.synonyms ?? []),
         ]
           .join(' ')
           .toLowerCase(),
@@ -444,7 +410,6 @@ const SORT_RANK = [
         season: '',
         year: '',
         sort: DEFAULT_SORT,
-        rank: DEFAULT_RANK,
         page: 1,
       });
       return;
@@ -494,18 +459,10 @@ const SORT_RANK = [
     if (clearBtn) clearBtn.hidden = !searchInput.value;
   });
 
-  sortOrderEl?.addEventListener('change', () => {
+  sortEl?.addEventListener('change', () => {
     navigate({
       ...readParams(),
-      sort: sortOrderEl.value,
-      page: 1,
-    });
-  });
-
-  sortRankEl?.addEventListener('change', () => {
-    navigate({
-      ...readParams(),
-      rank: sortRankEl.value,
+      sort: sortEl.value,
       page: 1,
     });
   });
@@ -644,11 +601,31 @@ const SORT_RANK = [
     color: var(--text-muted);
   }
 
+  .anime-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-4);
+  }
+
+  @media (min-width: 50rem) {
+    .anime-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }
+  }
+
+  @media (min-width: 72rem) {
+    .anime-grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
   .sidebar-widgets {
     display: flex;
     flex-direction: column;
     gap: var(--s-8);
   }
+
   .search-loading {
     padding: var(--s-10) var(--s-6);
     text-align: center;
