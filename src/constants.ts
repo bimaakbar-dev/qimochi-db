@@ -115,7 +115,7 @@ export const MONTHS_ID = [
   'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des',
 ] as const;
 
-export const PER_PAGE = 2;
+export const PER_PAGE = 18;
 
 export const BREAKPOINTS = {
   mobile:  '50rem',
