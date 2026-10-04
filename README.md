@@ -36,18 +36,40 @@ Response:
 ```json
   {
     "data": {
-      "id": "kimetsu-no-yaiba",
-      "title": "Kimetsu no Yaiba",
-      "type": "TV",
-      "year": 2019,
-      "episodes": 26,
-      "genres": ["action", "supernatural", "shounen"],
-      "studios": [{ "slug": "ufotable", "name": "ufotable" }]
-    },
-    "meta": {
-      "total": 1,
-      "generatedAt": "2026-10-05T..."
-    }
+  "id": "kimetsu-no-yaiba",
+  "title": "Kimetsu no Yaiba",
+  "titleEnglish": "Demon Slayer: Kimetsu no Yaiba",
+  "titleNative": "鬼滅の刃",
+  "externalIds": {
+    "mal": 38000,
+    "anilist": 101922,
+    "kitsu": "41370"
+  },
+  "type": "TV",
+  "status": "finished",
+  "source": "manga",
+  "season": "spring",
+  "year": 2019,
+  "episodes": 26,
+  "duration": 23,
+  "rating": "R",
+  "aired": {
+    "from": "2019-04-06",
+    "to": "2019-09-28"
+  },
+  "stats": {
+    "score": 8.5,
+    "scoredBy": 1542300
+  },
+  "genres": ["action", "supernatural", "shounen"],
+  "studios": [{ "slug": "ufotable", "name": "ufotable" }],
+  "franchises": [],
+  "image": "https://...",
+  "banner": null,
+  "trailer": "VQGCKyvzIM4",
+  "episodeList": [],
+  "characters": []
+}
   }
 ```
 
