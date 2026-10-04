@@ -6,25 +6,41 @@ import { URLS, RELATION_LABEL, type RelationType } from '~/constants';
 
 interface Props {
   title: string;
-  related?: { relation: string; slug: string }[];
+  franchises?: { relation: string; slug: string; title?: string }[];
 }
 
-const { title, related = [] } = Astro.props;
+const { title, franchises = [] } = Astro.props;
 
 const allAnime = await getCollection('anime');
 const animeMap = new Map(allAnime.map((a) => [a.id, a]));
 
-const allFranchises = await getCollection('franchises');
-const franchiseMap = new Map(
-  allFranchises.map((f) => [f.data.id, f.data.name])
-);
+function slugToTitle(slug: string): string {
+  return slug
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
 
-const items = related.map((rel) => ({
-  relation: rel.relation,
-  relationLabel: RELATION_LABEL[rel.relation as RelationType] ?? rel.relation,
-  slug: rel.slug,
-  anime: animeMap.get(rel.slug) ?? null,
-}));
+const items = franchises.map((rel) => {
+  const anime = animeMap.get(rel.slug) ?? null;
+
+  let displayTitle: string;
+  if (anime) {
+    displayTitle = anime.data.title;
+  } else if (rel.title) {
+    displayTitle = rel.title;
+  } else {
+    displayTitle = slugToTitle(rel.slug);
+  }
+
+  return {
+    relation: rel.relation,
+    relationLabel: RELATION_LABEL[rel.relation as RelationType] ?? rel.relation,
+    slug: rel.slug,
+    anime,
+    displayTitle,
+  };
+});
 ---
 
 <div class="anime-franchise">
@@ -39,13 +55,8 @@ const items = related.map((rel) => ({
     />
   ) : (
     <div class="anime-franchise__grid">
-      {items.map((item) => {
-        const relatedFranchise = item.anime?.data.franchises?.[0];
-        const relatedFranchiseName = relatedFranchise
-          ? franchiseMap.get(relatedFranchise) ?? relatedFranchise
-          : null;
-
-        return item.anime ? (
+      {items.map((item) =>
+        item.anime ? (
           <a href={URLS.anime(item.slug)} class="related-card">
             <div class="related-card__cover">
               {item.anime.data.image ? (
@@ -59,17 +70,14 @@ const items = related.map((rel) => ({
               )}
             </div>
             <div class="related-card__body">
-              <span>
-                <Badge variant="outline" size="sm">
-                  {item.relationLabel}
-                </Badge>
-              </span>
+              <Badge variant="outline" size="sm">
+                {item.relationLabel}
+              </Badge>
               <p class="related-card__title">
                 {item.anime.data.title}
               </p>
               <p class="related-card__meta">
                 {item.anime.data.year ?? '—'}
-                {relatedFranchiseName && <> · {relatedFranchiseName}</>}
               </p>
             </div>
           </a>
@@ -82,12 +90,12 @@ const items = related.map((rel) => ({
               <Badge variant="outline" size="sm">
                 {item.relationLabel}
               </Badge>
-              <p class="related-card__title">{item.slug}</p>
+              <p class="related-card__title">{item.displayTitle}</p>
               <p class="related-card__meta">Belum tersedia</p>
             </div>
           </div>
-        );
-      })}
+        )
+      )}
     </div>
   )}
 </div>
