@@ -53,8 +53,8 @@ related:
   - relation: side_story
     slug: violet-evergarden-gaiden
 
-image: ""
-banner: ""
+image: "https://cdn.myanimelist.net/images/anime/1795/95088l.jpg"
+banner: "https://cdn.myanimelist.net/images/anime/1503/95089l.jpg"
 trailer: ""
 
 streaming:
@@ -75,7 +75,90 @@ nsfw: false
 draft: false
 contributors: []
 
-characters: []
+characters:
+  - name: "Violet Evergarden"
+    nameNative: "ヴァイオレット・エヴァーガーデン"
+    image: "https://cdn.myanimelist.net/images/characters/9/345616.jpg"
+    role: main
+    voiceActors:
+      - name: "Yui Ishikawa"
+        image: "https://cdn.myanimelist.net/images/voiceactors/2/69967.jpg"
+        language: Japanese
+      - name: "Erika Harlacher"
+        image: ""
+        language: English
+
+  - name: "Gilbert Bougainvillea"
+    nameNative: "ギルベルト・ブーゲンビリア"
+    image: ""
+    role: supporting
+    voiceActors:
+      - name: "Daisuke Namikawa"
+        image: ""
+        language: Japanese
+      - name: "Tony Azzolino"
+        image: ""
+        language: English
+
+  - name: "Claudia Hodgins"
+    nameNative: "クラウディア・ホッジンズ"
+    image: ""
+    role: supporting
+    voiceActors:
+      - name: "Takehito Koyasu"
+        image: ""
+        language: Japanese
+      - name: "Kyle McCarley"
+        image: ""
+        language: English
+
+  - name: "Cattleya Baudelaire"
+    nameNative: "カトレア・ボードレール"
+    image: ""
+    role: supporting
+    voiceActors:
+      - name: "Aya Endo"
+        image: ""
+        language: Japanese
+      - name: "Reba Buhr"
+        image: ""
+        language: English
+
+  - name: "Benedict Blue"
+    nameNative: "ベネディクト・ブルー"
+    image: ""
+    role: supporting
+    voiceActors:
+      - name: "Kouki Uchiyama"
+        image: ""
+        language: Japanese
+      - name: "Ben Pronsky"
+        image: ""
+        language: English
+
+  - name: "Erica Brown"
+    nameNative: "エリカ・ブラウン"
+    image: ""
+    role: supporting
+    voiceActors:
+      - name: "Minori Chihara"
+        image: ""
+        language: Japanese
+      - name: "Cassandra Lee Morris"
+        image: ""
+        language: English
+
+  - name: "Iris Cannary"
+    nameNative: "アイリス・カナリー"
+    image: ""
+    role: supporting
+    voiceActors:
+      - name: "Haruka Tomatsu"
+        image: ""
+        language: Japanese
+      - name: "Cherami Leigh"
+        image: ""
+        language: English
 ---
 
 Setelah perang besar selama empat tahun berakhir, Violet Evergarden — seorang mantan tentara anak yang dijuluki sebagai "senjata" oleh militer — harus menyesuaikan diri dengan kehidupan sipil. Tanpa kemampuan untuk memahami emosi manusia dan tanpa sosok Mayor Gilbert Bougainvillea, komandan sekaligus orang yang paling ia sayangi, Violet menerima pekerjaan sebagai Auto Memory Doll di CH Postal Company.
