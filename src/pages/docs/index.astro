@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Page from '~/components/Page.astro';
+import Hero from '~/components/Hero.astro';
+import SectionLabel from '~/components/SectionLabel.astro';
+import Card from '~/user-components/Card.astro';
+import { sortByRecent } from '~/lib/anime';
+import { getLookups, toDetail } from '~/lib/api';
+
+const all = sortByRecent(await getCollection('anime'));
+const origin = new URL('/api/v1/', Astro.site ?? Astro.url).href;
+
+const endpoints = [
+  { path: 'anime.json', desc: 'Daftar seluruh anime (ringkas), diurutkan dari yang terbaru ditambahkan.' },
+  { path: 'anime/{id}.json', desc: 'Detail satu anime: judul alternatif, genre, studio, relasi, episode, sinopsis, dan ID eksternal.' },
+  { path: 'genres.json', desc: 'Daftar genre beserta jumlah anime.' },
+  { path: 'studios.json', desc: 'Daftar studio beserta jumlah anime.' },
+  { path: 'stats.json', desc: 'Ringkasan katalog: total, jumlah per status dan tipe, total episode.' },
+];
+
+const fetchExample = `const res = await fetch('${origin}anime.json');
+const { data } = await res.json();
+
+// Anime yang sedang tayang
+console.log(data.filter((a) => a.status === 'Ongoing'));`;
+
+let sample = '';
+if (all.length) {
+  const detail = toDetail(all[0], await getLookups());
+  sample = JSON.stringify(
+    { data: { ...detail, episodes: detail.episodes.slice(0, 2) } },
+    null,
+    2
+  );
+}
+---
+
+<BaseLayout
+  title="Dokumentasi API"
+  description="API publik QimochiDB: endpoint JSON untuk katalog anime, genre, studio, dan statistik."
+>
+  <Page>
+    <Hero
+      title="API publik"
+      description="Baca saja (GET), format JSON, tanpa API key, dan CORS terbuka untuk semua domain."
+    />
+
+    <section class="block">
+      <SectionLabel as="h2">Endpoint</SectionLabel>
+      <p class="muted">Base URL: <code>{origin}</code></p>
+      <ul class="endpoints">
+        {
+          endpoints.map((e) => (
+            <li>
+              <Card variant="outline" padding="md">
+                <code class="path">GET {e.path}</code>
+                <p>{e.desc}</p>
+              </Card>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="block">
+      <SectionLabel as="h2">Contoh pemakaian</SectionLabel>
+      <div class="markdown"><pre><code>{fetchExample}</code></pre></div>
+    </section>
+
+    {
+      sample && (
+        <section class="block">
+          <SectionLabel as="h2">Contoh respons</SectionLabel>
+          <p class="muted">Dari <code>anime/{all[0].id}.json</code>. Daftar episode dipotong jadi dua.</p>
+          <div class="markdown"><pre><code>{sample}</code></pre></div>
+        </section>
+      )
+    }
+
+    <section class="block">
+      <SectionLabel as="h2">Catatan</SectionLabel>
+      <div class="markdown markdown--prose">
+        <ul>
+          <li>Data dibuat statis saat build, jadi cepat dan di-cache CDN. Perubahan terlihat setelah deploy ulang.</li>
+          <li>Pencarian dan filter dilakukan di sisi klien dari <code>anime.json</code>.</li>
+          <li>Nama field memakai snake_case. Field yang kosong bernilai <code>null</code>.</li>
+          <li>Versi ada di path (<code>/v1/</code>). Bentuk respons masih bisa berubah selama tahap pengembangan.</li>
+        </ul>
+      </div>
+    </section>
+  </Page>
+</BaseLayout>
+
+<style>
+  .block { display: flex; flex-direction: column; gap: var(--s-4); }
+  .muted { color: var(--text-secondary); font-size: var(--fs-sm); overflow-wrap: anywhere; }
+  .endpoints { display: grid; gap: var(--s-3); margin: 0; padding: 0; }
+  .path { color: var(--accent-hover); font-weight: var(--fw-semibold); }
+  .endpoints p { margin-top: var(--s-1); color: var(--text-secondary); font-size: var(--fs-sm); }
+  .markdown :global(pre) { margin: 0; }
+</style>
