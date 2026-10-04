@@ -1,0 +1,53 @@
+---
+import AnimeCard from './AnimeCard.astro';
+import type { AnimeEntry } from '~/lib/anime';
+
+interface Props {
+  items: AnimeEntry[];
+  emptyText?: string;
+  id?: string;
+  itemAttrs?: (entry: AnimeEntry) => Record<string, string | number>;
+}
+
+const { items, emptyText = 'Belum ada anime di sini.', id, itemAttrs } = Astro.props;
+---
+
+{
+  items.length || id ? (
+    <ul class="grid" id={id}>
+      {items.map((a) => (
+        <li {...(itemAttrs?.(a) ?? {})}>
+          <AnimeCard anime={a} />
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="empty">{emptyText}</p>
+  )
+}
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: var(--s-6) var(--s-4);
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+      gap: var(--s-8) var(--s-6);
+    }
+  }
+
+  .grid > li { min-width: 0; }
+
+  .empty {
+    padding: var(--s-8) var(--s-4);
+    border: 1px dashed var(--border-hover);
+    color: var(--text-secondary);
+    text-align: center;
+  }
+</style>
