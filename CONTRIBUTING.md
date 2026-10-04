@@ -1,7 +1,7 @@
 # Panduan Kontribusi
 
 Terima kasih ingin berkontribusi ke QimochiDB! Panduan ini menjelaskan cara
-menambahkan data anime, genre, studio, dan franchise.
+menambahkan data anime, genre, dan studio.
 
 ---
 
@@ -24,7 +24,7 @@ Fakta tidak bisa di-copyright. Boleh ambil dari MAL, AniList, Wikipedia:
 
 - Judul anime (romaji, English, native)
 - Tahun rilis, musim, jumlah episode
-- Nama studio, producer, licensor
+- Nama studio
 - Genre, rating usia
 - Rating/skor (angka statistik dari MAL)
 - Tanggal tayang
@@ -41,8 +41,9 @@ Karya kreatif — wajib tulis sendiri:
 
 ### ✅ Gambar
 
-- Hotlink dari CDN (MAL, AniList) — jangan upload ke repo
+- Hotlink dari CDN (MAL atau AniList) — jangan upload ke repo
 - Format: https://cdn.myanimelist.net/images/...
+- Format: https://s4.anilist.co/file/anilistcdn/...
 
 ---
 
@@ -50,9 +51,11 @@ Karya kreatif — wajib tulis sendiri:
 
 ### 1. Buat File Markdown
 
-Copy template dari docs/ANIME-TEMPLATE.md:
+Copy template dari anime-template.md:
 
-[cp docs/ANIME-TEMPLATE.md src/content/anime/nama-anime.md]
+```bash
+cp anime-template.md src/content/anime/nama-anime.md
+```
 
 Nama file = slug anime (lowercase, kebab-case):
 
@@ -66,11 +69,11 @@ Nama file = slug anime (lowercase, kebab-case):
 
 Minimal 3 field untuk anime tampil:
 
-[
+```yaml
   title: "Nama Anime"
   type: TV
   status: finished
-]
+```
 
 - type: TV | Movie | OVA | ONA | Special | Music | Unknown
 - status: airing | finished | upcoming | hiatus | cancelled
@@ -81,30 +84,23 @@ Selesai. Anime sudah muncul di website.
 
 Isi sesuai data yang tersedia. Tidak wajib lengkap.
 
-Contoh field opsional:
+Field opsional:
 
-- image, banner — URL dari CDN
-- trailer — YouTube ID saja, contoh: "dQw4w9WgXcQ"
+- titleEnglish, titleNative — judul alternatif
+- malId, anilistId, kitsuId — ID external
 - year, season, episodes, duration, rating, source
 - aired.from / aired.to — format YYYY-MM-DD
-- genres — array slug, contoh: action, shounen
-- studios — array slug, contoh: ufotable
-- producers — array nama, contoh: "Aniplex"
-- franchises — array slug, contoh: demon-slayer
-- related — array { relation, slug }
-- stats — object { score, scoredBy, rank, popularity, members, favorites }
-- malId, anilistId, kitsuId — external ID
-- streaming — array { name, url, region, language }
+- stats.score, stats.scoredBy — rating MAL
+- genres, studios — array slug
+- franchises — array object { relation, slug, title }
+- image, banner, trailer — URL / YouTube ID
 - episodeList — array { number, title, aired }
 - characters — array { name, nameNative, image, role, voiceActors }
-- tags — array string
-- nsfw — boolean
-- draft — boolean (true = jangan tampilkan)
-- contributors — array username GitHub
+- draft — boolean (true = jangan tampilkan di UI)
 
 ### 4. Isi Sinopsis (Body Markdown)
 
-Tulis sinopsis di bawah tanda --- (frontmatter).
+Tulis sinopsis di bawah tanda `---` (frontmatter).
 
 Tips menulis sinopsis:
 
@@ -117,25 +113,75 @@ JANGAN copy-paste dari MAL atau AniList. Itu pelanggaran copyright.
 
 ### 5. Validasi
 
-[npx astro sync]
-[npm run build]
+```bash
+npx astro sync
+```
+kemudian:
+
+```bash
+npm run build
+```
 
 Kalau ada error, perbaiki dulu sebelum push.
 
 ---
 
+## Field Optional — Jangan Isi dengan String Kosong
+
+Field optional (image, banner, trailer, dll) TIDAK boleh diisi dengan "".
+
+❌ SALAH:
+
+```yaml
+  image: ""
+  banner: ""
+```
+
+✅ BENAR — kalau tidak ada, hilangkan field-nya:
+
+```yaml
+  # image tidak ditulis sama sekali
+```
+
+✅ BENAR — kalau ada, isi dengan URL valid:
+
+```yaml
+  image: "https://cdn.myanimelist.net/..."
+```
+
+---
+
+## Field Franchises — Format
+
+Field franchises menyimpan hubungan ke anime lain:
+
+```yaml
+  franchises:
+    - relation: sequel
+      slug: anime-target-slug
+      title: "Judul Anime Target"
+```
+
+Relation yang valid: sequel, prequel, side_story, parent_story,
+alternative, spin_off, adaptation, character, summary, full_story,
+compilation, contains, other.
+
+Field title opsional — isi kalau anime target belum ada di database.
+
+---
+
 ## Menambah Genre
 
-Edit src/data/genres.json. Format:
+Edit `src/data/genres.json`. Format:
 
-[
+```json
   {
     "id": "genre-slug",
     "name": "Genre Name",
     "category": "genre",
     "description": "Deskripsi singkat (opsional)"
   }
-]
+```
 
 Kategori yang valid:
 - genre — Action, Romance, Comedy, dll
@@ -148,7 +194,7 @@ Kategori yang valid:
 
 Edit src/data/studios.json. Format:
 
-[
+```json
   {
     "id": "studio-slug",
     "name": "Studio Name",
@@ -157,22 +203,7 @@ Edit src/data/studios.json. Format:
     "website": "https://studio.com",
     "description": "Deskripsi singkat"
   }
-]
-
----
-
-## Menambah Franchise
-
-Edit src/data/franchises.json. Format:
-
-[
-  {
-    "id": "franchise-slug",
-    "name": "Franchise Name",
-    "description": "Deskripsi franchise",
-    "rootSlug": "slug-anime-utama"
-  }
-]
+```
 
 ---
 
@@ -182,7 +213,7 @@ Edit src/data/franchises.json. Format:
 
 - Lowercase
 - Kebab-case (pakai tanda - sebagai pemisah)
-- Contoh: kimetsu-no-yaiba, attack-on-titan
+- Contoh: `kimetsu-no-yaiba`, `attack-on-titan`
 - JANGAN pakai spasi, underscore, atau huruf besar
 
 ### Tanggal
@@ -200,11 +231,11 @@ Contoh: 2019-04-06
 
 Untuk field yang butuh multiple values:
 
-[
+```yaml
   genres:
     - action
     - shounen
-]
+```
 
 ---
 
@@ -212,11 +243,12 @@ Untuk field yang butuh multiple values:
 
 - npx astro sync sukses
 - npm run build sukses
-- File .md di folder src/content/anime/
+- File `.md` di folder `src/content/anime/`
 - Slug file lowercase-kebab-case
 - Field wajib (title, type, status) terisi
 - Sinopsis BUKAN copy-paste
-- Tidak ada typo di slug relasi (genre/studio/franchise)
+- Tidak ada field optional diisi dengan ""
+- Tidak ada typo di slug relasi `genre/studio/franchise`
 - Commit message jelas
 
 ---
