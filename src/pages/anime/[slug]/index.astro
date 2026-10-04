@@ -1,3 +1,4 @@
+
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -66,7 +67,7 @@ const studioItems = data.studios.map((slug) => ({
         <AnimeFranchise
           slot="franchise"
           title={data.title}
-          related={data.related}
+          franchises={data.franchises}
         />
       </AnimeTabs>
 
@@ -87,7 +88,6 @@ const studioItems = data.studios.map((slug) => ({
           rating={data.rating}
           aired={data.aired}
           studios={studioItems}
-          producers={data.producers}
           malId={data.malId}
           anilistId={data.anilistId}
           kitsuId={data.kitsuId}
