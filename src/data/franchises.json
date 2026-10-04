@@ -34,5 +34,11 @@
     "name": "One Piece",
     "rootSlug": "one-piece",
     "description": "Franchise One Piece, mencakup anime ongoing, film, dan manga."
-  }
+  },
+  {
+  "id": "violet-evergarden",
+  "name": "Violet Evergarden",
+  "description": "Franchise Violet Evergarden, mencakup serial TV, film, dan light novel.",
+  "rootSlug": "violet-evergarden"
+}
 ]
