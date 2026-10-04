@@ -1,4 +1,3 @@
-// src/pages/api/v1/index.json.ts
 import type { APIRoute } from 'astro';
 import { jsonResponse, corsPreflightResponse } from '~/lib/api/response';
 import { SITE } from '~/constants';
@@ -13,13 +12,13 @@ export const GET: APIRoute = async () => {
       {
         path: '/api/v1/anime.json',
         method: 'GET',
-        description: 'List semua anime',
+        description: 'List index anime (ringkas untuk filter)',
         example: `${SITE.url}/api/v1/anime.json`,
       },
       {
         path: '/api/v1/anime/[id].json',
         method: 'GET',
-        description: 'Detail 1 anime berdasarkan slug',
+        description: 'Detail lengkap 1 anime berdasarkan slug',
         example: `${SITE.url}/api/v1/anime/kimetsu-no-yaiba.json`,
       },
       {
@@ -33,12 +32,6 @@ export const GET: APIRoute = async () => {
         method: 'GET',
         description: 'List semua studio + count',
         example: `${SITE.url}/api/v1/studios.json`,
-      },
-      {
-        path: '/api/v1/franchises.json',
-        method: 'GET',
-        description: 'List semua franchise + anime terkait',
-        example: `${SITE.url}/api/v1/franchises.json`,
       },
       {
         path: '/api/v1/stats.json',
