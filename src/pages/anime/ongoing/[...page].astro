@@ -1,0 +1,28 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Page from '~/components/Page.astro';
+import Hero from '~/components/Hero.astro';
+import AnimeGrid from '~/components/AnimeGrid.astro';
+import Pagination from '~/components/Pagination.astro';
+import { getStatusData, buildStatusPaths, paginate } from '~/lib/status';
+
+export async function getStaticPaths() {
+  const { anime, totalPages } = await getStatusData('ongoing');
+  return buildStatusPaths('ongoing', anime, totalPages);
+}
+
+const { anime, totalPages, pageNumber } = Astro.props;
+const items = paginate(anime, pageNumber);
+---
+
+<BaseLayout
+  title="Anime ongoing"
+  description="Daftar anime yang sedang tayang."
+  noindex={pageNumber > 1}
+>
+  <Page>
+    <Hero title="Anime ongoing" description="Anime yang sedang tayang saat ini." />
+    <AnimeGrid items={items} emptyText="Belum ada anime yang sedang tayang." />
+    <Pagination current={pageNumber} total={totalPages} base="/anime/ongoing" />
+  </Page>
+</BaseLayout>
