@@ -12,7 +12,6 @@ function isActive(href: string): boolean {
   if (!matches) return false;
   const hasMoreSpecific = NAV_LINKS.some(({ href: otherHref }) => {
     if (otherHref === href) return false;
-    if (otherHref === '/') return false;
     if (otherHref.length <= href.length) return false;
     return currentPath === otherHref || currentPath.startsWith(otherHref);
   });
@@ -55,7 +54,7 @@ function isActive(href: string): boolean {
         </nav>
       </details>
 
-      <a href="/search/" class="icon-btn" aria-label="Cari anime">
+      <a href="/search/anime/" class="icon-btn" aria-label="Cari anime">
         <Icon name="search" size={20} />
       </a>
     </div>
