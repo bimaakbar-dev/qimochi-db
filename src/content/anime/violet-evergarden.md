@@ -22,10 +22,6 @@ aired:
 stats:
   score: 8.69
   scoredBy: 1109292
-  rank: 73
-  popularity: 47
-  members: 2031742
-  favorites: 70481
 
 genres:
   - drama
@@ -38,28 +34,8 @@ genres:
 studios:
   - kyoto-animation
 
-producers:
-  - "Pony Canyon"
-  - "ABC Animation"
-  - "Bandai Namco Arts"
-  - "Rakuonsha"
-
-franchises:
-  - violet-evergarden
-
-related:
-  - relation: sequel
-    slug: violet-evergarden-movie
-  - relation: side_story
-    slug: violet-evergarden-gaiden
-
 image: "https://cdn.myanimelist.net/images/anime/1795/95088l.jpg"
 banner: "https://cdn.myanimelist.net/images/anime/1503/95089l.jpg"
-
-streaming:
-  - name: Netflix
-    url: "https://www.netflix.com/title/80194896"
-    region: global
 
 episodeList: []
 
@@ -69,10 +45,6 @@ tags:
   - tragedy
   - trauma
   - ghostwriting
-
-nsfw: false
-draft: false
-contributors: []
 
 characters:
   - name: "Violet Evergarden"
