@@ -1,0 +1,297 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Page from '~/components/Page.astro';
+import PageLayout from '~/components/PageLayout.astro';
+import SectionLabel from '~/components/SectionLabel.astro';
+import AnimeGrid from '~/components/AnimeGrid.astro';
+import AnimeCard from '~/components/AnimeCard.astro';
+import EmptyState from '~/components/EmptyState.astro';
+import GenresCard from '~/components/GenresCard.astro';
+import Pagination from '~/components/Pagination.astro';
+import Badge from '~/user-components/Badge.astro';
+import {
+  parseSearchParams,
+  filterAnime,
+  sortAnime,
+  paginateAnime,
+  buildSearchUrl,
+} from '~/lib/search';
+import { STATUS_LABEL, STATUSES, ANIME_TYPES, type Status } from '~/constants';
+
+const url = Astro.url;
+const params = parseSearchParams(url);
+
+// Fetch + filter + sort
+const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+const filtered = filterAnime(allAnime, params);
+const sorted = sortAnime(filtered, params.sort);
+const { items, total, totalPages, currentPage } = paginateAnime(
+  sorted,
+  params.page
+);
+
+// Build pagination URL
+const buildPageUrl = (page: number) =>
+  buildSearchUrl(params, { page });
+
+// Sort options
+const SORTS = [
+  { value: 'trending', label: 'Trending' },
+  { value: 'rating', label: 'Rating' },
+  { value: 'popular', label: 'Popular' },
+  { value: 'recent', label: 'Terbaru' },
+  { value: 'title', label: 'A-Z' },
+] as const;
+
+const hasQuery =
+  params.q ||
+  params.status ||
+  params.type ||
+  params.genre ||
+  params.season ||
+  params.year;
+---
+
+<BaseLayout
+  title={params.q ? `Hasil untuk "${params.q}"` : 'Cari Anime'}
+  description="Cari dan filter anime di QimochiDB."
+>
+  <Page>
+    <form action="/search/anime/" method="get" class="search-form" role="search">
+      <label for="q" class="sr-only">Cari anime</label>
+      <input
+        id="q"
+        type="search"
+        name="q"
+        value={params.q}
+        placeholder="Cari judul anime..."
+        autocomplete="off"
+        class="search-form__input"
+      />
+      <button type="submit" class="search-form__submit">Cari</button>
+    </form>
+
+    <PageLayout>
+      <section class="search-header">
+        <SectionLabel as="h1" size="lg">
+          {params.q ? `Hasil: "${params.q}"` : 'Semua Anime'}
+        </SectionLabel>
+
+        <p class="search-header__count">
+          {total} anime ditemukan
+        </p>
+      </section>
+
+      <div class="sort-row">
+        <span class="sort-row__label">Urutkan:</span>
+        <ul class="sort-row__list">
+          {SORTS.map((s) => (
+            <li>
+              <a
+                href={buildSearchUrl(params, { sort: s.value, page: 1 })}
+                class:list={['sort-chip', { 'sort-chip--active': params.sort === s.value }]}
+              >
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="filter-row">
+        <ul class="filter-row__list">
+          <li>
+            <a
+              href={buildSearchUrl(params, { status: '', page: 1 })}
+              class:list={['filter-chip', { 'filter-chip--active': !params.status }]}
+            >
+              Semua Status
+            </a>
+          </li>
+          {STATUSES.map((st) => (
+            <li>
+              <a
+                href={buildSearchUrl(params, { status: st, page: 1 })}
+                class:list={[
+                  'filter-chip',
+                  { 'filter-chip--active': params.status === st },
+                ]}
+              >
+                {STATUS_LABEL[st as Status]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {items.length > 0 ? (
+        <>
+          <AnimeGrid>
+            {items.map((anime) => (
+              <AnimeCard
+                slug={anime.id}
+                title={anime.data.title}
+                image={anime.data.image}
+              />
+            ))}
+          </AnimeGrid>
+
+          <Pagination
+            current={currentPage}
+            total={totalPages}
+            buildUrl={buildPageUrl}
+          />
+        </>
+      ) : (
+        <EmptyState
+          title="Tidak ada anime ditemukan"
+          message={
+            hasQuery
+              ? 'Coba ubah kata kunci atau filter.'
+              : 'Belum ada anime di database.'
+          }
+        />
+      )}
+
+      <GenresCard slot="sidebar" />
+    </PageLayout>
+  </Page>
+</BaseLayout>
+
+<style>
+  /* ---------- SEARCH FORM ---------- */
+  .search-form {
+    display: flex;
+    max-width: 40rem;
+  }
+
+  .search-form__input {
+    flex: 1;
+    min-width: 0;
+    padding: var(--s-3) var(--s-4);
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md) 0 0 var(--r-md);
+    transition: border-color var(--t-fast);
+  }
+
+  .search-form__input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .search-form__submit {
+    padding-inline: var(--s-5);
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--accent-text);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+    cursor: pointer;
+    transition: background-color var(--t-fast);
+  }
+
+  .search-form__submit:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+
+  /* ---------- SEARCH HEADER ---------- */
+  .search-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  .search-header__count {
+    margin: 0;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+  }
+
+  /* ---------- SORT ROW ---------- */
+  .sort-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+  }
+
+  .sort-row__label {
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+  }
+
+  .sort-row__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sort-chip {
+    display: inline-block;
+    padding: var(--s-1) var(--s-3);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--r-full);
+    text-decoration: none;
+    transition: all var(--t-fast);
+  }
+
+  .sort-chip:hover {
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+  }
+
+  .sort-chip--active {
+    color: var(--accent-text);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ---------- FILTER ROW ---------- */
+  .filter-row__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .filter-chip {
+    display: inline-block;
+    padding: var(--s-1) var(--s-3);
+    font-size: var(--fs-xs);
+    color: var(--text-secondary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--r-full);
+    text-decoration: none;
+    transition: all var(--t-fast);
+  }
+
+  .filter-chip:hover {
+    color: var(--accent-text);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .filter-chip--active {
+    color: var(--accent-text);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+</style>

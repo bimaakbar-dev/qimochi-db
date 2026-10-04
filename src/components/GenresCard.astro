@@ -21,7 +21,7 @@ const sorted = [...genres].sort((a, b) => {
     <ul class="sidebar__list">
       {sorted.map((genre) => (
         <li>
-          <a href={`/anime/genre/${genre.data.id}/`} class="sidebar__chip">
+          <a href={`/search/anime/?genre=${genre.data.id}`} class="sidebar__chip">
             {genre.data.name}
           </a>
         </li>

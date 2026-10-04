@@ -4,16 +4,19 @@ import Icon from '~/user-components/Icons.astro';
 interface Props {
   current: number;
   total: number;
-  base: string;
+  base?: string;
+  buildUrl?: (page: number) => string;
 }
 
-const { current, total, base } = Astro.props;
+const { current, total, base, buildUrl } = Astro.props;
 
 if (total <= 1) return null;
 
-function urlFor(page: number): string {
+const resolveUrl = (page: number): string => {
+  if (buildUrl) return buildUrl(page);
+  if (!base) return '#';
   return page === 1 ? `${base}/` : `${base}/${page}/`;
-}
+};
 
 function buildPages(): (number | '...')[] {
   if (total <= 7) {
@@ -21,7 +24,6 @@ function buildPages(): (number | '...')[] {
   }
 
   const pages: (number | '...')[] = [1];
-
   if (current > 3) pages.push('...');
 
   const start = Math.max(2, current - 1);
@@ -40,7 +42,7 @@ const pages = buildPages();
 
 <nav class="pagination" aria-label="Navigasi halaman">
   {current > 1 ? (
-    <a href={urlFor(current - 1)} class="page-btn" rel="prev" aria-label="Halaman sebelumnya">
+    <a href={resolveUrl(current - 1)} class="page-btn" rel="prev" aria-label="Halaman sebelumnya">
       <Icon name="arrow-left" />
     </a>
   ) : (
@@ -55,12 +57,12 @@ const pages = buildPages();
     ) : p === current ? (
       <span class="page-num active" aria-current="page">{p}</span>
     ) : (
-      <a href={urlFor(p)} class="page-num">{p}</a>
+      <a href={resolveUrl(p)} class="page-num">{p}</a>
     )
   )}
 
   {current < total ? (
-    <a href={urlFor(current + 1)} class="page-btn" rel="next" aria-label="Halaman berikutnya">
+    <a href={resolveUrl(current + 1)} class="page-btn" rel="next" aria-label="Halaman berikutnya">
       <Icon name="arrow-right" />
     </a>
   ) : (
@@ -95,6 +97,7 @@ const pages = buildPages();
     color: var(--text-secondary);
     font-variant-numeric: tabular-nums;
     transition: all var(--t-fast);
+    text-decoration: none;
   }
 
   .page-btn:hover,

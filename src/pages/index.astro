@@ -47,7 +47,7 @@ const mostPopular = [...allAnime]
     />
 
     <PageLayout>
-      <Section title="Trending" href="/anime/trending/">
+      <Section title="Trending" href="/search/anime/?sort=trending">
         {trending.length > 0 ? (
           <AnimeGrid>
             {trending.map((anime) => (
@@ -63,7 +63,7 @@ const mostPopular = [...allAnime]
         )}
       </Section>
 
-      <Section title="Airing" href="/anime/airing/">
+      <Section title="Airing" href="/search/anime/?status=airing&sort=rating">
         {topAiring.length > 0 ? (
           <AnimeGrid>
             {topAiring.map((anime) => (
@@ -79,7 +79,7 @@ const mostPopular = [...allAnime]
         )}
       </Section>
 
-      <Section title="Upcoming" href="/anime/upcoming/">
+      <Section title="Upcoming" href="/search/anime/?status=upcoming">
         {upcoming.length > 0 ? (
           <AnimeGrid>
             {upcoming.map((anime) => (
@@ -95,7 +95,7 @@ const mostPopular = [...allAnime]
         )}
       </Section>
 
-      <Section title="Highest Rated" href="/anime/rated/">
+      <Section title="Highest Rated" href="/search/anime/?sort=rating">
         {highestRated.length > 0 ? (
           <AnimeGrid>
             {highestRated.map((anime) => (
@@ -111,7 +111,7 @@ const mostPopular = [...allAnime]
         )}
       </Section>
 
-      <Section title="Most Popular" href="/anime/popular/">
+      <Section title="Most Popular" href="/search/anime/?sort=popular">
         {mostPopular.length > 0 ? (
           <AnimeGrid>
             {mostPopular.map((anime) => (
