@@ -53,7 +53,7 @@ Response:
 
 ### Contoh: Submit Rating (JavaScript)
 
-```json
+```js
   fetch('https://qimochi-api.bimaakbar.workers.dev/api/v1/ratings/kimetsu-no-yaiba', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
