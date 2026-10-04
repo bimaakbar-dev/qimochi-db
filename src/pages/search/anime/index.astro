@@ -1,41 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Page from '~/components/Page.astro';
 import PageLayout from '~/components/PageLayout.astro';
 import SectionLabel from '~/components/SectionLabel.astro';
-import AnimeGrid from '~/components/AnimeGrid.astro';
-import AnimeCard from '~/components/AnimeCard.astro';
 import EmptyState from '~/components/EmptyState.astro';
 import GenresCard from '~/components/GenresCard.astro';
-import Pagination from '~/components/Pagination.astro';
-import Badge from '~/user-components/Badge.astro';
-import {
-  parseSearchParams,
-  filterAnime,
-  sortAnime,
-  paginateAnime,
-  buildSearchUrl,
-} from '~/lib/search';
-import { STATUS_LABEL, STATUSES, ANIME_TYPES, type Status } from '~/constants';
+import { STATUS_LABEL, STATUSES, PER_PAGE, type Status } from '~/constants';
 
-const url = Astro.url;
-const params = parseSearchParams(url);
-
-// Fetch + filter + sort
-const allAnime = await getCollection('anime', ({ data }) => !data.draft);
-const filtered = filterAnime(allAnime, params);
-const sorted = sortAnime(filtered, params.sort);
-const { items, total, totalPages, currentPage } = paginateAnime(
-  sorted,
-  params.page
-);
-
-// Build pagination URL
-const buildPageUrl = (page: number) =>
-  buildSearchUrl(params, { page });
-
-// Sort options
 const SORTS = [
   { value: 'trending', label: 'Trending' },
   { value: 'rating', label: 'Rating' },
@@ -43,44 +14,32 @@ const SORTS = [
   { value: 'recent', label: 'Terbaru' },
   { value: 'title', label: 'A-Z' },
 ] as const;
-
-const hasQuery =
-  params.q ||
-  params.status ||
-  params.type ||
-  params.genre ||
-  params.season ||
-  params.year;
 ---
 
-<BaseLayout
-  title={params.q ? `Hasil untuk "${params.q}"` : 'Cari Anime'}
-  description="Cari dan filter anime di QimochiDB."
->
+<BaseLayout title="Cari Anime" description="Cari dan filter anime di QimochiDB.">
+  <link rel="preload" href="/api/v1/anime.json" as="fetch" crossorigin="anonymous" />
+
   <Page>
-    <form action="/search/anime/" method="get" class="search-form" role="search">
+    <form action="/search/anime/" method="get" class="search-form" role="search" data-search-form>
       <label for="q" class="sr-only">Cari anime</label>
       <input
         id="q"
         type="search"
         name="q"
-        value={params.q}
         placeholder="Cari judul anime..."
         autocomplete="off"
         class="search-form__input"
+        data-search-input
       />
       <button type="submit" class="search-form__submit">Cari</button>
     </form>
 
     <PageLayout>
       <section class="search-header">
-        <SectionLabel as="h1" size="lg">
-          {params.q ? `Hasil: "${params.q}"` : 'Semua Anime'}
+        <SectionLabel as="h1" size="lg" data-search-title>
+          Semua Anime
         </SectionLabel>
-
-        <p class="search-header__count">
-          {total} anime ditemukan
-        </p>
+        <p class="search-header__count" data-result-count>Memuat...</p>
       </section>
 
       <div class="sort-row">
@@ -88,12 +47,7 @@ const hasQuery =
         <ul class="sort-row__list">
           {SORTS.map((s) => (
             <li>
-              <a
-                href={buildSearchUrl(params, { sort: s.value, page: 1 })}
-                class:list={['sort-chip', { 'sort-chip--active': params.sort === s.value }]}
-              >
-                {s.label}
-              </a>
+              <a href="#" class="sort-chip" data-sort={s.value}>{s.label}</a>
             </li>
           ))}
         </ul>
@@ -102,22 +56,11 @@ const hasQuery =
       <div class="filter-row">
         <ul class="filter-row__list">
           <li>
-            <a
-              href={buildSearchUrl(params, { status: '', page: 1 })}
-              class:list={['filter-chip', { 'filter-chip--active': !params.status }]}
-            >
-              Semua Status
-            </a>
+            <a href="#" class="filter-chip" data-filter-status="">Semua Status</a>
           </li>
           {STATUSES.map((st) => (
             <li>
-              <a
-                href={buildSearchUrl(params, { status: st, page: 1 })}
-                class:list={[
-                  'filter-chip',
-                  { 'filter-chip--active': params.status === st },
-                ]}
-              >
+              <a href="#" class="filter-chip" data-filter-status={st}>
                 {STATUS_LABEL[st as Status]}
               </a>
             </li>
@@ -125,42 +68,477 @@ const hasQuery =
         </ul>
       </div>
 
-      {items.length > 0 ? (
-        <>
-          <AnimeGrid>
-            {items.map((anime) => (
-              <AnimeCard
-                slug={anime.id}
-                title={anime.data.title}
-                image={anime.data.image}
-              />
-            ))}
-          </AnimeGrid>
+      <div class="search-loading" data-loading>Memuat data...</div>
 
-          <Pagination
-            current={currentPage}
-            total={totalPages}
-            buildUrl={buildPageUrl}
-          />
-        </>
-      ) : (
+      <div
+        class="anime-grid"
+        data-grid
+        data-per-page={PER_PAGE}
+        hidden
+      ></div>
+
+      <div data-empty-state hidden>
         <EmptyState
           title="Tidak ada anime ditemukan"
-          message={
-            hasQuery
-              ? 'Coba ubah kata kunci atau filter.'
-              : 'Belum ada anime di database.'
-          }
+          message="Coba ubah kata kunci atau filter."
         />
-      )}
+      </div>
+
+      <nav class="search-pagination" data-pagination aria-label="Navigasi halaman"></nav>
 
       <GenresCard slot="sidebar" />
     </PageLayout>
   </Page>
 </BaseLayout>
 
+<script>
+  // @ts-nocheck
+  // ============================================================
+  // CONSTANTS
+  // ============================================================
+  const gridEl = document.querySelector('[data-grid]');
+  const PER_PAGE = Number(gridEl?.dataset.perPage ?? 24);
+
+  // ============================================================
+  // DOM REFS
+  // ============================================================
+  const grid = gridEl;
+  const loading = document.querySelector('[data-loading]');
+  const resultCount = document.querySelector('[data-result-count]');
+  const emptyState = document.querySelector('[data-empty-state]');
+  const paginationEl = document.querySelector('[data-pagination]');
+  const searchInput = document.querySelector('[data-search-input]');
+  const searchTitle = document.querySelector('[data-search-title]');
+  const searchForm = document.querySelector('[data-search-form]');
+
+  // ============================================================
+  // STATE
+  // ============================================================
+  /** @type {{ item: any, search: string }[]} */
+  let animeIndex = [];
+
+  // ============================================================
+  // URL PARAMS
+  // ============================================================
+  function readParams() {
+    const sp = new URLSearchParams(location.search);
+    return {
+      q: (sp.get('q') ?? '').trim(),
+      status: sp.get('status') ?? '',
+      type: sp.get('type') ?? '',
+      genre: sp.get('genre') ?? '',
+      season: sp.get('season') ?? '',
+      year: sp.get('year') ?? '',
+      sort: sp.get('sort') ?? 'trending',
+      page: Math.max(1, Number(sp.get('page') ?? 1)),
+    };
+  }
+
+  function buildUrl(p) {
+    const sp = new URLSearchParams();
+    if (p.q) sp.set('q', p.q);
+    if (p.status) sp.set('status', p.status);
+    if (p.type) sp.set('type', p.type);
+    if (p.genre) sp.set('genre', p.genre);
+    if (p.season) sp.set('season', p.season);
+    if (p.year) sp.set('year', p.year);
+    if (p.sort && p.sort !== 'trending') sp.set('sort', p.sort);
+    if (p.page > 1) sp.set('page', String(p.page));
+    const qs = sp.toString();
+    return qs ? `${location.pathname}?${qs}` : location.pathname;
+  }
+
+  // ============================================================
+  // FILTER / SORT
+  // ============================================================
+  function matches(entry, p) {
+    const d = entry.item;
+    if (p.status && d.status !== p.status) return false;
+    if (p.type && d.type !== p.type) return false;
+    if (p.season && d.season !== p.season) return false;
+    if (p.year && d.year !== Number(p.year)) return false;
+    if (p.genre && !d.genres.includes(p.genre)) return false;
+    if (p.q && !entry.search.includes(p.q.toLowerCase())) return false;
+    return true;
+  }
+
+  function sortList(list, sort) {
+    const copy = [...list];
+    switch (sort) {
+      case 'rating':
+        return copy.sort(
+          (a, b) => (b.stats?.score ?? 0) - (a.stats?.score ?? 0)
+        );
+      case 'popular':
+        return copy.sort(
+          (a, b) => (b.stats?.members ?? 0) - (a.stats?.members ?? 0)
+        );
+      case 'recent':
+        return copy.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+      case 'title':
+        return copy.sort((a, b) => a.title.localeCompare(b.title));
+      case 'trending':
+      default:
+        return copy.sort(
+          (a, b) =>
+            (a.stats?.popularity ?? 999999) - (b.stats?.popularity ?? 999999)
+        );
+    }
+  }
+
+  // ============================================================
+  // CARD BUILDER
+  // ============================================================
+  function createCard(a) {
+    const article = document.createElement('article');
+    article.className = 'anime-card';
+
+    const link = document.createElement('a');
+    link.href = a.url;
+    link.className = 'anime-card__link';
+    link.setAttribute('aria-label', a.title);
+
+    const cover = document.createElement('div');
+    cover.className = 'anime-card__cover';
+
+    if (a.image) {
+      const img = document.createElement('img');
+      img.src = a.image;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.width = 300;
+      img.height = 450;
+      cover.appendChild(img);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'anime-card__placeholder';
+      cover.appendChild(ph);
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'anime-card__overlay';
+
+    const h3 = document.createElement('h3');
+    h3.className = 'anime-card__title';
+    h3.textContent = a.title;
+
+    overlay.appendChild(h3);
+    cover.appendChild(overlay);
+    link.appendChild(cover);
+    article.appendChild(link);
+
+    return article;
+  }
+
+  // ============================================================
+  // PAGINATION
+  // ============================================================
+  function renderPagination(current, total, p) {
+    paginationEl.innerHTML = '';
+    if (total <= 1) return;
+
+    const pageUrl = (n) => buildUrl({ ...p, page: n });
+
+    const pages = [];
+    if (total <= 7) {
+      for (let i = 1; i <= total; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (current > 3) pages.push('...');
+      const s = Math.max(2, current - 1);
+      const e = Math.min(total - 1, current + 1);
+      for (let i = s; i <= e; i++) pages.push(i);
+      if (current < total - 2) pages.push('...');
+      pages.push(total);
+    }
+
+    const prev = document.createElement(current > 1 ? 'a' : 'span');
+    prev.className = 'page-btn' + (current > 1 ? '' : ' disabled');
+    prev.textContent = '‹';
+    prev.setAttribute('aria-label', 'Halaman sebelumnya');
+    if (current > 1 && prev instanceof HTMLAnchorElement) {
+      prev.href = pageUrl(current - 1);
+      prev.setAttribute('data-page', String(current - 1));
+    }
+    paginationEl.appendChild(prev);
+
+    for (const pg of pages) {
+      if (pg === '...') {
+        const el = document.createElement('span');
+        el.className = 'page-ellipsis';
+        el.textContent = '…';
+        paginationEl.appendChild(el);
+      } else if (pg === current) {
+        const el = document.createElement('span');
+        el.className = 'page-num active';
+        el.textContent = String(pg);
+        el.setAttribute('aria-current', 'page');
+        paginationEl.appendChild(el);
+      } else {
+        const el = document.createElement('a');
+        el.className = 'page-num';
+        el.textContent = String(pg);
+        el.href = pageUrl(pg);
+        el.setAttribute('data-page', String(pg));
+        paginationEl.appendChild(el);
+      }
+    }
+
+    const next = document.createElement(current < total ? 'a' : 'span');
+    next.className = 'page-btn' + (current < total ? '' : ' disabled');
+    next.textContent = '›';
+    next.setAttribute('aria-label', 'Halaman berikutnya');
+    if (current < total && next instanceof HTMLAnchorElement) {
+      next.href = pageUrl(current + 1);
+      next.setAttribute('data-page', String(current + 1));
+    }
+    paginationEl.appendChild(next);
+  }
+
+  // ============================================================
+  // MAIN RENDER
+  // ============================================================
+  function render(p) {
+    const filtered = animeIndex.filter((e) => matches(e, p));
+    const sorted = sortList(
+      filtered.map((e) => e.item),
+      p.sort
+    );
+
+    const total = sorted.length;
+    const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+    const current = Math.min(p.page, totalPages);
+    const start = (current - 1) * PER_PAGE;
+    const pageItems = sorted.slice(start, start + PER_PAGE);
+
+    grid.innerHTML = '';
+    pageItems.forEach((a) => grid.appendChild(createCard(a)));
+
+    resultCount.textContent = `${total} anime ditemukan`;
+    searchTitle.textContent = p.q ? `Hasil: "${p.q}"` : 'Semua Anime';
+
+    if (document.activeElement !== searchInput) {
+      searchInput.value = p.q;
+    }
+
+    const isEmpty = total === 0;
+    emptyState.hidden = !isEmpty;
+    grid.hidden = isEmpty;
+
+    document.querySelectorAll('[data-sort]').forEach((el) => {
+      el.classList.toggle('sort-chip--active', el.dataset.sort === p.sort);
+    });
+    document.querySelectorAll('[data-filter-status]').forEach((el) => {
+      el.classList.toggle(
+        'filter-chip--active',
+        (el.dataset.filterStatus ?? '') === p.status
+      );
+    });
+
+    renderPagination(current, totalPages, p);
+
+    document.title = p.q
+      ? `Hasil untuk "${p.q}" — QimochiDB`
+      : 'Cari Anime — QimochiDB';
+  }
+
+  // ============================================================
+  // NAVIGATION
+  // ============================================================
+  function navigate(p) {
+    history.pushState({}, '', buildUrl(p));
+    render(p);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ============================================================
+  // FETCH & INIT
+  // ============================================================
+  async function init() {
+    try {
+      const res = await fetch('/api/v1/anime.json', {
+        headers: { Accept: 'application/json' },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      const json = await res.json();
+      const allAnime = json.data ?? [];
+
+      animeIndex = allAnime.map((item) => ({
+        item,
+        search: [
+          item.title,
+          item.titleEnglish ?? '',
+          item.titleNative ?? '',
+          ...(item.synonyms ?? []),
+        ]
+          .join(' ')
+          .toLowerCase(),
+      }));
+
+      loading.hidden = true;
+      grid.hidden = false;
+      render(readParams());
+    } catch (err) {
+      loading.textContent = 'Gagal memuat data. Coba refresh halaman.';
+      console.error('[search]', err);
+    }
+  }
+
+  // ============================================================
+  // EVENTS
+  // ============================================================
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+
+    const sortChip = target.closest('[data-sort]');
+    if (sortChip) {
+      e.preventDefault();
+      navigate({
+        ...readParams(),
+        sort: sortChip.dataset.sort ?? 'trending',
+        page: 1,
+      });
+      return;
+    }
+
+    const filterChip = target.closest('[data-filter-status]');
+    if (filterChip) {
+      e.preventDefault();
+      navigate({
+        ...readParams(),
+        status: filterChip.dataset.filterStatus ?? '',
+        page: 1,
+      });
+      return;
+    }
+
+    const pageLink = target.closest('a[data-page]');
+    if (pageLink) {
+      e.preventDefault();
+      navigate({
+        ...readParams(),
+        page: Number(pageLink.dataset.page),
+      });
+      return;
+    }
+  });
+
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    navigate({
+      ...readParams(),
+      q: searchInput.value.trim(),
+      page: 1,
+    });
+  });
+
+  window.addEventListener('popstate', () => render(readParams()));
+
+  init();
+</script>
+
+<style is:global>
+  /* ============================================================
+     CARD — sama seperti AnimeCard.astro
+     ============================================================ */
+  .anime-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .anime-card__cover {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+
+  .anime-card__cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .anime-card__placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-surface);
+  }
+
+  .anime-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: var(--s-4);
+    background: hsla(30, 3%, 5%, 0.5);
+    opacity: 1;
+    transition: opacity var(--t-base), background-color var(--t-base);
+  }
+
+  .anime-card__title {
+    margin: 0;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+    color: var(--text-inverted);
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media (min-width: 50rem) {
+    .anime-card__title {
+      font-size: var(--fs-sm);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .anime-card__overlay {
+      opacity: 0;
+      background: hsla(30, 3%, 5%, 0.7);
+    }
+    .anime-card__link:hover .anime-card__overlay,
+    .anime-card__link:focus-visible .anime-card__overlay {
+      opacity: 1;
+    }
+  }
+</style>
+
 <style>
-  /* ---------- SEARCH FORM ---------- */
+  /* ============================================================
+     GRID
+     ============================================================ */
+  .anime-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-4);
+  }
+
+  @media (min-width: 50rem) {
+    .anime-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--s-5);
+    }
+  }
+
+  @media (min-width: 72rem) {
+    .anime-grid {
+      grid-template-columns: repeat(8, 1fr);
+    }
+  }
+
+  /* ============================================================
+     SEARCH FORM
+     ============================================================ */
   .search-form {
     display: flex;
     max-width: 40rem;
@@ -202,7 +580,9 @@ const hasQuery =
     border-color: var(--accent-hover);
   }
 
-  /* ---------- SEARCH HEADER ---------- */
+  /* ============================================================
+     SEARCH HEADER
+     ============================================================ */
   .search-header {
     display: flex;
     flex-direction: column;
@@ -215,7 +595,9 @@ const hasQuery =
     color: var(--text-muted);
   }
 
-  /* ---------- SORT ROW ---------- */
+  /* ============================================================
+     SORT ROW
+     ============================================================ */
   .sort-row {
     display: flex;
     align-items: center;
@@ -248,6 +630,7 @@ const hasQuery =
     border-radius: var(--r-full);
     text-decoration: none;
     transition: all var(--t-fast);
+    cursor: pointer;
   }
 
   .sort-chip:hover {
@@ -261,7 +644,9 @@ const hasQuery =
     border-color: var(--accent);
   }
 
-  /* ---------- FILTER ROW ---------- */
+  /* ============================================================
+     FILTER ROW
+     ============================================================ */
   .filter-row__list {
     display: flex;
     flex-wrap: wrap;
@@ -281,6 +666,7 @@ const hasQuery =
     border-radius: var(--r-full);
     text-decoration: none;
     transition: all var(--t-fast);
+    cursor: pointer;
   }
 
   .filter-chip:hover {
@@ -293,5 +679,73 @@ const hasQuery =
     color: var(--accent-text);
     background: var(--accent);
     border-color: var(--accent);
+  }
+
+  /* ============================================================
+     LOADING
+     ============================================================ */
+  .search-loading {
+    padding: var(--s-10) var(--s-6);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+  }
+
+  /* ============================================================
+     PAGINATION
+     ============================================================ */
+  .search-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--s-1);
+    margin-top: var(--s-8);
+  }
+
+  .search-pagination .page-btn,
+  .search-pagination .page-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding-inline: var(--s-2);
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+    transition: all var(--t-fast);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .search-pagination .page-btn:hover,
+  .search-pagination .page-num:hover {
+    background: var(--bg-hover);
+    border-color: var(--border);
+    color: var(--text-primary);
+  }
+
+  .search-pagination .page-num.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-text);
+  }
+
+  .search-pagination .page-btn.disabled {
+    color: var(--text-disabled);
+    pointer-events: none;
+  }
+
+  .search-pagination .page-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    color: var(--text-muted);
   }
 </style>
