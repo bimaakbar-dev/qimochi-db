@@ -1,0 +1,190 @@
+---
+import Icons from './Icons.astro';
+
+interface Option {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+interface Props {
+  id?: string;
+  name?: string;
+  label?: string;
+  options: readonly Option[];
+  value?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'ghost';
+  ariaLabel?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  id,
+  name,
+  label,
+  options,
+  value,
+  placeholder,
+  disabled = false,
+  required = false,
+  size = 'md',
+  variant = 'default',
+  ariaLabel,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const selectId = id ?? `select-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class:list={['select', `select-${size}`, `select-${variant}`, className]}>
+  {label && (
+    <label for={selectId} class="select__label">
+      {label}
+    </label>
+  )}
+
+  <div class="select__wrapper">
+    <select
+      id={selectId}
+      name={name}
+      class="select__field"
+      disabled={disabled}
+      required={required}
+      aria-label={ariaLabel ?? label}
+      {...rest}
+    >
+      {placeholder && (
+        <option value="" disabled={required}>
+          {placeholder}
+        </option>
+      )}
+      {options.map((opt) => (
+        <option
+          value={opt.value}
+          selected={opt.value === value}
+          disabled={opt.disabled}
+        >
+          {opt.label}
+        </option>
+      ))}
+    </select>
+
+    <span class="select__arrow" aria-hidden="true">
+      <Icons name='chevron-down' size={12} />
+    </span>
+  </div>
+</div>
+
+<style is:global>
+  .select {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    max-width: 100%;
+  }
+
+  .select__label {
+    flex-shrink: 0;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .select__wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .select__field {
+    min-width: 0;
+    width: 100%;
+    font: inherit;
+    font-weight: var(--fw-medium);
+    color: var(--text-primary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: border-color var(--t-fast), background-color var(--t-fast);
+  }
+
+  .select__field::-ms-expand {
+    display: none;
+  }
+
+  .select__field:hover:not(:disabled) {
+    border-color: var(--border-hover);
+  }
+
+  .select__field:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .select__field:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .select__arrow {
+    position: absolute;
+    right: var(--s-2);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--t-fast);
+    & svg {
+        flex-shrink: 0;
+    }
+  }
+
+  .select__field:hover:not(:disabled) ~ .select__arrow {
+    color: var(--text-secondary);
+  }
+
+  .select-sm .select__field {
+    padding: var(--s-1) var(--s-8) var(--s-1) var(--s-2);
+    font-size: var(--fs-xs);
+    min-height: 1.875rem;
+  }
+
+  .select-md .select__field {
+    padding: var(--s-2) var(--s-8) var(--s-2) var(--s-3);
+    font-size: var(--fs-sm);
+    min-height: 2.25rem;
+  }
+
+  .select-lg .select__field {
+    padding: var(--s-3) var(--s-10) var(--s-3) var(--s-4);
+    font-size: var(--fs-base);
+    min-height: 2.75rem;
+  }
+
+  .select-ghost .select__field {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .select-ghost .select__field:hover:not(:disabled) {
+    background: var(--bg-hover);
+    border-color: transparent;
+  }
+
+  .select-ghost .select__field:focus {
+    border-color: var(--accent);
+  }
+</style>

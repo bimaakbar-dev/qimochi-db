@@ -13,6 +13,8 @@ interface Props {
   disabled?: boolean;
   ariaLabel?: string;
   id?: string;
+  class?: string;
+  [key: string]: any;
 }
 
 const {
@@ -25,6 +27,8 @@ const {
   disabled = false,
   ariaLabel,
   id,
+  class: className,
+  ...rest
 } = Astro.props;
 ---
 
@@ -36,9 +40,11 @@ const {
     `btn-${variant}`,
     `btn-${size}`,
     { 'btn-block': block },
+    className,
   ]}
   disabled={disabled}
   aria-label={ariaLabel}
+  {...rest}
 >
   {icon && iconPos === 'prefix' && <Icon name={icon} />}
   <span class="btn-label"><slot /></span>
@@ -55,12 +61,15 @@ const {
     font-family: inherit;
     font-weight: var(--fw-semibold);
     letter-spacing: 0.05em;
-    text-transform: uppercase;
     white-space: nowrap;
     border: 1px solid transparent;
     transition: all var(--t-fast);
     cursor: pointer;
     user-select: none;
+  }
+
+  .btn[hidden] {
+    display: none;
   }
 
   .btn:disabled {
@@ -69,7 +78,6 @@ const {
     pointer-events: none;
   }
 
-  /* ---------- SIZE ---------- */
   .btn-sm {
     padding: var(--s-1) var(--s-3);
     font-size: 0.6875rem;
@@ -88,20 +96,17 @@ const {
     min-height: 2.75rem;
   }
 
-  /* ---------- LABEL ---------- */
   .btn-label {
     display: inline-flex;
     align-items: center;
   }
 
-  /* ---------- ICON ---------- */
   .btn :global(svg) {
     width: 1.1em;
     height: 1.1em;
     flex-shrink: 0;
   }
 
-  /* ---------- VARIANT ---------- */
   .btn-accent {
     background: var(--accent);
     color: var(--accent-text);
@@ -151,7 +156,6 @@ const {
     filter: brightness(1.1);
   }
 
-  /* ---------- BLOCK ---------- */
   .btn-block {
     display: flex;
     width: 100%;

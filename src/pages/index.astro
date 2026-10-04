@@ -4,11 +4,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import Page from '~/components/Page.astro';
 import Hero from '~/components/Hero.astro';
 import PageLayout from '~/components/PageLayout.astro';
-import Section from '~/components/Section.astro';
-import AnimeGrid from '~/components/AnimeGrid.astro';
-import AnimeCard from '~/components/AnimeCard.astro';
+import AnimeSection from '~/components/AnimeSection.astro';
 import GenresCard from '~/components/GenresCard.astro';
-import EmptyState from '~/components/EmptyState.astro';
 
 const allAnime = await getCollection('anime', ({ data }) => !data.draft);
 
@@ -17,6 +14,7 @@ const PER_SECTION = 8;
 const trending = [...allAnime]
   .sort((a, b) => (a.data.stats?.popularity ?? 9999) - (b.data.stats?.popularity ?? 9999))
   .slice(0, PER_SECTION);
+
 const topAiring = [...allAnime]
   .filter((a) => a.data.status === 'airing')
   .sort((a, b) => (b.data.stats?.score ?? 0) - (a.data.stats?.score ?? 0))
@@ -25,14 +23,6 @@ const topAiring = [...allAnime]
 const upcoming = [...allAnime]
   .filter((a) => a.data.status === 'upcoming')
   .sort((a, b) => (a.data.year ?? 0) - (b.data.year ?? 0))
-  .slice(0, PER_SECTION);
-
-const highestRated = [...allAnime]
-  .sort((a, b) => (b.data.stats?.score ?? 0) - (a.data.stats?.score ?? 0))
-  .slice(0, PER_SECTION);
-
-const mostPopular = [...allAnime]
-  .sort((a, b) => (b.data.stats?.members ?? 0) - (a.data.stats?.members ?? 0))
   .slice(0, PER_SECTION);
 ---
 
@@ -44,88 +34,27 @@ const mostPopular = [...allAnime]
     <Hero
       title="QimochiDB"
       tagline="Database anime Indonesia — katalog lengkap, API gratis."
+      isSearch
     />
 
     <PageLayout>
-      <Section title="Trending" href="/search/anime/?sort=trending">
-        {trending.length > 0 ? (
-          <AnimeGrid>
-            {trending.map((anime) => (
-              <AnimeCard
-                slug={anime.id}
-                title={anime.data.title}
-                image={anime.data.image}
-              />
-            ))}
-          </AnimeGrid>
-        ) : (
-          <EmptyState />
-        )}
-      </Section>
+      <AnimeSection
+        title="Trending"
+        href="/search/anime/?sort=trending"
+        items={trending}
+      />
 
-      <Section title="Airing" href="/search/anime/?status=airing&sort=rating">
-        {topAiring.length > 0 ? (
-          <AnimeGrid>
-            {topAiring.map((anime) => (
-              <AnimeCard
-                slug={anime.id}
-                title={anime.data.title}
-                image={anime.data.image}
-              />
-            ))}
-          </AnimeGrid>
-        ) : (
-          <EmptyState />
-        )}
-      </Section>
+      <AnimeSection
+        title="Ongoing"
+        href="/search/anime/?status=airing&sort=rating"
+        items={topAiring}
+      />
 
-      <Section title="Upcoming" href="/search/anime/?status=upcoming">
-        {upcoming.length > 0 ? (
-          <AnimeGrid>
-            {upcoming.map((anime) => (
-              <AnimeCard
-                slug={anime.id}
-                title={anime.data.title}
-                image={anime.data.image}
-              />
-            ))}
-          </AnimeGrid>
-        ) : (
-          <EmptyState />
-        )}
-      </Section>
-
-      <Section title="Highest Rated" href="/search/anime/?sort=rating">
-        {highestRated.length > 0 ? (
-          <AnimeGrid>
-            {highestRated.map((anime) => (
-              <AnimeCard
-                slug={anime.id}
-                title={anime.data.title}
-                image={anime.data.image}
-              />
-            ))}
-          </AnimeGrid>
-        ) : (
-          <EmptyState />
-        )}
-      </Section>
-
-      <Section title="Most Popular" href="/search/anime/?sort=popular">
-        {mostPopular.length > 0 ? (
-          <AnimeGrid>
-            {mostPopular.map((anime) => (
-              <AnimeCard
-                slug={anime.id}
-                title={anime.data.title}
-                image={anime.data.image}
-              />
-            ))}
-          </AnimeGrid>
-        ) : (
-          <EmptyState />
-        )}
-      </Section>
+      <AnimeSection
+        title="Upcoming"
+        href="/search/anime/?status=upcoming"
+        items={upcoming}
+      />
 
       <div slot="sidebar">
         <GenresCard />

@@ -48,7 +48,6 @@ const anime = defineCollection({
     title: z.string().min(1),
     titleEnglish: z.string().optional(),
     titleNative: z.string().optional(),
-    synonyms: z.array(z.string()).default([]),
 
     // ---------- EXTERNAL IDS ----------
     malId: z.number().int().positive().optional(),
@@ -87,7 +86,6 @@ const anime = defineCollection({
     genres: z.array(Slug).default([]),
     studios: z.array(Slug).default([]),
     producers: z.array(z.string()).default([]),
-    licensors: z.array(z.string()).default([]),
     franchises: z.array(Slug).default([]),
     related: z.array(z.object({
       relation: RelationType,

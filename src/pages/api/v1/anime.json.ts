@@ -1,6 +1,7 @@
 // src/pages/api/v1/anime.json.ts
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { corsPreflightResponse, jsonResponse } from '~/lib/api/response';
 
 export const GET: APIRoute = async () => {
   const allAnime = await getCollection('anime', ({ data }) => !data.draft);
@@ -15,7 +16,6 @@ export const GET: APIRoute = async () => {
       title: d.title,
       titleEnglish: d.titleEnglish ?? null,
       titleNative: d.titleNative ?? null,
-      synonyms: d.synonyms ?? [],
 
       type: d.type,
       status: d.status,
@@ -26,6 +26,8 @@ export const GET: APIRoute = async () => {
       duration: d.duration ?? null,
       rating: d.rating ?? null,
 
+      aired: d.aired ?? null,
+
       genres: d.genres,
       studios: d.studios,
       producers: d.producers,
@@ -34,13 +36,11 @@ export const GET: APIRoute = async () => {
 
       image: d.image ?? null,
       banner: d.banner ?? null,
+      trailer: d.trailer ?? null,
     };
   });
 
-  return new Response(JSON.stringify({ data, total: data.length }, null, 2), {
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'public, max-age=300, s-maxage=600',
-    },
-  });
+  return jsonResponse(data);
 };
+
+export const OPTIONS: APIRoute = () => corsPreflightResponse();
