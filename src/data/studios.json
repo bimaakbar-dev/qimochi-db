@@ -40,5 +40,12 @@
     "founded": 1948,
     "website": "https://www.toei-anim.co.jp",
     "description": "Studio tertua di Jepang, dikenal dengan One Piece, Dragon Ball, dan Sailor Moon."
-  }
+  },
+  {
+  "id": "kyoto-animation",
+  "name": "Kyoto Animation",
+  "founded": 1981,
+  "website": "https://www.kyotoanimation.co.jp",
+  "description": "Studio asal Kyoto yang dikenal dengan kualitas animasi tinggi dan cerita emosional, seperti Violet Evergarden, Clannad, dan K-On!."
+}
 ]
