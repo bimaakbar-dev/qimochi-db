@@ -1,0 +1,28 @@
+{
+  "data": {
+    "kimetsu-no-yaiba": {
+      "average": 4,
+      "votes": 1
+    },
+    "one-piece": {
+      "average": 4,
+      "votes": 1
+    },
+    "shingeki-no-kyojin": {
+      "average": 10,
+      "votes": 1
+    },
+    "sousou-no-frieren": {
+      "average": 6,
+      "votes": 1
+    },
+    "spy-x-family": {
+      "average": 10,
+      "votes": 1
+    }
+  },
+  "meta": {
+    "total": 5,
+    "generatedAt": "2026-10-04T20:21:41.106Z"
+  }
+}
