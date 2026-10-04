@@ -1,0 +1,206 @@
+---
+import AnimeGrid from './AnimeGrid.astro';
+import { ANIME_TYPES, STATUSES } from '~/constants';
+import { getYear, type AnimeEntry } from '~/lib/anime';
+
+interface Props {
+  anime: AnimeEntry[];
+  genres: { id: string; name: string; count: number }[];
+  autofocus?: boolean;
+}
+
+const { anime, genres, autofocus = false } = Astro.props;
+
+const itemAttrs = (a: AnimeEntry) => {
+  const d = a.data;
+  return {
+    'data-title': d.title.toLowerCase(),
+    'data-search': [d.title, d.titleEn, d.titleJp, ...d.synonyms, ...d.tags]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase(),
+    'data-status': d.status,
+    'data-type': d.type,
+    'data-genres': d.genres.map((g) => g.id).join('|'),
+    'data-added': d.addedAt.getTime(),
+    'data-year': getYear(a),
+    'data-rating': d.rating ?? -1,
+  };
+};
+---
+
+<div class="browser">
+  <div class="controls">
+    <div class="field field-wide">
+      <label for="f-q">Cari judul</label>
+      <input
+        id="f-q"
+        type="search"
+        placeholder="Judul, judul alternatif, atau tag"
+        autocomplete="off"
+        data-autofocus={autofocus ? '' : undefined}
+      />
+    </div>
+
+    <div class="field">
+      <label for="f-status">Status</label>
+      <select id="f-status">
+        <option value="">Semua</option>
+        {STATUSES.map((s) => <option value={s}>{s}</option>)}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="f-type">Tipe</label>
+      <select id="f-type">
+        <option value="">Semua</option>
+        {ANIME_TYPES.map((t) => <option value={t}>{t}</option>)}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="f-genre">Genre</label>
+      <select id="f-genre">
+        <option value="">Semua</option>
+        {genres.map((g) => <option value={g.id}>{g.name} ({g.count})</option>)}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="f-sort">Urutkan</label>
+      <select id="f-sort">
+        <option value="added:desc">Terbaru ditambahkan</option>
+        <option value="title:asc">Judul A sampai Z</option>
+        <option value="rating:desc">Rating tertinggi</option>
+        <option value="year:desc">Tahun rilis terbaru</option>
+        <option value="year:asc">Tahun rilis terlama</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="count" id="f-count" aria-live="polite"></p>
+
+  <AnimeGrid id="browser-list" items={anime} itemAttrs={itemAttrs} />
+
+  <p class="none" id="f-empty" hidden>
+    Tidak ada anime yang cocok. Ubah kata kunci atau reset filter.
+  </p>
+</div>
+
+<style>
+  .browser {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-3);
+  }
+
+  .field-wide { grid-column: 1 / -1; }
+
+  @media (min-width: 50rem) {
+    .controls { grid-template-columns: 2fr repeat(4, 1fr); }
+    .field-wide { grid-column: auto; }
+  }
+
+  label {
+    display: block;
+    margin-bottom: var(--s-1);
+    color: var(--text-secondary);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+  }
+
+  input,
+  select {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: var(--s-2) var(--s-3);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    color: var(--text-primary);
+    font-size: var(--fs-sm);
+    transition: border-color var(--t-fast);
+  }
+
+  input:hover,
+  select:hover { border-color: var(--border-hover); }
+  input::placeholder { color: var(--text-muted); }
+
+  .count {
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+  }
+
+  .none {
+    padding: var(--s-8) var(--s-4);
+    border: 1px dashed var(--border-hover);
+    color: var(--text-secondary);
+    text-align: center;
+  }
+</style>
+
+<script>
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+
+  const list = $<HTMLUListElement>('browser-list');
+  const items = Array.from(list.querySelectorAll<HTMLLIElement>(':scope > li'));
+  const q = $<HTMLInputElement>('f-q');
+  const status = $<HTMLSelectElement>('f-status');
+  const type = $<HTMLSelectElement>('f-type');
+  const genre = $<HTMLSelectElement>('f-genre');
+  const sort = $<HTMLSelectElement>('f-sort');
+  const count = $('f-count');
+  const none = $('f-empty');
+
+  function apply() {
+    const term = q.value.trim().toLowerCase();
+    let shown = 0;
+    for (const li of items) {
+      const ds = li.dataset;
+      const ok =
+        (!term || ds.search!.includes(term)) &&
+        (!status.value || ds.status === status.value) &&
+        (!type.value || ds.type === type.value) &&
+        (!genre.value || ds.genres!.split('|').includes(genre.value));
+      li.hidden = !ok;
+      if (ok) shown++;
+    }
+    count.textContent = `${shown} dari ${items.length} anime`;
+    none.hidden = shown !== 0;
+  }
+
+  function reorder() {
+    const [key, dir] = sort.value.split(':');
+    const val = (li: HTMLLIElement) =>
+      key === 'title' ? li.dataset.title! : Number(li.dataset[key]);
+    const sorted = [...items].sort((a, b) => {
+      const x = val(a);
+      const y = val(b);
+      const c = typeof x === 'string' ? x.localeCompare(y as string) : (x as number) - (y as number);
+      return dir === 'asc' ? c : -c;
+    });
+    sorted.forEach((li) => list.appendChild(li));
+  }
+
+  // Filter awal dari URL, mis. /anime/?q=jujutsu atau ?genre=action&status=Ongoing
+  const params = new URLSearchParams(location.search);
+  q.value = params.get('q') ?? '';
+  status.value = params.get('status') ?? '';
+  type.value = params.get('type') ?? '';
+  genre.value = params.get('genre') ?? '';
+
+  q.addEventListener('input', apply);
+  [status, type, genre].forEach((el) => el.addEventListener('change', apply));
+  sort.addEventListener('change', reorder);
+
+  if (q.hasAttribute('data-autofocus')) q.focus();
+
+  reorder();
+  apply();
+</script>
