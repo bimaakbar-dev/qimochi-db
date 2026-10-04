@@ -15,8 +15,9 @@ export function sortByRecent(items: AnimeEntry[]): AnimeEntry[] {
 }
 
 /**
- * Extract tahun rilis dari releaseDate.
+ * Extract tahun rilis dari releaseDate (UTC, supaya tidak geser
+ * tergantung zona waktu mesin build).
  */
 export function getYear(anime: AnimeEntry): number {
-  return anime.data.releaseDate.getFullYear();
+  return anime.data.releaseDate.getUTCFullYear();
 }
