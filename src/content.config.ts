@@ -53,8 +53,6 @@ const anime = defineCollection({
     malId: z.number().int().positive().optional(),
     anilistId: z.number().int().positive().optional(),
     kitsuId: z.string().optional(),
-    annId: z.number().int().positive().optional(),
-    shikimoriId: z.number().int().positive().optional(),
 
     // ---------- KLASIFIKASI ----------
     type: AnimeType,
