@@ -5,6 +5,7 @@ import Page from '~/components/Page.astro';
 import AnimeBanner from '~/components/AnimeBanner.astro';
 import AnimeDetailLayout from '~/components/AnimeDetailLayout.astro';
 import AnimeCover from '~/components/AnimeCover.astro';
+import AnimeRating from '~/components/AnimeRating.astro';
 import AnimeTabs from '~/components/AnimeTabs.astro';
 import AnimeMeta from '~/components/AnimeMeta.astro';
 import AnimeSummary from '~/components/AnimeSummary.astro';
@@ -39,7 +40,14 @@ const studioItems = data.studios.map((slug) => ({
 
   <Page>
     <AnimeDetailLayout>
-      <AnimeCover slot="cover" image={data.image} title={data.title} />
+      <AnimeCover slot="cover" image={data.image} title={data.title}>
+        <AnimeRating
+          slot="action"
+          animeId={anime.id}
+          malScore={data.stats?.score}
+          malVotes={data.stats?.scoredBy}
+        />
+      </AnimeCover>
 
       <AnimeTabs>
         <AnimeSummary
