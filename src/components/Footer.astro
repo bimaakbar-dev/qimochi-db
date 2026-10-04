@@ -1,0 +1,266 @@
+---
+import { SITE, NAV_LINKS } from '~/constants';
+import { Image } from 'astro:assets';
+import SectionLabel from '~/components/SectionLabel.astro';
+import logoImg from '../assets/images/logo/logo.png';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo" aria-label={`${SITE.name} — Home`}>
+        <Image
+          src={logoImg}
+          alt={SITE.name}
+          width={96}
+          height={96}
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          class="logo-img"
+        />
+      </a>
+    </div>
+
+    <div class="footer-nav-group">
+      <nav class="footer-nav" aria-label="Navigasi footer">
+        <SectionLabel as="h4" size="sm">Jelajahi</SectionLabel>
+        <ul>
+          {NAV_LINKS.map(({ label, href }) => (
+            <li><a href={href}>{label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Sumber">
+        <SectionLabel as="h4" size="sm">Sumber</SectionLabel>
+        <ul>
+          <li>
+            <a
+              href="https://myanimelist.net"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MyAnimeList
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://kitsu.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Kitsu
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://anilist.co"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AniList
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="footer-disclaimer">
+    <div class="footer-disclaimer-inner">
+      <SectionLabel as="h4" size="sm" underlined={false}>Tentang Data</SectionLabel>
+      <p>
+        {SITE.name} adalah database katalog anime Indonesia. Kami menyediakan
+        informasi publik (judul, studio, genre, rating, sinopsis) untuk
+        keperluan referensi dan riset. Data disediakan <strong>apa adanya</strong>
+        (as-is) tanpa jaminan akurasi. Kami tidak menyimpan file video atau
+        menautkan ke layanan streaming apapun.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="copyright">
+        &copy; {year} {SITE.name}. Data bersumber dari MyAnimeList, Kitsu,
+        dan AniList. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-footer);
+    margin-top: var(--s-16);
+  }
+
+  .footer-inner {
+    max-width: var(--content-max-mobile);
+    margin-inline: auto;
+    padding: var(--s-8) var(--pad-x);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-8);
+  }
+
+  @media (min-width: 50rem) {
+    .footer-inner {
+      max-width: var(--content-max-desktop);
+      grid-template-columns: auto 1fr;
+      gap: var(--s-16);
+    }
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    transition: opacity var(--t-fast);
+  }
+
+  .logo:hover {
+    opacity: 0.85;
+  }
+
+  .logo-img {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+  }
+
+  .footer-nav-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+
+  @media (min-width: 50rem) {
+    .footer-nav-group {
+      grid-template-columns: repeat(2, max-content);
+      gap: var(--s-12);
+      justify-content: start;
+    }
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    align-items: start;
+    & :is(h2, h3, h4) {
+      color: var(--text-secondary);
+      font-size: var(--fs-sm);
+    }
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  .footer-nav a {
+    position: relative;
+    font-size: var(--fs-sm);
+    color: var(--text-inverted);
+    transition: color var(--t-fast);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: -3%;
+      right: -3%;
+      bottom: -0.2em;
+      height: 0.45em;
+      background-color: var(--accent);
+      -webkit-mask-image: var(--underline);
+      mask-image: var(--underline);
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity var(--t-fast);
+    }
+
+    &:hover {
+      color: var(--accent);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .footer-disclaimer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-disclaimer-inner {
+    max-width: var(--content-max-mobile);
+    margin-inline: auto;
+    padding: var(--s-6) var(--pad-x);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    & h4 {
+      color: var(--text-secondary);
+      font-size: var(--fs-xs);
+    }
+  }
+
+  @media (min-width: 50rem) {
+    .footer-disclaimer-inner {
+      max-width: var(--content-max-desktop);
+    }
+  }
+
+  .footer-disclaimer p {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    line-height: var(--lh-relaxed);
+    margin: 0;
+  }
+
+  .footer-disclaimer p strong {
+    color: var(--text-secondary);
+    font-weight: var(--fw-semibold);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-bottom-inner {
+    max-width: var(--content-max-mobile);
+    margin-inline: auto;
+    padding: var(--s-4) var(--pad-x);
+    text-align: center;
+  }
+
+  @media (min-width: 50rem) {
+    .footer-bottom-inner {
+      max-width: var(--content-max-desktop);
+    }
+  }
+
+  .copyright {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import SectionLabel from '~/components/SectionLabel.astro';
+import LinkButton from '~/user-components/LinkButton.astro';
+
+interface Props {
+  title: string;
+  href?: string;
+  hrefLabel?: string;
+}
+
+const { title, href, hrefLabel = 'Lihat semua' } = Astro.props;
+---
+
+<section class="section">
+  <div class="section__header">
+    <SectionLabel as="h2" size="lg">{title}</SectionLabel>
+  </div>
+  <div class="section__body">
+    <slot />
+  </div>
+  {href && (
+    <div class="section__action">
+      <LinkButton href={href} variant="ghost" size="sm">
+        {hrefLabel}
+      </LinkButton>
+    </div>
+  )}
+</section>
+
+<style>
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+
+  .section__header {
+    display: flex;
+    width: max-content;
+    justify-content: center;
+  }
+
+  .section__body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .section__action {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 50rem) {
+    .section__header {
+      justify-content: flex-start;
+    }
+    .section__action {
+      justify-content: flex-end;
+    }
+  }
+</style>

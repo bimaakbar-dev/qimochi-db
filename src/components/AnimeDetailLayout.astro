@@ -1,0 +1,43 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['anime-detail', className]}>
+  <div class="anime-detail__cover">
+    <slot name="cover" />
+  </div>
+
+  <div class="anime-detail__main">
+    <slot />
+  </div>
+
+  <div class="anime-detail__meta">
+    <slot name="meta" />
+  </div>
+</div>
+
+<style>
+  .anime-detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+
+  .anime-detail__cover,
+  .anime-detail__main,
+  .anime-detail__meta {
+    min-width: 0;
+  }
+
+  @media (min-width: 50rem) {
+    .anime-detail {
+      grid-template-columns: 12rem minmax(0, 1fr) 16rem;
+      gap: var(--s-8);
+      align-items: start;
+    }
+  }
+</style>

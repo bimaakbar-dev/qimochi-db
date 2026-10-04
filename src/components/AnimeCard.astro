@@ -1,0 +1,104 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  image?: string;
+}
+
+const { slug, title, image } = Astro.props;
+const href = `/anime/${slug}/`;
+---
+
+<article class="anime-card">
+  <a href={href} class="anime-card__link" aria-label={title}>
+    <div class="anime-card__cover">
+      {image ? (
+        <img
+          src={image}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+          width="300"
+          height="450"
+        />
+      ) : (
+        <div class="anime-card__placeholder" aria-hidden="true"></div>
+      )}
+
+      <div class="anime-card__overlay">
+        <h3 class="anime-card__title">{title}</h3>
+      </div>
+    </div>
+  </a>
+</article>
+
+<style>
+  .anime-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .anime-card__cover {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+
+  .anime-card__cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .anime-card__placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-surface);
+  }
+  
+  .anime-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: var(--s-4);
+    background: hsla(30, 3%, 5%, 0.5);
+    opacity: 1;
+    transition: opacity var(--t-base), background-color var(--t-base);
+  }
+
+  .anime-card__title {
+    margin: 0;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+    color: var(--text-inverted);
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media (min-width: 50rem) {
+    .anime-card__title {
+      font-size: var(--fs-sm);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .anime-card__overlay {
+      opacity: 0;
+      background: hsla(30, 3%, 5%, 0.7);
+    }
+
+    .anime-card__link:hover .anime-card__overlay,
+    .anime-card__link:focus-visible .anime-card__overlay {
+      opacity: 1;
+    }
+  }
+</style>

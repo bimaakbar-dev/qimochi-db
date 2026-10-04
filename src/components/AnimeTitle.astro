@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<h1 class="anime-title">{title}</h1>
+
+<style>
+  .anime-title {
+    margin: 0;
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    color: var(--text-primary);
+  }
+
+  @media (min-width: 50rem) {
+    .anime-title {
+      font-size: var(--fs-3xl);
+    }
+  }
+</style>

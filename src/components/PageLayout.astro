@@ -1,0 +1,48 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['layout-sidebar', className]}>
+  <div class="layout-sidebar__main">
+    <slot />
+  </div>
+  <aside class="layout-sidebar__aside">
+    <slot name="sidebar" />
+  </aside>
+</div>
+
+<style>
+  .layout-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-8);
+  }
+
+  .layout-sidebar__main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-10);
+    min-width: 0;
+  }
+
+  .layout-sidebar__aside {
+    min-width: 0;
+  }
+
+  @media (min-width: 50rem) {
+    .layout-sidebar {
+      grid-template-columns: minmax(0, 1fr) var(--aside-width);
+      gap: var(--s-10);
+    }
+
+    .layout-sidebar__aside {
+      position: sticky;
+      top: var(--sticky-top);
+      align-self: start;
+    }
+  }
+</style>

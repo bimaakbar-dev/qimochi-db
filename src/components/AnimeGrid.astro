@@ -1,0 +1,32 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['anime-grid', className]}>
+  <slot />
+</div>
+
+<style>
+  .anime-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-4);
+  }
+
+  @media (min-width: 50rem) {
+    .anime-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }
+  }
+
+  @media (min-width: 72rem) {
+    .anime-grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+</style>

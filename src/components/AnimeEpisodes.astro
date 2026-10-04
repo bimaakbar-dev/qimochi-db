@@ -1,0 +1,116 @@
+---
+import EmptyState from '~/components/EmptyState.astro';
+import { MONTHS_ID } from '~/constants';
+
+interface Props {
+  episodes?: {
+    number: number;
+    title: string;
+    aired?: string;
+    duration?: number;
+  }[];
+}
+
+const { episodes = [] } = Astro.props;
+
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${MONTHS_ID[m - 1]} ${y}`;
+}
+---
+
+<div class="anime-episodes">
+  {episodes.length === 0 ? (
+    <EmptyState
+      title="Belum ada data episode"
+      message="Data episode belum tersedia untuk anime ini."
+    />
+  ) : (
+    <ol class="anime-episodes__list">
+      {episodes.map((ep) => (
+        <li class="episode-row">
+          <span class="episode-row__num">
+            {String(ep.number).padStart(2, '0')}
+          </span>
+
+          <span class="episode-row__title">{ep.title}</span>
+
+          <span class="episode-row__meta">
+            {ep.aired && <span>{formatDate(ep.aired)}</span>}
+            {ep.duration && <span>{ep.duration} min</span>}
+          </span>
+        </li>
+      ))}
+    </ol>
+  )}
+</div>
+
+<style>
+  .anime-episodes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .anime-episodes__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .episode-row {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: var(--s-3);
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .episode-row:last-child {
+    border-bottom: none;
+  }
+
+  .episode-row__num {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .episode-row__title {
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .episode-row__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 50rem) {
+    .episode-row {
+      grid-template-columns: 2.5rem minmax(0, 1fr);
+      grid-template-areas:
+        'num title'
+        '.   meta';
+    }
+
+    .episode-row__num { grid-area: num; }
+    .episode-row__title { grid-area: title; }
+    .episode-row__meta {
+      grid-area: meta;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: var(--s-2);
+      margin-top: 2px;
+    }
+  }
+</style>

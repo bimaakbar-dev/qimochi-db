@@ -1,0 +1,38 @@
+---
+interface Props {
+  image?: string;
+}
+
+const { image } = Astro.props;
+---
+
+<div class="anime-banner">
+  {image ? (
+    <img src={image} alt="" class="anime-banner__img" />
+  ) : (
+    <div class="anime-banner__placeholder" aria-hidden="true"></div>
+  )}
+</div>
+
+<style>
+  .anime-banner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+
+  .anime-banner__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .anime-banner__placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-surface);
+  }
+</style>

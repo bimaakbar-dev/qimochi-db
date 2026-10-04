@@ -1,0 +1,46 @@
+---
+interface Props {
+  title?: string;
+  message?: string;
+}
+
+const {
+  title = 'Belum ada data',
+  message = 'Konten untuk bagian ini belum tersedia.',
+} = Astro.props;
+---
+
+<div class="empty-state">
+  <p class="empty-state__title">{title}</p>
+  {message && <p class="empty-state__message">{message}</p>}
+</div>
+
+<style>
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    width: 100%;
+    box-sizing: border-box; 
+    padding: var(--s-10) var(--s-6);
+    text-align: center;
+    background: var(--bg-elevated);
+    border: 1px dashed var(--border);
+    border-radius: var(--r-md);
+  }
+
+  .empty-state__title {
+    margin: 0;
+    font-size: var(--fs-base);
+    font-weight: var(--fw-semibold);
+    color: var(--text-secondary);
+  }
+
+  .empty-state__message {
+    margin: 0;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+  }
+</style>

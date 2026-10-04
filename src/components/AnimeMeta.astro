@@ -1,0 +1,296 @@
+---
+import {
+  STATUS_LABEL,
+  SOURCE_LABEL,
+  AGE_RATING_LABEL,
+  MONTHS_ID,
+  SEASON_LABEL,
+  type Status,
+  type Source,
+  type AgeRating,
+  type Season,
+} from '~/constants';
+
+interface Props {
+  title: string;
+  titleEnglish?: string;
+  titleNative?: string;
+  synonyms?: string[];
+  type: string;
+  status: string;
+  source?: string;
+  season?: string;
+  year?: number;
+  episodes?: number | null;
+  duration?: number;
+  rating?: string;
+  aired?: { from: string; to?: string | null };
+  studios?: string[];
+  producers?: string[];
+  licensors?: string[];
+  malId?: number;
+  anilistId?: number;
+  kitsuId?: string;
+}
+
+const {
+  title,
+  titleEnglish,
+  titleNative,
+  synonyms = [],
+  type,
+  status,
+  source,
+  season,
+  year,
+  episodes,
+  duration,
+  rating,
+  aired,
+  studios = [],
+  producers = [],
+  licensors = [],
+  malId,
+  anilistId,
+  kitsuId,
+} = Astro.props;
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${MONTHS_ID[m - 1]} ${y}`;
+}
+
+function formatDuration(minutes: number): string {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (h === 0) return `${m} menit`;
+  if (m === 0) return `${h} jam`;
+  return `${h} jam ${m} menit`;
+}
+
+const seasonLabel = season
+  ? SEASON_LABEL[season as Season] ?? season
+  : null;
+
+const airedFrom = aired?.from ? formatDate(aired.from) : null;
+const airedTo = aired?.to ? formatDate(aired.to) : airedFrom ? 'Sekarang' : null;
+const airedLabel = airedFrom && airedTo ? `${airedFrom} – ${airedTo}` : null;
+
+const totalMinutes =
+  episodes != null && duration != null ? episodes * duration : null;
+const lengthLabel = totalMinutes
+  ? `${formatDuration(totalMinutes)} total (${duration} menit/episode)`
+  : null;
+
+const ratingLabel = rating
+  ? AGE_RATING_LABEL[rating as AgeRating] ?? rating
+  : null;
+
+const statusLabel = STATUS_LABEL[status as Status] ?? status;
+const sourceLabel = source
+  ? SOURCE_LABEL[source as Source] ?? source
+  : null;
+
+const hasExternal =
+  malId != null || anilistId != null || kitsuId != null;
+---
+
+<dl class="anime-meta">
+  {titleEnglish && titleEnglish !== title && (
+    <div class="anime-meta__row">
+      <dt>Inggris</dt>
+      <dd>{titleEnglish}</dd>
+    </div>
+  )}
+
+  {titleNative && (
+    <div class="anime-meta__row">
+      <dt>Jepang</dt>
+      <dd>{titleNative}</dd>
+    </div>
+  )}
+
+  <div class="anime-meta__row">
+    <dt>Romaji</dt>
+    <dd>{title}</dd>
+  </div>
+
+  <div class="anime-meta__row">
+    <dt>Tipe</dt>
+    <dd>{type}</dd>
+  </div>
+
+  <div class="anime-meta__row">
+    <dt>Episode</dt>
+    <dd>{episodes != null ? episodes : '?'}</dd>
+  </div>
+
+  <div class="anime-meta__row">
+    <dt>Status</dt>
+    <dd>{statusLabel}</dd>
+  </div>
+
+  {airedLabel && (
+    <div class="anime-meta__row">
+      <dt>Aired</dt>
+      <dd>{airedLabel}</dd>
+    </div>
+  )}
+
+  {(seasonLabel || year) && (
+    <div class="anime-meta__row">
+      <dt>Musim</dt>
+      <dd>{[seasonLabel, year].filter(Boolean).join(' ')}</dd>
+    </div>
+  )}
+
+  {ratingLabel && (
+    <div class="anime-meta__row">
+      <dt>Rating</dt>
+      <dd>{ratingLabel}</dd>
+    </div>
+  )}
+
+  {lengthLabel && (
+    <div class="anime-meta__row">
+      <dt>Length</dt>
+      <dd>{lengthLabel}</dd>
+    </div>
+  )}
+
+  {sourceLabel && (
+    <div class="anime-meta__row">
+      <dt>Sumber</dt>
+      <dd>{sourceLabel}</dd>
+    </div>
+  )}
+
+  {studios.length > 0 && (
+    <div class="anime-meta__row">
+      <dt>Studio</dt>
+      <dd>{studios.join(', ')}</dd>
+    </div>
+  )}
+
+  {producers.length > 0 && (
+    <div class="anime-meta__row">
+      <dt>Producer</dt>
+      <dd>{producers.join(', ')}</dd>
+    </div>
+  )}
+
+  {licensors.length > 0 && (
+    <div class="anime-meta__row">
+      <dt>Lisensor</dt>
+      <dd>{licensors.join(', ')}</dd>
+    </div>
+  )}
+
+  {synonyms.length > 0 && (
+    <div class="anime-meta__row">
+      <dt>Sinonim</dt>
+      <dd>{synonyms.join(' · ')}</dd>
+    </div>
+  )}
+</dl>
+
+{hasExternal && (
+  <div class="anime-meta__external">
+    <p class="anime-meta__external-title">Sumber Eksternal</p>
+    <ul class="anime-meta__external-list">
+      {malId && (
+        <li>
+          <a href={`https://myanimelist.net/anime/${malId}`} target="_blank" rel="noopener noreferrer">
+            MyAnimeList
+          </a>
+        </li>
+      )}
+      {anilistId && (
+        <li>
+          <a href={`https://anilist.co/anime/${anilistId}`} target="_blank" rel="noopener noreferrer">
+            AniList
+          </a>
+        </li>
+      )}
+      {kitsuId && (
+        <li>
+          <a href={`https://kitsu.app/anime/${kitsuId}`} target="_blank" rel="noopener noreferrer">
+            Kitsu
+          </a>
+        </li>
+      )}
+    </ul>
+  </div>
+)}
+
+<style>
+  .anime-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    margin: 0;
+  }
+
+  .anime-meta__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  @media (min-width: 50rem) {
+    .anime-meta__row {
+      grid-template-columns: 6rem minmax(0, 1fr);
+      column-gap: var(--s-3);
+      align-items: baseline;
+    }
+  }
+
+  .anime-meta__row dt {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+    font-weight: var(--fw-medium);
+  }
+
+  .anime-meta__row dd {
+    margin: 0;
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .anime-meta__external {
+    margin-top: var(--s-5);
+    padding-top: var(--s-4);
+    border-top: 1px solid var(--border);
+  }
+
+  .anime-meta__external-title {
+    margin: 0 0 var(--s-2);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .anime-meta__external-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .anime-meta__external-list a {
+    font-size: var(--fs-sm);
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--t-fast);
+  }
+
+  .anime-meta__external-list a:hover {
+    color: var(--accent-hover);
+  }
+</style>

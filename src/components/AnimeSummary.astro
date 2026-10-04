@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+import Badge from '~/user-components/Badge.astro';
+
+interface Props {
+  title: string;
+  year?: number;
+  genres?: string[];
+}
+
+const { title, year, genres = [] } = Astro.props;
+
+const allGenres = await getCollection('genres');
+const genreMap = new Map(allGenres.map((g) => [g.data.id, g.data.name]));
+
+const genreList = genres
+  .map((slug) => ({ slug, name: genreMap.get(slug) ?? slug }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<div class="anime-summary">
+  <header class="anime-summary__header">
+    <h1 class="anime-summary__title">{title}</h1>
+    {year && <span class="anime-summary__year">{year}</span>}
+  </header>
+
+  <div class="anime-summary__body">
+    <slot />
+  </div>
+
+  {genreList.length > 0 && (
+    <ul class="anime-summary__genres">
+      {genreList.map((genre) => (
+        <li>
+          <a
+            href={`/search/anime/?genre=${genre.slug}`}
+            class="anime-summary__genre-link"
+          >
+            <Badge variant="outline" size="sm">{genre.name}</Badge>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
+<style>
+  .anime-summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+
+  .anime-summary__header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+
+  .anime-summary__title {
+    margin: 0;
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    color: var(--text-primary);
+  }
+
+  @media (min-width: 50rem) {
+    .anime-summary__title {
+      font-size: var(--fs-3xl);
+    }
+  }
+
+  .anime-summary__year {
+    font-size: var(--fs-base);
+    color: var(--text-muted);
+    font-weight: var(--fw-normal);
+  }
+
+  .anime-summary__body {
+    font-size: var(--fs-base);
+    line-height: var(--lh-relaxed);
+    color: var(--text-primary);
+  }
+
+  .anime-summary__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .anime-summary__genre-link {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform var(--t-fast);
+  }
+
+  .anime-summary__genre-link:hover {
+    transform: translateY(-1px);
+  }
+
+  .anime-summary__genre-link:hover :global(.badge) {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-text);
+  }
+</style>

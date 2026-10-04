@@ -1,0 +1,115 @@
+---
+interface Props {
+  defaultTab?: 'summary' | 'episodes' | 'characters' | 'franchise';
+}
+
+const { defaultTab = 'summary' } = Astro.props;
+
+const tabs = [
+  { id: 'summary', label: 'Summary' },
+  { id: 'episodes', label: 'Episode' },
+  { id: 'characters', label: 'Character' },
+  { id: 'franchise', label: 'Franchise' },
+] as const;
+---
+
+<div class="anime-tabs">
+  {tabs.map((tab) => (
+    <input
+      type="radio"
+      name="anime-tab"
+      id={`tab-${tab.id}`}
+      class="anime-tabs__input"
+      checked={tab.id === defaultTab}
+    />
+  ))}
+
+  <div class="anime-tabs__nav" role="tablist">
+    {tabs.map((tab) => (
+      <label for={`tab-${tab.id}`} class="anime-tabs__tab" role="tab">
+        {tab.label}
+      </label>
+    ))}
+  </div>
+
+  <div class="anime-tabs__panels">
+    <div class="anime-tabs__panel" data-tab="summary">
+      <slot name="summary" />
+    </div>
+    <div class="anime-tabs__panel" data-tab="episodes">
+      <slot name="episodes" />
+    </div>
+    <div class="anime-tabs__panel" data-tab="characters">
+      <slot name="characters" />
+    </div>
+    <div class="anime-tabs__panel" data-tab="franchise">
+      <slot name="franchise" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .anime-tabs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .anime-tabs__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .anime-tabs__nav {
+    display: flex;
+    gap: var(--s-1);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .anime-tabs__nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .anime-tabs__tab {
+    padding: var(--s-2) var(--s-4);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color var(--t-fast), border-color var(--t-fast);
+    user-select: none;
+  }
+
+  .anime-tabs__tab:hover {
+    color: var(--text-primary);
+  }
+
+  .anime-tabs__panels {
+    padding-top: var(--s-5);
+  }
+
+  .anime-tabs__panel {
+    display: none;
+  }
+
+  /* Active tab styling */
+  .anime-tabs:has(#tab-summary:checked) label[for='tab-summary'],
+  .anime-tabs:has(#tab-episodes:checked) label[for='tab-episodes'],
+  .anime-tabs:has(#tab-characters:checked) label[for='tab-characters'],
+  .anime-tabs:has(#tab-franchise:checked) label[for='tab-franchise'] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* Show active panel */
+  .anime-tabs:has(#tab-summary:checked) [data-tab='summary'],
+  .anime-tabs:has(#tab-episodes:checked) [data-tab='episodes'],
+  .anime-tabs:has(#tab-characters:checked) [data-tab='characters'],
+  .anime-tabs:has(#tab-franchise:checked) [data-tab='franchise'] {
+    display: block;
+  }
+</style>

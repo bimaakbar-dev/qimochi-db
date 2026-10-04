@@ -1,0 +1,68 @@
+---
+interface Props {
+  image?: string;
+  title: string;
+}
+
+const { image, title } = Astro.props;
+---
+
+<div class="anime-cover">
+  <div class="anime-cover__frame">
+    {image ? (
+      <img
+        src={image}
+        alt={`Cover ${title}`}
+        loading="eager"
+        decoding="async"
+      />
+    ) : (
+      <div class="anime-cover__placeholder" aria-hidden="true"></div>
+    )}
+  </div>
+
+  <div class="anime-cover__action">
+    <slot name="action" />
+  </div>
+</div>
+
+<style>
+  .anime-cover {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+
+  .anime-cover__frame {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+
+  .anime-cover__frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .anime-cover__placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-surface);
+  }
+
+  .anime-cover__action {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  @media (max-width: 50rem) {
+    .anime-cover {
+      max-width: 12rem;
+      margin-inline: auto;
+    }
+  }
+</style>

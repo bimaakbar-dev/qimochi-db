@@ -1,0 +1,149 @@
+---
+import LinkButton from '~/user-components/LinkButton.astro';
+
+interface Props {
+  title: string;
+  tagline: string;
+  searchAction?: string;
+  searchPlaceholder?: string;
+  searchLabel?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  title,
+  tagline,
+  searchAction = '/search/',
+  searchPlaceholder = 'Cari anime...',
+  searchLabel = 'Cari anime',
+  ctaLabel = 'Baca API Docs',
+  ctaHref = '/docs/',
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="wrapper hero__inner">
+    <h1 class="hero__title">{title}</h1>
+    <p class="hero__tagline">{tagline}</p>
+
+    <form class="hero__search" action={searchAction} method="get" role="search">
+      <label for="hero-search" class="sr-only">{searchLabel}</label>
+      <input
+        id="hero-search"
+        class="hero__search-input"
+        type="search"
+        name="q"
+        placeholder={searchPlaceholder}
+        autocomplete="off"
+        required
+      />
+      <button class="hero__search-button" type="submit">Cari</button>
+    </form>
+
+    <LinkButton href={ctaHref} variant="outline" size="lg">
+      {ctaLabel}
+    </LinkButton>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--s-12);
+  }
+
+  @media (min-width: 50rem) {
+    .hero {
+      padding-block: var(--s-16);
+    }
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--s-4);
+  }
+
+  .hero__title {
+    margin: 0;
+    font-size: var(--fs-3xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    color: var(--text-primary);
+  }
+
+  .hero__tagline {
+    margin: 0;
+    max-width: 32rem;
+    font-size: var(--fs-base);
+    color: var(--text-secondary);
+  }
+
+  .hero__search {
+    display: flex;
+    width: 100%;
+    max-width: 32rem;
+    margin-top: var(--s-2);
+  }
+
+  .hero__search-input {
+    flex: 1;
+    min-width: 0;
+    padding: var(--s-3) var(--s-4);
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md) 0 0 var(--r-md);
+    transition: border-color var(--t-fast);
+  }
+
+  .hero__search-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .hero__search-button {
+    padding-inline: var(--s-5);
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--accent-text);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+    cursor: pointer;
+    transition: background-color var(--t-fast);
+  }
+
+  .hero__search-button:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+
+  .hero__cta {
+    margin-top: var(--s-2);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--t-fast);
+  }
+
+  .hero__cta:hover {
+    color: var(--accent-hover);
+  }
+
+  @media (min-width: 50rem) {
+    .hero__title {
+      font-size: var(--fs-5xl);
+    }
+
+    .hero__tagline {
+      font-size: var(--fs-lg);
+    }
+  }
+</style>
