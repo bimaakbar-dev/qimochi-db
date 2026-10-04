@@ -8,8 +8,6 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'Beranda',   href: '/' },
-  { label: 'Katalog',   href: '/search/anime/' },
   { label: 'API',       href: '/docs/' },
 ] as const;
 
