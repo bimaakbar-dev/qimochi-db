@@ -1,0 +1,109 @@
+---
+import SectionLabel from '~/components/SectionLabel.astro';
+
+interface Item {
+  id: string | number;
+  name: string | number;
+  count: number;
+}
+
+interface Props {
+  title: string;
+  filterKey: string;
+  urlPrefix: string;
+  items: Item[];
+  layout?: 'list' | 'grid';
+}
+
+const {
+  title,
+  filterKey,
+  urlPrefix,
+  items,
+  layout = 'list',
+} = Astro.props;
+
+if (items.length === 0) return null;
+---
+
+<div class="section-card">
+  <SectionLabel as="h3" size="sm">{title}</SectionLabel>
+  <ul class:list={['section-card__list', `section-card__list--${layout}`]}>
+    {items.map((item) => (
+      <li>
+        <a
+          href={`${urlPrefix}${item.id}`}
+          class="section-card__link"
+          data-filter-key={filterKey}
+          data-filter-value={item.id}
+        >
+          <span class="section-card__name">{item.name}</span>
+          <span class="section-card__count">{item.count}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .section-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    align-items: start;
+  }
+
+  .section-card__list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .section-card__list--list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  .section-card__list--grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-1) var(--s-3);
+  }
+
+  .section-card__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-2);
+    padding-block: 2px;
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--t-fast);
+  }
+
+  .section-card__link:hover,
+  .section-card__link.is-active {
+    color: var(--accent);
+  }
+
+  .section-card__name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .section-card__count {
+    flex-shrink: 0;
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .section-card__link.is-active .section-card__count {
+    color: var(--accent);
+  }
+</style>

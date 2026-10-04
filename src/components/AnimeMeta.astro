@@ -3,13 +3,20 @@ import {
   STATUS_LABEL,
   SOURCE_LABEL,
   AGE_RATING_LABEL,
-  MONTHS_ID,
   SEASON_LABEL,
   type Status,
   type Source,
   type AgeRating,
   type Season,
 } from '~/constants';
+
+import { formatDateRange, formatDuration } from '~/lib/format';
+import SectionLabel from '~/components/SectionLabel.astro';
+
+interface StudioItem {
+  slug: string;
+  name: string;
+}
 
 interface Props {
   title: string;
@@ -25,7 +32,7 @@ interface Props {
   duration?: number;
   rating?: string;
   aired?: { from: string; to?: string | null };
-  studios?: string[];
+  studios?: StudioItem[];
   producers?: string[];
   licensors?: string[];
   malId?: number;
@@ -54,26 +61,14 @@ const {
   anilistId,
   kitsuId,
 } = Astro.props;
-function formatDate(iso: string): string {
-  const [y, m, d] = iso.split('-').map(Number);
-  return `${d} ${MONTHS_ID[m - 1]} ${y}`;
-}
-
-function formatDuration(minutes: number): string {
-  const h = Math.floor(minutes / 60);
-  const m = minutes % 60;
-  if (h === 0) return `${m} menit`;
-  if (m === 0) return `${h} jam`;
-  return `${h} jam ${m} menit`;
-}
 
 const seasonLabel = season
   ? SEASON_LABEL[season as Season] ?? season
   : null;
 
-const airedFrom = aired?.from ? formatDate(aired.from) : null;
-const airedTo = aired?.to ? formatDate(aired.to) : airedFrom ? 'Sekarang' : null;
-const airedLabel = airedFrom && airedTo ? `${airedFrom} – ${airedTo}` : null;
+const airedLabel = aired?.from
+  ? formatDateRange(aired.from, aired.to)
+  : null;
 
 const totalMinutes =
   episodes != null && duration != null ? episodes * duration : null;
@@ -94,135 +89,146 @@ const hasExternal =
   malId != null || anilistId != null || kitsuId != null;
 ---
 
-<dl class="anime-meta">
-  {titleEnglish && titleEnglish !== title && (
+<div class="anime-meta-wrap">
+  <SectionLabel as="h3" size="sm">Detail</SectionLabel>
+
+  <dl class="anime-meta">
+    {titleEnglish && titleEnglish !== title && (
+      <div class="anime-meta__row">
+        <dt>Inggris</dt>
+        <dd>{titleEnglish}</dd>
+      </div>
+    )}
+
+    {titleNative && (
+      <div class="anime-meta__row">
+        <dt>Jepang</dt>
+        <dd>{titleNative}</dd>
+      </div>
+    )}
+
     <div class="anime-meta__row">
-      <dt>Inggris</dt>
-      <dd>{titleEnglish}</dd>
+      <dt>Romaji</dt>
+      <dd>{title}</dd>
+    </div>
+
+    <div class="anime-meta__row">
+      <dt>Tipe</dt>
+      <dd>{type}</dd>
+    </div>
+
+    <div class="anime-meta__row">
+      <dt>Episode</dt>
+      <dd>{episodes != null ? episodes : '?'}</dd>
+    </div>
+
+    <div class="anime-meta__row">
+      <dt>Status</dt>
+      <dd>{statusLabel}</dd>
+    </div>
+
+    {airedLabel && (
+      <div class="anime-meta__row">
+        <dt>Aired</dt>
+        <dd>{airedLabel}</dd>
+      </div>
+    )}
+
+    {(seasonLabel || year) && (
+      <div class="anime-meta__row">
+        <dt>Musim</dt>
+        <dd>{[seasonLabel, year].filter(Boolean).join(' ')}</dd>
+      </div>
+    )}
+
+    {ratingLabel && (
+      <div class="anime-meta__row">
+        <dt>Rating</dt>
+        <dd>{ratingLabel}</dd>
+      </div>
+    )}
+
+    {lengthLabel && (
+      <div class="anime-meta__row">
+        <dt>Length</dt>
+        <dd>{lengthLabel}</dd>
+      </div>
+    )}
+
+    {sourceLabel && (
+      <div class="anime-meta__row">
+        <dt>Sumber</dt>
+        <dd>{sourceLabel}</dd>
+      </div>
+    )}
+
+    {studios.length > 0 && (
+      <div class="anime-meta__row">
+        <dt>Studio</dt>
+        <dd>
+          {studios.map((s, i) => (
+            <>
+              {i > 0 && ', '}
+              <a
+                href={`/search/anime/?studio=${s.slug}`}
+                class="anime-meta__link"
+              >
+                {s.name}
+              </a>
+            </>
+          ))}
+        </dd>
+      </div>
+    )}
+
+    {producers.length > 0 && (
+      <div class="anime-meta__row">
+        <dt>Producer</dt>
+        <dd>{producers.join(', ')}</dd>
+      </div>
+    )}
+
+  </dl>
+
+  {hasExternal && (
+    <div class="anime-meta__external">
+      <p class="anime-meta__external-title">Sumber Eksternal</p>
+      <ul class="anime-meta__external-list">
+        {malId && (
+          <li>
+            <a href={`https://myanimelist.net/anime/${malId}`} target="_blank" rel="noopener noreferrer">
+              MyAnimeList
+            </a>
+          </li>
+        )}
+        {anilistId && (
+          <li>
+            <a href={`https://anilist.co/anime/${anilistId}`} target="_blank" rel="noopener noreferrer">
+              AniList
+            </a>
+          </li>
+        )}
+        {kitsuId && (
+          <li>
+            <a href={`https://kitsu.app/anime/${kitsuId}`} target="_blank" rel="noopener noreferrer">
+              Kitsu
+            </a>
+          </li>
+        )}
+      </ul>
     </div>
   )}
-
-  {titleNative && (
-    <div class="anime-meta__row">
-      <dt>Jepang</dt>
-      <dd>{titleNative}</dd>
-    </div>
-  )}
-
-  <div class="anime-meta__row">
-    <dt>Romaji</dt>
-    <dd>{title}</dd>
-  </div>
-
-  <div class="anime-meta__row">
-    <dt>Tipe</dt>
-    <dd>{type}</dd>
-  </div>
-
-  <div class="anime-meta__row">
-    <dt>Episode</dt>
-    <dd>{episodes != null ? episodes : '?'}</dd>
-  </div>
-
-  <div class="anime-meta__row">
-    <dt>Status</dt>
-    <dd>{statusLabel}</dd>
-  </div>
-
-  {airedLabel && (
-    <div class="anime-meta__row">
-      <dt>Aired</dt>
-      <dd>{airedLabel}</dd>
-    </div>
-  )}
-
-  {(seasonLabel || year) && (
-    <div class="anime-meta__row">
-      <dt>Musim</dt>
-      <dd>{[seasonLabel, year].filter(Boolean).join(' ')}</dd>
-    </div>
-  )}
-
-  {ratingLabel && (
-    <div class="anime-meta__row">
-      <dt>Rating</dt>
-      <dd>{ratingLabel}</dd>
-    </div>
-  )}
-
-  {lengthLabel && (
-    <div class="anime-meta__row">
-      <dt>Length</dt>
-      <dd>{lengthLabel}</dd>
-    </div>
-  )}
-
-  {sourceLabel && (
-    <div class="anime-meta__row">
-      <dt>Sumber</dt>
-      <dd>{sourceLabel}</dd>
-    </div>
-  )}
-
-  {studios.length > 0 && (
-    <div class="anime-meta__row">
-      <dt>Studio</dt>
-      <dd>{studios.join(', ')}</dd>
-    </div>
-  )}
-
-  {producers.length > 0 && (
-    <div class="anime-meta__row">
-      <dt>Producer</dt>
-      <dd>{producers.join(', ')}</dd>
-    </div>
-  )}
-
-  {licensors.length > 0 && (
-    <div class="anime-meta__row">
-      <dt>Lisensor</dt>
-      <dd>{licensors.join(', ')}</dd>
-    </div>
-  )}
-
-  {synonyms.length > 0 && (
-    <div class="anime-meta__row">
-      <dt>Sinonim</dt>
-      <dd>{synonyms.join(' · ')}</dd>
-    </div>
-  )}
-</dl>
-
-{hasExternal && (
-  <div class="anime-meta__external">
-    <p class="anime-meta__external-title">Sumber Eksternal</p>
-    <ul class="anime-meta__external-list">
-      {malId && (
-        <li>
-          <a href={`https://myanimelist.net/anime/${malId}`} target="_blank" rel="noopener noreferrer">
-            MyAnimeList
-          </a>
-        </li>
-      )}
-      {anilistId && (
-        <li>
-          <a href={`https://anilist.co/anime/${anilistId}`} target="_blank" rel="noopener noreferrer">
-            AniList
-          </a>
-        </li>
-      )}
-      {kitsuId && (
-        <li>
-          <a href={`https://kitsu.app/anime/${kitsuId}`} target="_blank" rel="noopener noreferrer">
-            Kitsu
-          </a>
-        </li>
-      )}
-    </ul>
-  </div>
-)}
+</div>
 
 <style>
+  .anime-meta-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    border-block-start: 1px solid var(--border);
+    padding-block-start: var(--s-4);
+  }
+
   .anime-meta {
     display: flex;
     flex-direction: column;
@@ -236,7 +242,20 @@ const hasExternal =
     gap: 2px;
   }
 
+  .anime-meta__link {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--t-fast);
+  }
+
+  .anime-meta__link:hover {
+    color: var(--accent-hover);
+  }
+
   @media (min-width: 50rem) {
+    .anime-meta-wrap {
+      border: none
+    }
     .anime-meta__row {
       grid-template-columns: 6rem minmax(0, 1fr);
       column-gap: var(--s-3);
@@ -249,7 +268,6 @@ const hasExternal =
     font-weight: var(--fw-medium);
     color: var(--text-primary);
     letter-spacing: 0.05em;
-    font-weight: var(--fw-medium);
   }
 
   .anime-meta__row dd {
@@ -260,7 +278,7 @@ const hasExternal =
   }
 
   .anime-meta__external {
-    margin-top: var(--s-5);
+    margin-top: var(--s-2);
     padding-top: var(--s-4);
     border-top: 1px solid var(--border);
   }
@@ -269,8 +287,7 @@ const hasExternal =
     margin: 0 0 var(--s-2);
     font-size: var(--fs-xs);
     font-weight: var(--fw-medium);
-    color: var(--text-muted);
-    text-transform: uppercase;
+    color: var(--text-primary);
     letter-spacing: 0.05em;
   }
 

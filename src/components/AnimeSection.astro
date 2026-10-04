@@ -1,0 +1,36 @@
+---
+import Section from '~/components/Section.astro';
+import AnimeGrid from '~/components/AnimeGrid.astro';
+import AnimeCard from '~/components/AnimeCard.astro';
+import EmptyState from '~/components/EmptyState.astro';
+
+interface Props {
+  title: string;
+  href?: string;
+  items: {
+    id: string;
+    data: {
+      title: string;
+      image?: string;
+    };
+  }[];
+}
+
+const { title, href, items } = Astro.props;
+---
+
+<Section title={title} href={href}>
+  {items.length > 0 ? (
+    <AnimeGrid>
+      {items.map((anime) => (
+        <AnimeCard
+          slug={anime.id}
+          title={anime.data.title}
+          image={anime.data.image}
+        />
+      ))}
+    </AnimeGrid>
+  ) : (
+    <EmptyState />
+  )}
+</Section>

@@ -95,8 +95,6 @@ const tabs = [
   .anime-tabs__panel {
     display: none;
   }
-
-  /* Active tab styling */
   .anime-tabs:has(#tab-summary:checked) label[for='tab-summary'],
   .anime-tabs:has(#tab-episodes:checked) label[for='tab-episodes'],
   .anime-tabs:has(#tab-characters:checked) label[for='tab-characters'],
@@ -104,8 +102,6 @@ const tabs = [
     color: var(--accent);
     border-bottom-color: var(--accent);
   }
-
-  /* Show active panel */
   .anime-tabs:has(#tab-summary:checked) [data-tab='summary'],
   .anime-tabs:has(#tab-episodes:checked) [data-tab='episodes'],
   .anime-tabs:has(#tab-characters:checked) [data-tab='characters'],

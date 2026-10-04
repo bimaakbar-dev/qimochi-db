@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import SectionCard from '~/components/SectionCard.astro';
+import { countByField } from '~/lib/data';
+import { STATUSES, STATUS_LABEL, type Status } from '~/constants';
+
+const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+const countMap = countByField(allAnime, 'status');
+
+const items = STATUSES
+  .map((s) => ({
+    id: s,
+    name: STATUS_LABEL[s as Status],
+    count: countMap.get(s) ?? 0,
+  }))
+  .filter((s) => s.count > 0);
+---
+
+<SectionCard
+  title="Status"
+  filterKey="status"
+  urlPrefix="/search/anime/?status="
+  items={items}
+/>

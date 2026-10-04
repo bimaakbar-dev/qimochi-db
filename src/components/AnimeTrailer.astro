@@ -1,0 +1,121 @@
+---
+interface Props {
+  trailer?: string;
+  title?: string;
+}
+
+const { trailer, title = '' } = Astro.props;
+
+if (!trailer) return null;
+
+const watchUrl = `https://www.youtube.com/watch?v=${trailer}`;
+const thumbUrl = `https://img.youtube.com/vi/${trailer}/hqdefault.jpg`;
+---
+
+<a
+  href={watchUrl}
+  class="anime-trailer"
+  target="_blank"
+  rel="noopener noreferrer nofollow"
+  aria-label={`Tonton trailer ${title}`}
+>
+  <img
+    src={thumbUrl}
+    alt=""
+    loading="lazy"
+    decoding="async"
+    class="anime-trailer__img"
+  />
+
+  <span class="anime-trailer__overlay">
+    <span class="anime-trailer__play" aria-hidden="true">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        stroke="none"
+      >
+        <path d="M4 2.5v11l10-5.5-10-5.5z" />
+      </svg>
+    </span>
+    <span class="anime-trailer__label">Putar Trailer</span>
+  </span>
+</a>
+
+<style>
+  .anime-trailer {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 6rem;
+    overflow: hidden;
+    background: var(--bg-surface);
+    text-decoration: none;
+    transition: transform var(--t-fast);
+  }
+
+  .anime-trailer:hover {
+    transform: translateY(-2px);
+  }
+
+  .anime-trailer__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--t-base), opacity var(--t-base);
+  }
+
+  .anime-trailer:hover .anime-trailer__img {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+
+  .anime-trailer__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    padding: var(--s-2);
+    background: hsla(30, 3%, 5%, 0.45);
+    transition: background-color var(--t-fast);
+  }
+
+  .anime-trailer:hover .anime-trailer__overlay {
+    background: hsla(30, 3%, 5%, 0.6);
+  }
+
+  .anime-trailer__play {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding-left: 2px;
+    color: var(--text-inverted);
+    background: var(--accent);
+    border-radius: var(--r-full);
+    flex-shrink: 0;
+    transition: transform var(--t-fast), background-color var(--t-fast);
+  }
+
+  .anime-trailer:hover .anime-trailer__play {
+    transform: scale(1.1);
+    background: var(--accent-hover);
+  }
+
+  .anime-trailer__play svg {
+    display: block;
+  }
+
+  .anime-trailer__label {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.05em;
+    color: var(--text-inverted);
+    text-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.4);
+  }
+</style>

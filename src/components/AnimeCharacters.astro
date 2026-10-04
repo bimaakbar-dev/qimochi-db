@@ -94,8 +94,6 @@ const { characters = [] } = Astro.props;
   .character-row:last-child {
     border-bottom: none;
   }
-
-  /* ---------- CHARACTER (left) ---------- */
   .character-row__char {
     display: flex;
     align-items: center;
@@ -139,8 +137,6 @@ const { characters = [] } = Astro.props;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
-  /* ---------- VOICE ACTOR (right) ---------- */
   .character-row__va {
     display: flex;
     align-items: center;
@@ -168,8 +164,6 @@ const { characters = [] } = Astro.props;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
-  /* ---------- IMG ---------- */
   .character-row__char-cover img,
   .character-row__va-cover img {
     display: block;
@@ -184,7 +178,6 @@ const { characters = [] } = Astro.props;
     background: var(--bg-surface);
   }
 
-  /* ---------- MOBILE ---------- */
   @media (max-width: 50rem) {
     .character-row {
       flex-direction: column;

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import EmptyState from '~/components/EmptyState.astro';
 import Badge from '~/user-components/Badge.astro';
-import { RELATION_LABEL, type RelationType } from '~/constants';
+import { URLS, RELATION_LABEL, type RelationType } from '~/constants';
 
 interface Props {
   title: string;
@@ -46,7 +46,7 @@ const items = related.map((rel) => ({
           : null;
 
         return item.anime ? (
-          <a href={`/anime/${item.slug}/`} class="related-card">
+          <a href={URLS.anime(item.slug)} class="related-card">
             <div class="related-card__cover">
               {item.anime.data.image ? (
                 <img
@@ -59,18 +59,18 @@ const items = related.map((rel) => ({
               )}
             </div>
             <div class="related-card__body">
-                <span>
-                    <Badge variant="outline" size="sm">
-                        {item.relationLabel}
-                    </Badge>
-                </span>
-                <p class="related-card__title">
-                    {item.anime.data.title}
-                </p>
-                <p class="related-card__meta">
-                    {item.anime.data.year ?? '—'}
-                    {relatedFranchiseName && <> · {relatedFranchiseName}</>}
-                </p>
+              <span>
+                <Badge variant="outline" size="sm">
+                  {item.relationLabel}
+                </Badge>
+              </span>
+              <p class="related-card__title">
+                {item.anime.data.title}
+              </p>
+              <p class="related-card__meta">
+                {item.anime.data.year ?? '—'}
+                {relatedFranchiseName && <> · {relatedFranchiseName}</>}
+              </p>
             </div>
           </a>
         ) : (
@@ -126,7 +126,6 @@ const items = related.map((rel) => ({
     }
   }
 
-  /* ---------- CARD ---------- */
   .related-card {
     display: flex;
     flex-direction: column;

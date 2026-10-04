@@ -26,7 +26,7 @@ const year = new Date().getFullYear();
 
     <div class="footer-nav-group">
       <nav class="footer-nav" aria-label="Navigasi footer">
-        <SectionLabel as="h4" size="sm">Jelajahi</SectionLabel>
+        <SectionLabel as="h4" size="sm" class="nav-label">Jelajahi</SectionLabel>
         <ul>
           {NAV_LINKS.map(({ label, href }) => (
             <li><a href={href}>{label}</a></li>
@@ -35,7 +35,7 @@ const year = new Date().getFullYear();
       </nav>
 
       <nav class="footer-nav" aria-label="Sumber">
-        <SectionLabel as="h4" size="sm">Sumber</SectionLabel>
+        <SectionLabel as="h4" size="sm" class="nav-label">Sumber</SectionLabel>
         <ul>
           <li>
             <a
@@ -71,7 +71,7 @@ const year = new Date().getFullYear();
 
   <div class="footer-disclaimer">
     <div class="footer-disclaimer-inner">
-      <SectionLabel as="h4" size="sm" underlined={false}>Tentang Data</SectionLabel>
+      <SectionLabel as="h4" size="sm" underlined={false} class="nav-label">Tentang Data</SectionLabel>
       <p>
         {SITE.name} adalah database katalog anime Indonesia. Kami menyediakan
         informasi publik (judul, studio, genre, rating, sinopsis) untuk
@@ -107,14 +107,6 @@ const year = new Date().getFullYear();
     gap: var(--s-8);
   }
 
-  @media (min-width: 50rem) {
-    .footer-inner {
-      max-width: var(--content-max-desktop);
-      grid-template-columns: auto 1fr;
-      gap: var(--s-16);
-    }
-  }
-
   .footer-brand {
     display: flex;
     align-items: flex-start;
@@ -144,21 +136,13 @@ const year = new Date().getFullYear();
     gap: var(--s-6);
   }
 
-  @media (min-width: 50rem) {
-    .footer-nav-group {
-      grid-template-columns: repeat(2, max-content);
-      gap: var(--s-12);
-      justify-content: start;
-    }
-  }
-
   .footer-nav {
     display: flex;
     flex-direction: column;
     gap: var(--s-3);
     align-items: start;
-    & :is(h2, h3, h4) {
-      color: var(--text-secondary);
+    & .nav-label {
+      color: var(--text-inverted);
       font-size: var(--fs-sm);
     }
   }
@@ -217,15 +201,10 @@ const year = new Date().getFullYear();
     display: flex;
     flex-direction: column;
     gap: var(--s-3);
-    & h4 {
-      color: var(--text-secondary);
+    & .nav-label {
+      font-weight: var(--fw-medium);
+      color: var(--text-inverted);
       font-size: var(--fs-xs);
-    }
-  }
-
-  @media (min-width: 50rem) {
-    .footer-disclaimer-inner {
-      max-width: var(--content-max-desktop);
     }
   }
 
@@ -253,7 +232,20 @@ const year = new Date().getFullYear();
   }
 
   @media (min-width: 50rem) {
+    .footer-inner {
+      max-width: var(--content-max-desktop);
+      grid-template-columns: auto 1fr;
+      gap: var(--s-16);
+    }
+    .footer-nav-group {
+      grid-template-columns: repeat(2, max-content);
+      gap: var(--s-12);
+      justify-content: start;
+    }
     .footer-bottom-inner {
+      max-width: var(--content-max-desktop);
+    }
+    .footer-disclaimer-inner {
       max-width: var(--content-max-desktop);
     }
   }

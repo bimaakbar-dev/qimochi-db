@@ -1,5 +1,6 @@
 ---
 import LinkButton from '~/user-components/LinkButton.astro';
+import SectionLabel from './SectionLabel.astro';
 
 interface Props {
   title: string;
@@ -9,39 +10,42 @@ interface Props {
   searchLabel?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  isSearch?: Boolean;
 }
 
 const {
   title,
   tagline,
-  searchAction = '/search/',
+  searchAction = '/search/anime/',
   searchPlaceholder = 'Cari anime...',
   searchLabel = 'Cari anime',
-  ctaLabel = 'Baca API Docs',
+  ctaLabel = 'API Docs',
   ctaHref = '/docs/',
+  isSearch = false
 } = Astro.props;
 ---
 
 <section class="hero">
   <div class="wrapper hero__inner">
-    <h1 class="hero__title">{title}</h1>
+    <SectionLabel as="h1" size="hero" class="hero__title">{title}</SectionLabel>
     <p class="hero__tagline">{tagline}</p>
+    {isSearch && (
+      <form class="hero__search" action={searchAction} method="get" role="search">
+        <label for="hero-search" class="sr-only">{searchLabel}</label>
+        <input
+          id="hero-search"
+          class="hero__search-input"
+          type="search"
+          name="q"
+          placeholder={searchPlaceholder}
+          autocomplete="off"
+          required
+        />
+        <button class="hero__search-button" type="submit">Cari</button>
+      </form>
+    )}
 
-    <form class="hero__search" action={searchAction} method="get" role="search">
-      <label for="hero-search" class="sr-only">{searchLabel}</label>
-      <input
-        id="hero-search"
-        class="hero__search-input"
-        type="search"
-        name="q"
-        placeholder={searchPlaceholder}
-        autocomplete="off"
-        required
-      />
-      <button class="hero__search-button" type="submit">Cari</button>
-    </form>
-
-    <LinkButton href={ctaHref} variant="outline" size="lg">
+    <LinkButton href={ctaHref} variant="accent" icon="arrow-right" iconPos="suffix" size="lg">
       {ctaLabel}
     </LinkButton>
   </div>
@@ -51,34 +55,26 @@ const {
   .hero {
     padding-block: var(--s-12);
   }
-
-  @media (min-width: 50rem) {
-    .hero {
-      padding-block: var(--s-16);
-    }
-  }
-
   .hero__inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: var(--s-4);
-  }
-
-  .hero__title {
-    margin: 0;
-    font-size: var(--fs-3xl);
-    font-weight: var(--fw-bold);
-    line-height: var(--lh-tight);
-    color: var(--text-primary);
-  }
-
-  .hero__tagline {
-    margin: 0;
-    max-width: 32rem;
-    font-size: var(--fs-base);
-    color: var(--text-secondary);
+    width: 100%;
+    & h1 {
+      margin: 0;
+      font-size: var(--fs-3xl);
+      font-weight: var(--fw-bold);
+      line-height: var(--lh-tight);
+      color: var(--text-primary);
+    }
+    & .hero__tagline {
+      margin: 0;
+      max-width: 32rem;
+      font-size: var(--fs-base);
+      color: var(--text-secondary);
+    }
   }
 
   .hero__search {
@@ -124,26 +120,17 @@ const {
     border-color: var(--accent-hover);
   }
 
-  .hero__cta {
-    margin-top: var(--s-2);
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-medium);
-    color: var(--accent);
-    text-decoration: none;
-    transition: color var(--t-fast);
-  }
-
-  .hero__cta:hover {
-    color: var(--accent-hover);
-  }
-
   @media (min-width: 50rem) {
-    .hero__title {
-      font-size: var(--fs-5xl);
+    .hero {
+      padding-block: var(--s-16);
     }
-
-    .hero__tagline {
-      font-size: var(--fs-lg);
+    .hero__inner {
+      & h1 {
+        font-size: var(--fs-5xl);
+      }
+      & .hero__tagline {
+        font-size: var(--fs-base);
+      }
     }
   }
 </style>

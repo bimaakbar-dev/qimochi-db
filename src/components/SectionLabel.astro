@@ -1,14 +1,16 @@
 ---
 interface Props {
-  as?: 'h1' | 'h2' | 'h3' | 'h4';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'hero';
   size?: 'sm' | 'md' | 'lg';
   underlined?: boolean;
+  class?: string;
 }
 
 const {
   as: Tag = 'h2',
   size = 'lg',
   underlined = true,
+  class: className,
 } = Astro.props;
 ---
 
@@ -16,37 +18,38 @@ const {
   class:list={[
     'section-label',
     `section-label-${size}`,
-    { 'section-label-underlined': underlined },
   ]}
 >
-  <slot />
+  <span
+    class:list={[
+      'section-label__text',
+      { 'section-label__text--underlined': underlined },
+      className,
+    ]}
+  >
+    <slot />
+  </span>
 </Tag>
 
 <style>
   .section-label {
-    position: relative;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: var(--fw-semibold);
     margin: 0;
   }
 
-  .section-label-sm {
-    font-size: var(--fs-xs);
+  .section-label__text {
+    display: inline-block;
+    position: relative;
     color: var(--text-primary);
   }
 
-  .section-label-md {
-    font-size: var(--fs-lg);
-    color: var(--text-primary);
-  }
+  .section-label-sm { font-size: var(--fs-xs); }
+  .section-label-md { font-size: var(--fs-lg); }
+  .section-label-lg { font-size: var(--fs-xl); }
+  .section-label-hero { font-size: var(--fs-3xl); }
 
-  .section-label-lg {
-    font-size: var(--fs-xl);
-    color: var(--text-primary);
-  }
-
-  .section-label-underlined::after {
+  :global(.section-label__text--underlined::after) {
     content: '';
     position: absolute;
     left: 0;
@@ -63,5 +66,8 @@ const {
     mask-repeat: no-repeat;
 
     pointer-events: none;
+  }
+  @media (min-width: 50rem) {
+    .section-label-hero { font-size: var(--fs-5xl); }
   }
 </style>

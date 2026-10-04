@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import SectionCard from '~/components/SectionCard.astro';
+import { countByArrayField } from '~/lib/data';
+
+const studios = await getCollection('studios');
+const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+
+const countMap = countByArrayField(allAnime, 'studios');
+
+const items = studios
+  .map((s) => ({
+    id: s.data.id,
+    name: s.data.name,
+    count: countMap.get(s.data.id) ?? 0,
+  }))
+  .filter((s) => s.count > 0)
+  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+---
+
+<SectionCard
+  title="Studio"
+  filterKey="studio"
+  urlPrefix="/search/anime/?studio="
+  items={items}
+/>

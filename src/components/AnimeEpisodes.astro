@@ -1,6 +1,6 @@
 ---
 import EmptyState from '~/components/EmptyState.astro';
-import { MONTHS_ID } from '~/constants';
+import { formatDate } from '~/lib/format';
 
 interface Props {
   episodes?: {
@@ -12,11 +12,6 @@ interface Props {
 }
 
 const { episodes = [] } = Astro.props;
-
-function formatDate(iso: string): string {
-  const [y, m, d] = iso.split('-').map(Number);
-  return `${d} ${MONTHS_ID[m - 1]} ${y}`;
-}
 ---
 
 <div class="anime-episodes">
@@ -37,7 +32,6 @@ function formatDate(iso: string): string {
 
           <span class="episode-row__meta">
             {ep.aired && <span>{formatDate(ep.aired)}</span>}
-            {ep.duration && <span>{ep.duration} min</span>}
           </span>
         </li>
       ))}

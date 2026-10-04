@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import SectionCard from '~/components/SectionCard.astro';
+import { countByField } from '~/lib/data';
+import { SEASONS, SEASON_LABEL, type Season } from '~/constants';
+
+const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+const countMap = countByField(allAnime, 'season');
+
+const items = SEASONS
+  .map((s) => ({
+    id: s,
+    name: SEASON_LABEL[s as Season],
+    count: countMap.get(s) ?? 0,
+  }))
+  .filter((s) => s.count > 0);
+---
+
+<SectionCard
+  title="Musim"
+  filterKey="season"
+  urlPrefix="/search/anime/?season="
+  items={items}
+/>

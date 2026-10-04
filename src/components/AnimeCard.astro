@@ -1,39 +1,55 @@
 ---
+import { URLS } from '~/constants';
+import { escapeHtml } from '~/lib/utils';
+
 interface Props {
-  slug: string;
-  title: string;
+  mode?: 'card' | 'template';
+  slug?: string;
+  title?: string;
   image?: string;
 }
 
-const { slug, title, image } = Astro.props;
-const href = `/anime/${slug}/`;
----
+const { mode = 'card', slug = '', title = '', image } = Astro.props;
 
+function cardMarkup(opts: {
+  href?: string;
+  title?: string;
+  image?: string;
+}): string {
+  const { href = '', title = '', image } = opts;
+  const hasImage = Boolean(image);
+  const safeTitle = escapeHtml(title);
+  const safeHref = escapeHtml(href);
+  const safeImage = image ? escapeHtml(image) : '';
+
+  return `
 <article class="anime-card">
-  <a href={href} class="anime-card__link" aria-label={title}>
+  <a${safeHref ? ` href="${safeHref}"` : ''} class="anime-card__link"${safeTitle ? ` aria-label="${safeTitle}"` : ''}>
     <div class="anime-card__cover">
-      {image ? (
-        <img
-          src={image}
-          alt=""
-          loading="lazy"
-          decoding="async"
-          fetchpriority="low"
-          width="300"
-          height="450"
-        />
-      ) : (
-        <div class="anime-card__placeholder" aria-hidden="true"></div>
-      )}
-
+      <img${safeImage ? ` src="${safeImage}"` : ''} alt="" loading="lazy" decoding="async" width="300" height="450" class="anime-card__img"${hasImage ? '' : ' hidden'} />
+      <div class="anime-card__placeholder" aria-hidden="true"${hasImage ? ' hidden' : ''}></div>
       <div class="anime-card__overlay">
-        <h3 class="anime-card__title">{title}</h3>
+        <h3 class="anime-card__title">${safeTitle}</h3>
       </div>
     </div>
   </a>
-</article>
+</article>`.trim();
+}
 
-<style>
+const isTemplate = mode === 'template';
+
+const html = isTemplate
+  ? cardMarkup({})
+  : cardMarkup({ href: URLS.anime(slug), title, image });
+---
+
+{isTemplate ? (
+  <template id="anime-card-template" set:html={html} />
+) : (
+  <Fragment set:html={html} />
+)}
+
+<style is:global>
   .anime-card__link {
     display: block;
     color: inherit;
@@ -47,11 +63,16 @@ const href = `/anime/${slug}/`;
     background: var(--bg-surface);
   }
 
-  .anime-card__cover img {
+  .anime-card__img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity var(--t-base);
+  }
+
+  .anime-card__img[data-loading] {
+    opacity: 0;
   }
 
   .anime-card__placeholder {
@@ -59,7 +80,7 @@ const href = `/anime/${slug}/`;
     height: 100%;
     background: var(--bg-surface);
   }
-  
+
   .anime-card__overlay {
     position: absolute;
     inset: 0;
@@ -95,7 +116,6 @@ const href = `/anime/${slug}/`;
       opacity: 0;
       background: hsla(30, 3%, 5%, 0.7);
     }
-
     .anime-card__link:hover .anime-card__overlay,
     .anime-card__link:focus-visible .anime-card__overlay {
       opacity: 1;

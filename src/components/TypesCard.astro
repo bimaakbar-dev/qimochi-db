@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import SectionCard from '~/components/SectionCard.astro';
+import { countByField } from '~/lib/data';
+import { ANIME_TYPES } from '~/constants';
+
+const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+const countMap = countByField(allAnime, 'type');
+
+const items = ANIME_TYPES
+  .map((type) => ({
+    id: type,
+    name: type,
+    count: countMap.get(type) ?? 0,
+  }))
+  .filter((t) => t.count > 0);
+---
+
+<SectionCard
+  title="Tipe"
+  filterKey="type"
+  urlPrefix="/search/anime/?type="
+  items={items}
+/>

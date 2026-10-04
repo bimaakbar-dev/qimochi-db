@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import SectionCard from '~/components/SectionCard.astro';
+import { countByField } from '~/lib/data';
+
+const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+const countMap = countByField(allAnime, 'year');
+
+const items = [...countMap.entries()]
+  .map(([year, count]) => ({
+    id: year,
+    name: year,
+    count,
+  }))
+  .sort((a, b) => Number(b.id) - Number(a.id));
+---
+
+<SectionCard
+  title="Tahun"
+  filterKey="year"
+  urlPrefix="/search/anime/?year="
+  items={items}
+  layout="grid"
+/>

@@ -1,12 +1,13 @@
 ---
 interface Props {
   class?: string;
+  [key: string]: any;
 }
 
-const { class: className } = Astro.props;
+const { class: className, ...rest } = Astro.props;
 ---
 
-<div class:list={['anime-grid', className]}>
+<div class:list={['anime-grid', className]} {...rest}>
   <slot />
 </div>
 
@@ -16,14 +17,15 @@ const { class: className } = Astro.props;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--s-4);
   }
-
+  .anime-grid[hidden] {
+    display: none;
+  }
   @media (min-width: 50rem) {
     .anime-grid {
       grid-template-columns: repeat(4, 1fr);
       gap: var(--s-5);
     }
   }
-
   @media (min-width: 72rem) {
     .anime-grid {
       grid-template-columns: repeat(6, 1fr);

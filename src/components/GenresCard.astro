@@ -1,8 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
-import SectionLabel from '~/components/SectionLabel.astro';
+import SectionCard from '~/components/SectionCard.astro';
+import { countByArrayField } from '~/lib/data';
 
 const genres = await getCollection('genres');
+const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+
+const countMap = countByArrayField(allAnime, 'genres');
 
 const categoryOrder = { genre: 0, theme: 1, demographic: 2 } as const;
 const sorted = [...genres].sort((a, b) => {
@@ -11,67 +15,19 @@ const sorted = [...genres].sort((a, b) => {
   if (catDiff !== 0) return catDiff;
   return a.data.name.localeCompare(b.data.name);
 });
+
+const items = sorted
+  .map((g) => ({
+    id: g.data.id,
+    name: g.data.name,
+    count: countMap.get(g.data.id) ?? 0,
+  }))
+  .filter((g) => g.count > 0);
 ---
 
-<div class="sidebar">
-  <div class="sidebar__widget">
-    <div class="sidebar__label">
-      <SectionLabel as="h3" size="sm">Genre</SectionLabel>
-    </div>
-    <ul class="sidebar__list">
-      {sorted.map((genre) => (
-        <li>
-          <a href={`/search/anime/?genre=${genre.data.id}`} class="sidebar__chip">
-            {genre.data.name}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-</div>
-
-<style>
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s-8);
-  }
-
-  .sidebar__widget {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s-3);
-  }
-
-  .sidebar__label {
-    display: flex;
-    align-items: center;
-  }
-
-  .sidebar__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--s-2);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .sidebar__chip {
-    display: inline-block;
-    padding: var(--s-1) var(--s-3);
-    font-size: var(--fs-xs);
-    color: var(--text-secondary);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--r-full);
-    text-decoration: none;
-    transition: all var(--t-fast);
-  }
-
-  .sidebar__chip:hover {
-    color: var(--accent-text);
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-</style>
+<SectionCard
+  title="Genre"
+  filterKey="genre"
+  urlPrefix="/search/anime/?genre="
+  items={items}
+/>
