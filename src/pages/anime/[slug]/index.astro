@@ -57,7 +57,9 @@ const studioItems = data.studios.map((slug) => ({
           year={data.year}
           genres={data.genres}
         >
-          <Content />
+          <div class="markdown">
+            <Content />
+          </div>
         </AnimeSummary>
 
         <AnimeEpisodes slot="episodes" episodes={data.episodeList} />
