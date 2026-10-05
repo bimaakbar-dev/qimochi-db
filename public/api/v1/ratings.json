@@ -1,20 +1,24 @@
 {
   "data": {
+    "jujutsu-kaisen": {
+      "average": 10,
+      "votes": 1
+    },
     "kimetsu-no-yaiba": {
       "average": 7,
       "votes": 2
     },
     "one-piece": {
-      "average": 4,
-      "votes": 1
+      "average": 7,
+      "votes": 2
     },
     "shingeki-no-kyojin": {
       "average": 10,
       "votes": 1
     },
     "sousou-no-frieren": {
-      "average": 6,
-      "votes": 1
+      "average": 7,
+      "votes": 2
     },
     "spy-x-family": {
       "average": 10,
@@ -26,7 +30,7 @@
     }
   },
   "meta": {
-    "total": 6,
-    "generatedAt": "2026-10-05T03:00:03.472Z"
+    "total": 7,
+    "generatedAt": "2026-10-05T13:00:16.090Z"
   }
 }
