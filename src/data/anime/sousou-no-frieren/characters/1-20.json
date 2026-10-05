@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Fern",
+    "image": "https://shikimori.one/system/characters/original/188176.jpg?1711315849",
+    "role": "main"
+  },
+  {
+    "name": "Frieren",
+    "image": "https://shikimori.one/system/characters/original/184947.jpg?1711056265",
+    "role": "main"
+  },
+  {
+    "name": "Stark",
+    "image": "https://shikimori.one/system/characters/original/188177.jpg?1711056310",
+    "role": "main"
+  },
+  {
+    "name": "Aura",
+    "image": "https://shikimori.one/system/characters/original/206722.jpg?1710454023",
+    "role": "supporting"
+  },
+  {
+    "name": "Bakery Owner",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Bartender",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Blei",
+    "image": "https://shikimori.one/system/characters/original/215341.jpg?1710884111",
+    "role": "supporting"
+  },
+  {
+    "name": "Burg",
+    "image": "https://shikimori.one/system/characters/original/215302.jpg?1710198958",
+    "role": "supporting"
+  },
+  {
+    "name": "Captain of the Guard",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Castellan",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Chief of the Village of the Sword",
+    "image": "https://shikimori.one/system/characters/original/238061.jpg?1710969917",
+    "role": "supporting"
+  },
+  {
+    "name": "Church Father",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Demon Child",
+    "image": "https://shikimori.one/system/characters/original/236472.jpg?1710454637",
+    "role": "supporting"
+  },
+  {
+    "name": "Denken",
+    "image": "https://shikimori.one/system/characters/original/215250.jpg?1710884056",
+    "role": "supporting"
+  },
+  {
+    "name": "Draht",
+    "image": "https://shikimori.one/system/characters/original/215255.jpg?1710454124",
+    "role": "supporting"
+  },
+  {
+    "name": "Dünste",
+    "image": "https://shikimori.one/system/characters/original/215304.jpg?1710198943",
+    "role": "supporting"
+  },
+  {
+    "name": "Edel",
+    "image": "https://shikimori.one/system/characters/original/206724.jpg?1710883963",
+    "role": "supporting"
+  },
+  {
+    "name": "Ehre",
+    "image": "https://shikimori.one/system/characters/original/215263.jpg?1710969512",
+    "role": "supporting"
+  },
+  {
+    "name": "Eisen",
+    "image": "https://shikimori.one/system/characters/original/196825.jpg?1711316025",
+    "role": "supporting"
+  },
+  {
+    "name": "Elder",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  }
+]

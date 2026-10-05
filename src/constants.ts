@@ -1,19 +1,26 @@
 export const SITE = {
-  name: 'QimochiDB',
-  title: 'QimochiDB',
+  name: 'Yukionime',
+  title: 'Yukionime',
   description: 'Database anime Indonesia — katalog lengkap, API gratis untuk developer.',
-  url: 'https://qimochi.pages.dev',
+  url: 'https://yukionime.pages.dev',
   locale: 'id-ID',
   lang: 'id',
 } as const;
 
+export const ROUTE = {
+  home: '/',
+  api: '/api/',
+  docs: '/docs/',
+} as const;
+
 export const NAV_LINKS = [
-  { label: 'API',       href: '/docs/' },
+  { label: 'API',       href: ROUTE.docs },
 ] as const;
 
 export const STATUSES = [
   'airing', 'finished', 'upcoming', 'hiatus', 'cancelled',
 ] as const;
+
 export type Status = typeof STATUSES[number];
 
 export const STATUS_LABEL: Record<Status, string> = {
@@ -38,6 +45,7 @@ export const STATUS_VARIANT: Record<
 export const ANIME_TYPES = [
   'TV', 'Movie', 'OVA', 'ONA', 'Special', 'Music', 'Unknown',
 ] as const;
+
 export type AnimeType = typeof ANIME_TYPES[number];
 
 export const SEASONS = ['winter', 'spring', 'summer', 'fall'] as const;
@@ -55,6 +63,7 @@ export const SOURCES = [
   'web_manga', 'web_novel', 'novel', 'book', 'picture_book',
   'radio', 'music', '4_koma_manga', 'card_game', 'other',
 ] as const;
+
 export type Source = typeof SOURCES[number];
 
 export const SOURCE_LABEL: Record<Source, string> = {

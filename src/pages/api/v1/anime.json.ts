@@ -1,9 +1,9 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
+import { getAllAnime } from '~/lib/anime';
 import { jsonResponse, corsPreflightResponse } from '~/lib/api/response';
 
 export const GET: APIRoute = async () => {
-  const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+  const allAnime = await getAllAnime();
 
   const data = allAnime.map((anime) => {
     const d = anime.data;

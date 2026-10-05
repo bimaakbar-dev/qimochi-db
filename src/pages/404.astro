@@ -2,15 +2,16 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Page from '~/components/Page.astro';
 import Hero from '~/components/Hero.astro';
+import { ROUTE } from '~/constants';
 ---
 
-<BaseLayout title="Halaman tidak ditemukan" noindex>
+<BaseLayout title="Halaman tidak ditemukan" description='Alamat yang kamu buka tidak ada atau sudah dipindahkan.' noindex>
   <Page>
     <Hero
       title="Halaman tidak ditemukan"
       tagline="Alamat yang kamu buka tidak ada atau sudah dipindahkan."
       ctaLabel='Ke Beranda'
-      ctaHref='/'
+      ctaHref={ROUTE.home}
     >
     </Hero>
   </Page>

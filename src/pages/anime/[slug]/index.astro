@@ -1,6 +1,9 @@
 
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { getAllAnime } from '~/lib/anime';
+
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Page from '~/components/Page.astro';
 import AnimeBanner from '~/components/AnimeBanner.astro';
@@ -16,7 +19,7 @@ import AnimeCharacters from '~/components/AnimeCharacters.astro';
 import AnimeTrailer from '~/components/AnimeTrailer.astro';
 
 export async function getStaticPaths() {
-  const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+  const allAnime = await getAllAnime();
   return allAnime.map((anime) => ({
     params: { slug: anime.id },
     props: { anime },
@@ -38,7 +41,6 @@ const studioItems = data.studios.map((slug) => ({
 
 <BaseLayout title={data.title}>
   <AnimeBanner image={data.banner} />
-
   <Page>
     <AnimeDetailLayout>
       <AnimeCover slot="cover" image={data.image} title={data.title}>

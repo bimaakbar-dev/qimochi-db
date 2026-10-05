@@ -1,9 +1,11 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { getAllAnime, getAnimeById } from '~/lib/anime';
 import { jsonResponse, errorResponse, corsPreflightResponse } from '~/lib/api/response';
 
 export async function getStaticPaths() {
-  const allAnime = await getCollection('anime', ({ data }) => !data.draft);
+  const allAnime = await getAllAnime();
   return allAnime.map((anime) => ({
     params: { id: anime.id },
   }));
@@ -13,8 +15,7 @@ export const GET: APIRoute = async ({ params }) => {
   const { id } = params;
   if (!id) return errorResponse('BAD_REQUEST', 'Missing anime id', 400);
 
-  const allAnime = await getCollection('anime', ({ data }) => !data.draft);
-  const anime = allAnime.find((a) => a.id === id);
+  const anime = await getAnimeById(id);
 
   if (!anime) {
     return errorResponse('NOT_FOUND', `Anime '${id}' not found`, 404);
@@ -22,10 +23,14 @@ export const GET: APIRoute = async ({ params }) => {
 
   const d = anime.data;
 
-  const allStudios = await getCollection('studios');
-  const studioMap = new Map(allStudios.map((s) => [s.data.id, s.data.name]));
+  type StudioEntry = CollectionEntry<'studios'>;
 
-  const studios = d.studios.map((slug) => ({
+  const allStudios = await getCollection('studios');
+  const studioMap = new Map(
+    allStudios.map((s: StudioEntry) => [s.data.id, s.data.name])
+  );
+
+  const studios = d.studios.map((slug: string) => ({
     slug,
     name: studioMap.get(slug) ?? slug,
   }));

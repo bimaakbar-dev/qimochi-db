@@ -3,6 +3,7 @@ import '~/styles/global.css';
 import Head from '~/components/Head.astro';
 import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
+import { SITE } from '~/constants';
 
 interface Props {
   title?: string;
@@ -15,7 +16,7 @@ interface Props {
 }
 
 const {
-  title = 'Qimochi',
+  title = SITE.title,
   description,
   image,
   canonical,
@@ -25,7 +26,7 @@ const {
 } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="id">
+<html lang={SITE.lang}>
   <head>
     <Head
       title={title}

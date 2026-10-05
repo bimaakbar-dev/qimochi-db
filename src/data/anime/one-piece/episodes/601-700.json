@@ -1,0 +1,502 @@
+[
+  {
+    "number": 601,
+    "title": "Shin Sekai Gekishin: Caesar Akumu no Jikken",
+    "aired": "2013-06-23"
+  },
+  {
+    "number": 602,
+    "title": "Shijou Saiaku no Satsuriku Heiki! Shinokuni",
+    "aired": "2013-06-30"
+  },
+  {
+    "number": 603,
+    "title": "Hangeki Kaishi! Luffy Law Dai-Dasshutsu",
+    "aired": "2013-07-07"
+  },
+  {
+    "number": 604,
+    "title": "Mezase R! Kaizoku Doumei Kai-Shingeki!",
+    "aired": "2013-07-14"
+  },
+  {
+    "number": 605,
+    "title": "Tashigi no Namida: G-5 Kesshi no Toppa Sakusen",
+    "aired": "2013-07-21"
+  },
+  {
+    "number": 606,
+    "title": "Uragiri no Chuujou! Kichiku no Vergo",
+    "aired": "2013-07-28"
+  },
+  {
+    "number": 607,
+    "title": "Hakunetsu no Gekisen: Luffy tai Caesar",
+    "aired": "2013-08-11"
+  },
+  {
+    "number": 608,
+    "title": "Yami no Kuromaku! Doflamingo Ugoku!",
+    "aired": "2013-08-18"
+  },
+  {
+    "number": 609,
+    "title": "Luffy Toushi!? Kyoufu no Yuki-Onna Mone!",
+    "aired": "2013-08-25"
+  },
+  {
+    "number": 610,
+    "title": "Butsukaru Kobushi! Futari no Chuujou no Tatakai",
+    "aired": "2013-09-01"
+  },
+  {
+    "number": 611,
+    "title": "Chiisana Doragon! Momonosuke Arawaru",
+    "aired": "2013-09-08"
+  },
+  {
+    "number": 612,
+    "title": "Fubuki no Shitou: Mugiwara no Ichimi tai Yuki-Onna",
+    "aired": "2013-09-15"
+  },
+  {
+    "number": 613,
+    "title": "Oogi Sakuretsu! Zoro Saikyou no Ittou-ryuu!",
+    "aired": "2013-09-22"
+  },
+  {
+    "number": 614,
+    "title": "Tomodachi wo Mamoru! Mocha Inochi-gake no Tousou",
+    "aired": "2013-09-29"
+  },
+  {
+    "number": 615,
+    "title": "Chahige Hitsuu! Luffy Ikari no Ichigeki",
+    "aired": "2013-10-06"
+  },
+  {
+    "number": 616,
+    "title": "Shougeki no Ketchaku! Smoker tai Vergo!",
+    "aired": "2013-10-13"
+  },
+  {
+    "number": 617,
+    "title": "Caesar Gekiha! Saikyou no Grizzly Magnum",
+    "aired": "2013-10-20"
+  },
+  {
+    "number": 618,
+    "title": "Shuurai! Dressrosa kara no Shikaku",
+    "aired": "2013-10-27"
+  },
+  {
+    "number": 619,
+    "title": "Ou-abare! Muteki no Franky Shougun",
+    "aired": "2013-11-03"
+  },
+  {
+    "number": 620,
+    "title": "Zettai Zetsumei! Punk Hazard Dai-bakuhatsu",
+    "aired": "2013-11-10"
+  },
+  {
+    "number": 621,
+    "title": "Caesar wo Hokaku-seyo: Jeneraru Kyanon Sakuretsu",
+    "aired": "2013-11-17"
+  },
+  {
+    "number": 622,
+    "title": "Kandou no Saikai! Momonosuke to Kinemon",
+    "aired": "2013-11-24"
+  },
+  {
+    "number": 623,
+    "title": "Sekibetsu no Toki: Punk Hazard Shukkou!",
+    "aired": "2013-12-01"
+  },
+  {
+    "number": 624,
+    "title": "G-5 Kaimetsu! Doflamingo Kyuushuu!",
+    "aired": "2013-12-08"
+  },
+  {
+    "number": 625,
+    "title": "Kinpaku! Aokiji vs Doflamingo",
+    "aired": "2013-12-15"
+  },
+  {
+    "number": 626,
+    "title": "Kieta Caesar Kaizoku Doumei Shutsugeki",
+    "aired": "2013-12-22"
+  },
+  {
+    "number": 627,
+    "title": "Luffy Umi ni Shisu!? Kaizoku Doumei Houkai",
+    "aired": "2014-01-05"
+  },
+  {
+    "number": 628,
+    "title": "Dai-gyakuten! Sakuretsu Luffy Ikari no Tekken",
+    "aired": "2014-01-12"
+  },
+  {
+    "number": 629,
+    "title": "Gekishin! Shin Sekai Ugokasu Dai-nyuusu",
+    "aired": "2014-01-19"
+  },
+  {
+    "number": 630,
+    "title": "Bouken! Ai to Jounetsu no Kuni Dressrosa",
+    "aired": "2014-01-26"
+  },
+  {
+    "number": 631,
+    "title": "Nekkyou Uzumaku: Corrida Colosseum",
+    "aired": "2014-02-02"
+  },
+  {
+    "number": 632,
+    "title": "Kiken na Koi: Odoriko Violet",
+    "aired": "2014-02-09"
+  },
+  {
+    "number": 633,
+    "title": "Saikyou no Mumei Senshi! Lucy Toujou",
+    "aired": "2014-02-16"
+  },
+  {
+    "number": 634,
+    "title": "Kaizoku Kikoushi Cavendish",
+    "aired": "2014-02-23"
+  },
+  {
+    "number": 635,
+    "title": "Unmei no Saikai: Haiena no Bellamy",
+    "aired": "2014-03-02"
+  },
+  {
+    "number": 636,
+    "title": "Choushinsei! Hitokui no Bartolomeo",
+    "aired": "2014-03-16"
+  },
+  {
+    "number": 637,
+    "title": "Gunyuu-kakkyo! Hakunetsu no B Block!",
+    "aired": "2014-03-23"
+  },
+  {
+    "number": 638,
+    "title": "Ichigeki-hissatsu! Kyoui no King Punch",
+    "aired": "2014-03-30"
+  },
+  {
+    "number": 639,
+    "title": "Tougyo Shuurai! Shi no Tekkyou wo Toppa Seyo",
+    "aired": "2014-04-06"
+  },
+  {
+    "number": 640,
+    "title": "Bouken! Yousei no Shima Green Bit",
+    "aired": "2014-04-13"
+  },
+  {
+    "number": 641,
+    "title": "Shirarezaru Sekai: Tontatta Oukoku",
+    "aired": "2014-04-20"
+  },
+  {
+    "number": 642,
+    "title": "Seiki no Bouryaku: Doflamingo Ugoku",
+    "aired": "2014-04-27"
+  },
+  {
+    "number": 643,
+    "title": "Tenchi Yurugasu! Taishou Fujitora no Jitsuryoku",
+    "aired": "2014-05-04"
+  },
+  {
+    "number": 644,
+    "title": "Ikari no Ichigeki! Kyojin tai Lucy",
+    "aired": "2014-05-11"
+  },
+  {
+    "number": 645,
+    "title": "Hakai-hou Sakuretsu! Lucy Kiki-ippatsu",
+    "aired": "2014-05-18"
+  },
+  {
+    "number": 646,
+    "title": "Densetsu no Kaizoku: Don Chinjao!",
+    "aired": "2014-05-25"
+  },
+  {
+    "number": 647,
+    "title": "Hikari to Kage: Dressrosa ni Hisomu Yami!",
+    "aired": "2014-06-01"
+  },
+  {
+    "number": 648,
+    "title": "Shutsugeki: Densetsu no Hero Usoland",
+    "aired": "2014-06-08"
+  },
+  {
+    "number": 649,
+    "title": "Gekisen Ketchaku: Lucy tai Chinjao",
+    "aired": "2014-06-15"
+  },
+  {
+    "number": 650,
+    "title": "Luffy to Shukumei no Ken Toushi Rebecca",
+    "aired": "2014-06-22"
+  },
+  {
+    "number": 651,
+    "title": "Mamorinuku! Rebecca to Omocha no Heitai",
+    "aired": "2014-06-29"
+  },
+  {
+    "number": 652,
+    "title": "Saigo no Chou Gekisen Ku D Block Kaisen",
+    "aired": "2014-07-06"
+  },
+  {
+    "number": 653,
+    "title": "Kessen! Giolla vs Mugiwara no Ichimi",
+    "aired": "2014-07-13"
+  },
+  {
+    "number": 654,
+    "title": "Biken! Hakuba no Kyabendisshu",
+    "aired": "2014-07-20"
+  },
+  {
+    "number": 655,
+    "title": "Dai-gekitotsu! Sanji tai Doflamingo",
+    "aired": "2014-08-03"
+  },
+  {
+    "number": 656,
+    "title": "Rebecca Hissatsu Ken! Haisui no Kenbu",
+    "aired": "2014-08-10"
+  },
+  {
+    "number": 657,
+    "title": "Saikyou no Senshi! Logan tai Rebecca",
+    "aired": "2014-08-17"
+  },
+  {
+    "number": 658,
+    "title": "Shougeki! Omocha no Heitai no Shoutai!",
+    "aired": "2014-08-24"
+  },
+  {
+    "number": 659,
+    "title": "Senritsu no Kako! Dressrosa no Himitsu",
+    "aired": "2014-08-31"
+  },
+  {
+    "number": 660,
+    "title": "Akumu! Dressrosa Higeki no Ichiya",
+    "aired": "2014-09-07"
+  },
+  {
+    "number": 661,
+    "title": "Shichibukai Taiketsu! Law vs Doflamingo",
+    "aired": "2014-09-14"
+  },
+  {
+    "number": 662,
+    "title": "Ryouyuu Aimamieru! Mugiwara to Ten Yasha",
+    "aired": "2014-09-21"
+  },
+  {
+    "number": 663,
+    "title": "Luffy Kyougaku: Ace no Ishi wo Tsugu Otoko",
+    "aired": "2014-09-28"
+  },
+  {
+    "number": 664,
+    "title": "SOP Sakusen Kaishi: Usoland Totsugeki",
+    "aired": "2014-10-05"
+  },
+  {
+    "number": 665,
+    "title": "Atsuki Omoi: Rebecca tai Suleiman",
+    "aired": "2014-10-12"
+  },
+  {
+    "number": 666,
+    "title": "Shousha Kettei!? Block D Shougeki no Ketsumatsu",
+    "aired": "2014-10-19"
+  },
+  {
+    "number": 667,
+    "title": "Taishou no Ketsudan: Fujitora vs Doflamingo",
+    "aired": "2014-10-26"
+  },
+  {
+    "number": 668,
+    "title": "Kesshou Kaishi: Eiyuu Diamante Toujou",
+    "aired": "2014-11-02"
+  },
+  {
+    "number": 669,
+    "title": "Ugoku Shiro! Saikou Kanbu Pica Shutsugen",
+    "aired": "2014-11-09"
+  },
+  {
+    "number": 670,
+    "title": "Ryuu no Tsume Sakuretsu! Ruushii Kyoui no Ichigeki!",
+    "aired": "2014-11-16"
+  },
+  {
+    "number": 671,
+    "title": "Datou Shugar: Kobito no Heitai Totsugeki!",
+    "aired": "2014-11-23"
+  },
+  {
+    "number": 672,
+    "title": "Saigo no Hikari: Warera ga Taichou no Himitsu!",
+    "aired": "2014-11-30"
+  },
+  {
+    "number": 673,
+    "title": "Panku Ningen: Gladius Dai Bakuhatsu!",
+    "aired": "2014-12-07"
+  },
+  {
+    "number": 674,
+    "title": "Usotsuki Usorando Tousou-Chuu!",
+    "aired": "2014-12-14"
+  },
+  {
+    "number": 675,
+    "title": "Unmei no Deai: Kyurosu to Riku Ou",
+    "aired": "2014-12-21"
+  },
+  {
+    "number": 676,
+    "title": "Sakusen Shippai! Eiyuu Usolando Shisu!?",
+    "aired": "2014-12-28"
+  },
+  {
+    "number": 677,
+    "title": "Densetsu Fukkatsu! Kyurosu Konshin no Ichigeki",
+    "aired": "2015-01-11"
+  },
+  {
+    "number": 678,
+    "title": "Hiken Sakuretsu! Fukkatsu Mera Mera no Mi no Chikara",
+    "aired": "2015-01-18"
+  },
+  {
+    "number": 679,
+    "title": "Sassou Toujou: Kakumei-gun Sanbou Souchou Sabo!",
+    "aired": "2015-01-25"
+  },
+  {
+    "number": 680,
+    "title": "Akuma no Wana: Dressrosa Senmetsu Sakusen",
+    "aired": "2015-02-01"
+  },
+  {
+    "number": 681,
+    "title": "Go Oku no Otoko: Nerawareta Usoland!",
+    "aired": "2015-02-08"
+  },
+  {
+    "number": 682,
+    "title": "Tekijin Toppa: Luffy Zoro Hangeki Kaishi!",
+    "aired": "2015-02-15"
+  },
+  {
+    "number": 683,
+    "title": "Daichi Meidou: Hakai-shin Kyodai Pica Kourin",
+    "aired": "2015-03-01"
+  },
+  {
+    "number": 684,
+    "title": "Dai Shuuketsu! Luffy to Kyouaku Senshi Gundan",
+    "aired": "2015-03-15"
+  },
+  {
+    "number": 685,
+    "title": "Kai Shingeki! Luffy Gundan tai Pica!",
+    "aired": "2015-03-22"
+  },
+  {
+    "number": 686,
+    "title": "Shougeki Kokuhaku! Law Atsuki Tamashii no Chikai!",
+    "aired": "2015-03-29"
+  },
+  {
+    "number": 687,
+    "title": "Dai-Gekitotsu!: Sanbou Souchou Sabo tai Taishou Fujitora",
+    "aired": "2015-04-05"
+  },
+  {
+    "number": 688,
+    "title": "Zettai Zetsumei: Wana ni Kakatta Luffy!",
+    "aired": "2015-04-12"
+  },
+  {
+    "number": 689,
+    "title": "Dai Dasshutsu! Luffy Kishikaisei no Elephant Gun",
+    "aired": "2015-04-19"
+  },
+  {
+    "number": 690,
+    "title": "Kyoudou Sensen: Luffy Shouri e no Toppakou",
+    "aired": "2015-04-26"
+  },
+  {
+    "number": 691,
+    "title": "Futarime no Samurai:Yuudachi Kanjuorou Toujou",
+    "aired": "2015-05-03"
+  },
+  {
+    "number": 692,
+    "title": "Funtou to no Pica: Zoro Ichi Todome no Ichigeki",
+    "aired": "2015-05-10"
+  },
+  {
+    "number": 693,
+    "title": "Kobito no Hime: Toraware no Mansherry",
+    "aired": "2015-05-17"
+  },
+  {
+    "number": 694,
+    "title": "Fujimi! Kyoufu no Atamawari Ningyou Gundan",
+    "aired": "2015-05-24"
+  },
+  {
+    "number": 695,
+    "title": "Inochi Kakete! Luffy wa Shouri no Kirifuda",
+    "aired": "2015-05-31"
+  },
+  {
+    "number": 696,
+    "title": "Namida no Saikai: Rebecca to Kyros",
+    "aired": "2015-06-07"
+  },
+  {
+    "number": 697,
+    "title": "Ichigeki Hissatsu: Dressrosa wo Sukuu Otoko",
+    "aired": "2015-06-14"
+  },
+  {
+    "number": 698,
+    "title": "Ikari Bakuhatsu: Luffy Law Saikyou no Hisaku",
+    "aired": "2015-06-21"
+  },
+  {
+    "number": 699,
+    "title": "Kedakaki Ichizoku: Doflamingo no Shoutai!",
+    "aired": "2015-06-28"
+  },
+  {
+    "number": 700,
+    "title": "Kyuukyoku no Chikara: Ope Ope no Mi no Himitsu!",
+    "aired": "2015-07-05"
+  }
+]

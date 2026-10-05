@@ -7,10 +7,6 @@ const Slug = z
   .string()
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Harus lowercase-kebab-case');
 
-const ISODate = z
-  .string()
-  .regex(/^\d{4}-\d{2}-\d{2}$/, 'Format: YYYY-MM-DD');
-
 const ExternalUrl = z.url();
 
 const AnimeType = z.enum([
@@ -29,12 +25,6 @@ const AnimeSource = z.enum([
 
 const AnimeSeason = z.enum(['winter', 'spring', 'summer', 'fall']);
 const AnimeRating = z.enum(['G', 'PG', 'PG-13', 'R', 'R+', 'Rx']);
-
-const RelationType = z.enum([
-  'sequel', 'prequel', 'side_story', 'parent_story', 'alternative',
-  'spin_off', 'adaptation', 'character', 'summary', 'full_story',
-  'compilation', 'contains', 'other',
-]);
 
 const anime = defineCollection({
   loader: glob({
@@ -61,8 +51,8 @@ const anime = defineCollection({
     rating: AnimeRating.optional(),
 
     aired: z.object({
-      from: ISODate,
-      to: ISODate.nullable().optional(),
+      from: z.coerce.date(),
+      to: z.coerce.date().nullable().optional(),
     }).optional(),
 
     stats: z.object({
@@ -72,34 +62,10 @@ const anime = defineCollection({
 
     genres: z.array(Slug).default([]),
     studios: z.array(Slug).default([]),
-    franchises: z.array(z.object({
-      relation: RelationType,
-      slug: Slug,
-      title: z.string().optional(),
-    })).default([]),
 
     image: ExternalUrl.optional(),
     banner: ExternalUrl.optional(),
     trailer: z.string().optional(),
-
-    episodeList: z.array(z.object({
-      number: z.number().int().positive(),
-      title: z.string(),
-      aired: ISODate.optional(),
-      duration: z.number().int().positive().optional(),
-    })).default([]),
-
-    characters: z.array(z.object({
-      name: z.string(),
-      nameNative: z.string().optional(),
-      image: ExternalUrl.optional(),
-      role: z.enum(['main', 'supporting', 'background']).default('supporting'),
-      voiceActors: z.array(z.object({
-        name: z.string(),
-        image: ExternalUrl.optional(),
-        language: z.string().optional(),
-      })).default([]),
-    })).default([]),
 
     draft: z.boolean().default(false),
   }),
@@ -127,8 +93,20 @@ const studios = defineCollection({
   }),
 });
 
+const voiceActors = defineCollection({
+  loader: file('./src/data/voice-actors.json'),
+  schema: z.object({
+    id: Slug,
+    name: z.string(),
+    nameNative: z.string().optional(),
+    image: ExternalUrl.optional(),
+    defaultLanguage: z.string().optional(),
+  }),
+});
+
 export const collections = {
   anime,
   genres,
   studios,
+  voiceActors,
 };

@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Megumi Fushiguro",
+    "image": "https://shikimori.one/system/characters/original/164470.jpg?1713218252",
+    "role": "main"
+  },
+  {
+    "name": "Satoru Gojou",
+    "image": "https://shikimori.one/system/characters/original/164471.jpg?1713218272",
+    "role": "main"
+  },
+  {
+    "name": "Yuuji Itadori",
+    "image": "https://shikimori.one/system/characters/original/163847.jpg?1713218257",
+    "role": "main"
+  },
+  {
+    "name": "Nobara Kugisaki",
+    "image": "https://shikimori.one/system/characters/original/164472.jpg?1713218259",
+    "role": "main"
+  },
+  {
+    "name": "Aida",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Chousou",
+    "image": "https://shikimori.one/system/characters/original/180764.jpg?1713219287",
+    "role": "supporting"
+  },
+  {
+    "name": "Dagon",
+    "image": "https://shikimori.one/system/characters/original/184441.jpg?1713219772",
+    "role": "supporting"
+  },
+  {
+    "name": "Esou",
+    "image": "https://shikimori.one/system/characters/original/193867.jpg?1711405487",
+    "role": "supporting"
+  },
+  {
+    "name": "Finger Bearer",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Fujinuma",
+    "image": "https://shikimori.one/system/characters/original/199620.jpg?1712074809",
+    "role": "supporting"
+  },
+  {
+    "name": "Fujinuma's Brother",
+    "image": "https://shikimori.one/system/characters/original/199621.jpg?1712074807",
+    "role": "supporting"
+  },
+  {
+    "name": "Tsumiki Fushiguro",
+    "image": "https://shikimori.one/system/characters/original/189233.jpg?1713826507",
+    "role": "supporting"
+  },
+  {
+    "name": "Yoshinobu Gakuganji",
+    "image": "https://shikimori.one/system/characters/original/164475.jpg?1714429029",
+    "role": "supporting"
+  },
+  {
+    "name": "Suguru Getou",
+    "image": "https://shikimori.one/system/characters/original/175542.jpg?1713218747",
+    "role": "supporting"
+  },
+  {
+    "name": "Hanami",
+    "image": "https://shikimori.one/system/characters/original/184442.jpg?1713826197",
+    "role": "supporting"
+  },
+  {
+    "name": "Shouko Ieiri",
+    "image": "https://shikimori.one/system/characters/original/164477.jpg?1713218274",
+    "role": "supporting"
+  },
+  {
+    "name": "Takeshi Iguchi",
+    "image": "https://shikimori.one/system/characters/original/186826.jpg?1712072260",
+    "role": "supporting"
+  },
+  {
+    "name": "Kiyotaka Ijichi",
+    "image": "https://shikimori.one/system/characters/original/164479.jpg?1713218267",
+    "role": "supporting"
+  },
+  {
+    "name": "Takuma Ino",
+    "image": "https://shikimori.one/system/characters/original/184438.jpg?1713219727",
+    "role": "supporting"
+  },
+  {
+    "name": "Toge Inumaki",
+    "image": "https://shikimori.one/system/characters/original/164478.jpg?1713218273",
+    "role": "supporting"
+  }
+]

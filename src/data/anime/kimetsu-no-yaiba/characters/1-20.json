@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Zenitsu Agatsuma",
+    "image": "https://shikimori.one/system/characters/original/146158.jpg?1718056693",
+    "role": "main"
+  },
+  {
+    "name": "Inosuke Hashibira",
+    "image": "https://shikimori.one/system/characters/original/146159.jpg?1718056689",
+    "role": "main"
+  },
+  {
+    "name": "Nezuko Kamado",
+    "image": "https://shikimori.one/system/characters/original/146157.jpg?1718056687",
+    "role": "main"
+  },
+  {
+    "name": "Tanjirou Kamado",
+    "image": "https://shikimori.one/system/characters/original/146156.jpg?1718056699",
+    "role": "main"
+  },
+  {
+    "name": "Blue-Haired Demon",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Brown-Haired Demon",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Cocky Demon Slayer",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Doctor",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Eldest Sister Spider Demon",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Enmu",
+    "image": "https://shikimori.one/system/characters/original/173936.jpg?1706569830",
+    "role": "supporting"
+  },
+  {
+    "name": "Father Spider Demon",
+    "image": "https://shikimori.one/system/characters/original/172053.jpg?1712068306",
+    "role": "supporting"
+  },
+  {
+    "name": "Female Kakushi",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Gotou",
+    "image": "https://shikimori.one/system/characters/original/173541.jpg?1718140638",
+    "role": "supporting"
+  },
+  {
+    "name": "Hotaru Haganezuka",
+    "image": "https://shikimori.one/system/characters/original/170254.jpg?1718140568",
+    "role": "supporting"
+  },
+  {
+    "name": "Hand Demon",
+    "image": "https://shikimori.one/system/characters/original/172092.jpg?1712068315",
+    "role": "supporting"
+  },
+  {
+    "name": "Hand Demon's Brother",
+    "image": "https://shikimori.one/assets/globals/missing_original.jpg",
+    "role": "supporting"
+  },
+  {
+    "name": "Gyoumei Himejima",
+    "image": "https://shikimori.one/system/characters/original/151146.jpg?1718140393",
+    "role": "supporting"
+  },
+  {
+    "name": "Hisa",
+    "image": "https://shikimori.one/system/characters/original/173525.jpg?1712068668",
+    "role": "supporting"
+  },
+  {
+    "name": "Horned Demon",
+    "image": "https://shikimori.one/system/characters/original/173539.jpg?1712068707",
+    "role": "supporting"
+  },
+  {
+    "name": "Obanai Iguro",
+    "image": "https://shikimori.one/system/characters/original/151148.jpg?1718140402",
+    "role": "supporting"
+  }
+]

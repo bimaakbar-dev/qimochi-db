@@ -1,11 +1,9 @@
 // src/lib/data.ts
-import type { CollectionEntry } from 'astro:content';
-
-type AnimeEntry = CollectionEntry<'anime'>;
+import type { AnimeEntry } from './anime';
 
 export function countByArrayField(
   animeList: AnimeEntry[],
-  field: 'genres' | 'studios' | 'franchises'
+  field: 'genres' | 'studios'
 ): Map<string, number> {
   const map = new Map<string, number>();
   for (const anime of animeList) {
@@ -15,6 +13,7 @@ export function countByArrayField(
   }
   return map;
 }
+
 export function countByField<K extends keyof AnimeEntry['data']>(
   animeList: AnimeEntry[],
   field: K

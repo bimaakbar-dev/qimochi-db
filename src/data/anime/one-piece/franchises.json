@@ -1,0 +1,152 @@
+[
+  {
+    "relation": "character",
+    "slug": "dragon-ball-z",
+    "title": "Dragon Ball Z"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-taose-kaizoku-ganzack",
+    "title": "One Piece: Taose! Kaizoku Ganzack"
+  },
+  {
+    "relation": "summary",
+    "slug": "one-piece-kinkyuu-kikaku-one-piece-kanzen-kouryakuhou",
+    "title": "One Piece: Kinkyuu Kikaku One Piece Kanzen Kouryakuhou"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-movie-01",
+    "title": "One Piece Movie 01"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-umi-no-heso-no-daibouken-hen",
+    "title": "One Piece: Umi no Heso no Daibouken-hen"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-movie-02-nejimaki-jima-no-daibouken",
+    "title": "One Piece Movie 02: Nejimaki-jima no Daibouken"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-jango-no-dance-carnival",
+    "title": "One Piece: Jango no Dance Carnival"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-movie-03-chinjuu-jima-no-chopper-oukoku",
+    "title": "One Piece Movie 03: Chinjuu-jima no Chopper Oukoku"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-yume-no-soccer-ou",
+    "title": "One Piece: Yume no Soccer Ou!"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-movie-04-dead-end-no-bouken",
+    "title": "One Piece Movie 04: Dead End no Bouken"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-oounabara-ni-hirake-dekkai-dekkai-chichi-no-yume",
+    "title": "One Piece: Oounabara ni Hirake! Dekkai Dekkai Chichi no Yume!"
+  },
+  {
+    "relation": "character",
+    "slug": "kyutai-panic-adventure",
+    "title": "Kyutai Panic Adventure!"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-mamore-saigo-no-oobutai",
+    "title": "One Piece: Mamore! Saigo no Oobutai"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-movie-05-norowareta-seiken",
+    "title": "One Piece Movie 05: Norowareta Seiken"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-mezase-kaizoku-yakyuu-ou",
+    "title": "One Piece: Mezase! Kaizoku Yakyuu Ou"
+  },
+  {
+    "relation": "character",
+    "slug": "kyutai-panic-adventure-returns",
+    "title": "Kyutai Panic Adventure Returns!"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-movie-06-omatsuri-danshaku-to-himitsu-no-shima",
+    "title": "One Piece Movie 06: Omatsuri Danshaku to Himitsu no Shima"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-nenmatsu-tokubetsu-kikaku-mugiwara-no-luffy-oyabun-torimonochou",
+    "title": "One Piece: Nenmatsu Tokubetsu Kikaku! Mugiwara no Luffy Oyabun Torimonochou"
+  },
+  {
+    "relation": "summary",
+    "slug": "one-piece-otoshidama-special-tokubetsu-hou-mugiwara-kaizokudan-no-himitsu",
+    "title": "One Piece: Otoshidama Special - Tokubetsu Hou Mugiwara Kaizokudan no Himitsu!"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-movie-07-karakuri-jou-no-mecha-kyohei",
+    "title": "One Piece Movie 07: Karakuri-jou no Mecha Kyohei"
+  },
+  {
+    "relation": "summary",
+    "slug": "one-piece-movie-08-episode-of-alabasta-sabaku-no-oujo-to-kaizoku-tachi",
+    "title": "One Piece Movie 08: Episode of Alabasta - Sabaku no Oujo to Kaizoku-tachi"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-uchuu-tte-omoshiree-hoshizora-jima-hen",
+    "title": "One Piece: Uchuu tte Omoshiree! Hoshizora Jima-hen"
+  },
+  {
+    "relation": "alternative",
+    "slug": "one-piece-movie-09-episode-of-chopper-plus-fuyu-ni-saku-kiseki-no-sakura",
+    "title": "One Piece Movie 09: Episode of Chopper Plus - Fuyu ni Saku, Kiseki no Sakura"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-romance-dawn-story",
+    "title": "One Piece: Romance Dawn Story"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-film-strong-world",
+    "title": "One Piece Film: Strong World"
+  },
+  {
+    "relation": "summary",
+    "slug": "one-piece-recap",
+    "title": "One Piece Recap"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-film-strong-world-episode-0",
+    "title": "One Piece Film: Strong World Episode 0"
+  },
+  {
+    "relation": "other",
+    "slug": "schick-x-one-piece",
+    "title": "Schick x One Piece"
+  },
+  {
+    "relation": "side_story",
+    "slug": "one-piece-3d-mugiwara-chase",
+    "title": "One Piece 3D: Mugiwara Chase"
+  },
+  {
+    "relation": "character",
+    "slug": "toriko",
+    "title": "Toriko"
+  }
+]
