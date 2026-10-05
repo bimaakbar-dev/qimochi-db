@@ -106,7 +106,7 @@ Format response:
 
 ## Untuk Kontributor
 
-Kami menerima kontribusi data anime, genre, studio, dan franchise via
+Kami menerima kontribusi data anime, genre, dan studio via
 GitHub Pull Request.
 
 Baca panduan lengkap: [CONTRIBUTING.md](./CONTRIBUTING.md)
