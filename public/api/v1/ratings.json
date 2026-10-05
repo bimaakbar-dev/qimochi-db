@@ -1,8 +1,8 @@
 {
   "data": {
     "kimetsu-no-yaiba": {
-      "average": 4,
-      "votes": 1
+      "average": 7,
+      "votes": 2
     },
     "one-piece": {
       "average": 4,
@@ -19,10 +19,14 @@
     "spy-x-family": {
       "average": 10,
       "votes": 1
+    },
+    "violet-evergarden": {
+      "average": 9,
+      "votes": 2
     }
   },
   "meta": {
-    "total": 5,
-    "generatedAt": "2026-10-04T20:21:41.106Z"
+    "total": 6,
+    "generatedAt": "2026-10-05T03:00:03.472Z"
   }
 }
