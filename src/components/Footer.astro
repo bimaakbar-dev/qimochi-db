@@ -1,5 +1,5 @@
 ---
-import { SITE, NAV_LINKS } from '~/constants';
+import { SITE, ROUTE, NAV_LINKS } from '~/constants';
 import { Image } from 'astro:assets';
 import SectionLabel from '~/components/SectionLabel.astro';
 import logoImg from '../assets/images/logo/logo.png';
@@ -10,7 +10,7 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="/" class="logo" aria-label={`${SITE.name} — Home`}>
+      <a href={ROUTE.home} class="logo" aria-label={`${SITE.name} — Home`}>
         <Image
           src={logoImg}
           alt={SITE.name}
