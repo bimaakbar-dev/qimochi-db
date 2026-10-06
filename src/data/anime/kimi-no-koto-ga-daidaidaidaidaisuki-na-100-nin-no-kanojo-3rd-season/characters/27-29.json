@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Shiori Yoshimoto",
+    "nameNative": "好本静織",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b318516-MWJpriD1MC0I.png",
+    "role": "supporting",
+    "voiceActors": [
+      "madoka-yonezawa"
+    ]
+  },
+  {
+    "name": "Yukiko Nozawa-sensei",
+    "nameNative": "野澤ゆき子先生",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b362888-yncPSsY5tmO9.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masako-nozawa"
+    ]
+  },
+  {
+    "name": "Jesus Nakai",
+    "nameNative": "ジーザス中井",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b406612-lGaBkaNCi8Cs.png",
+    "role": "supporting",
+    "voiceActors": [
+      "nobuhiko-okamoto"
+    ]
+  }
+]

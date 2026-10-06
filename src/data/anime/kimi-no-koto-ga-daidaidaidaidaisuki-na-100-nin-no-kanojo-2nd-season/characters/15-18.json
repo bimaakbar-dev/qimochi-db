@@ -1,0 +1,38 @@
+[
+  {
+    "name": "An Baba",
+    "nameNative": "馬場杏",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b317334-cPoN6dXjAxlT.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kujira"
+    ]
+  },
+  {
+    "name": "Kakedashi Idol-chan",
+    "nameNative": "かけだしアイドルちゃん",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b353751-6EgZKLmI5QI3.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yurie-igoma"
+    ]
+  },
+  {
+    "name": "Sauruko Terano",
+    "nameNative": "寺野サウル子",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b357218-SdWyuwNIaKwM.png",
+    "role": "supporting",
+    "voiceActors": [
+      "farahnaz-nikray"
+    ]
+  },
+  {
+    "name": "Rapuko Beroki",
+    "nameNative": "辺路木ラプ子",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b357219-r5Gy27i3SZ1C.png",
+    "role": "supporting",
+    "voiceActors": [
+      "maki-kawase"
+    ]
+  }
+]

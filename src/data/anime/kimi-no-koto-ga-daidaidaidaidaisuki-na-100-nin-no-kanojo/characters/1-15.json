@@ -1,0 +1,137 @@
+[
+  {
+    "name": "Rentarou Aijou",
+    "nameNative": "愛城恋太郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173758-AoqioODV01ki.png",
+    "role": "main",
+    "voiceActors": [
+      "wataru-katou"
+    ]
+  },
+  {
+    "name": "Hakari Hanazono",
+    "nameNative": "花園羽香里",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173759-Bu2KIzM1JELG.png",
+    "role": "main",
+    "voiceActors": [
+      "kaede-hondo"
+    ]
+  },
+  {
+    "name": "Karane Inda",
+    "nameNative": "院田唐音",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173760-Gj3fK5VpbpT3.png",
+    "role": "main",
+    "voiceActors": [
+      "miyu-tomita"
+    ]
+  },
+  {
+    "name": "Shizuka Yoshimoto",
+    "nameNative": "好本静",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173761-1FcQvX74KVW7.png",
+    "role": "main",
+    "voiceActors": [
+      "maria-naganawa"
+    ]
+  },
+  {
+    "name": "Nano Eiai",
+    "nameNative": "栄逢凪乃",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173762-bmdMGoIMVz2E.png",
+    "role": "main",
+    "voiceActors": [
+      "asami-seto"
+    ]
+  },
+  {
+    "name": "Kusuri Yakuzen",
+    "nameNative": "薬膳楠莉",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173763-NShnvmT00ikJ.png",
+    "role": "main",
+    "voiceActors": [
+      "ayaka-asai"
+    ]
+  },
+  {
+    "name": "Hahari Hanazono",
+    "nameNative": "花園羽々里",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173812-esAPFUOtQnKc.jpg",
+    "role": "main",
+    "voiceActors": [
+      "sumire-uesaka"
+    ]
+  },
+  {
+    "name": "Mei Meido",
+    "nameNative": "銘戸芽衣",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b188521-rGqXf1gyqRWA.png",
+    "role": "supporting",
+    "voiceActors": [
+      "suzuko-mimori"
+    ]
+  },
+  {
+    "name": "Kami-sama",
+    "nameNative": "神様",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b306697-RA7Tl1oeivLt.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shigeru-chiba"
+    ]
+  },
+  {
+    "name": "Kaoru",
+    "nameNative": "香",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b306701-456WdGjbrY3D.png",
+    "role": "supporting",
+    "voiceActors": [
+      "akira-ishida"
+    ]
+  },
+  {
+    "name": "Yuujin A",
+    "nameNative": "友人A",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b316628-5GZ5XzCqDTtO.png",
+    "role": "supporting",
+    "voiceActors": [
+      "misuzu-yamada"
+    ]
+  },
+  {
+    "name": "An Baba",
+    "nameNative": "馬場杏",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b317334-cPoN6dXjAxlT.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kujira"
+    ]
+  },
+  {
+    "name": "Shiori Yoshimoto",
+    "nameNative": "好本静織",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b318516-MWJpriD1MC0I.png",
+    "role": "supporting",
+    "voiceActors": [
+      "madoka-yonezawa"
+    ]
+  },
+  {
+    "name": "Yuu-kun",
+    "nameNative": "ユウ君",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b327383-In8A5Wx6fzbU.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yuuki-sakakihara"
+    ]
+  },
+  {
+    "name": "Shisho",
+    "nameNative": "司書",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b327389-tFohcZqWCdYj.png",
+    "role": "supporting",
+    "voiceActors": [
+      "aguri-onishi"
+    ]
+  }
+]
