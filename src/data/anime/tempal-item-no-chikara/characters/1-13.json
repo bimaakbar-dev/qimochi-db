@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Yeong-U Sin",
+    "nameNative": "신영우",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b181138-x6TUq6eHkRkN.png",
+    "role": "main",
+    "voiceActors": [
+      "tatsumaru-tachibana"
+    ]
+  },
+  {
+    "name": "Vantner",
+    "nameNative": "반트너",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b182890-gzil0Bn3C224.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masaya-fukunishi"
+    ]
+  },
+  {
+    "name": "Regas",
+    "nameNative": "레가스",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b182891-hojxvJHxQE1I.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kou-bonkobara"
+    ]
+  },
+  {
+    "name": "Se-Hee Shin",
+    "nameNative": "신세희",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b182892-ANkNf32AfnBm.png",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Toban",
+    "nameNative": "토반",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b182894-mv8WQLiacGNY.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masaaki-mizunaka"
+    ]
+  },
+  {
+    "name": "Euphemina",
+    "nameNative": "유페미나",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b182895-ksw8vYpMDV3E.png",
+    "role": "supporting",
+    "voiceActors": [
+      "saya-fukuzumi"
+    ]
+  },
+  {
+    "name": "Jishuka",
+    "nameNative": "지슈카",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b182896-YFAm5E5hmQ8h.png",
+    "role": "supporting",
+    "voiceActors": [
+      "riho-sugiyama"
+    ]
+  },
+  {
+    "name": "Faker",
+    "nameNative": "페이커",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b182898-f3T3yH0PXMZL.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shunichi-toki"
+    ]
+  },
+  {
+    "name": "Yu-Ra",
+    "nameNative": "유라",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b182899-xtrJI0Uwm2e0.png",
+    "role": "supporting",
+    "voiceActors": [
+      "asami-seto"
+    ]
+  },
+  {
+    "name": "Irene",
+    "nameNative": "아이린",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b242331-NNyf0yUahvs8.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yuuki-murata"
+    ]
+  },
+  {
+    "name": "Pon",
+    "nameNative": "폰",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b322610-eT7qB5gi1lI8.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kouhei-amasaki"
+    ]
+  },
+  {
+    "name": "Huroi",
+    "nameNative": "후로이",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "shuntarou-takiyama"
+    ]
+  },
+  {
+    "name": "Isabel",
+    "nameNative": "이사벨",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yurika-hirayama"
+    ]
+  }
+]
