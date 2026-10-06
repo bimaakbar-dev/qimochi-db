@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Tanjirou Kamado",
+    "nameNative": "竈門炭治郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126071-BTNEc1nRIv68.png",
+    "role": "main",
+    "voiceActors": [
+      "natsuki-hanae",
+      "satomi-satou"
+    ]
+  },
+  {
+    "name": "Nezuko Kamado",
+    "nameNative": "竈門禰豆子",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127518-NRlq1CQ1v1ro.png",
+    "role": "main",
+    "voiceActors": [
+      "akari-kitou"
+    ]
+  },
+  {
+    "name": "Inosuke Hashibira",
+    "nameNative": "嘴平伊之助",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n129130-SJC0Kn1DU39E.jpg",
+    "role": "main",
+    "voiceActors": [
+      "yoshitsugu-matsuoka"
+    ]
+  },
+  {
+    "name": "Zenitsu Agatsuma",
+    "nameNative": "我妻善逸",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129131-FZrQ7lSlxmEr.png",
+    "role": "main",
+    "voiceActors": [
+      "hiro-shimono"
+    ]
+  },
+  {
+    "name": "Muzan Kibutsuji",
+    "nameNative": "鬼舞辻無惨",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129132-4nIZakUZ1o8W.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "toshihiko-seki"
+    ]
+  },
+  {
+    "name": "Kyoujurou Rengoku",
+    "nameNative": "煉獄杏寿郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129133-VlTPowwt68rJ.png",
+    "role": "supporting",
+    "voiceActors": [
+      "satoshi-hino"
+    ]
+  },
+  {
+    "name": "Giyuu Tomioka",
+    "nameNative": "冨岡義勇",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b130050-qsLThJs5VIbz.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takahiro-sakurai"
+    ]
+  },
+  {
+    "name": "Muichirou Tokitou",
+    "nameNative": "時透無一郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136069-6PLglx4tETUX.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kengo-kawanishi"
+    ]
+  },
+  {
+    "name": "Shinobu Kochou",
+    "nameNative": "胡蝶しのぶ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136070-MC9LLxJsHyHE.png",
+    "role": "supporting",
+    "voiceActors": [
+      "saori-hayami"
+    ]
+  },
+  {
+    "name": "Tengen Uzui",
+    "nameNative": "宇髄天元",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136071-99Kexnnn2PiV.png",
+    "role": "supporting",
+    "voiceActors": [
+      "katsuyuki-konishi"
+    ]
+  },
+  {
+    "name": "Mitsuri Kanroji",
+    "nameNative": "甘露寺蜜璃",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136072-xVwyRUKdpybi.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kana-hanazawa"
+    ]
+  },
+  {
+    "name": "Sakonji Urokodaki",
+    "nameNative": "鱗滝左近次",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137773-N4O52f73dJKZ.png",
+    "role": "supporting",
+    "voiceActors": [
+      "houchuu-ootsuka"
+    ]
+  },
+  {
+    "name": "Sanemi Shinazugawa",
+    "nameNative": "不死川実弥",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137774-O1iYrnGLB71l.png",
+    "role": "supporting",
+    "voiceActors": [
+      "tomokazu-seki"
+    ]
+  }
+]
