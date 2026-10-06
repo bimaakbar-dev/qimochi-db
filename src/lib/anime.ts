@@ -59,7 +59,7 @@ export type HydratedAnime = Omit<AnimeEntry, 'data'> & {
 };
 
 const voiceActorModules = import.meta.glob<{ default: VoiceActor[] }>(
-  '../data/voice-actors.json',
+  '../data/actors/*.json',
   { eager: true }
 );
 
