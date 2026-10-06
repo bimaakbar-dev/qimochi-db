@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Dieter",
+    "nameNative": "ディター",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b131457-vXCilQkE0NxX.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yoshihito-sasaki"
+    ]
+  },
+  {
+    "name": "Gunther Sofu",
+    "nameNative": "グンタ祖父",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n131986-6Re0rJWtpeJe.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "shuuhei-takubo"
+    ]
+  },
+  {
+    "name": "Petra no Chichi",
+    "nameNative": "ペトラの父",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b131987-JYRTZAMvHL7U.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masaki-terasoma"
+    ]
+  },
+  {
+    "name": "Eld no Haha",
+    "nameNative": "エルドの母",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n131988-XMa1skXV2E0L.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "michiko-kaiden"
+    ]
+  },
+  {
+    "name": "Peer",
+    "nameNative": "ペール",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b131989-FWaEoAayjB4N.png",
+    "role": "supporting",
+    "voiceActors": [
+      "daichi-endou"
+    ]
+  },
+  {
+    "name": "Gunther no Haha",
+    "nameNative": "グンタの母",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n131990-v6rILcgW9MQa.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yoshino-ohtori"
+    ]
+  },
+  {
+    "name": "Oluo no Haha",
+    "nameNative": "オルオの母",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n131991-nW7ztKNllB8z.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yuuki-kodaira"
+    ]
+  },
+  {
+    "name": "Eld's Lover",
+    "nameNative": "エルド恋人",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n131992-isinQRQQHyec.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yuka-kirishima"
+    ]
+  },
+  {
+    "name": "Oluo no Chichi",
+    "nameNative": "オルオの父",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n131994-F0MLEE5rQ0Oy.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "youhei-nishina"
+    ]
+  },
+  {
+    "name": "Ellie",
+    "nameNative": "エリー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137201-SLx9NWWjdE5g.png",
+    "role": "supporting",
+    "voiceActors": [
+      "miyuki-kobori"
+    ]
+  },
+  {
+    "name": "Zoku 3",
+    "nameNative": "賊３",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137283-ykMUBMJq2OBx.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shintarou-oohata"
+    ]
+  },
+  {
+    "name": "Zoku 2",
+    "nameNative": "賊２",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137284-N6WzhrtSRLVL.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hiroki-maeda"
+    ]
+  },
+  {
+    "name": "Zoku 1",
+    "nameNative": "賊１",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137286-K7DBiibnqjKq.png",
+    "role": "supporting",
+    "voiceActors": [
+      "gou-shinomiya"
+    ]
+  }
+]
