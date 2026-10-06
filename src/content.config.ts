@@ -94,7 +94,7 @@ const studios = defineCollection({
 });
 
 const voiceActors = defineCollection({
-  loader: file('./src/data/voice-actors.json'),
+  loader: file('./src/data/actors/**.json'),
   schema: z.object({
     id: Slug,
     name: z.string(),
