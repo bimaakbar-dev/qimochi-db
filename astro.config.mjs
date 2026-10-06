@@ -2,7 +2,7 @@ import { defineConfig, fontProviders, svgoOptimizer } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://qimochi.pages.dev',
+  site: 'https://yukionime.pages.dev',
   trailingSlash: 'always',
   fonts: [
     {
