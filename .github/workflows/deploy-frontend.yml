@@ -1,0 +1,46 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [data-updated]
+  workflow_dispatch:
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frontend
+        uses: actions/checkout@v7
+
+      - name: Checkout yukio-data
+        uses: actions/checkout@v7
+        with:
+          repository: bimaakbar-dev/yukio-data
+          path: _data
+      - name: Inject data ke src/data
+        run: |
+          mkdir -p src/data
+          cp -r _data/* src/data/
+          echo "=== Struktur src/data ==="
+          ls -la src/data/
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+    #  - name: Deploy to Cloudflare Pages
+    #    uses: cloudflare/wrangler-action@v3
+    #    with:
+    #        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    #        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    #        command: pages deploy dist --project-name=yukionime
