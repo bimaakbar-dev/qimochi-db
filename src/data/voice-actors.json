@@ -1,5 +1,26 @@
 [
   {
+    "id": "ai-kakuma",
+    "name": "Ai Kakuma",
+    "nameNative": "加隈亜衣",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n113511-F58Tk4OFKs1w.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "ai-kayano",
+    "name": "Ai Kayano",
+    "nameNative": "茅野愛衣",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n105765-DDK94me8axVv.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "akari-kitou",
+    "name": "Akari Kitou",
+    "nameNative": "鬼頭明里",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n119722-Ls7ORfBejJEP.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "akeno-watanabe",
     "name": "Akeno Watanabe",
     "nameNative": "渡辺明乃",
@@ -35,6 +56,13 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "ami-koshimizu",
+    "name": "Ami Koshimizu",
+    "nameNative": "小清水亜美",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95070-klkIfKz1VItS.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "ami-naitou",
     "name": "Ami Naitou",
     "nameNative": "内藤有海",
@@ -46,6 +74,27 @@
     "name": "Anri Katsu",
     "nameNative": "勝杏里",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95756-MmmuyQK4Thzl.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "aoi-koga",
+    "name": "Aoi Koga",
+    "nameNative": "古賀葵",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n123268-zIZLjZ5Xfbk4.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "aoi-yuuki",
+    "name": "Aoi Yuuki",
+    "nameNative": "悠木碧",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n101686-PTd0lQZMsmcv.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "ari-ozawa",
+    "name": "Ari Ozawa",
+    "nameNative": "小澤亜李",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n118663-fFzQqJDtYNdA.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -126,6 +175,13 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "ayumi-mano",
+    "name": "Ayumi Mano",
+    "nameNative": "真野あゆみ",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n125035-08CpsDFvGvki.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "azumi-waki",
     "name": "Azumi Waki",
     "nameNative": "和氣あず未",
@@ -175,6 +231,20 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "daiki-yamashita",
+    "name": "Daiki Yamashita",
+    "nameNative": "山下大輝",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n116971-KDHjlYPO4HrS.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "daisuke-hirakawa",
+    "name": "Daisuke Hirakawa",
+    "nameNative": "平川大輔",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95183-5C42gbrKIP7L.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "daisuke-namikawa",
     "name": "Daisuke Namikawa",
     "nameNative": "浪川大輔",
@@ -193,6 +263,13 @@
     "name": "Eiji Hanawa",
     "nameNative": "花輪英司",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95804-plVC2L7kuwTE.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "eiji-takemoto",
+    "name": "Eiji Takemoto",
+    "nameNative": "竹本英史",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95576-daJz6YMxGaX6.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -228,6 +305,13 @@
     "name": "Haruka Okamura",
     "nameNative": "岡村明香",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n273899-YlxFeE6Im4sC.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "haruka-shiraishi",
+    "name": "Haruka Shiraishi",
+    "nameNative": "白石晴香",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n112629-U0y9a5Z9ogfk.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -329,6 +413,34 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "hisako-toujou",
+    "name": "Hisako Toujou",
+    "nameNative": "東城日沙子",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n118400-z4bVC1opOj91.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "houchuu-ootsuka",
+    "name": "Houchuu Ootsuka",
+    "nameNative": "大塚芳忠",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95337-NnvEQEBKV2dR.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "houko-kuwashima",
+    "name": "Houko Kuwashima",
+    "nameNative": "桑島法子",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95057-zkd7yTPVxfyu.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "ikuko-tani",
+    "name": "Ikuko Tani",
+    "nameNative": "谷育子",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/5907.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "ikumi-hasegawa",
     "name": "Ikumi Hasegawa",
     "nameNative": "長谷川育美",
@@ -357,6 +469,13 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "jun-fukuyama",
+    "name": "Jun Fukuyama",
+    "nameNative": "福山潤",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95086-cwKYmhOFNtH5.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "junichi-suwabe",
     "name": "Junichi Suwabe",
     "nameNative": "諏訪部順一",
@@ -378,10 +497,31 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "kaede-hondo",
+    "name": "Kaede Hondo",
+    "nameNative": "本渡楓",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n119416-7RC2mPKDKydB.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "kana-hanazawa",
+    "name": "Kana Hanazawa",
+    "nameNative": "花澤香菜",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95185-x8ZYvtN7SegC.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "kana-ichinose",
     "name": "Kana Ichinose",
     "nameNative": "市ノ瀬加那",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n124390-03LHel2XSFel.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "kana-ueda",
+    "name": "Kana Ueda",
+    "nameNative": "植田佳奈",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95116-NvhEn6vNMiAq.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -396,6 +536,13 @@
     "name": "Kappei Yamaguchi",
     "nameNative": "山口勝平",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95067-hqIpNxMfAuN2.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "katsuyuki-konishi",
+    "name": "Katsuyuki Konishi",
+    "nameNative": "小西克幸",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95020-uOJO2IlwpcX0.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -420,6 +567,20 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "kengo-kawanishi",
+    "name": "Kengo Kawanishi",
+    "nameNative": "河西健吾",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n110877-8mqVadVTaFl4.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "kenichi-suzumura",
+    "name": "Kenichi Suzumura",
+    "nameNative": "鈴村健一",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95005-SkoVN02iOglr.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "kenji-sugimura",
     "name": "Kenji Sugimura",
     "nameNative": "杉村憲司",
@@ -438,6 +599,13 @@
     "name": "Kenjirou Tsuda",
     "nameNative": "津田健次郎",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95591-WQGdD3ubbeoq.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "kenn",
+    "name": "KENN",
+    "nameNative": "KENN",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95857-oHOhHwEDyAlL.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -504,6 +672,13 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "kouki-miyata",
+    "name": "Kouki Miyata",
+    "nameNative": "宮田幸季",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95344-wYgLhxYeWEp4.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "kouki-oosuzu",
     "name": "Kouki Oosuzu",
     "nameNative": "大鈴功起",
@@ -543,6 +718,20 @@
     "name": "Kyouko Terase",
     "nameNative": "寺瀬今日子",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n104032-T2WQPMRn19IB.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "maaya-sakamoto",
+    "name": "Maaya Sakamoto",
+    "nameNative": "坂本真綾",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95090-oARRP42NEhu0.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "makoto-furukawa",
+    "name": "Makoto Furukawa",
+    "nameNative": "古川慎",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n112635-ORlGvRvgf5Nq.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -651,6 +840,13 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "miho-okasaki",
+    "name": "Miho Okasaki",
+    "nameNative": "岡咲美保",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n127666-kJTHGXxNtzKU.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "mikako-komatsu",
     "name": "Mikako Komatsu",
     "nameNative": "小松未可子",
@@ -672,10 +868,24 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "misako-tomioka",
+    "name": "Misako Tomioka",
+    "nameNative": "冨岡美沙子",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n119153-6eM2JgFXgGjV.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "mitsuaki-hoshino",
     "name": "Mitsuaki Hoshino",
     "nameNative": "星野充昭",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95945-SnY7HVDqchdI.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "mitsuhiro-ichiki",
+    "name": "Mitsuhiro Ichiki",
+    "nameNative": "市来光弘",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/1527.jpg",
     "defaultLanguage": "Japanese"
   },
   {
@@ -700,6 +910,13 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "nanami-yamashita",
+    "name": "Nanami Yamashita",
+    "nameNative": "山下七海",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n118472-YEwaeltqQmPc.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "naoya-nosaka",
     "name": "Naoya Nosaka",
     "nameNative": "野坂尚也",
@@ -711,6 +928,13 @@
     "name": "Natsuki Aikawa",
     "nameNative": "相川奈都姫",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/2123.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "natsuki-hanae",
+    "name": "Natsuki Hanae",
+    "nameNative": "花江夏樹",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n111635-L385UcjTKCBq.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -798,6 +1022,20 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "ryouhei-kimura",
+    "name": "Ryouhei Kimura",
+    "nameNative": "木村良平",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n96762-DNKMFBA2vWRr.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "ryouko-shiraishi",
+    "name": "Ryouko Shiraishi",
+    "nameNative": "白石涼子",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95348-sLIy7IMrgZeA.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "ryouta-asari",
     "name": "Ryouta Asari",
     "nameNative": "浅利遼太",
@@ -823,6 +1061,13 @@
     "name": "Saori Hayami",
     "nameNative": "早見沙織",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95869-qCQ0EaWpq1QT.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "satomi-satou",
+    "name": "Satomi Satou",
+    "nameNative": "佐藤聡美",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n101560-YN8w6EZZtIhb.jpg",
     "defaultLanguage": "Japanese"
   },
   {
@@ -889,6 +1134,13 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "shinichirou-miki",
+    "name": "Shinichirou Miki",
+    "nameNative": "三木眞一郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95022-BXggjIr4KHqd.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "shinji-kawada",
     "name": "Shinji Kawada",
     "nameNative": "川田紳司",
@@ -914,6 +1166,13 @@
     "name": "Shinya Takahashi",
     "nameNative": "高橋伸也",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n105148-wgwzwTxAERbM.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "shiori-izawa",
+    "name": "Shiori Izawa",
+    "nameNative": "井澤詩織",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n111453-7fe0B5uogy3Z.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -949,6 +1208,20 @@
     "name": "Shouko Yuzuki",
     "nameNative": "柚木尚子",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/124811-MJSltvaQ2H5D.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "shoutarou-morikubo",
+    "name": "Shoutarou Morikubo",
+    "nameNative": "森久保祥太郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95178-8R9Itg3Y1v24.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "shunichi-toki",
+    "name": "Shunichi Toki",
+    "nameNative": "土岐隼一",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n123971-tp8zQxlKuhfZ.jpg",
     "defaultLanguage": "Japanese"
   },
   {
@@ -998,6 +1271,13 @@
     "name": "Susumu Chiba",
     "nameNative": "千葉進歩",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95260-pKyM0LbhEznc.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "taiten-kusunoki",
+    "name": "Taiten Kusunoki",
+    "nameNative": "楠大典",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95893-k0qEVnRygyIn.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -1054,6 +1334,13 @@
     "name": "Takehito Koyasu",
     "nameNative": "子安武人",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95160-jWevcH7BmfE1.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "takumi-yamazaki",
+    "name": "Takumi Yamazaki",
+    "nameNative": "山崎たくみ",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95346-YNXEZtXvJttr.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -1141,10 +1428,24 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "toshihiko-seki",
+    "name": "Toshihiko Seki",
+    "nameNative": "関俊彦",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95129-AAL7kfwAPpgR.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "toshiko-sawada",
     "name": "Toshiko Sawada",
     "nameNative": "沢田敏子",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n106833-23lZsptjXOVT.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "toshiyuki-morikawa",
+    "name": "Toshiyuki Morikawa",
+    "nameNative": "森川智之",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95006-hoLuiZANeD3Q.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -1173,6 +1474,13 @@
     "name": "Yasuyuki Kase",
     "nameNative": "加瀬康之",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95801-Jno6Y2OawOII.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "yoshihisa-kawahara",
+    "name": "Yoshihisa Kawahara",
+    "nameNative": "川原慶久",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95409-87S6L0u8gQNf.jpg",
     "defaultLanguage": "Japanese"
   },
   {
@@ -1222,6 +1530,13 @@
     "name": "Yoshitsugu Matsuoka",
     "nameNative": "松岡禎丞",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n106817-mioGQjbTWWQ6.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "you-taichi",
+    "name": "You Taichi",
+    "nameNative": "大地葉",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n109251-ge8rmZwppqxy.png",
     "defaultLanguage": "Japanese"
   },
   {
@@ -1285,6 +1600,20 @@
     "name": "Yuko Sasaki",
     "nameNative": "佐々木優子",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n100192-CVPCiU6RNdWr.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "yumiri-hanamori",
+    "name": "Yumiri Hanamori",
+    "nameNative": "花守ゆみり",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n116543-ugu1HZWiQkqi.jpg",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "yuri-ehara",
+    "name": "Yuri Ehara",
+    "nameNative": "江原裕理",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n145839-rkyFGhFm24nM.jpg",
     "defaultLanguage": "Japanese"
   },
   {
@@ -1365,10 +1694,24 @@
     "defaultLanguage": "Japanese"
   },
   {
+    "id": "yuuki-kuwahara",
+    "name": "Yuuki Kuwahara",
+    "nameNative": "桑原由気",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n118399-qM9moluPEbV2.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
     "id": "yuuko-kaida",
     "name": "Yuuko Kaida",
     "nameNative": "甲斐田裕子",
     "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95428-1e4kSvr5fkmQ.png",
+    "defaultLanguage": "Japanese"
+  },
+  {
+    "id": "yuuko-minaguchi",
+    "name": "Yuuko Minaguchi",
+    "nameNative": "皆口裕子",
+    "image": "https://s4.anilist.co/file/anilistcdn/staff/large/n95170-oAiTh7t2T1J0.png",
     "defaultLanguage": "Japanese"
   },
   {
