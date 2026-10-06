@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Wirbel",
+    "nameNative": "ヴィアベル",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b321716-ORxrJOHaI4H4.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kishou-taniyama"
+    ]
+  },
+  {
+    "name": "Richter",
+    "nameNative": "リヒター",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b321717-hDlFSdvTeZpq.png",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-hanawa"
+    ]
+  },
+  {
+    "name": "Ehre",
+    "nameNative": "エーレ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b321718-MV9ZCxtNdOpJ.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kanae-itou"
+    ]
+  },
+  {
+    "name": "Land",
+    "nameNative": "ラント",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b321719-GUHhBOb81K9H.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shouhei-komatsu"
+    ]
+  },
+  {
+    "name": "Sense",
+    "nameNative": "ゼンゼ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b321720-LRfYAvhD5I7l.png",
+    "role": "supporting",
+    "voiceActors": [
+      "haruka-terui"
+    ]
+  },
+  {
+    "name": "Blei",
+    "nameNative": "ブレイ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b325587-P0uMjKW28Lue.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shinya-takahashi"
+    ]
+  },
+  {
+    "name": "Falsch",
+    "nameNative": "ファルシュ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b325588-sjv4RqiBH9Ar.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kento-shiraishi"
+    ]
+  },
+  {
+    "name": "Länge",
+    "nameNative": "レンゲ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b325589-EcLdKYGE9gCz.png",
+    "role": "supporting",
+    "voiceActors": [
+      "haruka-terui"
+    ]
+  },
+  {
+    "name": "Methode",
+    "nameNative": "メトーデ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b246054-TKwFFWVGISUd.png",
+    "role": "supporting",
+    "voiceActors": [
+      "reina-ueda"
+    ]
+  },
+  {
+    "name": "Senshi Gorilla",
+    "nameNative": "戦士ゴリラ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b326423-uewX18Jqk86t.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hiromichi-tezuka",
+      "satsuki-kokubu"
+    ]
+  },
+  {
+    "name": "Orden",
+    "nameNative": "オルデン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b326825-NKZMl8ythv6u.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yuuya-uchida"
+    ]
+  },
+  {
+    "name": "Gabel",
+    "nameNative": "ガーベル",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b326826-KhpnVx4CE6Oc.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takayuki-nakatsukasa"
+    ]
+  },
+  {
+    "name": "Voll Jii",
+    "nameNative": "フォル爺",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b326830-aTNNxR4FaVfV.png",
+    "role": "supporting",
+    "voiceActors": [
+      "mitsuaki-hoshino"
+    ]
+  }
+]
