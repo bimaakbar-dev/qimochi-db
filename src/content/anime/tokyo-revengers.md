@@ -8,7 +8,7 @@ kitsuId: "43321"
 
 type: TV
 status: finished
-# source: # edit manual
+source: manga
 
 season: spring
 year: 2021
@@ -30,7 +30,8 @@ genres:
   - supernatural
   - shounen
 
-studios: []
+studios:
+  - lindenfilms
 
 image: "https://shikimori.one/system/animes/original/42249.jpg?1711977954"
 banner: "https://media.kitsu.app/anime/cover_images/43321/large.jpg"
