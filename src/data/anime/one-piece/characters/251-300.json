@@ -1,0 +1,435 @@
+[
+  {
+    "name": "Kiwi",
+    "nameNative": "キウイ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22686.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yuka-shioyama"
+    ]
+  },
+  {
+    "name": "Sakazuki",
+    "nameNative": "サカズキ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22687-tCQVpj6wZhRk.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "fumihiko-tachiki",
+      "michio-nakao"
+    ]
+  },
+  {
+    "name": "Nerine",
+    "nameNative": "ネリネ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22690-YL3dHaVeZPIN.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "aiko-hibi"
+    ]
+  },
+  {
+    "name": "Cosmos",
+    "nameNative": "コスモス",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22691.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "hiromi-nishikawa"
+    ]
+  },
+  {
+    "name": "Rindou",
+    "nameNative": "リンドウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22692.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "satomi-satou"
+    ]
+  },
+  {
+    "name": "Bluefan",
+    "nameNative": "ブルーファン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22693.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kanae-itou"
+    ]
+  },
+  {
+    "name": "Gloriosa",
+    "nameNative": "グロリオーサ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22694.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "ako-mayama"
+    ]
+  },
+  {
+    "name": "Braham",
+    "nameNative": "ブラハム",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22797.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kenji-nomura"
+    ]
+  },
+  {
+    "name": "Gan Fall",
+    "nameNative": "ガン・フォール",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22798-2DOxtVP5YtfT.png",
+    "role": "supporting",
+    "voiceActors": [
+      "jouji-yanami"
+    ]
+  },
+  {
+    "name": "Kamakiri",
+    "nameNative": "カマキリ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22799.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keisuke"
+    ]
+  },
+  {
+    "name": "Ohm",
+    "nameNative": "オーム",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22800-57BMjsil9KpL.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-takemoto"
+    ]
+  },
+  {
+    "name": "Satori",
+    "nameNative": "サトリ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22801.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yasuhiro-takato"
+    ]
+  },
+  {
+    "name": "Shura",
+    "nameNative": "シュラ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22802-2xhGBukcFxHv.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shinichirou-oota"
+    ]
+  },
+  {
+    "name": "Yama",
+    "nameNative": "ヤマ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22803-NO0AsYJR97PQ.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hidenari-ugaki"
+    ]
+  },
+  {
+    "name": "Aisa",
+    "nameNative": "アイサ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23021.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "masami-suzuki"
+    ]
+  },
+  {
+    "name": "Amazon",
+    "nameNative": "アマゾン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23022.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keiko-yamamoto"
+    ]
+  },
+  {
+    "name": "Genbou",
+    "nameNative": "ゲンボウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23023.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "osamu-ryuutani"
+    ]
+  },
+  {
+    "name": "Laki",
+    "nameNative": "ラキ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23024.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "michie-tomizawa"
+    ]
+  },
+  {
+    "name": "McKinley",
+    "nameNative": "マッキンリー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23025.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keiichi-sonobe"
+    ]
+  },
+  {
+    "name": "Musse",
+    "nameNative": "ムース",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23026.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yuuko-minaguchi"
+    ]
+  },
+  {
+    "name": "Seto",
+    "nameNative": "セト",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b23027-1JtU5xW39EqK.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masashi-hamano"
+    ]
+  },
+  {
+    "name": "Spector",
+    "nameNative": "スペクトルさん",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23200.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Terry",
+    "nameNative": "テリー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23201.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Tonjit",
+    "nameNative": "トンジット",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23202.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "naoki-tatsuta"
+    ]
+  },
+  {
+    "name": "Okome",
+    "nameNative": "オコメ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23203.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Tamachibi",
+    "nameNative": "タマチビ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23211.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "noriko-yoshitake"
+    ]
+  },
+  {
+    "name": "Stool",
+    "nameNative": "ストウール",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23212.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Marie Negikuma",
+    "nameNative": "ネギ熊まりあ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23213.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "noriko-yoshitake"
+    ]
+  },
+  {
+    "name": "Marie",
+    "nameNative": "まりあ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23214.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "rika-komatsu"
+    ]
+  },
+  {
+    "name": "Bogart",
+    "nameNative": "ボガード",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23365.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-takemoto",
+      "takaya-kuroda"
+    ]
+  },
+  {
+    "name": "Brandnew",
+    "nameNative": "ブランニュー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b23366-R5hkDcwEMDGO.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "shinichi-yamada"
+    ]
+  },
+  {
+    "name": "Fullbody",
+    "nameNative": "フルボディ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b23367-blRJuyuAy43E.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "hideo-ishikawa"
+    ]
+  },
+  {
+    "name": "Gyoru",
+    "nameNative": "ギョロ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23368.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Hanger",
+    "nameNative": "ハンガー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23369.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "John Giant",
+    "nameNative": "ジョン・ジャイアント",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23370.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-takemoto",
+      "hisao-egawa",
+      "masaharu-satou"
+    ]
+  },
+  {
+    "name": "Lines",
+    "nameNative": "ラインズ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23371.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "shinobu-satouchi"
+    ]
+  },
+  {
+    "name": "Ripper",
+    "nameNative": "リッパー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23372.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yoshiyuki-kouno"
+    ]
+  },
+  {
+    "name": "Rokkaku",
+    "nameNative": "ロッカク",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23373.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "akira-murakami"
+    ]
+  },
+  {
+    "name": "Shine",
+    "nameNative": "シャイン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23527.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "hirofumi-tanaka"
+    ]
+  },
+  {
+    "name": "Kohza",
+    "nameNative": "コーザ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23528.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "takeshi-kusao",
+      "naomi-shindou"
+    ]
+  },
+  {
+    "name": "Toto",
+    "nameNative": "トト",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b23529-908wxZQq7o2L.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masaaki-tsukada"
+    ]
+  },
+  {
+    "name": "Terracotta",
+    "nameNative": "テラコッタ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23530.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keiichi-sonobe"
+    ]
+  },
+  {
+    "name": "Hou",
+    "nameNative": "ホウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b23531-or2JCXoNamLE.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shuuichi-ikeda"
+    ]
+  },
+  {
+    "name": "Potsun",
+    "nameNative": "ポツーン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23532.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Agotogi",
+    "nameNative": "アゴトギ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23533.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Farafra",
+    "nameNative": "ファラフラ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23534.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Eric",
+    "nameNative": "エリック",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b23535-jwoyPuOyezJo.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Lucas Thalassa",
+    "nameNative": "タラッサ・ルーカス",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23536.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keiichi-sonobe"
+    ]
+  },
+  {
+    "name": "Titi Nefertari",
+    "nameNative": "ネフェルタリ・ティティ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23537.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Shiki",
+    "nameNative": "シキ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/23677.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "naoto-takenaka"
+    ]
+  }
+]

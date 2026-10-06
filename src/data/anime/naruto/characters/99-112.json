@@ -1,0 +1,127 @@
+[
+  {
+    "name": "Karashi",
+    "nameNative": "カラシ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17302-V4vu9asxjZIW.png",
+    "role": "supporting",
+    "voiceActors": [
+      "daisuke-kirii"
+    ]
+  },
+  {
+    "name": "Ryuugan",
+    "nameNative": "竜眼",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17305-HDD2YBsVmR71.png",
+    "role": "supporting",
+    "voiceActors": [
+      "daisuke-kirii"
+    ]
+  },
+  {
+    "name": "Fukusuke Hikyakuya",
+    "nameNative": "飛脚屋フクスケ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17307-RJQItblCdMl3.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hisao-egawa"
+    ]
+  },
+  {
+    "name": "Ayame",
+    "nameNative": "アヤメ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17310-SxVy5mybq9nW.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masayo-hosono"
+    ]
+  },
+  {
+    "name": "Teuchi",
+    "nameNative": "テウチ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/17312.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "eisuke-asakura"
+    ]
+  },
+  {
+    "name": "Jigumo Fuma",
+    "nameNative": "ジグモ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17313-uRLoHv8KkW8o.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kouzou-shioya"
+    ]
+  },
+  {
+    "name": "Arashi Fuuma",
+    "nameNative": "アラシ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17316-AgUhxg84uWZw.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hikaru-midorikawa"
+    ]
+  },
+  {
+    "name": "Ranmaru",
+    "nameNative": "蘭丸",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17414-MjabtUKPVByW.png",
+    "role": "supporting",
+    "voiceActors": [
+      "akiko-yajima"
+    ]
+  },
+  {
+    "name": "Hokushin",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/17424.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kiyomitsu-mizuuchi"
+    ]
+  },
+  {
+    "name": "Renga",
+    "nameNative": "レンガ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17425-WXItrLlD90oi.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masaki-terasoma"
+    ]
+  },
+  {
+    "name": "Genzou",
+    "nameNative": "ゲンゾウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17535-OQe2yMFsZfRX.png",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-yanagisawa"
+    ]
+  },
+  {
+    "name": "Gatsu",
+    "nameNative": "ガツ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17536-ezOUnkM5QBcP.png",
+    "role": "supporting",
+    "voiceActors": [
+      "fumihiko-tachiki"
+    ]
+  },
+  {
+    "name": "Hokuto",
+    "nameNative": "ホクト",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17539-nM5VD03l0Lk5.png",
+    "role": "supporting",
+    "voiceActors": [
+      "ayumi-tsunematsu"
+    ]
+  },
+  {
+    "name": "Mondai",
+    "nameNative": "モンダイ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17540-9SPLEKzgqIXJ.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yuu-mizushima"
+    ]
+  }
+]

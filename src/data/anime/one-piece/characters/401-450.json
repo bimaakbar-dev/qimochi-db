@@ -1,0 +1,457 @@
+[
+  {
+    "name": "Hyouzou",
+    "nameNative": "ヒョウゾウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40267-VaBx1l4nHujK.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "tetsuo-sakaguchi"
+    ]
+  },
+  {
+    "name": "Ikaros Muhhi",
+    "nameNative": "イカロス・ムッヒ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40268-a0dtEmRSSMh5.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keiji-hirai"
+    ]
+  },
+  {
+    "name": "Kaizeruhige",
+    "nameNative": "カイゼルヒゲ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40269-gsADC5rcp13a.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-takemoto"
+    ]
+  },
+  {
+    "name": "Manboshi",
+    "nameNative": "マンボシ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40270-hbe7sNDsrnWN.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kazunari-tanaka",
+      "yasuhiro-mamiya"
+    ]
+  },
+  {
+    "name": "Neptune",
+    "nameNative": "ネプチューン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40271-mvbPhOij7K2J.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "minoru-inaba"
+    ]
+  },
+  {
+    "name": "Ryuuboshi",
+    "nameNative": "リュウボシ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40272-51baLrOqmtJ1.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yuusuke-numata"
+    ]
+  },
+  {
+    "name": "Shirahoshi",
+    "nameNative": "しらほし",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/40273.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yukana"
+    ]
+  },
+  {
+    "name": "Shyarly",
+    "nameNative": "シャーリー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40274-RNDeRsWuyoyV.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "romi-park"
+    ]
+  },
+  {
+    "name": "Vander Decken IX",
+    "nameNative": "バンダー・デッケン九世",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40275-BJORfG2yqtnf.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "wataru-takagi"
+    ]
+  },
+  {
+    "name": "Zeo",
+    "nameNative": "ゼオ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40276-cDrb69UzdEbp.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "shintarou-asanuma"
+    ]
+  },
+  {
+    "name": "Kamonegi",
+    "nameNative": "カモネギ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40420-tzz18c1voa7e.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "tomomichi-nishimura"
+    ]
+  },
+  {
+    "name": "Den",
+    "nameNative": "デン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b41205-S9nX7iyVraCO.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "bin-shimada"
+    ]
+  },
+  {
+    "name": "Otohime",
+    "nameNative": "オトヒメ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b41922-1jkCTspPbfnP.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "michiko-neya"
+    ]
+  },
+  {
+    "name": "Chouchou",
+    "nameNative": "シュシュ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b42339-x3puvqtyJL5p.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "chieko-atarashi"
+    ]
+  },
+  {
+    "name": "Myosugarudo-sei",
+    "nameNative": "ミョスガルド聖",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b43091-jyrmyTxlD2w0.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "tetsuo-gotou"
+    ]
+  },
+  {
+    "name": "Kadar",
+    "nameNative": "カダル",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b43092-AsogcNNFEJ2L.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shinichi-yamada"
+    ]
+  },
+  {
+    "name": "Koala",
+    "nameNative": "コアラ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b43093-STjuKaQk68Ex.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "satsuki-yukino"
+    ]
+  },
+  {
+    "name": "Aladdin",
+    "nameNative": "アラディン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b43094-wuNUiDqwL8bJ.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "takashi-nagasako"
+    ]
+  },
+  {
+    "name": "Sadaijin",
+    "nameNative": "左大臣",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b43095-1wzqdbzO0NoG.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "ryouichi-tanaka"
+    ]
+  },
+  {
+    "name": "Udaijin",
+    "nameNative": "右大臣",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b43096-zJYF6bsaqB6a.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "hisao-egawa"
+    ]
+  },
+  {
+    "name": "Minchey",
+    "nameNative": "ミンチー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/43145.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "takuma-suzuki"
+    ]
+  },
+  {
+    "name": "Naguri",
+    "nameNative": "ナグリ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b43588-9GZTsQwUUPEW.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "minoru-inaba"
+    ]
+  },
+  {
+    "name": "Kaidou",
+    "nameNative": "カイドウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b46109-MT7Hm4Bk93In.png",
+    "role": "supporting",
+    "voiceActors": [
+      "tesshou-genda",
+      "tetsu-inada"
+    ]
+  },
+  {
+    "name": "Manjarou",
+    "nameNative": "マンジャロウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b49815-NFlYTJnN9JXf.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kappei-yamaguchi"
+    ]
+  },
+  {
+    "name": "Chocolat",
+    "nameNative": "ショコラ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b49817-gjxV3Ewjctrw.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "ikue-ootani"
+    ]
+  },
+  {
+    "name": "Turco",
+    "nameNative": "トルコ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b49819-GG6p4GMwBLOj.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "choo"
+    ]
+  },
+  {
+    "name": "Mounblutain",
+    "nameNative": "マウンブルテン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b49821-5e0vEA3UME87.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kazuki-yao"
+    ]
+  },
+  {
+    "name": "Nora Gitsune",
+    "nameNative": "のらギツネ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b49823-7dGJ0VpA3Ax6.png",
+    "role": "supporting",
+    "voiceActors": [
+      "mayumi-tanaka"
+    ]
+  },
+  {
+    "name": "Kumashi",
+    "nameNative": "クマシー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b51077-isiCUxwChDTU.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hiroshi-iwasaki"
+    ]
+  },
+  {
+    "name": "Wadatsumi",
+    "nameNative": "ワダツミ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b52553-DVBKAjQPUlmx.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kouki-miyata"
+    ]
+  },
+  {
+    "name": "Rapanui Pasqua",
+    "nameNative": "ラパヌイ・パスクア",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/52557.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keiichi-sonobe",
+      "yukiko-hirotsu"
+    ]
+  },
+  {
+    "name": "Daddy Masterson",
+    "nameNative": "ダディ・マスターソン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/52689.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "tooru-furuya"
+    ]
+  },
+  {
+    "name": "Carol Masterson",
+    "nameNative": "キャロル・マスターソン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/52691.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "konami-yoshida"
+    ]
+  },
+  {
+    "name": "Ishilly",
+    "nameNative": "イシリー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b53799-50LsTutuLask.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yui-kano"
+    ]
+  },
+  {
+    "name": "Kasagoba",
+    "nameNative": "カサゴバ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b53801-ugsBWeLdpOYq.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "takahiro-fujimoto"
+    ]
+  },
+  {
+    "name": "Maria Napole",
+    "nameNative": "マリア・ナポレ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b53803-jN1aAxdjbp1H.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kumiko-mori"
+    ]
+  },
+  {
+    "name": "Linlin Charlotte",
+    "nameNative": "シャーロット・リンリン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b54495-3x1TzSzPEOLd.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "toshiko-fujita",
+      "mami-koyama"
+    ]
+  },
+  {
+    "name": "Tamago Danshaku",
+    "nameNative": "タマゴ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b54497-lvTLfI7MdqRB.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "mugihito"
+    ]
+  },
+  {
+    "name": "Pekoms",
+    "nameNative": "ペコムズ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b54499-1Bb8NfHH07Kj.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "nobuo-tobita"
+    ]
+  },
+  {
+    "name": "Bobbin",
+    "nameNative": "ボビン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b54501-yp0bqWNMBfUH.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "tsubasa-yonaga"
+    ]
+  },
+  {
+    "name": "Isoka",
+    "nameNative": "イソカ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/55355.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "ryou-hirohashi"
+    ]
+  },
+  {
+    "name": "Henzo",
+    "nameNative": "ヘンゾ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/55357.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "choo",
+      "masumi-kageyama"
+    ]
+  },
+  {
+    "name": "Arbell Achino",
+    "nameNative": "アルベル・アッチーノ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/55359.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yuuko-nagashima"
+    ]
+  },
+  {
+    "name": "Salcho Achino",
+    "nameNative": "サルコー・アッチーノ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/55361.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "katsuyuki-konishi"
+    ]
+  },
+  {
+    "name": "Hockera Achino",
+    "nameNative": "ホッケラ・アッチーノ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/55363.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "takuma-suzuki"
+    ]
+  },
+  {
+    "name": "Campacino Achino",
+    "nameNative": "カンパチーノ・アッチーノ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b55365-1ptKiBubVI2Y.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "taiki-matsuno"
+    ]
+  },
+  {
+    "name": "Brindo Achino",
+    "nameNative": "ブリンド・アッチーノ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b55367-wE4joragW29Y.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kouichi-toochika"
+    ]
+  },
+  {
+    "name": "Akibi",
+    "nameNative": "アキビ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/55369.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "ryouko-shiraishi"
+    ]
+  },
+  {
+    "name": "Pukau",
+    "nameNative": "プカウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/55371.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "mika-matsuoka"
+    ]
+  },
+  {
+    "name": "Rongo",
+    "nameNative": "ロンゴ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/55373.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kanako-tateno"
+    ]
+  }
+]

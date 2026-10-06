@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Yondaime Masamune",
+    "nameNative": "四代目マサムネ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "natsumi-hioka"
+    ]
+  },
+  {
+    "name": "Rokudaime Hanzou",
+    "nameNative": "六代目ハンゾウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "anna-nagase"
+    ]
+  },
+  {
+    "name": "Nanadaime Echigoya",
+    "nameNative": "七代目エチゴヤ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yume-miyamoto"
+    ]
+  },
+  {
+    "name": "Nanadaime Hanzou",
+    "nameNative": "七代目ハンゾウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "mariya-ise"
+    ]
+  },
+  {
+    "name": "Hachidaime Echigoya",
+    "nameNative": "八代目エチゴヤ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "momoko-seto"
+    ]
+  },
+  {
+    "name": "Sandaime Hanzou",
+    "nameNative": "三代目ハンゾウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "junko-takeuchi"
+    ]
+  },
+  {
+    "name": "Shodai Hanzou",
+    "nameNative": "初代ハンゾウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yuuko-sanpei"
+    ]
+  },
+  {
+    "name": "Shodai Hokusai",
+    "nameNative": "初代ホクサイ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "hikaru-toono"
+    ]
+  },
+  {
+    "name": "Sandaime Hokusai",
+    "nameNative": "三代目ホクサイ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "hiroyuki-yoshino"
+    ]
+  },
+  {
+    "name": "Godaime Masamune",
+    "nameNative": "五代目マサムネ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "minami-takahashi"
+    ]
+  }
+]

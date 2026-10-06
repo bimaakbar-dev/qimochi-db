@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Tekka Uchiha",
+    "nameNative": "うちはテッカ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n22889-hRJopEZ2u8Ln.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "takehito-koyasu"
+    ]
+  },
+  {
+    "name": "Inabi Uchiha",
+    "nameNative": "うちはイナビ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n22891-opI224HGwG1x.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yoshimitsu-shimoyama"
+    ]
+  },
+  {
+    "name": "Yashiro Uchiha",
+    "nameNative": "うちはヤシロ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n22908-RX77NwCO2LsT.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takashi-nagasako"
+    ]
+  },
+  {
+    "name": "Rasa",
+    "nameNative": "羅砂",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n22920-MZPUrxk6WQ8V.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masahiko-tanaka"
+    ]
+  },
+  {
+    "name": "Misumi Tsurugi",
+    "nameNative": "剣ミスミ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n22921-Cp8cPynxlCbR.png",
+    "role": "supporting",
+    "voiceActors": [
+      "ichirouta-koizumi"
+    ]
+  },
+  {
+    "name": "Genyuumaru",
+    "nameNative": "幻幽丸",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n22922-R0ON7l5XRtos.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takashi-mito"
+    ]
+  },
+  {
+    "name": "Ibiki Morino",
+    "nameNative": "森乃イビキ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n22923-oevCrDnszrEa.png",
+    "role": "supporting",
+    "voiceActors": [
+      "taiten-kusunoki"
+    ]
+  },
+  {
+    "name": "Zori",
+    "nameNative": "ゾウリ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/22931.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keiji-okuda"
+    ]
+  },
+  {
+    "name": "Kaiza",
+    "nameNative": "カイザ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n22996-R7NxHrHjMLmL.png",
+    "role": "supporting",
+    "voiceActors": [
+      "akimitsu-takase"
+    ]
+  },
+  {
+    "name": "Ami",
+    "nameNative": "亜美",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n23006-Hiw1PKmpkiuB.png",
+    "role": "supporting",
+    "voiceActors": [
+      "ema-kogure"
+    ]
+  },
+  {
+    "name": "Udon",
+    "nameNative": "ウドン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n23052-0Qs21zlpyawM.png",
+    "role": "supporting",
+    "voiceActors": [
+      "tomo-shigematsu"
+    ]
+  },
+  {
+    "name": "Kagari",
+    "nameNative": "篝",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n23056-Rl4Udw9fMJZe.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masao-harada"
+    ]
+  },
+  {
+    "name": "Baiu",
+    "nameNative": "バイウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n23081-0cvCI9HoWh8l.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takayuki-fujimoto"
+    ]
+  },
+  {
+    "name": "Midare",
+    "nameNative": "ミダレ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n23083-nwkvsgplNBPp.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yasuhiro-fujiwara"
+    ]
+  }
+]

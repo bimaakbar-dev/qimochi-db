@@ -1,0 +1,125 @@
+[
+  {
+    "name": "Idate Morino",
+    "nameNative": "森乃イダテ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n31197-b6lffViUejVY.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hiromichi-kogami"
+    ]
+  },
+  {
+    "name": "Bisuke",
+    "nameNative": "ビスケ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/34075.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "shinji-kawada"
+    ]
+  },
+  {
+    "name": "Manda",
+    "nameNative": "マンダ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n37929-pewxLnzzHI8U.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masuo-amada"
+    ]
+  },
+  {
+    "name": "Hakkaku",
+    "nameNative": "ハッカク",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40727-O9MlOnwTmELx.png",
+    "role": "supporting",
+    "voiceActors": [
+      "choo"
+    ]
+  },
+  {
+    "name": "Ukon",
+    "nameNative": "右近",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n41366-yIvp4naJdd4T.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shunsuke-sakuya"
+    ]
+  },
+  {
+    "name": "Kunihisa",
+    "nameNative": "クニヒサ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n43923-HjLXOgM7GGnB.png",
+    "role": "supporting",
+    "voiceActors": [
+      "sakiko-uran"
+    ]
+  },
+  {
+    "name": "Kunijiro",
+    "nameNative": "クニジロウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n43924-YR7B0QvvqaCR.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shunsuke-takamiya"
+    ]
+  },
+  {
+    "name": "Ran",
+    "nameNative": "ラン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b50957-9x3jcNarDEvu.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kaori-mine"
+    ]
+  },
+  {
+    "name": "Gatou",
+    "nameNative": "ガトー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n63793-7Q8gAJdVDai0.png",
+    "role": "supporting",
+    "voiceActors": [
+      "naoki-bandou"
+    ]
+  },
+  {
+    "name": "Mebuki Haruno",
+    "nameNative": "春野メブキ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b67289-3U6TXsGQB4qB.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Natsuhi",
+    "nameNative": "ナツヒ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n77693-2xqSOFVxaLrw.png",
+    "role": "supporting",
+    "voiceActors": [
+      "rica-fukami"
+    ]
+  },
+  {
+    "name": "Sumaru",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b82609-4VCdlNVSnhjz.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "daisuke-namikawa"
+    ]
+  },
+  {
+    "name": "Gantetsu",
+    "nameNative": "丸鉄",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b83755-DuFm4djhivXH.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "taiten-kusunoki"
+    ]
+  },
+  {
+    "name": "Tonton",
+    "nameNative": "トントン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b192707-Mw6i6wPWkBoZ.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "keiko-nemoto"
+    ]
+  }
+]

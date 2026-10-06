@@ -1,0 +1,126 @@
+[
+  {
+    "name": "Meizu",
+    "nameNative": "冥頭",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n16165-FMRUHuhB7HG1.png",
+    "role": "supporting",
+    "voiceActors": [
+      "toshiaki-kuwahara"
+    ]
+  },
+  {
+    "name": "Kotetsu Hagane",
+    "nameNative": "はがねコテツ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n16304-1PbvPoXDzjwW.png",
+    "role": "supporting",
+    "voiceActors": [
+      "tomoyuki-kouno"
+    ]
+  },
+  {
+    "name": "Toki",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n16321-420QT5HnO6iP.png",
+    "role": "supporting",
+    "voiceActors": [
+      "miki-nagasawa"
+    ]
+  },
+  {
+    "name": "Gamatatsu",
+    "nameNative": "ガマ竜",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/16952.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "tomo-shigematsu"
+    ]
+  },
+  {
+    "name": "Fugaku Uchiha",
+    "nameNative": "うちはフガク",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n16973-xTr9vfvx8QBR.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kenji-hamada"
+    ]
+  },
+  {
+    "name": "Mubi",
+    "nameNative": "夢火",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n16974-MC9W4LySYRv6.png",
+    "role": "supporting",
+    "voiceActors": [
+      "youji-ueda"
+    ]
+  },
+  {
+    "name": "Oki",
+    "nameNative": "沖",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n16975-426CCMqUSfCI.png",
+    "role": "supporting",
+    "voiceActors": [
+      "kouji-totani"
+    ]
+  },
+  {
+    "name": "Jirocho Wasabi",
+    "nameNative": "ワサビ次郎長",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n16976-pbx7jKAaVaDh.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yousuke-akimoto"
+    ]
+  },
+  {
+    "name": "Gamakichi",
+    "nameNative": "ガマ吉",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/16999.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "youji-ueda"
+    ]
+  },
+  {
+    "name": "Chishima",
+    "nameNative": "チシマ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17165-9iOtC0UagSGJ.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takashi-mito"
+    ]
+  },
+  {
+    "name": "Tazuna",
+    "nameNative": "タズナ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17197-XVgEnUK647Qx.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takeshi-aono"
+    ]
+  },
+  {
+    "name": "Genno",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/17199.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "ken-shiroyama"
+    ]
+  },
+  {
+    "name": "Todoroki",
+    "nameNative": "トドロキ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n17200-vMnhemWF8VTJ.png",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-hanawa"
+    ]
+  },
+  {
+    "name": "Raido Namiashi",
+    "nameNative": "並足ライドウ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/17298.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "hiroshi-tsuchida"
+    ]
+  }
+]

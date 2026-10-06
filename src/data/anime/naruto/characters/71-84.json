@@ -1,0 +1,127 @@
+[
+  {
+    "name": "Yugao Uzuki",
+    "nameNative": "卯月夕顔",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15045-E9QvPryIQgJX.png",
+    "role": "supporting",
+    "voiceActors": [
+      "keiko-nemoto"
+    ]
+  },
+  {
+    "name": "Inoichi Yamanaka",
+    "nameNative": "山中いのいち",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15072-SLGhV8u4lAGp.png",
+    "role": "supporting",
+    "voiceActors": [
+      "daiki-nakamura"
+    ]
+  },
+  {
+    "name": "Hana Inuzuka",
+    "nameNative": "犬塚ハナ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15073-dT3K5G6US1ja.png",
+    "role": "supporting",
+    "voiceActors": [
+      "eri-saitou"
+    ]
+  },
+  {
+    "name": "Tsume Inuzuka",
+    "nameNative": "犬塚ツメ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15074-3k7I9cFLWUjz.png",
+    "role": "supporting",
+    "voiceActors": [
+      "seiko-fujiki"
+    ]
+  },
+  {
+    "name": "Tsunami",
+    "nameNative": "ツナミ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15077-7Bc55n62t7t6.png",
+    "role": "supporting",
+    "voiceActors": [
+      "misa-watanabe"
+    ]
+  },
+  {
+    "name": "Baki",
+    "nameNative": "バキ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15081-Lu1emOxDIBl3.png",
+    "role": "supporting",
+    "voiceActors": [
+      "jouji-nakata"
+    ]
+  },
+  {
+    "name": "Yotaka",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/15145.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kunihiko-yasui"
+    ]
+  },
+  {
+    "name": "Kamikiri Fuma",
+    "nameNative": "カミキリ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15176-5mhIWwSYGX2o.png",
+    "role": "supporting",
+    "voiceActors": [
+      "bin-shimada"
+    ]
+  },
+  {
+    "name": "Sasame Fuma",
+    "nameNative": "ササメ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15177-kff9CT501ry3.png",
+    "role": "supporting",
+    "voiceActors": [
+      "sanae-kobayashi"
+    ]
+  },
+  {
+    "name": "Haruna",
+    "nameNative": "ハルナ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15178-58aqp1fPkVOH.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yumi-fukamizu"
+    ]
+  },
+  {
+    "name": "Shigure",
+    "nameNative": "シグレ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15179-OhSKh438SeNm.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takuo-kawamura"
+    ]
+  },
+  {
+    "name": "Enma",
+    "nameNative": "猿魔",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n15757-VDI6rr31wwHD.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hiroshi-naka"
+    ]
+  },
+  {
+    "name": "Mizura",
+    "nameNative": "ミヅラ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/15759.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "touko-aoyama"
+    ]
+  },
+  {
+    "name": "Gouzu",
+    "nameNative": "業頭",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n16164-xgmJmu6aQeNi.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takeshi-kusao"
+    ]
+  }
+]
