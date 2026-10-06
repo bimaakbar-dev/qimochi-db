@@ -26,7 +26,7 @@ jobs:
       - name: Inject data
         run: |
           mkdir -p src/data
-          cp -r _data/* src/data/
+          cp -r _data/data/* src/data/
           ls -la src/data/
 
       - name: Setup Node
