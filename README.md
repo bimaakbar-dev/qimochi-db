@@ -1,4 +1,6 @@
-# QimochiDB
+# Yukionime
+
+[![Deploy to Cloudflare Pages](https://github.com/bimaakbar-dev/yukionime/actions/workflows/deploy-frontend.yml/badge.svg)](https://github.com/bimaakbar-dev/yukionime/actions/workflows/deploy-frontend.yml)
 
 Database anime Indonesia — katalog lengkap, API gratis untuk developer.
 
