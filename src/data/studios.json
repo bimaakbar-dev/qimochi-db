@@ -42,10 +42,556 @@
     "description": "Studio tertua di Jepang, dikenal dengan One Piece, Dragon Ball, dan Sailor Moon."
   },
   {
-  "id": "kyoto-animation",
-  "name": "Kyoto Animation",
-  "founded": 1981,
-  "website": "https://www.kyotoanimation.co.jp",
-  "description": "Studio asal Kyoto yang dikenal dengan kualitas animasi tinggi dan cerita emosional, seperti Violet Evergarden, Clannad, dan K-On!."
-}
+    "id": "kyoto-animation",
+    "name": "Kyoto Animation",
+    "founded": 1981,
+    "website": "https://www.kyotoanimation.co.jp",
+    "description": "Studio asal Kyoto yang dikenal dengan kualitas animasi tinggi dan cerita emosional, seperti Violet Evergarden, Clannad, dan K-On!."
+  },
+  {
+    "id": "lidenfilms",
+    "name": "LIDENFILMS",
+    "founded": 2012,
+    "website": "https://lidenfilms.jp",
+    "description": "Studio yang dikenal dengan Tokyo Revengers, Akame ga Kill!, dan The Quintessential Quintuplets."
+  },
+  {
+    "id": "a-1-pictures",
+    "name": "A-1 Pictures",
+    "founded": 2005,
+    "website": "https://a1p.jp",
+    "description": "Anak perusahaan Aniplex, dikenal dengan Sword Art Online, Kaguya-sama, dan Fairy Tail."
+  },
+  {
+    "id": "bones",
+    "name": "Bones",
+    "founded": 1998,
+    "website": "https://www.bones.co.jp",
+    "description": "Studio yang didirikan oleh staf Sunrise, dikenal dengan Fullmetal Alchemist, My Hero Academia, dan Mob Psycho 100."
+  },
+  {
+    "id": "jc-staff",
+    "name": "J.C.Staff",
+    "founded": 1986,
+    "website": "https://www.jcstaff.co.jp",
+    "description": "Studio produktif yang dikenal dengan Toradora!, Shokugeki no Souma, dan A Certain Magical Index."
+  },
+  {
+    "id": "studio-pierrot",
+    "name": "Studio Pierrot",
+    "founded": 1979,
+    "website": "https://en.pierrot.jp",
+    "description": "Studio yang dikenal dengan Naruto, Bleach, dan Tokyo Ghoul."
+  },
+  {
+    "id": "sunrise",
+    "name": "Sunrise",
+    "founded": 1972,
+    "website": "https://www.sunrise-inc.co.jp",
+    "description": "Studio yang dikenal dengan Gundam, Code Geass, dan Cowboy Bebop."
+  },
+  {
+    "id": "production-ig",
+    "name": "Production I.G",
+    "founded": 1987,
+    "website": "https://www.production-ig.co.jp",
+    "description": "Studio yang dikenal dengan Ghost in the Shell, Haikyuu!!, dan Psycho-Pass."
+  },
+  {
+    "id": "trigger",
+    "name": "Studio Trigger",
+    "founded": 2011,
+    "website": "https://www.st-trigger.co.jp",
+    "description": "Didirikan oleh mantan staf Gainax, dikenal dengan Kill la Kill, Cyberpunk: Edgerunners, dan Little Witch Academia."
+  },
+  {
+    "id": "shaft",
+    "name": "Shaft",
+    "founded": 1975,
+    "website": "https://www.shaft-web.co.jp",
+    "description": "Studio yang dikenal dengan Monogatari Series, Madoka Magica, dan March Comes in Like a Lion."
+  },
+  {
+    "id": "gainax",
+    "name": "Gainax",
+    "founded": 1984,
+    "website": "https://www.gainax.co.jp",
+    "description": "Studio legendaris yang dikenal dengan Neon Genesis Evangelion, Gurren Lagann, dan FLCL."
+  },
+  {
+    "id": "studio-ghibli",
+    "name": "Studio Ghibli",
+    "founded": 1985,
+    "website": "https://www.ghibli.jp",
+    "description": "Studio yang didirikan oleh Miyazaki Hayao dan Takahata Isao, dikenal dengan Spirited Away, My Neighbor Totoro, dan Princess Mononoke."
+  },
+  {
+    "id": "david-production",
+    "name": "David Production",
+    "founded": 2007,
+    "website": "https://davidproduction.jp",
+    "description": "Studio yang dikenal dengan JoJo's Bizarre Adventure dan Fire Force."
+  },
+  {
+    "id": "white-fox",
+    "name": "White Fox",
+    "founded": 2007,
+    "website": "https://whitefox.jp",
+    "description": "Studio yang dikenal dengan Steins;Gate, Re:Zero, dan Akame ga Kill!."
+  },
+  {
+    "id": "silver-link",
+    "name": "Silver Link",
+    "founded": 2007,
+    "website": "https://www.silverlink.co.jp",
+    "description": "Studio yang dikenal dengan Non Non Biyori, Strike the Blood, dan Kokoro Connect."
+  },
+  {
+    "id": "8bit",
+    "name": "8bit",
+    "founded": 2008,
+    "website": "https://8bit-studio.co.jp",
+    "description": "Studio yang dikenal dengan That Time I Got Reincarnated as a Slime dan Grisaia series."
+  },
+  {
+    "id": "brains-base",
+    "name": "Brain's Base",
+    "founded": 1996,
+    "website": "https://www.brainsbase.co.jp",
+    "description": "Studio yang dikenal dengan Natsume Yuujinchou, Durarara!!, dan Baccano!."
+  },
+  {
+    "id": "diomedea",
+    "name": "Diomedéa",
+    "founded": 2005,
+    "website": "https://diomedea.net",
+    "description": "Studio yang dikenal dengan KonoSuba, Astra Lost in Space, dan Domestic Girlfriend."
+  },
+  {
+    "id": "doga-kobo",
+    "name": "Doga Kobo",
+    "founded": 1973,
+    "website": "https://www.dogakobo.com",
+    "description": "Studio yang dikenal dengan Monthly Girls' Nozaki-kun, Yuru Yuri, dan Oshi no Ko."
+  },
+  {
+    "id": "feel",
+    "name": "feel.",
+    "founded": 2002,
+    "website": "https://www.feel-ing.com",
+    "description": "Studio yang dikenal dengan Kiss x Sis, Dagashi Kashi, dan Spy Classroom."
+  },
+  {
+    "id": "gonzo",
+    "name": "Gonzo",
+    "founded": 1992,
+    "website": "https://www.gonzo.co.jp",
+    "description": "Studio yang dikenal dengan Full Metal Panic!, Hellsing, dan Gantz."
+  },
+  {
+    "id": "kinema-citrus",
+    "name": "Kinema Citrus",
+    "founded": 2008,
+    "website": "https://kinemacitrus.biz",
+    "description": "Studio yang dikenal dengan Made in Abyss, The Rising of the Shield Hero, dan Barakamon."
+  },
+  {
+    "id": "lerche",
+    "name": "Lerche",
+    "founded": 2011,
+    "website": "https://www.lerche.jp",
+    "description": "Studio yang dikenal dengan Assassination Classroom, Danganronpa, dan Classroom of the Elite."
+  },
+  {
+    "id": "nippon-animation",
+    "name": "Nippon Animation",
+    "founded": 1975,
+    "website": "https://www.nippon-animation.co.jp",
+    "description": "Studio yang dikenal dengan World Masterpiece Theater dan Hunter x Hunter (1999)."
+  },
+  {
+    "id": "olm",
+    "name": "OLM",
+    "founded": 1990,
+    "website": "https://www.olm.co.jp",
+    "description": "Studio yang dikenal dengan Pokémon, Beyblade, dan Inazuma Eleven."
+  },
+  {
+    "id": "pa-works",
+    "name": "P.A. Works",
+    "founded": 2000,
+    "website": "https://www.pa-works.jp",
+    "description": "Studio yang dikenal dengan Angel Beats!, Shirobako, dan Nagi no Asukara."
+  },
+  {
+    "id": "satelight",
+    "name": "Satelight",
+    "founded": 1995,
+    "website": "https://www.satelight.co.jp",
+    "description": "Studio yang dikenal dengan Macross Frontier, Fairy Tail, dan Log Horizon."
+  },
+  {
+    "id": "science-saru",
+    "name": "Science SARU",
+    "founded": 2013,
+    "website": "https://www.sciencesaru.com",
+    "description": "Studio yang didirikan oleh Yuasa Masaaki dan Eunyoung Choi, dikenal dengan Devilman Crybaby dan Keep Your Hands Off Eizouken!."
+  },
+  {
+    "id": "studio-bind",
+    "name": "Studio Bind",
+    "founded": 2018,
+    "website": "https://st-bind.jp",
+    "description": "Studio kolaborasi White Fox dan Egg Firm, dikenal dengan Mushoku Tensei."
+  },
+  {
+    "id": "studio-deen",
+    "name": "Studio Deen",
+    "founded": 1975,
+    "website": "https://www.studio-deen.co.jp",
+    "description": "Studio yang dikenal dengan Fate/stay night (2006), Rurouni Kenshin, dan Re:Zero."
+  },
+  {
+    "id": "tatsunoko-production",
+    "name": "Tatsunoko Production",
+    "founded": 1962,
+    "website": "https://www.tatsunoko.co.jp",
+    "description": "Studio pionir yang dikenal dengan Speed Racer, Gatchaman, dan Casshan."
+  },
+  {
+    "id": "tms-entertainment",
+    "name": "TMS Entertainment",
+    "founded": 1946,
+    "website": "https://www.tms-e.co.jp",
+    "description": "Studio yang dikenal dengan Detective Conan, Lupin III, dan Dr. Stone."
+  },
+  {
+    "id": "zexcs",
+    "name": "Zexcs",
+    "founded": 1998,
+    "website": "https://www.zexcs.co.jp",
+    "description": "Studio yang dikenal dengan Say I Love You, Diary of Our Days at the Breakwater, dan Aku no Hana."
+  },
+  {
+    "id": "bandai-namco-pictures",
+    "name": "Bandai Namco Pictures",
+    "founded": 2015,
+    "website": "https://www.bn-pictures.co.jp",
+    "description": "Anak perusahaan Bandai Namco, dikenal dengan Aikatsu! dan Gintama."
+  },
+  {
+    "id": "bridge",
+    "name": "Bridge",
+    "founded": 2007,
+    "website": "https://www.bridge-inc.co.jp",
+    "description": "Studio yang dikenal dengan Fairy Tail (2014), Yu-Gi-Oh! Sevens, dan The Devil is a Part-Timer!."
+  },
+  {
+    "id": "passione",
+    "name": "Passione",
+    "founded": 2011,
+    "website": "https://passione-anime.com",
+    "description": "Studio yang dikenal dengan High School DxD, Citrus, dan Higurashi Gou."
+  },
+  {
+    "id": "shuka",
+    "name": "Shuka",
+    "founded": 2013,
+    "website": "https://www.shuka.co.jp",
+    "description": "Studio yang dikenal dengan Durarara!!x2 dan Natsume Yuujinchou Go."
+  },
+  {
+    "id": "studio-3hz",
+    "name": "Studio 3Hz",
+    "founded": 2013,
+    "website": "https://www.3hz.co.jp",
+    "description": "Studio yang dikenal dengan Flip Flappers, Princess Principal, dan Sword Art Online Alternative: Gun Gale Online."
+  },
+  {
+    "id": "typhoon-graphics",
+    "name": "Typhoon Graphics",
+    "founded": 2010,
+    "website": "https://typhoon-graphics.co.jp",
+    "description": "Studio yang dikenal dengan Hajimete no Gal dan Shinobi no Ittoki."
+  },
+  {
+    "id": "arms",
+    "name": "Arms",
+    "founded": 1996,
+    "website": "https://www.arms.jp",
+    "description": "Studio yang dikenal dengan Queen's Blade, Ikki Tousen, dan Elfen Lied."
+  },
+  {
+    "id": "asread",
+    "name": "asread",
+    "founded": 2003,
+    "website": "https://www.asread.net",
+    "description": "Studio yang dikenal dengan Mirai Nikki, Minami-ke, dan Corpse Party."
+  },
+  {
+    "id": "bibury-animation-studios",
+    "name": "Bibury Animation Studios",
+    "founded": 2017,
+    "website": "https://bibury-st.com",
+    "description": "Studio yang didirikan oleh Tensho, dikenal dengan The Quintessential Quintuplets dan Grisaia: Phantom Trigger."
+  },
+  {
+    "id": "c2c",
+    "name": "C2C",
+    "founded": 2006,
+    "website": "https://www.c2c2006.co.jp",
+    "description": "Studio yang dikenal dengan Wandering Witch: The Journey of Elaina dan WorldEnd."
+  },
+  {
+    "id": "cloud-hearts",
+    "name": "Cloud Hearts",
+    "founded": 2021,
+    "website": "https://cloud-hearts.com",
+    "description": "Studio yang dikenal dengan The Ice Guy and His Cool Female Colleague dan Hokkaido Gals Are Super Adorable!."
+  },
+  {
+    "id": "creators-in-pack",
+    "name": "Creators in Pack",
+    "founded": 2013,
+    "website": "https://www.creatorsinpack.com",
+    "description": "Studio yang dikenal dengan Ojisan and Marshmallow dan Musashino!."
+  },
+  {
+    "id": "eiken",
+    "name": "Eiken",
+    "founded": 1969,
+    "website": "https://www.eiken-anime.jp",
+    "description": "Studio veteran yang dikenal dengan produksi animasi untuk berbagai serial lama."
+  },
+  {
+    "id": "emt-squared",
+    "name": "EMT Squared",
+    "founded": 2013,
+    "website": "https://emt2.co.jp",
+    "description": "Studio yang dikenal dengan To Your Eternity dan The Saint's Magic Power is Omnipotent."
+  },
+  {
+    "id": "engi",
+    "name": "ENGI",
+    "founded": 2019,
+    "website": "https://engi.jp",
+    "description": "Studio yang dikenal dengan Uzaki-chan Wants to Hang Out! dan Medaka Kuroiwa is Impervious to My Charms."
+  },
+  {
+    "id": "felix-film",
+    "name": "Felix Film",
+    "founded": 2014,
+    "website": "https://felixfilm.co.jp",
+    "description": "Studio yang dikenal dengan Island dan Re:Stage! Dream Days♪."
+  },
+  {
+    "id": "gaina",
+    "name": "Gaina",
+    "founded": 2015,
+    "website": "https://www.gaina.co.jp",
+    "description": "Studio yang merupakan rebranding Fukushima Gainax, dikenal dengan Ueno-san wa Bukiyou."
+  },
+  {
+    "id": "geek-toys",
+    "name": "Geek Toys",
+    "founded": 2017,
+    "website": "https://geektoys.co.jp",
+    "description": "Studio yang dikenal dengan Date A Live IV dan The 100 Girlfriends Who Really, Really, Really, Really, Really Love You."
+  },
+  {
+    "id": "gohands",
+    "name": "GoHands",
+    "founded": 2008,
+    "website": "https://www.gohands-animation.com",
+    "description": "Studio yang dikenal dengan K dan The Girl I Like Forgot Her Glasses."
+  },
+  {
+    "id": "hoods-entertainment",
+    "name": "Hoods Entertainment",
+    "founded": 2009,
+    "website": "https://hoods.co.jp",
+    "description": "Studio yang dikenal dengan Mysterious Girlfriend X dan Val x Love."
+  },
+  {
+    "id": "jumondo",
+    "name": "Jumondo",
+    "founded": 2009,
+    "website": "https://jumondo.co.jp",
+    "description": "Studio yang dikenal dengan Deaimon dan Kuma Kuma Kuma Bear."
+  },
+  {
+    "id": "khara",
+    "name": "Studio Khara",
+    "founded": 2006,
+    "website": "https://www.khara.co.jp",
+    "description": "Studio yang didirikan oleh Anno Hideaki, dikenal dengan Rebuild of Evangelion."
+  },
+  {
+    "id": "lay-duce",
+    "name": "Lay-duce",
+    "founded": 2013,
+    "website": "https://lay-duce.co.jp",
+    "description": "Studio yang dikenal dengan Classroom Crisis dan Heroines Run the Show."
+  },
+  {
+    "id": "millepensee",
+    "name": "Millepensee",
+    "founded": 2012,
+    "website": "https://millepensee.com",
+    "description": "Studio yang dikenal dengan Teekyu dan Berserk (2016)."
+  },
+  {
+    "id": "naz",
+    "name": "NAZ",
+    "founded": 2012,
+    "website": "https://www.naz-studio.co.jp",
+    "description": "Studio yang dikenal dengan Hamatora dan Thermae Romae Novae."
+  },
+  {
+    "id": "nexus",
+    "name": "Nexus",
+    "founded": 2012,
+    "website": "https://nexus-sp.co.jp",
+    "description": "Studio yang dikenal dengan Comic Girls dan Chained Soldier."
+  },
+  {
+    "id": "nut",
+    "name": "Nut",
+    "founded": 2017,
+    "website": "https://nutinc.jp",
+    "description": "Studio yang dikenal dengan Saga of Tanya the Evil dan Deca-Dence."
+  },
+  {
+    "id": "okuruto-noboru",
+    "name": "Okuruto Noboru",
+    "founded": 2017,
+    "website": "https://okuruto-noboru.com",
+    "description": "Studio yang dikenal dengan Tomodachi Game dan My Instant Death Ability is So Overpowered."
+  },
+  {
+    "id": "pine-jam",
+    "name": "Pine Jam",
+    "founded": 2015,
+    "website": "https://www.pinejam.com",
+    "description": "Studio yang dikenal dengan Gamers! dan Do It Yourself!!."
+  },
+  {
+    "id": "polygon-pictures",
+    "name": "Polygon Pictures",
+    "founded": 1983,
+    "website": "https://www.ppi.co.jp",
+    "description": "Studio 3D CGI yang dikenal dengan Ajin, BLAME!, dan Knights of Sidonia."
+  },
+  {
+    "id": "revoroot",
+    "name": "Revoroot",
+    "founded": 2013,
+    "website": "https://revoroot.co.jp",
+    "description": "Studio yang dikenal dengan FLCL Alternative dan FLCL Progressive."
+  },
+  {
+    "id": "sanzigen",
+    "name": "SANZIGEN",
+    "founded": 2003,
+    "website": "https://www.sanzigen.co.jp",
+    "description": "Studio 3D CGI yang dikenal dengan BanG Dream! dan ARP Backstage Pass."
+  },
+  {
+    "id": "seven-arcs",
+    "name": "Seven Arcs",
+    "founded": 2002,
+    "website": "https://seven-arcs.co.jp",
+    "description": "Studio yang dikenal dengan Magical Girl Lyrical Nanoha dan Blue Period."
+  },
+  {
+    "id": "signal-md",
+    "name": "Signal.MD",
+    "founded": 2014,
+    "website": "https://www.signal-md.co.jp",
+    "description": "Studio yang dikenal dengan Recovery of an MMO Junkie dan Mars Red."
+  },
+  {
+    "id": "studio-4c",
+    "name": "Studio 4°C",
+    "founded": 1986,
+    "website": "https://www.studio4c.co.jp",
+    "description": "Studio yang dikenal dengan Mind Game, Tekkonkinkreet, dan Children of the Sea."
+  },
+  {
+    "id": "studio-colorido",
+    "name": "Studio Colorido",
+    "founded": 2011,
+    "website": "https://colorido.co.jp",
+    "description": "Studio yang dikenal dengan A Whisker Away, Penguin Highway, dan Drifting Home."
+  },
+  {
+    "id": "studio-comet",
+    "name": "Studio Comet",
+    "founded": 1986,
+    "website": "https://www.studio-comet.com",
+    "description": "Studio yang dikenal dengan School Rumble dan Jewelpet."
+  },
+  {
+    "id": "studio-kai",
+    "name": "Studio Kai",
+    "founded": 2020,
+    "website": "https://st-kai.jp",
+    "description": "Studio yang didirikan staf Satelight, dikenal dengan Uma Musume Season 2 dan Fuuto PI."
+  },
+  {
+    "id": "studio-puyukai",
+    "name": "Studio PuYUKAI",
+    "founded": 2014,
+    "website": "https://puyukai.com",
+    "description": "Studio yang dikenal dengan spin-off Isekai Quartet dan mini-anime Overlord."
+  },
+  {
+    "id": "studio-signpost",
+    "name": "Studio Signpost",
+    "founded": 2018,
+    "website": "https://www.studio-signpost.co.jp",
+    "description": "Studio yang dikenal dengan Kingdom dan Requiem of the Rose King."
+  },
+  {
+    "id": "sublimation",
+    "name": "Sublimation",
+    "founded": 2008,
+    "website": "https://sublimation.co.jp",
+    "description": "Studio yang dikenal dengan Dragon's Dogma dan Stand My Heroes."
+  },
+  {
+    "id": "tezuka-productions",
+    "name": "Tezuka Productions",
+    "founded": 1968,
+    "website": "https://tezuka.co.jp",
+    "description": "Studio yang didirikan oleh Osamu Tezuka, dikenal dengan Astro Boy dan Black Jack."
+  },
+  {
+    "id": "tnk",
+    "name": "TNK",
+    "founded": 1999,
+    "website": "https://www.tnk.jp",
+    "description": "Studio yang dikenal dengan School Days dan High School DxD."
+  },
+  {
+    "id": "troyca",
+    "name": "TROYCA",
+    "founded": 2013,
+    "website": "https://troyca.jp",
+    "description": "Studio yang didirikan mantan staf AIC, dikenal dengan Aldnoah.Zero dan IDOLiSH7."
+  },
+  {
+    "id": "yokohama-animation-lab",
+    "name": "Yokohama Animation Lab",
+    "founded": 2015,
+    "website": "https://yokohama-animation.com",
+    "description": "Studio yang dikenal dengan The Witch from Mercury (co-production) dan Magical Destroyers."
+  },
+  {
+    "id": "zero-g",
+    "name": "Zero-G",
+    "founded": 2011,
+    "website": "https://zero-g.co.jp",
+    "description": "Studio yang dikenal dengan Grand Blue dan Mysterious Disappearances."
+  }
 ]
