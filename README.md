@@ -4,8 +4,7 @@
 
 Database anime Indonesia — katalog lengkap, API gratis untuk developer.
 
-- 🌐 Website: https://qimochi.pages.dev
-- 🔌 API Base: https://qimochi-api.bimaakbar.workers.dev
+- 🌐 Website: https://yukionime.pages.dev
 
 ---
 
