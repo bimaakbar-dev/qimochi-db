@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Saburou",
+    "nameNative": "三郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b196854-OxXRBTZJKPE5.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masaki-terasoma"
+    ]
+  },
+  {
+    "name": "Rei Kibutsuji",
+    "nameNative": "きぶつじれい",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b206329-7FVSo4gsNYYl.png",
+    "role": "supporting",
+    "voiceActors": [
+      "yuuko-minaguchi"
+    ]
+  },
+  {
+    "name": "Tanjurou Kamado",
+    "nameNative": "竈門炭十郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b206330-dDKOKM4O2pVg.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shinichirou-miki"
+    ]
+  },
+  {
+    "name": "Kozo Kanamori",
+    "nameNative": "鉄穴森鋼蔵",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b206331-ss70JxaeUkeU.png",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-takemoto"
+    ]
+  },
+  {
+    "name": "Rokuta Kamado",
+    "nameNative": "竈門六太",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207857-sn24LyeKSrPr.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "aoi-koga"
+    ]
+  },
+  {
+    "name": "Gotou",
+    "nameNative": "後藤",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207949-ZteimhlyO7EX.png",
+    "role": "supporting",
+    "voiceActors": [
+      "makoto-furukawa"
+    ]
+  },
+  {
+    "name": "Shoichi",
+    "nameNative": "正一",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207950-QQzsB5OmINoW.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "mitsuhiro-ichiki"
+    ]
+  },
+  {
+    "name": "Female Kakushi",
+    "nameNative": "隠",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207951-yTClnNQvda4X.jpg",
+    "role": "supporting",
+    "voiceActors": []
+  },
+  {
+    "name": "Kibutsuji no Musume",
+    "nameNative": "鬼舞辻の娘",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207952-W0vp1yGKN1SW.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "haruka-shiraishi"
+    ]
+  },
+  {
+    "name": "Teruko",
+    "nameNative": "てる子",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207953-7SkgAPP9raMa.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "miho-okasaki"
+    ]
+  },
+  {
+    "name": "Kiyoshi",
+    "nameNative": "清",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207954-kUwQCp1zJPm9.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "shunichi-toki"
+    ]
+  },
+  {
+    "name": "Tokie",
+    "nameNative": "トキエ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207955-paSdmgn7LPH7.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "misako-tomioka"
+    ]
+  },
+  {
+    "name": "Toyo",
+    "nameNative": "豊",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207956-UZyuTqSS9xCy.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "mitsuo-iwata"
+    ]
+  }
+]
