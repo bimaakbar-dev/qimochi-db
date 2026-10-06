@@ -31,7 +31,7 @@ genres:
   - shounen
 
 studios:
-  - lindenfilms
+  - lidenfilms
 
 image: "https://shikimori.one/system/animes/original/42249.jpg?1711977954"
 banner: "https://media.kitsu.app/anime/cover_images/43321/large.jpg"
