@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Violet Evergarden",
+    "nameNative": "ヴァイオレット・エヴァーガーデン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b90169-4wr1Zehnsac8.png",
+    "role": "main",
+    "voiceActors": [
+      "yui-ishikawa"
+    ]
+  },
+  {
+    "name": "Cattleya Baudelaire",
+    "nameNative": "カトレア・ボードレール",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124787-1HuZGawvoejp.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "aya-endou"
+    ]
+  },
+  {
+    "name": "Benedict Blue",
+    "nameNative": "ベネディクト・ブルー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124788-upZ5vtGwndzt.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kouki-uchiyama"
+    ]
+  },
+  {
+    "name": "Dietfried Bougainvillea",
+    "nameNative": "ディートフリート・ブーゲンビリア",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124789-DLp0QEJZeiQ8.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hidenobu-kiuchi"
+    ]
+  },
+  {
+    "name": "Gilbert Bougainvillea",
+    "nameNative": "ギルベルト・ブーゲンビリア",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124790-QR7zyemTK0zq.png",
+    "role": "supporting",
+    "voiceActors": [
+      "daisuke-namikawa"
+    ]
+  },
+  {
+    "name": "Bridget",
+    "nameNative": "ブリジット",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124791-UZv7eQrf3b2J.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "yurika-aizawa"
+    ]
+  },
+  {
+    "name": "Erica Brown",
+    "nameNative": "エリカ・ブラウン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124792-NWFK2r8zIxYX.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "minori-chihara"
+    ]
+  },
+  {
+    "name": "Iris Cannary",
+    "nameNative": "アイリス・カナリー",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/124793-dLsKOcQbMu85.png",
+    "role": "supporting",
+    "voiceActors": [
+      "haruka-tomatsu"
+    ]
+  },
+  {
+    "name": "Iberis Conoway",
+    "nameNative": "イベリス・コノウェ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/124794-nNNzoCGufkAF.png",
+    "role": "supporting",
+    "voiceActors": [
+      "mari-doi"
+    ]
+  },
+  {
+    "name": "Tiffany Evergarden",
+    "nameNative": "ティファニー・エヴァーガーデン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/124795-TVTdrCVsDONn.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "toshiko-sawada"
+    ]
+  },
+  {
+    "name": "Dansei Kyaku",
+    "nameNative": "男性客",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124798-CKa1Jqfjm8nN.png",
+    "role": "supporting",
+    "voiceActors": [
+      "takuya-inagaki"
+    ]
+  },
+  {
+    "name": "Claudia Hodgins",
+    "nameNative": "クラウディア・ホッジンズ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124799-htaqVGZd83GW.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "takehito-koyasu"
+    ]
+  },
+  {
+    "name": "Lilian",
+    "nameNative": "リリアン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124801-RQQ3TxLi4d4y.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "rie-hikisaka"
+    ]
+  }
+]
