@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Ran Haitani",
+    "nameNative": "灰谷蘭",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b203562-qhT4f8Bdj9JF.png",
+    "role": "supporting",
+    "voiceActors": [
+      "daisuke-namikawa"
+    ]
+  },
+  {
+    "name": "Rindou Haitani",
+    "nameNative": "灰谷竜胆",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b203563-KrzJuwhHZDpB.png",
+    "role": "supporting",
+    "voiceActors": [
+      "hiro-shimono"
+    ]
+  },
+  {
+    "name": "Shinichirou Sano",
+    "nameNative": "佐野真一郎",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b221297-FgeGP9aN60Re.png",
+    "role": "supporting",
+    "voiceActors": [
+      "masaya-matsukaze"
+    ]
+  },
+  {
+    "name": "Jin Akaishi",
+    "nameNative": "赤石ジン",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b231804-Apn27RotRmXW.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "eiji-miyashita"
+    ]
+  },
+  {
+    "name": "Ryouko Tachibana",
+    "nameNative": "立花亮子",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b233328-Z26XQKetvtl6.png",
+    "role": "supporting",
+    "voiceActors": [
+      "manami-numakura"
+    ]
+  },
+  {
+    "name": "Chonbo",
+    "nameNative": "チョンボ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b233805-gK1P1kFP8L5c.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "shuuhei-iwase"
+    ]
+  },
+  {
+    "name": "Chome",
+    "nameNative": "チョーム",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b233815-LH0VB3nfpAYj.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "daichuu-mizushima"
+    ]
+  },
+  {
+    "name": "Hansen",
+    "nameNative": "阪泉",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b243572-dsKMewNZaXns.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "kenta-miyake"
+    ]
+  },
+  {
+    "name": "Gariman",
+    "nameNative": "ガリ男",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b243575-K4dGGogvZzub.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "ryouta-yano"
+    ]
+  },
+  {
+    "name": "Remi",
+    "nameNative": "レミ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b264908-NeMltr8m8735.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "saki-fujita"
+    ]
+  },
+  {
+    "name": "Choji Ahane",
+    "nameNative": "亜波根チョウジ",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b264909-v6gJeUHkt9q7.jpg",
+    "role": "supporting",
+    "voiceActors": [
+      "junichi-yanagita"
+    ]
+  },
+  {
+    "name": "Masaru",
+    "nameNative": "マサル",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b296193-StXZbyztLqlK.png",
+    "role": "supporting",
+    "voiceActors": [
+      "shinya-hamazoe"
+    ]
+  },
+  {
+    "name": "Kojima",
+    "nameNative": "小島",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b296197-KWxI42IyXi7M.png",
+    "role": "supporting",
+    "voiceActors": [
+      "daiki-abe"
+    ]
+  }
+]
