@@ -219,7 +219,7 @@ const SORTS = [
 
     if (!link || !img || !placeholder || !titleEl) return null;
 
-    link.href = `/anime/${a.id}`;
+    link.href = `/anime/${a.id}/`;
     link.setAttribute('aria-label', a.title);
     titleEl.textContent = a.title;
 
