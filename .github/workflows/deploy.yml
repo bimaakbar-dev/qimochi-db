@@ -3,7 +3,6 @@ name: Deploy Astro site to Pages
 on:
   push:
     branches: [main]
-  
   workflow_dispatch:
 
 permissions:
@@ -72,13 +71,6 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: ${{ env.BUILD_PATH }}/dist
-
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.BUILD_PATH }}/dist
-          publish_branch: gh-pages
 
   deploy:
     environment:
