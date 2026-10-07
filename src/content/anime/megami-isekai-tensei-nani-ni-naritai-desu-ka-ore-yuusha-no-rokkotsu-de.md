@@ -14,7 +14,7 @@ season: spring
 year: 2026
 episodes: 12
 duration: 23
-rating: PG-13
+# rating: # edit manual
 
 aired:
   from: "2026-04-08"
