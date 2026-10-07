@@ -22,8 +22,8 @@ const topAiring = [...allAnime]
   .sort((a, b) => (b.data.stats?.score ?? 0) - (a.data.stats?.score ?? 0))
   .slice(0, PER_SECTION);
 
-const upcoming = [...allAnime]
-  .filter((a) => a.data.status === 'upcoming')
+const finished = [...allAnime]
+  .filter((a) => a.data.status === 'finished')
   .sort((a, b) => (a.data.year ?? 0) - (b.data.year ?? 0))
   .slice(0, PER_SECTION);
 ---
@@ -53,9 +53,9 @@ const upcoming = [...allAnime]
       />
 
       <AnimeSection
-        title="Upcoming"
-        href="/search/anime/?status=upcoming"
-        items={upcoming}
+        title="Completed"
+        href="/search/anime/?status=finished"
+        items={finished}
       />
 
       <div slot="sidebar">
