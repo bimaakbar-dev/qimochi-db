@@ -13,7 +13,7 @@ source: manga
 season: fall
 year: 2026
 duration: 24
-rating: PG-13
+# rating: # edit manual
 
 aired:
   from: "2026-10-05"
@@ -38,8 +38,8 @@ trailer: "fmUpSXFbSK0"
 draft: false
 ---
 
-Ageha Yoshina, seorang siswa SMA, menemukan sebuah kartu telepon misterius berwarna merah yang ditinggalkan di sebuah booth telepon umum. Beberapa hari kemudian, teman masa kecilnya, Sakurako Amamiya, yang juga memiliki kartu serupa, tiba-tiba menghilang tanpa jejak. Ageha pun memutuskan untuk mencari tahu apa yang terjadi pada Sakurako.
+Ageha Yoshina, seorang siswa sekolah menengah, menemukan sebuah kartu telepon misterius berwarna merah di sebuah booth telepon umum. Kartu ini tampaknya memiliki hubungan dengan kejadian aneh yang terjadi beberapa hari kemudian, ketika teman masa kecil dan teman sekelasnya, Sakurako Amamiya, menghilang tanpa jejak. Ageha mulai mencari tahu apa yang terjadi pada Sakurako dan menemukan dirinya terlibat dalam rumor tentang sebuah organisasi rahasia yang dikenal sebagai "Psyren", yang dikabarkan bertanggung jawab atas serangkaian kehilangan misterius di seluruh negeri.
 
-Dalam pencariannya, Ageha mulai menyelidiki rumor tentang sebuah organisasi rahasia yang dikenal sebagai "Psyren", yang dikabarkan bertanggung jawab atas serangkaian hilangnya orang-orang di seluruh negeri. Semakin dalam Ageha menyelidiki, semakin banyak pertanyaan yang muncul tentang kebenaran di balik hilangnya Sakurako dan keberadaan organisasi misterius tersebut.
+Dalam upaya mencari Sakurako, Ageha semakin dalam terlibat dalam kejadian aneh ini. Ia mulai menyelidiki lebih lanjut tentang "Psyren" dan akhirnya menemukan dirinya terjebak dalam sebuah permainan mematikan yang akan mengubah nasibnya selamanya. 
 
-Ageha akhirnya menemukan dirinya terlibat dalam sebuah permainan mematikan yang akan mengubah nasibnya selamanya. Apa yang akan terjadi pada Ageha dan apa yang akan dia temukan tentang organisasi "Psyren"?
+Ageha harus menghadapi tantangan ini dan mencari kebenaran di balik "Psyren" untuk menemukan Sakurako dan menyelamatkannya.
