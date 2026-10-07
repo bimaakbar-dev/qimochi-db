@@ -1,47 +1,47 @@
 ---
 title: "Tempal: Item no Chikara"
 titleEnglish: Overgeared
-titleNative: テムパル ～アイテムの力～
+titleNative: テムパル～アイテムの力～
 
 malId: 64340
 kitsuId: "50743"
 
-type: TV
+type: ONA
 status: airing
-# source: # edit manual
+source: manga
 
-season: fall
+season: summer
 year: 2026
 episodes: 12
-duration: 23
+duration: 24
 rating: PG-13
 
 aired:
-  from: "2026-10-02"
+  from: "2026-09-27"
   # to: # edit manual
 
 stats:
-  score: 7.4
+  score: 7.5
   # scoredBy: # edit manual
 
 genres:
   - action
   - adventure
-  - fantasy
   - comedy
+  - fantasy
 
 studios:
   - jcstaff
 
-image: "https://shikimori.one/assets/globals/missing_original.jpg"
-# banner: # edit manual
-trailer: "TT0qMSeMcLk"
+image: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx212888-NhyvqPt5aIuJ.jpg"
+banner: "https://s4.anilist.co/file/anilistcdn/media/anime/banner/212888-ZsnNegBCKXQq.jpg"
+trailer: "e1Km0FqUZl0"
 
 draft: false
 ---
 
-Di dunia yang sudah sangat terpengaruh oleh game virtual reality Satisfy, kesuksesan dalam game ini dapat mempengaruhi kehidupan nyata. Banyak pemain yang berusaha untuk maju dan menjadi profesional, karena mereka yang berhasil dapat menjadi terkenal dan kaya. Shin Yoonu, seorang pemain yang kurang beruntung, juga berusaha untuk sukses dalam game ini, meskipun harus berhutang untuk mencapai tujuannya.
+Sin Yeong-U, atau yang lebih dikenal sebagai Grid, adalah seorang pria yang kurang beruntung dalam kehidupan nyata dan hanya seorang pemain dengan level rendah dalam game VR populer "Satisfy". Namun, kehidupannya berubah drastis ketika dia menemukan sebuah item kuat yang memberinya gelar legendaris "Pagma's Successor". Dengan gelar ini, Grid menjadi seorang pandai besi yang terampil dan dapat menciptakan senjata unik serta mengenakan peralatan terkuat dalam game.
 
-Shin Yoonu tidak memiliki prestasi yang memuaskan baik dalam game maupun dalam kehidupan nyata. Ia bahkan gagal dalam menyelesaikan sebuah kues yang terlalu sulit untuk levelnya. Namun, sebelum kekalahan itu, ia berhasil mendapatkan sebuah item langka yang sangat diinginkan. Dengan item itu, ia mendapatkan status "Pewaris Pagma" dan kemampuan sebagai seorang pandai besi, tetapi ia juga kehilangan semua levelnya dan bahkan memiliki level negatif.
+Dengan kemampuan barunya, Grid bertekad untuk mencapai ketenaran dan kekayaan dalam dunia Satisfy. Namun, keberadaannya sebagai seorang legenda mulai menimbulkan masalah dalam game, membuat Grid menyadari bahwa menjadi seorang legenda mungkin lebih sulit dari yang dia bayangkan. 
 
-Dengan status legendaris yang baru, Shin Yoonu memasuki babak baru dalam petualangannya di dunia Satisfy. Meskipun masih banyak tantangan yang harus dihadapi, ia siap untuk menghadapi apa pun yang akan terjadi dan menikmati kehidupan game yang lebih menarik.
+Grid harus menghadapi tantangan baru dan mempelajari cara mengendalikan kemampuan barunya untuk mencapai tujuannya. Apakah dia dapat mengatasi kesulitan dan mencapai kesuksesan, ataukah kehidupan sebagai seorang legenda akan membawa konsekuensi yang tidak terduga?
