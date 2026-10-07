@@ -41,6 +41,8 @@ trailer: "57OL0uTIBVg"
 draft: false
 ---
 
-Will, a washout student at a magical academy who is unable to use magic, is aiming to join the top tier of mages, the Magia Vander, to fulfill a promise to his childhood friend, Elfaria. Wielding a sword instead of a wand, his abilities are slowly recognized within the academy. During the all-student praxis dungeon training he undertakes with Lihanna and the other top students of his year, they are ambushed by a mysterious mage. Though they barely manage to survive the attack together, they go on to face the exit exam. Can Will reach the girl waiting for him in the tower?
+Will, seorang siswa yang tidak bisa menggunakan sihir di akademi sihir, memiliki impian besar untuk bergabung dengan kelompok penyihir elit, Magia Vander. Ia memiliki alasan pribadi yang kuat untuk mencapai tujuan ini, yaitu untuk memenuhi janji kepada teman masa kecilnya, Elfaria. Meskipun tidak bisa menggunakan sihir seperti teman-temannya, Will memiliki kemampuan unik lainnya, yaitu keahlian menggunakan pedang.
 
-(Source: Official Site)
+Di akademi, Will mulai mendapatkan pengakuan atas kemampuannya, terutama saat ia bergabung dengan siswa-siswa terbaik di kelasnya, termasuk Lihanna, dalam pelatihan dungeon praxis. Mereka harus bekerja sama untuk menghadapi tantangan yang menunggu mereka. Namun, saat mereka sedang berlatih, mereka diserang oleh seorang penyihir misterius yang membuat mereka harus berjuang untuk bertahan hidup.
+
+Dengan semangat dan determinasi yang kuat, Will terus maju untuk mencapai tujuannya, yaitu bergabung dengan Magia Vander dan menemui Elfaria yang menunggunya di menara. Apakah ia bisa mencapai impian tersebut dan memenuhi janjinya?
