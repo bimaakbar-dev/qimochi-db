@@ -37,9 +37,16 @@ const studioItems = data.studios.map((slug) => ({
   slug,
   name: studioMap.get(slug) ?? slug,
 }));
+
+const ogImage = data.banner ?? data.image;
+const ogType: 'video.other' = 'video.other';
 ---
 
-<BaseLayout title={data.title}>
+<BaseLayout
+  title={data.title}
+  image={ogImage}
+  type={ogType}
+>
   <AnimeBanner image={data.banner} />
   <Page>
     <Breadcrumb
