@@ -1,313 +1,50 @@
 ---
 interface Props {
-  animeId: string;
+  malScore?: number;
+  malVotes?: number;
 }
 
-const { animeId } = Astro.props;
-const fieldName = `rating-${animeId}`;
+const { malScore, malVotes } = Astro.props;
+
+const hasScore = malScore != null && malScore > 0;
+const fillPercent = hasScore ? (malScore / 10) * 100 : 0;
+const displayScore = hasScore ? malScore.toFixed(1) : '—';
+const votesLabel = (() => {
+  if (!hasScore) return 'Belum ada rating';
+  if (malVotes == null || malVotes === 0) return '';
+  return `${malVotes.toLocaleString('id-ID')} votes`;
+})();
 ---
 
-<details class="anime-rating" data-anime-rating data-anime-id={animeId}>
-  <summary class="anime-rating__summary">
-    <div class="anime-rating__display">
-      <div class="anime-rating__stars">
-        <div class="anime-rating__stars-layer anime-rating__stars-layer--bg" aria-hidden="true">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-        </div>
-        <div class="anime-rating__stars-layer anime-rating__stars-layer--fill" data-fill aria-hidden="true">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-        </div>
-      </div>
-
-      <div class="anime-rating__score">
-        <span class="anime-rating__skeleton" data-skeleton aria-hidden="true"></span>
-        <span data-score hidden>—</span>
-        <small data-unit hidden>/ 10</small>
-      </div>
+<div class="anime-rating">
+  <div class="anime-rating__stars">
+    <div class="stars__layer stars__layer--bg" aria-hidden="true">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
     </div>
-
-    <p class="anime-rating__votes" data-votes></p>
-    <span class="anime-rating__cta" data-cta-label>Beri Rating</span>
-  </summary>
-
-  <form class="anime-rating__form" data-form>
-    <fieldset class="anime-rating__fieldset">
-      <legend class="sr-only">Pilih rating 1 sampai 5 bintang</legend>
-      <div class="anime-rating__input">
-        <input type="radio" name={fieldName} id={`${fieldName}-1`} value="1" />
-        <label for={`${fieldName}-1`} aria-label="1 bintang">★</label>
-        <input type="radio" name={fieldName} id={`${fieldName}-2`} value="2" />
-        <label for={`${fieldName}-2`} aria-label="2 bintang">★</label>
-        <input type="radio" name={fieldName} id={`${fieldName}-3`} value="3" />
-        <label for={`${fieldName}-3`} aria-label="3 bintang">★</label>
-        <input type="radio" name={fieldName} id={`${fieldName}-4`} value="4" />
-        <label for={`${fieldName}-4`} aria-label="4 bintang">★</label>
-        <input type="radio" name={fieldName} id={`${fieldName}-5`} value="5" />
-        <label for={`${fieldName}-5`} aria-label="5 bintang">★</label>
-      </div>
-    </fieldset>
-
-    <div class="anime-rating__actions">
-      <button type="button" class="anime-rating__btn anime-rating__btn--cancel" data-cancel>Batal</button>
-      <button type="submit" class="anime-rating__btn anime-rating__btn--submit" data-submit>Kirim</button>
+    <div
+      class="stars__layer stars__layer--fill"
+      style={`--fill: ${fillPercent}%`}
+      aria-hidden="true"
+    >
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
     </div>
-  </form>
-</details>
+  </div>
 
-<script>
-  const API_BASE = import.meta.env.PUBLIC_API_URL ?? 'https://yukio-api.bimaakbar.workers.dev';
-  const USER_ID_KEY = 'yukionime:user-id';
-  const CACHE_TTL = 5 * 60 * 1000;
-  const MIN_VOTES = 3;
-  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  <div class="anime-rating__score">
+    <span>{displayScore}</span>
+    <small>/ 10</small>
+  </div>
 
-  function getUserId() {
-    let id = localStorage.getItem(USER_ID_KEY);
-    if (!id || !UUID_RE.test(id)) {
-      id = crypto.randomUUID();
-      localStorage.setItem(USER_ID_KEY, id);
-    }
-    return id;
-  }
-
-  function readCache(animeId) {
-    try {
-      const raw = localStorage.getItem(`yukionime:rating-cache:${animeId}`);
-      if (!raw) return null;
-      const p = JSON.parse(raw);
-      if (typeof p?.average !== 'number' || typeof p?.votes !== 'number') return null;
-      return p;
-    } catch { return null; }
-  }
-
-  function writeCache(animeId, data) {
-    try {
-      localStorage.setItem(
-        `yukionime:rating-cache:${animeId}`,
-        JSON.stringify({ ...data, ts: Date.now() })
-      );
-    } catch {}
-  }
-
-  function readUserScore(animeId) {
-    const n = Number(localStorage.getItem(`yukionime:rating-user:${animeId}`));
-    return Number.isInteger(n) && n >= 1 && n <= 5 ? n : 0;
-  }
-
-  function writeUserScore(animeId, score) {
-    localStorage.setItem(`yukionime:rating-user:${animeId}`, String(score));
-  }
-
-  const userId = getUserId();
-
-  document.querySelectorAll('[data-anime-rating]').forEach((details) => {
-    const animeId = details.dataset.animeId;
-    const form = details.querySelector('[data-form]');
-    const cancelBtn = details.querySelector('[data-cancel]');
-    const fillEl = details.querySelector('[data-fill]');
-    const scoreEl = details.querySelector('[data-score]');
-    const unitEl = details.querySelector('[data-unit]');
-    const skeletonEl = details.querySelector('[data-skeleton]');
-    const votesEl = details.querySelector('[data-votes]');
-    const ctaLabel = details.querySelector('[data-cta-label]');
-    const radios = details.querySelectorAll('input[type="radio"]');
-
-    const state = {
-      average: 0,
-      rawAverage: 0,
-      votes: 0,
-      provisional: false,
-      userScore: readUserScore(animeId),
-    };
-
-    function syncRadios() {
-      radios.forEach((r) => {
-        r.checked = state.userScore > 0 && Number(r.value) === state.userScore;
-      });
-    }
-
-    function renderFill() {
-      const show = state.votes >= MIN_VOTES && state.average > 0;
-      const pct = show ? (state.average / 10) * 100 : 0;
-      fillEl.style.setProperty('--fill', pct + '%');
-    }
-
-    function renderScore() {
-      if (state.votes < MIN_VOTES) {
-        scoreEl.textContent = '—';
-        scoreEl.hidden = false;
-        unitEl.hidden = true;
-        return;
-      }
-      scoreEl.textContent = state.average.toFixed(1);
-      scoreEl.hidden = false;
-      unitEl.hidden = false;
-    }
-
-    function renderVotes() {
-      if (state.votes === 0) {
-        votesEl.textContent = 'Belum ada rating';
-        return;
-      }
-      const s = state.votes === 1 ? 'vote' : 'votes';
-      if (state.votes < MIN_VOTES) {
-        votesEl.textContent = `${state.votes} ${s} · belum cukup`;
-        return;
-      }
-      const suffix = state.provisional ? ' · sementara' : '';
-      votesEl.textContent = `${state.votes.toLocaleString('id-ID')} ${s}${suffix}`;
-    }
-
-    function renderCta() {
-      ctaLabel.textContent = state.userScore > 0 ? 'Ubah Rating' : 'Beri Rating';
-    }
-
-    function showSkeleton(show) {
-      skeletonEl.hidden = !show;
-      if (show) {
-        scoreEl.hidden = true;
-        unitEl.hidden = true;
-      }
-    }
-
-    function renderAll() {
-      showSkeleton(false);
-      renderFill();
-      renderScore();
-      renderVotes();
-      renderCta();
-    }
-
-    renderCta();
-    syncRadios();
-
-    const cached = readCache(animeId);
-
-    if (cached) {
-      state.average = cached.average;
-      state.rawAverage = cached.rawAverage ?? 0;
-      state.votes = cached.votes;
-      state.provisional = cached.provisional ?? false;
-      renderAll();
-      if (Date.now() - cached.ts > CACHE_TTL) fetchAggregate();
-    } else {
-      showSkeleton(true);
-      fetchAggregate();
-    }
-
-    async function fetchAggregate() {
-      try {
-        const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const { data } = await res.json();
-
-        if (typeof data.average === 'number') state.average = data.average;
-        if (typeof data.rawAverage === 'number') state.rawAverage = data.rawAverage;
-        if (typeof data.votes === 'number') state.votes = data.votes;
-        if (typeof data.provisional === 'boolean') state.provisional = data.provisional;
-
-        writeCache(animeId, {
-          average: state.average,
-          rawAverage: state.rawAverage,
-          votes: state.votes,
-          provisional: state.provisional,
-        });
-        renderAll();
-      } catch (err) {
-        if (!cached) renderAll();
-        console.error('[rating] fetch gagal:', err);
-      }
-    }
-
-    cancelBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      syncRadios();
-      details.open = false;
-    });
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const checked = details.querySelector('input[type="radio"]:checked');
-      if (!checked) return;
-
-      const stars = Number(checked.value);
-      if (!Number.isInteger(stars) || stars < 1 || stars > 5) return;
-
-      try {
-        const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-User-Id': userId,
-          },
-          body: JSON.stringify({ score: stars }),
-        });
-
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const { data } = await res.json();
-
-        if (typeof data.average === 'number') state.average = data.average;
-        if (typeof data.rawAverage === 'number') state.rawAverage = data.rawAverage;
-        if (typeof data.votes === 'number') state.votes = data.votes;
-        if (typeof data.provisional === 'boolean') state.provisional = data.provisional;
-        state.userScore = stars;
-
-        writeCache(animeId, {
-          average: state.average,
-          rawAverage: state.rawAverage,
-          votes: state.votes,
-          provisional: state.provisional,
-        });
-        writeUserScore(animeId, stars);
-
-        syncRadios();
-        renderAll();
-        details.open = false;
-      } catch (err) {
-        console.error('[rating] submit gagal:', err);
-      }
-    });
-  });
-</script>
+  <p class="anime-rating__votes" aria-live="polite">{votesLabel}</p>
+</div>
 
 <style>
   .anime-rating {
-    display: block;
-    width: 100%;
-  }
-
-  .anime-rating__summary {
     display: flex;
     flex-direction: column;
-    gap: var(--s-2);
-    padding: var(--s-3);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    cursor: pointer;
-    transition: border-color var(--t-fast), background-color var(--t-fast);
-    list-style: none;
-  }
-
-  .anime-rating__summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .anime-rating__summary:hover {
-    border-color: var(--border-hover);
-  }
-
-  .anime-rating[open] .anime-rating__summary {
-    border-radius: var(--r-md) var(--r-md) 0 0;
-    border-bottom-color: transparent;
-  }
-
-  .anime-rating__display {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: var(--s-2);
+    padding-top: var(--s-2);
   }
 
   .anime-rating__stars {
@@ -318,13 +55,13 @@ const fieldName = `rating-${animeId}`;
     --star-gap: 1px;
   }
 
-  .anime-rating__stars-layer {
+  .stars__layer {
     display: flex;
     gap: var(--star-gap);
     font-size: var(--star-size);
   }
 
-  .anime-rating__stars-layer span {
+  .stars__layer span {
     flex: 0 0 var(--star-size);
     width: var(--star-size);
     height: var(--star-size);
@@ -332,11 +69,11 @@ const fieldName = `rating-${animeId}`;
     line-height: 1;
   }
 
-  .anime-rating__stars-layer--bg {
+  .stars__layer--bg {
     color: var(--text-disabled);
   }
 
-  .anime-rating__stars-layer--fill {
+  .stars__layer--fill {
     position: absolute;
     top: 0;
     left: 0;
@@ -344,7 +81,6 @@ const fieldName = `rating-${animeId}`;
     width: var(--fill, 0%);
     overflow: hidden;
     pointer-events: none;
-    transition: width var(--t-fast) ease;
   }
 
   .anime-rating__score {
@@ -352,17 +88,12 @@ const fieldName = `rating-${animeId}`;
     align-items: baseline;
     gap: 2px;
     line-height: 1;
-    min-height: 1.25rem;
   }
 
-  .anime-rating__score span[data-score] {
-    font-size: var(--fs-lg);
+  .anime-rating__score span {
+    font-size: var(--fs-xl);
     font-weight: var(--fw-bold);
     color: var(--accent);
-  }
-
-  .anime-rating__score span[data-score][hidden] {
-    display: none;
   }
 
   .anime-rating__score small {
@@ -370,156 +101,12 @@ const fieldName = `rating-${animeId}`;
     color: var(--text-muted);
   }
 
-  .anime-rating__score small[hidden] {
-    display: none;
-  }
-
-  .anime-rating__skeleton {
-    display: inline-block;
-    width: 2.5rem;
-    height: 1.125rem;
-    border-radius: var(--r-sm);
-    background: linear-gradient(90deg, var(--bg-surface) 0%, var(--bg-hover) 50%, var(--bg-surface) 100%);
-    background-size: 200% 100%;
-    animation: rating-shimmer 1.2s ease-in-out infinite;
-  }
-
-  .anime-rating__skeleton[hidden] {
-    display: none;
-  }
-
-  @keyframes rating-shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .anime-rating__skeleton {
-      animation: none;
-      background: var(--bg-surface);
-    }
-  }
-
   .anime-rating__votes {
     margin: 0;
     font-size: var(--fs-xs);
     color: var(--text-muted);
+    text-align: center;
     line-height: 1.2;
     min-height: 1em;
-  }
-
-  .anime-rating__cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--s-2) var(--s-4);
-    background: var(--accent);
-    color: var(--accent-text);
-    border-radius: var(--r-full);
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-semibold);
-    text-align: center;
-    transition: background-color var(--t-fast);
-  }
-
-  .anime-rating__summary:hover .anime-rating__cta {
-    background: var(--accent-hover);
-  }
-
-  .anime-rating__form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s-3);
-    padding: var(--s-3);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-top: none;
-    border-radius: 0 0 var(--r-md) var(--r-md);
-  }
-
-  .anime-rating__fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .anime-rating__input {
-    display: flex;
-    justify-content: center;
-    gap: var(--s-1);
-  }
-
-  .anime-rating__input input {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .anime-rating__input label {
-    font-size: 1.75rem;
-    line-height: 1;
-    color: var(--text-disabled);
-    cursor: pointer;
-    transition: color var(--t-fast);
-    padding: 0 var(--s-1);
-  }
-
-  .anime-rating__input input:focus-visible + label {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: var(--r-sm);
-  }
-
-  .anime-rating__input:has(input[value="1"]:checked) label:nth-of-type(1),
-  .anime-rating__input:has(input[value="2"]:checked) label:nth-of-type(-n+2),
-  .anime-rating__input:has(input[value="3"]:checked) label:nth-of-type(-n+3),
-  .anime-rating__input:has(input[value="4"]:checked) label:nth-of-type(-n+4),
-  .anime-rating__input:has(input[value="5"]:checked) label:nth-of-type(-n+5) {
-    color: var(--gold);
-  }
-
-  .anime-rating__actions {
-    display: flex;
-    gap: var(--s-2);
-  }
-
-  .anime-rating__btn {
-    flex: 1;
-    padding: var(--s-2) var(--s-3);
-    font: inherit;
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-semibold);
-    border-radius: var(--r-md);
-    cursor: pointer;
-    transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast);
-  }
-
-  .anime-rating__btn--cancel {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
-  }
-
-  .anime-rating__btn--cancel:hover {
-    border-color: var(--border-hover);
-    color: var(--text-primary);
-  }
-
-  .anime-rating__btn--submit {
-    background: var(--accent);
-    color: var(--accent-text);
-    border: 1px solid var(--accent);
-  }
-
-  .anime-rating__btn--submit:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
-  }
-
-  .anime-rating__btn:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
   }
 </style>
