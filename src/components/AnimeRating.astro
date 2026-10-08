@@ -31,7 +31,7 @@ const { animeId } = Astro.props;
     <div class="anime-rating__score">
       <span class="anime-rating__skeleton" data-skeleton aria-hidden="true"></span>
       <span data-score hidden>—</span>
-      <small>/ 10</small>
+      <small data-score-unit hidden>/ 10</small>
     </div>
   </div>
 
@@ -43,6 +43,7 @@ const { animeId } = Astro.props;
   const API_BASE = import.meta.env.PUBLIC_API_URL ?? 'https://yukio-api.bimaakbar.workers.dev';
   const USER_ID_KEY = 'yukionime:user-id';
   const CACHE_TTL = 5 * 60 * 1000;
+  const MIN_VOTES_TO_SHOW = 3;
   const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
   function getUserId(): string {
@@ -62,19 +63,29 @@ const { animeId } = Astro.props;
       if (
         typeof parsed?.average !== 'number' ||
         typeof parsed?.votes !== 'number' ||
+        typeof parsed?.provisional !== 'boolean' ||
         typeof parsed?.ts !== 'number'
       ) return null;
-      return parsed as { average: number; votes: number; ts: number };
+      return parsed as {
+        average: number;
+        rawAverage: number;
+        votes: number;
+        provisional: boolean;
+        ts: number;
+      };
     } catch {
       return null;
     }
   }
 
-  function writeCache(animeId: string, average: number, votes: number) {
+  function writeCache(
+    animeId: string,
+    data: { average: number; rawAverage: number; votes: number; provisional: boolean }
+  ) {
     try {
       localStorage.setItem(
         `yukionime:rating-cache:${animeId}`,
-        JSON.stringify({ average, votes, ts: Date.now() })
+        JSON.stringify({ ...data, ts: Date.now() })
       );
     } catch {}
   }
@@ -96,29 +107,50 @@ const { animeId } = Astro.props;
     const starsEl = el.querySelector<HTMLElement>('[data-stars]')!;
     const fillEl = el.querySelector<HTMLElement>('[data-fill]')!;
     const scoreEl = el.querySelector<HTMLElement>('[data-score]')!;
+    const unitEl = el.querySelector<HTMLElement>('[data-score-unit]')!;
     const skeletonEl = el.querySelector<HTMLElement>('[data-skeleton]')!;
     const votesEl = el.querySelector<HTMLElement>('[data-votes]')!;
     const userEl = el.querySelector<HTMLElement>('[data-user-score]')!;
 
     const state = {
       average: 0,
+      rawAverage: 0,
       votes: 0,
+      provisional: false,
       userScore: readUserScore(animeId),
     };
 
     function renderFill() {
-      const pct = state.average > 0 ? (state.average / 10) * 100 : 0;
+      const showStars = state.votes >= MIN_VOTES_TO_SHOW && state.average > 0;
+      const pct = showStars ? (state.average / 10) * 100 : 0;
       fillEl.style.setProperty('--fill', pct + '%');
     }
 
     function renderScore() {
-      scoreEl.textContent = state.average > 0 ? state.average.toFixed(1) : '—';
+      if (state.votes < MIN_VOTES_TO_SHOW) {
+        scoreEl.textContent = '—';
+        unitEl.hidden = true;
+        return;
+      }
+      scoreEl.textContent = state.average.toFixed(1);
+      unitEl.hidden = false;
     }
 
     function renderVotes() {
-      votesEl.textContent = state.votes > 0
-        ? `${state.votes.toLocaleString('id-ID')} votes`
-        : '';
+      if (state.votes === 0) {
+        votesEl.textContent = 'Belum ada rating';
+        return;
+      }
+
+      if (state.votes < MIN_VOTES_TO_SHOW) {
+        const s = state.votes === 1 ? 'vote' : 'votes';
+        votesEl.textContent = `${state.votes} ${s} · belum cukup`;
+        return;
+      }
+
+      const s = state.votes === 1 ? 'vote' : 'votes';
+      const suffix = state.provisional ? ' · skor sementara' : '';
+      votesEl.textContent = `${state.votes.toLocaleString('id-ID')} ${s}${suffix}`;
     }
 
     function renderUserScore() {
@@ -133,7 +165,12 @@ const { animeId } = Astro.props;
 
     function showSkeleton(show: boolean) {
       skeletonEl.hidden = !show;
-      scoreEl.hidden = show;
+      if (show) {
+        scoreEl.hidden = true;
+        unitEl.hidden = true;
+      } else {
+        scoreEl.hidden = false;
+      }
     }
 
     function renderAll() {
@@ -150,16 +187,15 @@ const { animeId } = Astro.props;
 
     if (cached) {
       state.average = cached.average;
+      state.rawAverage = cached.rawAverage ?? 0;
       state.votes = cached.votes;
+      state.provisional = cached.provisional;
       renderAll();
 
       const age = Date.now() - cached.ts;
-      if (age > CACHE_TTL) {
-        fetchAggregate();
-      }
+      if (age > CACHE_TTL) fetchAggregate();
     } else {
       showSkeleton(true);
-      renderFill();
       fetchAggregate();
     }
 
@@ -169,19 +205,23 @@ const { animeId } = Astro.props;
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const json = await res.json();
-        const { average, votes } = json.data;
+        const d = json.data;
 
-        if (typeof average === 'number' && typeof votes === 'number') {
-          state.average = average;
-          state.votes = votes;
-          writeCache(animeId, average, votes);
-          renderAll();
-        }
+        if (typeof d.average === 'number') state.average = d.average;
+        if (typeof d.rawAverage === 'number') state.rawAverage = d.rawAverage;
+        if (typeof d.votes === 'number') state.votes = d.votes;
+        if (typeof d.provisional === 'boolean') state.provisional = d.provisional;
+
+        writeCache(animeId, {
+          average: state.average,
+          rawAverage: state.rawAverage,
+          votes: state.votes,
+          provisional: state.provisional,
+        });
+
+        renderAll();
       } catch (err) {
-        if (!cached) {
-          showSkeleton(false);
-          renderAll();
-        }
+        if (!cached) renderAll();
         console.error('[rating] fetch gagal:', err);
       }
     }
@@ -224,12 +264,20 @@ const { animeId } = Astro.props;
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const json = await res.json();
+        const d = json.data;
 
-        if (typeof json.data.average === 'number') state.average = json.data.average;
-        if (typeof json.data.votes === 'number') state.votes = json.data.votes;
+        if (typeof d.average === 'number') state.average = d.average;
+        if (typeof d.rawAverage === 'number') state.rawAverage = d.rawAverage;
+        if (typeof d.votes === 'number') state.votes = d.votes;
+        if (typeof d.provisional === 'boolean') state.provisional = d.provisional;
         state.userScore = stars;
 
-        writeCache(animeId, state.average, state.votes);
+        writeCache(animeId, {
+          average: state.average,
+          rawAverage: state.rawAverage,
+          votes: state.votes,
+          provisional: state.provisional,
+        });
         writeUserScore(animeId, stars);
 
         renderAll();
@@ -341,6 +389,10 @@ const { animeId } = Astro.props;
   .anime-rating__score small {
     font-size: var(--fs-xs);
     color: var(--text-muted);
+  }
+
+  .anime-rating__score small[hidden] {
+    display: none;
   }
 
   .anime-rating__skeleton {
