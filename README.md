@@ -10,7 +10,7 @@ Database anime Indonesia — katalog lengkap, API gratis untuk developer.
 
 ## Apa ini?
 
-QimochiDB adalah database anime berbahasa Indonesia yang dikurasi komunitas.
+Yukionime adalah database anime berbahasa Indonesia yang dikurasi komunitas.
 Data disajikan lewat website dan REST API publik — gratis untuk developer.
 
 Fokus:
@@ -33,26 +33,15 @@ Bukan:
 
 ## Untuk Kontributor
 
-Kami menerima kontribusi data anime, genre, dan studio via
-GitHub Pull Request.
+Kami menerima kontribusi data anime, genre, dan studio via GitHub Pull Request.
 
 Baca panduan lengkap: [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 Singkatnya:
 1. Fork repo
-2. Tambah/edit file di src/content/anime/
+2. Tambah/edit file di `src/content/anime/`
 3. PR
 4. Kami review + merge
-
----
-
-## API Rules
-
-- ✅ Open — tidak perlu API key
-- ✅ CORS enabled — bebas dari domain apapun
-- ✅ Cache 1 jam di edge
-- ⚠️ Rate limit tidak di-enforce untuk pembacaan
-- ⚠️ Tidak ada SLA — gunakan dengan bijak
 
 ---
 
@@ -71,17 +60,17 @@ Sinopsis ditulis ulang oleh kontributor — bukan copy-paste.
 
 ## License
 
-- Kode: MIT (lihat LICENSE)
-- Data: CC BY 4.0 (lihat LICENSE-DATA)
+- Kode: MIT (lihat [LICENSE](./LICENSE))
+- Data: CC BY 4.0 (lihat [LICENSE-DATA](./LICENSE-DATA))
 
 Atribusi minimal yang diminta:
+- Data dari [Yukionime](https://yukionime.pages.dev)
+- **Lisensi:** **CC BY 4.0**
 
-  Data dari QimochiDB (https://qimochi.pages.dev)
-  Lisensi: CC BY 4.0
 
 ---
 
 ## Kontak
 
-- Discord: (coming soon)
+- Discord: [Community Server](https://discord.gg/fcnVtd4Cb)
 - Telegram: (coming soon)
