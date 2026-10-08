@@ -26,7 +26,7 @@ const SORTS = [
 ];
 ---
 
-<BaseLayout title="Cari Anime" description="Cari dan filter anime di QimochiDB.">
+<BaseLayout title="Cari Anime" description="Cari dan filter anime di Yukionime.">
   <link rel="preload" href="/api/v1/anime.json" as="fetch" crossorigin="anonymous" />
   <AnimeCard mode="template" />
   <Pagination mode="template" />
@@ -35,7 +35,7 @@ const SORTS = [
     <section class="search-hero">
       <h1 class="search-hero__title">Cari Anime</h1>
       <p class="search-hero__desc">
-        Temukan anime favoritmu dari database QimochiDB.
+        Temukan anime favoritmu dari database Yukionime.
       </p>
     </section>
 
@@ -353,8 +353,8 @@ const SORTS = [
     renderPagination(current, totalPages, p);
 
     document.title = p.q
-      ? `Hasil untuk "${p.q}" — QimochiDB`
-      : 'Cari Anime — QimochiDB';
+      ? `Hasil untuk "${p.q}" — Yukionime`
+      : 'Cari Anime — Yukionime';
   }
 
   function navigate(p) {
