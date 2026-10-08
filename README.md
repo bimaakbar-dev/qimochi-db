@@ -42,13 +42,15 @@ Bukan:
 https://yukionime.pages.dev/api/v1
 ```
 
+Root endpoint: `/api/v1.json`
+
 Tidak perlu API key. CORS terbuka. Rate limit tidak ditegakkan.
 
 ### Endpoint
 
 | Endpoint | Deskripsi |
 |----------|-----------|
-| `GET /` | Root — daftar semua endpoint |
+| `GET /api/v1.json` | Root — daftar semua endpoint |
 | `GET /anime.json` | Index ringkas semua anime (list & filter) |
 | `GET /anime/[id].json` | Detail lengkap 1 anime berdasarkan slug |
 | `GET /anime-full.json` | Snapshot semua anime + detail lengkap (1 file) |
