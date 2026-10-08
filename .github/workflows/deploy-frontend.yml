@@ -1,14 +1,10 @@
 name: Deploy to Cloudflare Pages
 
 on:
-  # Auto-trigger dimatikan sementara selama fase scraping.
-  # Aktifkan kembali setelah semua data siap.
-  #
-  # push:
-  #   branches: [main]
-  # repository_dispatch:
-  #   types: [data-updated]
-
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [data-updated]
   workflow_dispatch:
 
 jobs:
@@ -30,8 +26,15 @@ jobs:
       - name: Inject data
         run: |
           mkdir -p src/data
+          mkdir -p src/content/anime
           cp -r _data/data/* src/data/
+          cp -rn _data/src/content/anime/* src/content/anime/ 2>/dev/null || true
+          echo "=== src/data ==="
           ls -la src/data/
+          echo "=== src/content/anime (count) ==="
+          ls -1 src/content/anime/ | wc -l
+          echo "=== New markdown files ==="
+          ls -1 src/content/anime/ | head -20
 
       - name: Setup Node
         uses: actions/setup-node@v7
