@@ -169,6 +169,18 @@ Sinopsis ditulis ulang oleh kontributor — bukan copy-paste.
 
 ---
 
+## Limitasi API (Static)
+
+API ini di-generate secara statis. Dua hal yang perlu diketahui:
+
+1. **404 untuk ID tidak ada** — return HTML 404 default Cloudflare Pages,
+   bukan JSON. Untuk dapat JSON 404, butuh Cloudflare Pages Functions.
+
+2. **CORS preflight (OPTIONS)** — tidak didukung. Statis server hanya
+   melayani GET/HEAD. Untuk request GET sederhana (yang dipakai API ini),
+   browser tidak kirim preflight, jadi CORS tetap jalan normal via
+   header Access-Control-Allow-Origin: *.
+
 ## License
 
 - Kode: MIT (lihat [LICENSE](./LICENSE))
