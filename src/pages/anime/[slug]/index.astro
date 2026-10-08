@@ -59,7 +59,11 @@ const ogType: 'video.other' = 'video.other';
 
     <AnimeDetailLayout>
       <AnimeCover slot="cover" image={data.image} title={data.title}>
-        <AnimeRating slot="action" animeId={anime.id} />
+        <AnimeRating
+  slot="action"
+  malScore={data.stats?.score}
+  malVotes={data.stats?.scoredBy}
+/>
       </AnimeCover>
 
       <AnimeTabs>
