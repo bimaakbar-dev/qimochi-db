@@ -26,15 +26,11 @@ Bukan:
 
 ---
 
-<!-- API-DOCS:START -->
-
 ## Untuk Developer
 
 ### Base URL
 
-```
-https://yukionime.pages.dev/api/v1
-```
+[yukionime.pages.dev/api/v1](https://yukionime.pages.dev/api/v1)
 
 Tidak perlu API key. CORS terbuka. Rate limit tidak ditegakkan.
 
@@ -42,43 +38,29 @@ Tidak perlu API key. CORS terbuka. Rate limit tidak ditegakkan.
 
 | Endpoint | Deskripsi |
 |----------|-----------|
-| `GET /` | Root — daftar semua endpoint |
-| `GET /anime.json` | Index ringkas semua anime (list & filter) |
-| `GET /anime/[id].json` | Detail lengkap 1 anime berdasarkan slug |
-| `GET /anime-full.json` | Snapshot semua anime + detail lengkap (1 file) |
-| `GET /genres.json` | Semua genre + jumlah anime |
-| `GET /studios.json` | Semua studio + jumlah anime |
-| `GET /franchises.json` | Relasi franchise antar anime |
-| `GET /stats.json` | Statistik agregat database |
-| `GET /meta.json` | Metadata API (versi, license, changelog) |
+| GET / | Root — daftar semua endpoint |
+| GET /anime.json | Index ringkas semua anime |
+| GET /anime/[id].json | Detail lengkap 1 anime |
+| GET /anime-full.json | Snapshot semua anime + detail |
+| GET /genres.json | Semua genre + jumlah anime |
+| GET /studios.json | Semua studio + jumlah anime |
+| GET /franchises.json | Relasi franchise antar anime |
+| GET /stats.json | Statistik agregat database |
+| GET /meta.json | Metadata API (versi, license, changelog) |
 
-### Contoh: Index Anime
+### Contoh
 
 ```bash
 curl https://yukionime.pages.dev/api/v1/anime.json
 ```
 
+### Format Response
+
+Sukses:
+
 ```json
 {
-  "data": [
-    {
-      "id": "kimetsu-no-yaiba",
-      "title": "Kimetsu no Yaiba",
-      "titleEnglish": "Demon Slayer: Kimetsu no Yaiba",
-      "titleNative": "鬼滅の刃",
-      "image": "https://...",
-      "type": "TV",
-      "status": "finished",
-      "season": "spring",
-      "year": 2019,
-      "episodes": 26,
-      "duration": 23,
-      "rating": "R",
-      "genres": ["action", "fantasy", "historical", "shounen"],
-      "studios": ["ufotable"],
-      "stats": { "score": 8.4, "scoredBy": 1542300 }
-    }
-  ],
+  "data": "…",
   "meta": {
     "version": "v1",
     "total": 80,
@@ -87,30 +69,7 @@ curl https://yukionime.pages.dev/api/v1/anime.json
 }
 ```
 
-### Contoh: Detail Anime
-
-```bash
-curl https://yukionime.pages.dev/api/v1/anime/kimetsu-no-yaiba.json
-```
-
-Detail berisi semua field index + tambahan: `externalIds`, `aired`, `franchises`, `banner`, `trailer`, `episodeList`, `characters`, dan `studios` dalam bentuk objek `{ slug, name }`.
-
-### Format Response
-
-**Sukses:**
-
-```json
-{
-  "data": "…",
-  "meta": {
-    "version": "v1",
-    "total": 123,
-    "generatedAt": "2026-10-08T12:00:00.000Z"
-  }
-}
-```
-
-**Error:**
+Error:
 
 ```json
 {
@@ -125,21 +84,10 @@ Detail berisi semua field index + tambahan: `externalIds`, `aired`, `franchises`
 ### Aturan
 
 - ✅ Open — tidak perlu API key
-- ✅ CORS enabled — bebas dari domain apapun
-- ✅ Cache 5 menit di edge (snapshot: 1 jam)
-- ⚠️ Tidak ada SLA — gunakan dengan bijak
-- 📜 Data: CC BY 4.0 (lihat `LICENSE-DATA`)
-
-### License
-
-Data: **CC BY 4.0**. Atribusi minimal:
-
-```
-Data dari Yukionime (https://yukionime.pages.dev)
-Lisensi: CC BY 4.0
-```
-
-<!-- API-DOCS:END -->
+- ✅ CORS enabled
+- ✅ Cache 5 menit di edge
+- ⚠️ Tidak ada SLA
+- 📜 Data: CC BY 4.0 (lihat [LICENSE-DATA](./LICENSE-DATA))
 
 ---
 
@@ -177,7 +125,7 @@ Sinopsis ditulis ulang oleh kontributor — bukan copy-paste.
 
 Atribusi minimal yang diminta:
 
-```
+```plaintext
 Data dari Yukionime (https://yukionime.pages.dev)
 Lisensi: CC BY 4.0
 ```
@@ -186,5 +134,5 @@ Lisensi: CC BY 4.0
 
 ## Kontak
 
-- Discord: (coming soon)
+- Discord: [Community Server](https://discord.gg/fcnVtd4Cb)
 - Telegram: (coming soon)
