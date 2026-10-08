@@ -9,6 +9,29 @@ interface Props {
 }
 
 const { items } = Astro.props;
+
+const baseUrl = Astro.site ?? Astro.url.origin;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, i) => {
+    const position = i + 1;
+    const entry: Record<string, unknown> = {
+      '@type': 'ListItem',
+      position,
+      name: item.label,
+    };
+
+    if (item.href) {
+      entry.item = new URL(item.href, baseUrl).toString();
+    } else {
+      entry.item = new URL(Astro.url.pathname, baseUrl).toString();
+    }
+
+    return entry;
+  }),
+};
 ---
 
 <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -24,6 +47,11 @@ const { items } = Astro.props;
     ))}
   </ol>
 </nav>
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>
 
 <style>
   .breadcrumb ol {
