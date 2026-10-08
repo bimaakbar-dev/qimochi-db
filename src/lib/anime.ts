@@ -217,13 +217,3 @@ export async function getAnimeById(
   if (!anime || anime.data.draft) return null;
   return hydrateOne(anime);
 }
-
-export function sortByRecent(items: HydratedAnime[]): HydratedAnime[] {
-  return [...items].sort(
-    (a, b) => b.data.addedAt.getTime() - a.data.addedAt.getTime()
-  );
-}
-
-export function getYear(anime: HydratedAnime | AnimeEntry): number {
-  return anime.data.releaseDate.getFullYear();
-}
