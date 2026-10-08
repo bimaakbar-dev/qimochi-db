@@ -39,8 +39,8 @@ trailer: "d0LkNAqMrZw"
 draft: false
 ---
 
-Maria "Mimi" Annovazzi, seorang prodigy bela diri dari keluarga bangsawan legendaris, menghadapi kehidupan yang tidak seperti yang dia bayangkan. Ia kehilangan hak warisnya dan dipaksa untuk menikah dengan orang yang tidak dia kenal. Kehidupan Maria semakin rumit ketika dia dipindahkan ke kerajaan tetangga.
+Maria "Mimi" Annovazzi, seorang gadis yang lahir dalam keluarga bangsawan terkenal, memiliki bakat luar biasa dalam seni bela diri. Namun, ia kehilangan haknya sebagai ahli waris dan dipaksa untuk menikah dengan keluarga terhormat. Karena tidak memiliki pilihan lain di negaranya sendiri, Maria memutuskan untuk pindah ke kerajaan tetangga.
 
-Di sana, Maria mengalami kejutan yang tidak terduga. Pada hari kelulusannya, seorang pangeran yang tidak pernah dia temui secara terbuka memutuskan pertunangannya dengan Maria. Ini adalah pertunangan yang tidak pernah dia ketahui sebelumnya. Maria merasa terpuruk dan tidak tahu apa yang akan terjadi pada masa depannya.
+Di sana, ia mengalami kejutan besar saat lulus kuliah. Seorang pangeran yang belum pernah ia temui secara terbuka memutuskan pertunangannya dengan Maria, meskipun ia tidak pernah mengetahui tentang pertunangan tersebut sebelumnya. Kini, Maria harus menghadapi kenyataan bahwa hidupnya mungkin tidak akan seperti yang ia bayangkan.
 
-Apa yang akan terjadi pada Maria selanjutnya? Akankah dia dapat menemukan jalan keluar dari situasi yang rumit ini dan menentukan nasibnya sendiri? Ataukah dia akan terjebak dalam kehidupan yang tidak diinginkannya?
+Apa yang akan terjadi pada Maria selanjutnya? Akankah ia menemukan jalan baru untuk hidupnya, ataukah ia akan terjebak dalam kehidupan yang tidak diinginkannya?
