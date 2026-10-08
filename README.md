@@ -1,10 +1,18 @@
-# Yukionime
+<div align="center">
+<h1>Yukionime</h1>
+</div>
+
+<div align="center">
 
 [![Deploy to Cloudflare Pages](https://github.com/bimaakbar-dev/yukionime/actions/workflows/deploy-frontend.yml/badge.svg)](https://github.com/bimaakbar-dev/yukionime/actions/workflows/deploy-frontend.yml)
 
-Database anime Indonesia — katalog lengkap, API gratis untuk developer.
+</div>
 
-- 🌐 Website: https://yukionime.pages.dev
+<p align="center">
+Database anime Bahasa Indonesia — katalog lengkap, API gratis untuk developer.
+<br/> 
+<a href="https://yukionime.pages.dev">🌐 Website</a>
+</p>
 
 ---
 
@@ -14,15 +22,15 @@ Yukionime adalah database anime berbahasa Indonesia yang dikurasi komunitas.
 Data disajikan lewat website dan REST API publik — gratis untuk developer.
 
 Fokus:
-- [x] 📖 Katalog anime yang bisa di-browse & search
-- [x] 🔌 API gratis untuk bot, app, dan website
-- [x] 🇮🇩 Konten berbahasa Indonesia
-- [x] 🎯 Data berkualitas, dikurasi manual
+- 📖 Katalog anime yang bisa di-browse & search
+- 🔌 API gratis untuk bot, app, dan website
+- 🇮🇩 Konten berbahasa Indonesia
+- 🎯 Data berkualitas, dikurasi manual
 
 Bukan:
-- [ ] Platform streaming (tidak host video)
-- [ ] Situs download
-- [ ] Tracker pribadi
+- Platform streaming (tidak host video)
+- Situs download
+- Tracker pribadi
 
 ---
 
@@ -40,15 +48,15 @@ Tidak perlu API key. CORS terbuka. Rate limit tidak ditegakkan.
 
 | Endpoint | Deskripsi |
 |----------|-----------|
-| GET / | Root — daftar semua endpoint |
-| GET /anime.json | Index ringkas semua anime (list & filter) |
-| GET /anime/[id].json | Detail lengkap 1 anime berdasarkan slug |
-| GET /anime-full.json | Snapshot semua anime + detail lengkap (1 file) |
-| GET /genres.json | Semua genre + jumlah anime |
-| GET /studios.json | Semua studio + jumlah anime |
-| GET /franchises.json | Relasi franchise antar anime |
-| GET /stats.json | Statistik agregat database |
-| GET /meta.json | Metadata API (versi, license, changelog) |
+| `GET /` | Root — daftar semua endpoint |
+| `GET /anime.json` | Index ringkas semua anime (list & filter) |
+| `GET /anime/[id].json` | Detail lengkap 1 anime berdasarkan slug |
+| `GET /anime-full.json` | Snapshot semua anime + detail lengkap (1 file) |
+| `GET /genres.json` | Semua genre + jumlah anime |
+| `GET /studios.json` | Semua studio + jumlah anime |
+| `GET /franchises.json` | Relasi franchise antar anime |
+| `GET /stats.json` | Statistik agregat database |
+| `GET /meta.json` | Metadata API (versi, license, changelog) |
 
 ### Contoh: Index Anime
 
