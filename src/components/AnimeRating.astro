@@ -1,12 +1,9 @@
 ---
 interface Props {
   animeId: string;
-  malScore?: number;
-  malVotes?: number;
 }
 
-const { animeId, malScore, malVotes } = Astro.props;
-const hasMal = malScore != null && malVotes != null;
+const { animeId } = Astro.props;
 ---
 
 <div class="anime-rating" data-anime-rating data-anime-id={animeId}>
@@ -23,37 +20,73 @@ const hasMal = malScore != null && malVotes != null;
         role="group"
         aria-label="Beri rating 1 sampai 5 bintang"
       >
-        <button type="button" data-score-value="1" aria-label="Beri 1 bintang (setara 2 dari 10)" title="1 bintang ≈ 2/10"></button>
-        <button type="button" data-score-value="2" aria-label="Beri 2 bintang (setara 4 dari 10)" title="2 bintang ≈ 4/10"></button>
-        <button type="button" data-score-value="3" aria-label="Beri 3 bintang (setara 6 dari 10)" title="3 bintang ≈ 6/10"></button>
-        <button type="button" data-score-value="4" aria-label="Beri 4 bintang (setara 8 dari 10)" title="4 bintang ≈ 8/10"></button>
-        <button type="button" data-score-value="5" aria-label="Beri 5 bintang (setara 10 dari 10)" title="5 bintang ≈ 10/10"></button>
+        <button type="button" data-score-value="1" aria-label="Beri 1 bintang" title="1 bintang"></button>
+        <button type="button" data-score-value="2" aria-label="Beri 2 bintang" title="2 bintang"></button>
+        <button type="button" data-score-value="3" aria-label="Beri 3 bintang" title="3 bintang"></button>
+        <button type="button" data-score-value="4" aria-label="Beri 4 bintang" title="4 bintang"></button>
+        <button type="button" data-score-value="5" aria-label="Beri 5 bintang" title="5 bintang"></button>
       </div>
     </div>
 
     <div class="anime-rating__score">
-      <span data-score>{hasMal ? malScore.toFixed(1) : '—'}</span>
+      <span class="anime-rating__skeleton" data-skeleton aria-hidden="true"></span>
+      <span data-score hidden>—</span>
       <small>/ 10</small>
     </div>
   </div>
 
-  <p class="anime-rating__votes" data-votes>
-    {hasMal ? `${malVotes.toLocaleString('id-ID')} votes` : ''}
-  </p>
+  <p class="anime-rating__votes" data-votes></p>
+  <p class="anime-rating__user" data-user-score hidden></p>
 </div>
 
 <script>
   const API_BASE = import.meta.env.PUBLIC_API_URL ?? 'https://yukio-api.bimaakbar.workers.dev';
   const USER_ID_KEY = 'yukionime:user-id';
+  const CACHE_TTL = 5 * 60 * 1000;
   const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-  function getUserId() {
+  function getUserId(): string {
     let id = localStorage.getItem(USER_ID_KEY);
     if (!id || !UUID_RE.test(id)) {
       id = crypto.randomUUID();
       localStorage.setItem(USER_ID_KEY, id);
     }
     return id;
+  }
+
+  function readCache(animeId: string) {
+    try {
+      const raw = localStorage.getItem(`yukionime:rating-cache:${animeId}`);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (
+        typeof parsed?.average !== 'number' ||
+        typeof parsed?.votes !== 'number' ||
+        typeof parsed?.ts !== 'number'
+      ) return null;
+      return parsed as { average: number; votes: number; ts: number };
+    } catch {
+      return null;
+    }
+  }
+
+  function writeCache(animeId: string, average: number, votes: number) {
+    try {
+      localStorage.setItem(
+        `yukionime:rating-cache:${animeId}`,
+        JSON.stringify({ average, votes, ts: Date.now() })
+      );
+    } catch {}
+  }
+
+  function readUserScore(animeId: string): number {
+    const raw = localStorage.getItem(`yukionime:rating-user:${animeId}`);
+    const n = Number(raw);
+    return Number.isInteger(n) && n >= 1 && n <= 5 ? n : 0;
+  }
+
+  function writeUserScore(animeId: string, score: number) {
+    localStorage.setItem(`yukionime:rating-user:${animeId}`, String(score));
   }
 
   const userId = getUserId();
@@ -63,35 +96,19 @@ const hasMal = malScore != null && malVotes != null;
     const starsEl = el.querySelector<HTMLElement>('[data-stars]')!;
     const fillEl = el.querySelector<HTMLElement>('[data-fill]')!;
     const scoreEl = el.querySelector<HTMLElement>('[data-score]')!;
+    const skeletonEl = el.querySelector<HTMLElement>('[data-skeleton]')!;
     const votesEl = el.querySelector<HTMLElement>('[data-votes]')!;
-
-    const STORAGE_KEY = `yukionime:rating:${animeId}`;
+    const userEl = el.querySelector<HTMLElement>('[data-user-score]')!;
 
     const state = {
       average: 0,
       votes: 0,
-      userStars: 0,
+      userScore: readUserScore(animeId),
     };
 
-    const initialScore = Number(scoreEl.textContent);
-    if (!isNaN(initialScore) && initialScore > 0) {
-      state.average = initialScore;
-    }
-
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const stars = Number(saved);
-      if (stars >= 1 && stars <= 5) state.userStars = stars;
-    }
-
-    function getFillPercent(): number {
-      if (state.userStars > 0) return (state.userStars / 5) * 100;
-      if (state.average > 0) return (state.average / 10) * 100;
-      return 0;
-    }
-
     function renderFill() {
-      fillEl.style.setProperty('--fill', getFillPercent() + '%');
+      const pct = state.average > 0 ? (state.average / 10) * 100 : 0;
+      fillEl.style.setProperty('--fill', pct + '%');
     }
 
     function renderScore() {
@@ -104,33 +121,70 @@ const hasMal = malScore != null && malVotes != null;
         : '';
     }
 
-    renderFill();
+    function renderUserScore() {
+      if (state.userScore > 0) {
+        userEl.textContent = `Kamu: ${state.userScore} bintang`;
+        userEl.hidden = false;
+      } else {
+        userEl.textContent = '';
+        userEl.hidden = true;
+      }
+    }
 
-    (async () => {
+    function showSkeleton(show: boolean) {
+      skeletonEl.hidden = !show;
+      scoreEl.hidden = show;
+    }
+
+    function renderAll() {
+      showSkeleton(false);
+      renderFill();
+      renderScore();
+      renderVotes();
+      renderUserScore();
+    }
+
+    renderUserScore();
+
+    const cached = readCache(animeId);
+
+    if (cached) {
+      state.average = cached.average;
+      state.votes = cached.votes;
+      renderAll();
+
+      const age = Date.now() - cached.ts;
+      if (age > CACHE_TTL) {
+        fetchAggregate();
+      }
+    } else {
+      showSkeleton(true);
+      renderFill();
+      fetchAggregate();
+    }
+
+    async function fetchAggregate() {
       try {
-        const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`, {
-          headers: { 'X-User-Id': userId },
-        });
-        if (!res.ok) return;
+        const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
         const json = await res.json();
-        const { average, votes, userScore } = json.data;
+        const { average, votes } = json.data;
 
-        if (typeof average === 'number' && average > 0) {
+        if (typeof average === 'number' && typeof votes === 'number') {
           state.average = average;
-        }
-        if (typeof votes === 'number' && votes > 0) {
           state.votes = votes;
+          writeCache(animeId, average, votes);
+          renderAll();
         }
-        if (typeof userScore === 'number' && userScore >= 1 && userScore <= 5) {
-          state.userStars = userScore;
-          localStorage.setItem(STORAGE_KEY, String(userScore));
+      } catch (err) {
+        if (!cached) {
+          showSkeleton(false);
+          renderAll();
         }
-
-        renderScore();
-        renderVotes();
-        renderFill();
-      } catch {}
-    })();
+        console.error('[rating] fetch gagal:', err);
+      }
+    }
 
     starsEl.querySelectorAll<HTMLButtonElement>('[data-score-value]').forEach((btn) => {
       btn.addEventListener('mouseenter', () => {
@@ -144,15 +198,11 @@ const hasMal = malScore != null && malVotes != null;
       });
     });
 
-    starsEl.addEventListener('mouseleave', () => {
-      renderFill();
-    });
+    starsEl.addEventListener('mouseleave', renderFill);
 
     starsEl.addEventListener('focusout', (e) => {
       const next = e.relatedTarget as Node | null;
-      if (!next || !starsEl.contains(next)) {
-        renderFill();
-      }
+      if (!next || !starsEl.contains(next)) renderFill();
     });
 
     starsEl.addEventListener('click', async (e) => {
@@ -160,13 +210,6 @@ const hasMal = malScore != null && malVotes != null;
       if (!btn) return;
 
       const stars = Number(btn.dataset.scoreValue);
-
-      const prevUserStars = state.userStars;
-      const prevAverage = state.average;
-      const prevVotes = state.votes;
-
-      state.userStars = stars;
-      renderFill();
 
       try {
         const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`, {
@@ -182,29 +225,15 @@ const hasMal = malScore != null && malVotes != null;
 
         const json = await res.json();
 
-        if (json?.data) {
-          if (typeof json.data.average === 'number') {
-            state.average = json.data.average;
-          }
-          if (typeof json.data.votes === 'number') {
-            state.votes = json.data.votes;
-          }
-        }
+        if (typeof json.data.average === 'number') state.average = json.data.average;
+        if (typeof json.data.votes === 'number') state.votes = json.data.votes;
+        state.userScore = stars;
 
-        localStorage.setItem(STORAGE_KEY, String(stars));
+        writeCache(animeId, state.average, state.votes);
+        writeUserScore(animeId, stars);
 
-        renderFill();
-        renderScore();
-        renderVotes();
+        renderAll();
       } catch (err) {
-        state.userStars = prevUserStars;
-        state.average = prevAverage;
-        state.votes = prevVotes;
-
-        renderFill();
-        renderScore();
-        renderVotes();
-
         console.error('[rating] submit gagal:', err);
       }
     });
@@ -296,17 +325,53 @@ const hasMal = malScore != null && malVotes != null;
     align-items: baseline;
     gap: 2px;
     line-height: 1;
+    min-height: 1.5rem;
   }
 
-  .anime-rating__score span {
+  .anime-rating__score span[data-score] {
     font-size: var(--fs-xl);
     font-weight: var(--fw-bold);
     color: var(--accent);
   }
 
+  .anime-rating__score span[data-score][hidden] {
+    display: none;
+  }
+
   .anime-rating__score small {
     font-size: var(--fs-xs);
     color: var(--text-muted);
+  }
+
+  .anime-rating__skeleton {
+    display: inline-block;
+    width: 3rem;
+    height: 1.25rem;
+    border-radius: var(--r-sm);
+    background: linear-gradient(
+      90deg,
+      var(--bg-surface) 0%,
+      var(--bg-hover) 50%,
+      var(--bg-surface) 100%
+    );
+    background-size: 200% 100%;
+    animation: rating-shimmer 1.2s ease-in-out infinite;
+  }
+
+  .anime-rating__skeleton[hidden] {
+    display: none;
+  }
+
+  @keyframes rating-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anime-rating__skeleton {
+      animation: none;
+      background: var(--bg-surface);
+    }
   }
 
   .anime-rating__votes {
@@ -316,5 +381,17 @@ const hasMal = malScore != null && malVotes != null;
     text-align: center;
     line-height: 1.2;
     min-height: 1em;
+  }
+
+  .anime-rating__user {
+    margin: 0;
+    font-size: var(--fs-xs);
+    color: var(--accent);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .anime-rating__user[hidden] {
+    display: none;
   }
 </style>
