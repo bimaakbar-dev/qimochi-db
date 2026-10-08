@@ -17,8 +17,8 @@ episodes: 10
 rating: R
 
 aired:
-  from: "2026-10-20"
-  to: "2026-10-20"
+  from: 2026-10-20
+  to: 2026-10-20
 
 stats:
   # score: # edit manual
