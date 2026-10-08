@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'Yukionime',
   title: 'Yukionime',
-  description: 'Database anime Indonesia — katalog lengkap, API gratis untuk developer.',
+  description: 'Database anime dengan API gratis.',
   url: 'https://yukionime.pages.dev',
   locale: 'id-ID',
   lang: 'id',
@@ -14,7 +14,7 @@ export const ROUTE = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'API',       href: ROUTE.docs },
+  { label: 'Docs', href: ROUTE.docs },
 ] as const;
 
 export const STATUSES = [
