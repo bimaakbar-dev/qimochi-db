@@ -39,8 +39,8 @@ trailer: "3FxoxWjrrVg"
 draft: false
 ---
 
-Minato Kusunoki ditugaskan untuk mengelola rumah keluarganya yang terletak di pedesaan, sebuah bangunan tua yang telah lama ditinggalkan dan dipercaya angker. Namun, tanpa sengaja, Minato membawa perubahan besar pada tempat itu. Kekuatan spiritualnya yang luar biasa membuatnya secara tidak sengaja membersihkan energi negatif di sekitar rumah, mengubahnya menjadi sebuah surga yang damai.
+Minato Kusunoki ditugaskan untuk mengelola rumah keluarganya yang terletak di pedesaan, sebuah tempat yang telah lama ditinggalkan dan dianggap angker. Namun, Minato memiliki kekuatan spiritual yang luar biasa, sehingga tanpa sengaja dia berhasil menyucikan tempat itu.
 
-Rumah yang dulunya dihindari banyak orang kini berubah menjadi tempat yang menarik bagi para dewa dan makhluk suci yang sedang mencari tempat peristirahatan. Minato sendiri merasa terkejut dengan perubahan ini dan mulai menyesuaikan diri dengan kehidupan barunya. Ia mulai mengenal tetangga-tetangganya yang unik dan penuh warna, para dewa dan makhluk suci yang memiliki kepribadian yang beragam.
+Setelah proses penyucian, rumah keluarga Kusunoki berubah menjadi sebuah tempat yang damai dan tenang, bahkan menjadi surga bagi para dewa dan makhluk suci yang berkeliaran. Minato kemudian memutuskan untuk menetap di sana dan menjalani kehidupan barunya.
 
-Kehidupan Minato di rumah keluarganya yang baru ini dipenuhi dengan kejutan dan keseruan. Ia harus belajar bagaimana berinteraksi dengan para dewa dan makhluk suci, serta menemukan cara untuk menjaga keseimbangan di rumahnya yang kini telah menjadi sebuah komunitas yang ramai dan penuh kehidupan.
+Di sana, Minato dikelilingi oleh tetangga-tetangga yang unik dan penuh warna, yaitu para dewa dan makhluk suci yang memiliki kepribadian yang beragam. Kehidupan Minato menjadi semakin menarik dan penuh kejutan dengan kehadiran mereka, membawa keseruan dan kegembiraan ke dalam kehidupan sehari-harinya.
