@@ -14,15 +14,15 @@ Yukionime adalah database anime berbahasa Indonesia yang dikurasi komunitas.
 Data disajikan lewat website dan REST API publik — gratis untuk developer.
 
 Fokus:
-- 📖 Katalog anime yang bisa di-browse & search
-- 🔌 API gratis untuk bot, app, dan website
-- 🇮🇩 Konten berbahasa Indonesia
-- 🎯 Data berkualitas, dikurasi manual
+- [x] 📖 Katalog anime yang bisa di-browse & search
+- [x] 🔌 API gratis untuk bot, app, dan website
+- [x] 🇮🇩 Konten berbahasa Indonesia
+- [x] 🎯 Data berkualitas, dikurasi manual
 
 Bukan:
-- ❌ Platform streaming (tidak host video)
-- ❌ Situs download
-- ❌ Tracker pribadi
+- [ ] Platform streaming (tidak host video)
+- [ ] Situs download
+- [ ] Tracker pribadi
 
 ---
 
@@ -30,7 +30,9 @@ Bukan:
 
 ### Base URL
 
-[yukionime.pages.dev/api/v1](https://yukionime.pages.dev/api/v1)
+```plaintext
+https://yukionime.pages.dev/api/v1
+```
 
 Tidak perlu API key. CORS terbuka. Rate limit tidak ditegakkan.
 
@@ -39,20 +41,59 @@ Tidak perlu API key. CORS terbuka. Rate limit tidak ditegakkan.
 | Endpoint | Deskripsi |
 |----------|-----------|
 | GET / | Root — daftar semua endpoint |
-| GET /anime.json | Index ringkas semua anime |
-| GET /anime/[id].json | Detail lengkap 1 anime |
-| GET /anime-full.json | Snapshot semua anime + detail |
+| GET /anime.json | Index ringkas semua anime (list & filter) |
+| GET /anime/[id].json | Detail lengkap 1 anime berdasarkan slug |
+| GET /anime-full.json | Snapshot semua anime + detail lengkap (1 file) |
 | GET /genres.json | Semua genre + jumlah anime |
 | GET /studios.json | Semua studio + jumlah anime |
 | GET /franchises.json | Relasi franchise antar anime |
 | GET /stats.json | Statistik agregat database |
 | GET /meta.json | Metadata API (versi, license, changelog) |
 
-### Contoh
+### Contoh: Index Anime
 
 ```bash
 curl https://yukionime.pages.dev/api/v1/anime.json
 ```
+
+```json
+{
+  "data": [
+    {
+      "id": "kimetsu-no-yaiba",
+      "title": "Kimetsu no Yaiba",
+      "titleEnglish": "Demon Slayer: Kimetsu no Yaiba",
+      "titleNative": "鬼滅の刃",
+      "image": "https://...",
+      "type": "TV",
+      "status": "finished",
+      "season": "spring",
+      "year": 2019,
+      "episodes": 26,
+      "duration": 23,
+      "rating": "R",
+      "genres": ["action", "fantasy", "historical", "shounen"],
+      "studios": ["ufotable"],
+      "stats": { "score": 8.4, "scoredBy": 1542300 }
+    }
+  ],
+  "meta": {
+    "version": "v1",
+    "total": 80,
+    "generatedAt": "2026-10-08T12:00:00.000Z"
+  }
+}
+```
+
+### Contoh: Detail Anime
+
+```bash
+curl https://yukionime.pages.dev/api/v1/anime/kimetsu-no-yaiba.json
+```
+
+Detail berisi semua field index + tambahan: externalIds, aired,
+franchises, banner, trailer, episodeList, characters, dan studios
+dalam bentuk objek { slug, name }.
 
 ### Format Response
 
@@ -63,7 +104,7 @@ Sukses:
   "data": "…",
   "meta": {
     "version": "v1",
-    "total": 80,
+    "total": 123,
     "generatedAt": "2026-10-08T12:00:00.000Z"
   }
 }
@@ -84,9 +125,9 @@ Error:
 ### Aturan
 
 - ✅ Open — tidak perlu API key
-- ✅ CORS enabled
-- ✅ Cache 5 menit di edge
-- ⚠️ Tidak ada SLA
+- ✅ CORS enabled — bebas dari domain apapun
+- ✅ Cache 5 menit di edge (snapshot: 1 jam)
+- ⚠️ Tidak ada SLA — gunakan dengan bijak
 - 📜 Data: CC BY 4.0 (lihat [LICENSE-DATA](./LICENSE-DATA))
 
 ---
@@ -99,7 +140,7 @@ Baca panduan lengkap: [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 Singkatnya:
 1. Fork repo
-2. Tambah/edit file di `src/content/anime/`
+2. Tambah/edit file di src/content/anime/
 3. PR
 4. Kami review + merge
 
@@ -134,5 +175,5 @@ Lisensi: CC BY 4.0
 
 ## Kontak
 
-- Discord: [Community Server](https://discord.gg/fcnVtd4Cb)
+- Discord: [Communtiy Server](https://discord.gg/fcnVtd4Cb)
 - Telegram: (coming soon)
