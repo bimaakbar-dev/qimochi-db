@@ -1,0 +1,25 @@
+name: Test API
+
+on:
+  workflow_dispatch:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    if: github.event_name == 'workflow_dispatch' || github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Run smoke test
+        env:
+          BASE_URL: https://yukionime.pages.dev
+        run: node scripts/test-api.mjs
