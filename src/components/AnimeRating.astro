@@ -44,6 +44,19 @@ const hasMal = malScore != null && malVotes != null;
 
 <script>
   const API_BASE = import.meta.env.PUBLIC_API_URL ?? 'https://yukio-api.bimaakbar.workers.dev';
+  const USER_ID_KEY = 'yukionime:user-id';
+  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+  function getUserId() {
+    let id = localStorage.getItem(USER_ID_KEY);
+    if (!id || !UUID_RE.test(id)) {
+      id = crypto.randomUUID();
+      localStorage.setItem(USER_ID_KEY, id);
+    }
+    return id;
+  }
+
+  const userId = getUserId();
 
   document.querySelectorAll<HTMLElement>('[data-anime-rating]').forEach((el) => {
     const animeId = el.dataset.animeId!;
@@ -95,18 +108,27 @@ const hasMal = malScore != null && malVotes != null;
 
     (async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`);
+        const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`, {
+          headers: { 'X-User-Id': userId },
+        });
         if (!res.ok) return;
         const json = await res.json();
-        const { average, votes } = json.data;
+        const { average, votes, userScore } = json.data;
 
-        if (votes > 0) {
+        if (typeof average === 'number' && average > 0) {
           state.average = average;
-          state.votes = votes;
-          renderScore();
-          renderVotes();
-          renderFill();
         }
+        if (typeof votes === 'number' && votes > 0) {
+          state.votes = votes;
+        }
+        if (typeof userScore === 'number' && userScore >= 1 && userScore <= 5) {
+          state.userStars = userScore;
+          localStorage.setItem(STORAGE_KEY, String(userScore));
+        }
+
+        renderScore();
+        renderVotes();
+        renderFill();
       } catch {}
     })();
 
@@ -139,26 +161,52 @@ const hasMal = malScore != null && malVotes != null;
 
       const stars = Number(btn.dataset.scoreValue);
 
+      const prevUserStars = state.userStars;
+      const prevAverage = state.average;
+      const prevVotes = state.votes;
+
+      state.userStars = stars;
+      renderFill();
+
       try {
         const res = await fetch(`${API_BASE}/api/v1/ratings/${animeId}`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'X-User-Id': userId,
+          },
           body: JSON.stringify({ score: stars }),
         });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
         const json = await res.json();
 
-        if (json.ok) {
-          state.userStars = stars;
-          state.average = json.data.average;
-          state.votes = json.data.votes;
-
-          localStorage.setItem(STORAGE_KEY, String(stars));
-
-          renderFill();
-          renderScore();
-          renderVotes();
+        if (json?.data) {
+          if (typeof json.data.average === 'number') {
+            state.average = json.data.average;
+          }
+          if (typeof json.data.votes === 'number') {
+            state.votes = json.data.votes;
+          }
         }
-      } catch {}
+
+        localStorage.setItem(STORAGE_KEY, String(stars));
+
+        renderFill();
+        renderScore();
+        renderVotes();
+      } catch (err) {
+        state.userStars = prevUserStars;
+        state.average = prevAverage;
+        state.votes = prevVotes;
+
+        renderFill();
+        renderScore();
+        renderVotes();
+
+        console.error('[rating] submit gagal:', err);
+      }
     });
   });
 </script>
