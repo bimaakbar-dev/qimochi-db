@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://yukionime.pages.dev/sitemap-index.xml
