@@ -1,7 +1,3 @@
-// scripts/gen-api-docs.mjs
-// Generate section API di README.md di antara marker.
-// Jalankan: node scripts/gen-api-docs.mjs
-
 import { readFile, writeFile } from 'node:fs/promises';
 
 const README = 'README.md';
@@ -31,9 +27,7 @@ function buildSection() {
 
 ### Base URL
 
-\`\`\`
-${BASE_URL}
-\`\`\`
+`${BASE_URL}`
 
 Tidak perlu API key. CORS terbuka. Rate limit tidak ditegakkan.
 
@@ -45,11 +39,11 @@ ${table}
 
 ### Contoh: Index Anime
 
-\`\`\`bash
+```bash
 curl ${BASE_URL}/anime.json
-\`\`\`
+```
 
-\`\`\`json
+```json
 {
   "data": [
     {
@@ -76,21 +70,23 @@ curl ${BASE_URL}/anime.json
     "generatedAt": "2026-10-08T12:00:00.000Z"
   }
 }
-\`\`\`
+```
 
 ### Contoh: Detail Anime
 
-\`\`\`bash
+```bash
 curl ${BASE_URL}/anime/kimetsu-no-yaiba.json
-\`\`\`
+```
 
-Detail berisi semua field index + tambahan: \`externalIds\`, \`aired\`, \`franchises\`, \`banner\`, \`trailer\`, \`episodeList\`, \`characters\`, dan \`studios\` dalam bentuk objek \`{ slug, name }\`.
+Detail berisi semua field index + tambahan: \`externalIds\`, \`aired\`,
+\`franchises\`, \`banner\`, \`trailer\`, \`episodeList\`, \`characters\`,
+dan \`studios\` dalam bentuk objek \`{ slug, name }\`.
 
 ### Format Response
 
 **Sukses:**
 
-\`\`\`json
+```json
 {
   "data": "…",
   "meta": {
@@ -99,11 +95,11 @@ Detail berisi semua field index + tambahan: \`externalIds\`, \`aired\`, \`franch
     "generatedAt": "2026-10-08T12:00:00.000Z"
   }
 }
-\`\`\`
+```
 
 **Error:**
 
-\`\`\`json
+```json
 {
   "error": {
     "code": "NOT_FOUND",
@@ -111,7 +107,7 @@ Detail berisi semua field index + tambahan: \`externalIds\`, \`aired\`, \`franch
     "status": 404
   }
 }
-\`\`\`
+```
 
 ### Aturan
 
@@ -125,10 +121,10 @@ Detail berisi semua field index + tambahan: \`externalIds\`, \`aired\`, \`franch
 
 Data: **CC BY 4.0**. Atribusi minimal:
 
-\`\`\`
+```
 Data dari Yukionime (https://yukionime.pages.dev)
 Lisensi: CC BY 4.0
-\`\`\`
+```
 `;
 }
 
