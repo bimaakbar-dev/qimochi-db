@@ -20,7 +20,7 @@ aired:
   from: 2026-10-20
   to: 2026-10-20
 
-stats:
+# stats:
   # score: # edit manual
   # scoredBy: # edit manual
 
