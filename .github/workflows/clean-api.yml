@@ -1,0 +1,78 @@
+# .github/workflows/clean-api.yml
+name: Clean API Files (one-shot)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Ketik "yes" untuk konfirmasi hapus'
+        required: true
+        default: 'no'
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    if: inputs.confirm == 'yes'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Hapus file API
+        run: |
+          set -e
+
+          # API routes
+          rm -rf src/pages/api
+
+          # API lib helper
+          rm -rf src/lib/api
+
+          # Ratings (static + sync)
+          rm -f public/api/v1/ratings.json
+          rm -rf public/api
+          rm -f scripts/sync-ratings.js
+          rm -f .github/workflows/sync-rating.yml
+
+          # Cek folder kosong yang tertinggal
+          find src/pages -type d -empty -delete 2>/dev/null || true
+          find src/lib -type d -empty -delete 2>/dev/null || true
+          find scripts -type d -empty -delete 2>/dev/null || true
+          find public -type d -empty -delete 2>/dev/null || true
+
+          echo "== Sisa file API-related =="
+          git status --short
+
+      - name: Hapus blok /api/* dari _headers
+        run: |
+          set -e
+          # Hapus blok "/api/*" (3 baris) dari public/_headers
+          if [ -f public/_headers ]; then
+            awk '
+              /^\/api\/\*/ { skip=1; next }
+              skip && /^[[:space:]]/ { next }
+              skip && /^$/ { skip=0; next }
+              skip { skip=0 }
+              { print }
+            ' public/_headers > public/_headers.tmp
+            mv public/_headers.tmp public/_headers
+            echo "== public/_headers setelah edit =="
+            cat public/_headers
+          fi
+
+      - name: Commit & push
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Tidak ada yang berubah."
+            exit 0
+          fi
+
+          git commit -m "chore(api): clean up semua file API untuk rework"
+          git push
