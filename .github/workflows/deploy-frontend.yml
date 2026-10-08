@@ -40,6 +40,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env: 
+          PUBLIC_API_URL: ${{vars.PUBLIC_API_URL}}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
