@@ -9,12 +9,14 @@ export const SITE = {
 
 export const ROUTE = {
   home: '/',
+  about: '/about/',
   api: '/api/',
   docs: '/docs/',
 } as const;
 
 export const NAV_LINKS = [
   { label: 'Docs', href: ROUTE.docs },
+  { label: 'Tentang', href: ROUTE.about },
 ] as const;
 
 export const STATUSES = [
