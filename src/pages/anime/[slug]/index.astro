@@ -52,12 +52,7 @@ const studioItems = data.studios.map((slug) => ({
 
     <AnimeDetailLayout>
       <AnimeCover slot="cover" image={data.image} title={data.title}>
-        <AnimeRating
-          slot="action"
-          animeId={anime.id}
-          malScore={data.stats?.score}
-          malVotes={data.stats?.scoredBy}
-        />
+        <AnimeRating slot="action" animeId={anime.id} />
       </AnimeCover>
 
       <AnimeTabs>
