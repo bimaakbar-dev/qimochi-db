@@ -35,7 +35,7 @@ function isActive(href: string): boolean {
     </a>
 
     <div class="header-right">
-      <details class="menu" open>
+      <details class="menu">
         <summary class="menu-btn" aria-label="Menu navigasi">
           <span class="icon-menu"><Icon name="menu" size={22} /></span>
           <span class="icon-close"><Icon name="close" size={22} /></span>
@@ -63,14 +63,14 @@ function isActive(href: string): boolean {
 
 <script>
   const menu = document.querySelector<HTMLDetailsElement>('.menu');
+
   if (menu) {
     const mobile = window.matchMedia('(max-width: 50rem)');
 
-    if (mobile.matches) menu.removeAttribute('open');
-
     mobile.addEventListener('change', (e) => {
-      if (e.matches) menu.removeAttribute('open');
-      else menu.setAttribute('open', '');
+      if (e.matches && menu.hasAttribute('open')) {
+        menu.removeAttribute('open');
+      }
     });
 
     document.addEventListener('click', (e) => {
@@ -157,7 +157,6 @@ function isActive(href: string): boolean {
     .header-right .menu {
       order: 1;
     }
-
     .header-right .icon-btn {
       order: 2;
     }
@@ -269,7 +268,7 @@ function isActive(href: string): boolean {
       }
     }
   }
-
+  
   @media (max-width: 50rem) {
     .menu {
       display: block;
@@ -287,9 +286,14 @@ function isActive(href: string): boolean {
       background: var(--bg-nav);
     }
   }
+
   @media (min-width: 50rem) {
     .menu-btn {
       display: none;
+    }
+
+    .menu > .nav {
+      display: flex !important;
     }
   }
 </style>
