@@ -1,10 +1,14 @@
 name: Deploy to Cloudflare Pages
 
 on:
-  push:
-    branches: [main]
-  repository_dispatch:
-    types: [data-updated]
+  # Auto-trigger dimatikan sementara selama fase scraping.
+  # Aktifkan kembali setelah semua data siap.
+  #
+  # push:
+  #   branches: [main]
+  # repository_dispatch:
+  #   types: [data-updated]
+
   workflow_dispatch:
 
 jobs:
@@ -40,8 +44,8 @@ jobs:
 
       - name: Build
         run: npm run build
-        env: 
-          PUBLIC_API_URL: ${{vars.PUBLIC_API_URL}}
+        env:
+          PUBLIC_API_URL: ${{ vars.PUBLIC_API_URL }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
