@@ -1,43 +1,66 @@
 ---
-title: ""
-titleEnglish: ""
-titleNative: ""
-
-malId: null
-anilistId: null
-kitsuId: ""
-
+# ────────────────────────────────────────────────────────
+# WAJIB — 3 field
+# ────────────────────────────────────────────────────────
+title: "Judul Anime (romaji)"
 type: TV
 status: finished
-source: ""
-season: ""
-year: null
-episodes: null
-duration: null
-rating: ""
 
-aired:
-  from: ""
-  to: null
+# ────────────────────────────────────────────────────────
+# OPSIONAL — isi kalau ada, hapus kalau tidak.
+# JANGAN diisi string kosong ("").
+# ────────────────────────────────────────────────────────
 
-stats:
-  score: null
-  scoredBy: null
+# titleEnglish: "English Title"
+# titleNative: "日本語タイトル"
+#
+# malId: 0
+# anilistId: 0
+# kitsuId: "0"
+#
+# source: manga      # original | manga | light_novel | visual_novel
+#                    # | game | web_manga | web_novel | novel | book
+#                    # | picture_book | radio | music | 4_koma_manga
+#                    # | card_game | other
+# season: spring     # winter | spring | summer | fall
+# year: 2024
+# episodes: 12
+# duration: 24       # menit per episode
+# rating: PG-13      # G | PG | PG-13 | R | R+ | Rx
+#
+# aired:
+#   from: "2024-01-01"
+#   to: "2024-03-31"   # null kalau masih ongoing
+#
+# stats:
+#   score: 8.0
+#   scoredBy: 100000
+#
+# genres:
+#   - action
+#   - fantasy
+#
+# studios:
+#   - ufotable
+#
+# image: "https://cdn.myanimelist.net/..."
+# banner: "https://..."
+# trailer: "VQGCKyvzIM4"   # YouTube video ID
+#
+# draft: false
 
-genres: []
-studios: []
-
-franchises: []
-
-image: ""
-banner: ""
-trailer: ""
-
-episodeList: []
-
-characters: []
-
-draft: false
+# ────────────────────────────────────────────────────────
+# JANGAN TULIS di markdown: franchises, episodeList, characters
+#
+# Datanya disimpan di repo terpisah (yukio-data) dan di-merge
+# otomatis saat build. Bentuk di repo:
+#
+#   src/data/anime/[slug]/franchises.json
+#   src/data/anime/[slug]/episodes/0001-0100.json
+#   src/data/anime/[slug]/characters/0001-0100.json
+#
+# Handler: src/lib/anime.ts → hydrateOne()
+# ────────────────────────────────────────────────────────
 ---
 
 Tulis sinopsis di sini.
@@ -53,40 +76,27 @@ Panduan menulis sinopsis:
 
 ---
 
-## Cara Pakai Template Ini
+## Cara Pakai
 
-1. Copy file ini ke src/content/anime/
-2. Rename sesuai slug anime (contoh: naruto.md)
-3. Isi minimal 3 field: title, type, status
-4. Isi field lain sesuai data yang tersedia (bertahap)
+1. Copy file ini ke `src/content/anime/`
+2. Rename sesuai slug anime (contoh: `naruto.md`)
+3. Isi minimal 3 field wajib (`title`, `type`, `status`)
+4. Uncomment field opsional yang mau diisi
 5. Tulis sinopsis di body markdown
-6. Validasi: npx astro sync && npm run build
+6. Validasi: `npx astro sync && npm run build`
 7. Commit + PR
 
-Field wajib (3):
+## Field Wajib
 
-- title — judul anime
-- type — TV | Movie | OVA | ONA | Special | Music | Unknown
-- status — airing | finished | upcoming | hiatus | cancelled
+- `title` — judul anime (romaji)
+- `type` — TV | Movie | OVA | ONA | Special | Music | Unknown
+- `status` — airing | finished | upcoming | hiatus | cancelled
 
-Field opsional: isi sesuai data. TIDAK WAJIB lengkap.
+## Aturan Penting
 
-Aturan penting:
+- Field opsional **jangan** diisi string kosong (`""`)
+- Kalau tidak ada data, jangan tulis field-nya sama sekali
+- Contoh SALAH: `image: ""`
+- Contoh BENAR: hilangkan field `image` sepenuhnya
 
-- Field optional JANGAN diisi dengan string kosong ("")
-- Kalau tidak ada data, hapus field-nya
-- Contoh SALAH: image: ""
-- Contoh BENAR: (hilangkan field image sepenuhnya)
-
-Format franchises (kalau ada):
-
-[
-  franchises:
-    - relation: sequel
-      slug: anime-target-slug
-      title: "Judul Anime Target"
-]
-
-Field title opsional — isi kalau anime target belum ada di database.
-
-Panduan lengkap: lihat CONTRIBUTING.md
+Panduan lengkap: lihat [CONTRIBUTING.md](./CONTRIBUTING.md)
