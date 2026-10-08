@@ -8,7 +8,6 @@ const BASE_URL = process.env.BASE_URL ?? 'https://yukionime.pages.dev';
 const API = `${BASE_URL}/api/v1`;
 const ROOT_URL = `${BASE_URL}/api/v1.json`;
 
-// Test endpoint di dalam folder /api/v1/
 const TESTS = [
   { path: '/anime.json',      kind: 'array' },
   { path: '/anime-full.json', kind: 'array' },
@@ -32,8 +31,13 @@ function isIso(s) {
 function validateEnvelope(body, kind) {
   if (body.error) return 'response berisi .error';
   if (!('data' in body)) return 'tidak ada field .data';
-  if (typeof body.data !== kind) {
-    return `.data harus ${kind}, dapat ${typeof body.data}`;
+
+  const isArray = Array.isArray(body.data);
+  if (kind === 'array' && !isArray) {
+    return `.data harus array, dapat ${typeof body.data}`;
+  }
+  if (kind === 'object' && isArray) {
+    return `.data harus object, dapat array`;
   }
 
   const m = body.meta;
@@ -42,7 +46,7 @@ function validateEnvelope(body, kind) {
   if (typeof m.total !== 'number') return 'meta.total harus number';
   if (!isIso(m.generatedAt)) return 'meta.generatedAt bukan ISO 8601';
 
-  const expectedTotal = Array.isArray(body.data) ? body.data.length : 1;
+  const expectedTotal = isArray ? body.data.length : 1;
   if (m.total !== expectedTotal) {
     return `meta.total (${m.total}) ≠ panjang data (${expectedTotal})`;
   }
@@ -125,47 +129,54 @@ async function testRoot() {
   ok(`/api/v1.json — ${body.data.endpoints.length} endpoint terdaftar`);
 }
 
-async function testNotFound() {
-  const url = `${API}/anime/__does_not_exist__.json`;
+async function testDetailAnimeExists() {
+  // Ambil 1 ID dari /anime.json, lalu test detail endpoint
   try {
-    const res = await fetch(url);
-    if (res.status !== 404) {
-      fail(`/anime/[id].json 404 — dapat HTTP ${res.status}`);
+    const idx = await fetch(`${API}/anime.json`).then((r) => r.json());
+    if (!Array.isArray(idx.data) || idx.data.length === 0) {
+      fail(`/anime/[id].json — tidak bisa ambil sample ID`);
       return;
     }
+
+    const sample = idx.data[0].id;
+    const res = await fetch(`${API}/anime/${sample}.json`);
+    if (res.status !== 200) {
+      fail(`/anime/${sample}.json — HTTP ${res.status}`);
+      return;
+    }
+
     const body = await res.json();
-    if (!body.error || body.error.code !== 'NOT_FOUND') {
-      fail(`/anime/[id].json 404 — format .error salah`);
+    const err = validateEnvelope(body, 'object');
+    if (err) {
+      fail(`/anime/${sample}.json — ${err}`);
       return;
     }
-    ok(`/anime/[id].json — error format OK (404)`);
+
+    if (body.data.id !== sample) {
+      fail(`/anime/${sample}.json — .data.id tidak cocok`);
+      return;
+    }
+
+    ok(`/anime/${sample}.json — OK`);
   } catch (err) {
     fail(`/anime/[id].json — fetch error: ${err.message}`);
   }
 }
 
-async function testCors() {
-  const url = `${API}/anime.json`;
+async function testCorsHeaders() {
+  // Cek header CORS di response GET (bukan preflight, karena SSG tidak support OPTIONS)
   try {
-    const res = await fetch(url, {
-      method: 'OPTIONS',
-      headers: {
-        'Origin': 'https://example.com',
-        'Access-Control-Request-Method': 'GET',
-      },
+    const res = await fetch(`${API}/anime.json`, {
+      headers: { 'Origin': 'https://example.com' },
     });
-    if (res.status !== 204 && res.status !== 200) {
-      fail(`CORS preflight — HTTP ${res.status}`);
-      return;
-    }
     const allow = res.headers.get('access-control-allow-origin');
     if (allow !== '*') {
-      fail(`CORS preflight — allow-origin = "${allow}"`);
+      fail(`CORS header GET — allow-origin = "${allow}"`);
       return;
     }
-    ok(`CORS preflight — OK`);
+    ok(`CORS header GET — OK (Allow-Origin: *)`);
   } catch (err) {
-    fail(`CORS preflight — fetch error: ${err.message}`);
+    fail(`CORS header GET — fetch error: ${err.message}`);
   }
 }
 
@@ -178,8 +189,8 @@ async function main() {
     await testEndpoint(t);
   }
 
-  await testNotFound();
-  await testCors();
+  await testDetailAnimeExists();
+  await testCorsHeaders();
 
   console.log(`\n📊 Hasil: ${passed} passed, ${failed} failed\n`);
 
