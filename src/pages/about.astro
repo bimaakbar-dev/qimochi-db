@@ -1,0 +1,181 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Page from '~/components/Page.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import SectionLabel from '~/components/SectionLabel.astro';
+import { SITE, ROUTE } from '~/constants';
+
+const sections = [
+  {
+    title: 'Apa ini?',
+    body: [
+      'Yukionime adalah database anime dengan API gratis yang bisa dipakai siapa saja — untuk referensi, bot, aplikasi, atau website.',
+      'Kami mengumpulkan informasi publik (judul, studio, genre, rating, sinopsis) dan menyajikannya dalam format yang bersih dan konsisten. Data dikurasi manual, lewat kontribusi GitHub.',
+    ],
+  },
+  {
+    title: 'Bukan apa',
+    body: [
+      'Kami bukan platform streaming — tidak menyimpan file video dan tidak menautkan ke layanan streaming apapun.',
+      'Kami bukan situs download.',
+      'Kami bukan tracker pribadi — tidak ada akun, tidak ada watchlist tersimpan di server.',
+    ],
+  },
+  {
+    title: 'Sumber Data',
+    body: [
+      'Metadata faktual (judul, tahun, episode, studio, rating) dikumpulkan dari sumber publik: MyAnimeList, AniList, Kitsu, dan Wikipedia. Fakta tidak dapat dilindungi hak cipta.',
+      'Sinopsis ditulis ulang oleh kontributor berdasarkan fakta publik — bukan hasil salin-tempel.',
+    ],
+  },
+  {
+    title: 'Kontribusi',
+    body: [
+      'Yukionime terbuka untuk kontribusi. Kalau kamu menemukan data yang salah, ingin menambah anime, atau memperbaiki sinopsis, silakan buka Pull Request di GitHub.',
+      'Panduan lengkap ada di file CONTRIBUTING.md di repositori.',
+    ],
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Tentang"
+  description="Tentang Yukionime — database anime dengan API gratis."
+>
+  <Page>
+    <Breadcrumb
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Tentang' },
+      ]}
+    />
+
+    <header class="about-header">
+      <SectionLabel as="h1" size="lg">Tentang</SectionLabel>
+      <p class="about-header__desc">{SITE.description}</p>
+    </header>
+
+    <div class="about-content">
+      {sections.map((section) => (
+        <section class="about-section">
+          <SectionLabel as="h2" size="sm" underlined={false}>
+            {section.title}
+          </SectionLabel>
+          {section.body.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </section>
+      ))}
+
+      <section class="about-section">
+        <SectionLabel as="h2" size="sm" underlined={false}>
+          Lisensi
+        </SectionLabel>
+        <ul class="about-list">
+          <li>Kode: <strong>MIT</strong></li>
+          <li>Data: <strong>CC BY 4.0</strong></li>
+        </ul>
+        <p>
+          Atribusi minimal yang diminta:
+        </p>
+        <pre class="about-pre">Data dari Yukionime ({SITE.url})
+Lisensi: CC BY 4.0</pre>
+      </section>
+
+      <section class="about-section">
+        <SectionLabel as="h2" size="sm" underlined={false}>
+          Tautan
+        </SectionLabel>
+        <ul class="about-list">
+          <li>
+            <a
+              href="https://github.com/bimaakbar-dev/yukionime"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub — kode & data
+            </a>
+          </li>
+          <li>
+            <a href={`${SITE.url}/api/v1/anime.json`}>
+              API — contoh endpoint
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </Page>
+</BaseLayout>
+
+<style>
+  .about-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  .about-header__desc {
+    margin: 0;
+    max-width: 40rem;
+    font-size: var(--fs-base);
+    color: var(--text-secondary);
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-8);
+    max-width: 48rem;
+  }
+
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+
+  .about-section p {
+    margin: 0;
+    font-size: var(--fs-base);
+    line-height: var(--lh-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .about-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    margin: 0;
+    padding-left: var(--s-6);
+    list-style: disc;
+    font-size: var(--fs-base);
+    color: var(--text-secondary);
+  }
+
+  .about-list li::marker {
+    color: var(--text-muted);
+  }
+
+  .about-list a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .about-list a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  .about-pre {
+    margin: 0;
+    padding: var(--s-4);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    overflow-x: auto;
+    white-space: pre;
+  }
+</style>
