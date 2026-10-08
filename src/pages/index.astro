@@ -14,17 +14,39 @@ const allAnime = await getAllAnime();
 const PER_SECTION = 8;
 
 const trending = [...allAnime]
-  .sort((a, b) => (b.data.stats?.scoredBy ?? 0) - (a.data.stats?.scoredBy ?? 0))
+  .sort((a, b) => {
+    const votesA = a.data.stats?.scoredBy ?? 0;
+    const votesB = b.data.stats?.scoredBy ?? 0;
+    if (votesB !== votesA) return votesB - votesA;
+
+    const scoreA = a.data.stats?.score ?? 0;
+    const scoreB = b.data.stats?.score ?? 0;
+    return scoreB - scoreA;
+  })
   .slice(0, PER_SECTION);
 
 const topAiring = [...allAnime]
   .filter((a) => a.data.status === 'airing')
-  .sort((a, b) => (b.data.stats?.score ?? 0) - (a.data.stats?.score ?? 0))
+  .sort((a, b) => {
+    const scoreA = a.data.stats?.score ?? 0;
+    const scoreB = b.data.stats?.score ?? 0;
+    if (scoreB !== scoreA) return scoreB - scoreA;
+
+    return (b.data.year ?? 0) - (a.data.year ?? 0);
+  })
   .slice(0, PER_SECTION);
 
-const finished = [...allAnime]
+const completed = [...allAnime]
   .filter((a) => a.data.status === 'finished')
-  .sort((a, b) => (a.data.year ?? 0) - (b.data.year ?? 0))
+  .sort((a, b) => {
+    const yearA = a.data.year ?? 0;
+    const yearB = b.data.year ?? 0;
+    if (yearB !== yearA) return yearB - yearA;
+
+    const scoreA = a.data.stats?.score ?? 0;
+    const scoreB = b.data.stats?.score ?? 0;
+    return scoreB - scoreA;
+  })
   .slice(0, PER_SECTION);
 ---
 
@@ -55,7 +77,7 @@ const finished = [...allAnime]
       <AnimeSection
         title="Completed"
         href="/search/anime/?status=finished"
-        items={finished}
+        items={completed}
       />
 
       <div slot="sidebar">
