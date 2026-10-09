@@ -1,7 +1,4 @@
-name: Dump isi repo
-
-# Jalankan manual: tab Actions, pilih "Dump isi repo", klik Run workflow.
-# Hasilnya file repo-dump.txt di branch "repo-dump" pada repo ini.
+name: Dump repo
 
 on:
   workflow_dispatch:
@@ -17,15 +14,15 @@ jobs:
   dump:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Gabungkan isi repo
         env:
           MAX_KB: ${{ inputs.max_kb }}
         run: |
-          OUT=repo-dump.txt
+          OUT=dump.txt
           MAX=$(( ${MAX_KB:-200} * 1024 ))
-          SKIP='(^|/)(package-lock\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lockb?)$'
+          SKIP='(^|/)(package-lock\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lockb?)$|^src/content/anime/|^src/data/anime/'
 
           {
             echo "# Repo: $GITHUB_REPOSITORY"
@@ -39,8 +36,6 @@ jobs:
 
           : > skipped.txt
 
-          # git ls-files hanya memuat file yang di-track, jadi .env, node_modules,
-          # dist, dan file di .gitignore otomatis tidak ikut.
           git ls-files -z | while IFS= read -r -d '' f; do
             if echo "$f" | grep -Eq "$SKIP"; then continue; fi
             [ -f "$f" ] || continue
@@ -75,17 +70,15 @@ jobs:
             echo "Dilewati: $(wc -l < skipped.txt) file"
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Simpan hasil ke branch repo-dump
+      - name: Simpan hasil ke branch dump
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Branch yatim piatu: hanya berisi repo-dump.txt, branch utama tidak tersentuh
-          # dan workflow deploy tidak ikut terpicu.
-          git checkout --orphan repo-dump
+          git checkout --orphan dump
           git rm -rf --quiet .
-          git add repo-dump.txt
-          git commit -m "Dump isi repo @ ${GITHUB_SHA::7}"
-          git push --force origin repo-dump
+          git add dump.txt
+          git commit -m "Dump repo @ ${GITHUB_SHA::7}"
+          git push --force origin dump
 
-          echo "File: https://github.com/$GITHUB_REPOSITORY/blob/repo-dump/repo-dump.txt" >> "$GITHUB_STEP_SUMMARY"
+          echo "File: https://github.com/$GITHUB_REPOSITORY/blob/dump/dump.txt" >> "$GITHUB_STEP_SUMMARY"
