@@ -93,20 +93,9 @@ const studios = defineCollection({
   }),
 });
 
-const voiceActors = defineCollection({
-  loader: file('./src/data/voice-actors.json'),
-  schema: z.object({
-    id: Slug,
-    name: z.string(),
-    nameNative: z.string().optional(),
-    image: ExternalUrl.optional(),
-    defaultLanguage: z.string().optional(),
-  }),
-});
 
 export const collections = {
   anime,
   genres,
   studios,
-  voiceActors,
 };
