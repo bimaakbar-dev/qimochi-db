@@ -43,6 +43,9 @@ const { class: className } = Astro.props;
       position: sticky;
       top: var(--sticky-top);
       align-self: start;
+      max-height: calc(100vh - var(--sticky-top) - var(--s-4));
+      overflow-y: auto;
+      overscroll-behavior: contain;
     }
   }
 </style>
