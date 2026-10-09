@@ -51,7 +51,7 @@ const anime = defineCollection({
     rating: AnimeRating.optional(),
 
     aired: z.object({
-      from: z.coerce.date().optional(),
+      from: z.coerce.date().nullable(),
       to: z.coerce.date().nullable().optional(),
     }).optional(),
 
