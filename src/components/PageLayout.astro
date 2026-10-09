@@ -46,6 +46,12 @@ const { class: className } = Astro.props;
       max-height: calc(100vh - var(--sticky-top) - var(--s-4));
       overflow-y: auto;
       overscroll-behavior: contain;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .layout-sidebar__aside::-webkit-scrollbar {
+      display: none;
     }
   }
 </style>
