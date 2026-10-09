@@ -12,6 +12,7 @@ function isActive(href: string): boolean {
   if (!matches) return false;
   const hasMoreSpecific = NAV_LINKS.some(({ href: otherHref }) => {
     if (otherHref === href) return false;
+    if (otherHref === '/') return false;
     if (otherHref.length <= href.length) return false;
     return currentPath === otherHref || currentPath.startsWith(otherHref);
   });
@@ -33,15 +34,24 @@ function isActive(href: string): boolean {
         class="logo-img"
       />
     </a>
-
+    <nav class="nav nav--desktop" aria-label="Navigasi utama">
+      {NAV_LINKS.map(({ label, href }) => (
+        <a
+          href={href}
+          class:list={[{ active: isActive(href) }]}
+          aria-current={isActive(href) ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
     <div class="header-right">
       <details class="menu">
         <summary class="menu-btn" aria-label="Menu navigasi">
           <span class="icon-menu"><Icon name="menu" size={22} /></span>
           <span class="icon-close"><Icon name="close" size={22} /></span>
         </summary>
-
-        <nav class="nav" aria-label="Navigasi utama">
+        <nav class="nav nav--mobile" aria-label="Navigasi utama">
           {NAV_LINKS.map(({ label, href }) => (
             <a
               href={href}
@@ -53,8 +63,7 @@ function isActive(href: string): boolean {
           ))}
         </nav>
       </details>
-
-      <a href="/search/anime/" class="icon-btn" aria-label="Cari anime">
+      <a href="/search/" class="icon-btn" aria-label="Cari anime">
         <Icon name="search" size={20} />
       </a>
     </div>
@@ -99,6 +108,8 @@ function isActive(href: string): boolean {
     top: 0;
     z-index: var(--z-header);
     background: var(--bg-nav);
+    width: 100%;
+    box-shadow: var(--shadow-header);
   }
 
   .header-inner {
@@ -112,56 +123,31 @@ function isActive(href: string): boolean {
     margin-inline: auto;
     padding-inline: var(--pad-x);
   }
-
-  @media (min-width: 50rem) {
-    .header-inner {
-      max-width: var(--content-max-desktop);
-    }
-  }
-
   .logo {
     display: inline-flex;
     align-items: center;
     transition: opacity var(--t-fast);
   }
-
   .logo:hover {
     opacity: 0.85;
   }
-
   .logo-img {
     display: block;
     width: 2rem;
     height: 2rem;
     object-fit: contain;
   }
-
   .header-right {
     display: flex;
     align-items: center;
     gap: var(--s-1);
   }
-
   .header-right .icon-btn {
     order: 1;
   }
-
   .header-right .menu {
     order: 2;
   }
-
-  @media (min-width: 50rem) {
-    .header-right {
-      gap: var(--s-4);
-    }
-    .header-right .menu {
-      order: 1;
-    }
-    .header-right .icon-btn {
-      order: 2;
-    }
-  }
-
   .icon-btn {
     display: inline-flex;
     align-items: center;
@@ -171,16 +157,13 @@ function isActive(href: string): boolean {
     color: var(--text-inverted);
     transition: color var(--t-fast);
   }
-
   .icon-btn:hover {
     color: var(--accent);
   }
-
   .menu {
     display: flex;
     align-items: center;
   }
-
   .menu-btn {
     display: inline-flex;
     align-items: center;
@@ -192,108 +175,102 @@ function isActive(href: string): boolean {
     list-style: none;
     transition: color var(--t-fast);
   }
-
   .menu-btn::-webkit-details-marker {
     display: none;
   }
-
   .menu-btn:hover {
     color: var(--accent);
   }
-
   .icon-menu {
     display: inline-flex;
   }
-
   .icon-close {
     display: none;
   }
-
   .menu[open] .icon-menu {
     display: none;
   }
-
   .menu[open] .icon-close {
     display: inline-flex;
   }
-
   .nav {
     display: flex;
     align-items: center;
     gap: var(--s-1);
-
-    & a {
-      padding: var(--s-2) var(--s-3);
-      font-size: var(--fs-sm);
-      font-weight: var(--fw-medium);
-      color: var(--text-inverted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      position: relative;
-      text-decoration: none;
-      transition: color var(--t-fast);
-      font-family: var(--font-montserrat);
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -0.01em;
-        height: 0.5em;
-        background-color: var(--accent);
-        -webkit-mask-image: var(--underline);
-        mask-image: var(--underline);
-        -webkit-mask-size: 100% 100%;
-        mask-size: 100% 100%;
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity var(--t-fast);
-      }
-
-      &:hover {
-        color: var(--accent-hover);
-      }
-
-      &.active {
-        color: var(--accent);
-      }
-
-      &:hover::after,
-      &.active::after {
-        opacity: 1;
-      }
-    }
   }
-  
-  @media (max-width: 50rem) {
-    .menu {
-      display: block;
-    }
-
-    .nav {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      align-items: stretch;
-      gap: var(--s-1);
-      padding: var(--s-3) var(--pad-x) var(--s-4);
-      background: var(--bg-nav);
-    }
+  .nav a {
+    padding: var(--s-2) var(--s-3);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--text-inverted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    position: relative;
+    text-decoration: none;
+    transition: color var(--t-fast);
+    font-family: var(--font-montserrat);
   }
-
+  .nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.01em;
+    height: 0.5em;
+    background-color: var(--accent);
+    -webkit-mask-image: var(--underline);
+    mask-image: var(--underline);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--t-fast);
+  }
+  .nav a:hover {
+    color: var(--accent-hover);
+  }
+  .nav a.active {
+    color: var(--accent);
+  }
+  .nav a:hover::after,
+  .nav a.active::after {
+    opacity: 1;
+  }
+  .nav--desktop {
+    display: none;
+  }
+  .nav--mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--s-1);
+    padding: var(--s-3) var(--pad-x) var(--s-4);
+    background: var(--bg-nav);
+  }
   @media (min-width: 50rem) {
-    .menu-btn {
-      display: none;
+    .header-inner {
+      max-width: var(--content-max-desktop);
     }
-
-    .menu > .nav {
-      display: flex !important;
+    .header-right {
+      gap: var(--s-4);
+    }
+    .header-right .menu {
+      order: 1;
+    }
+    .header-right .icon-btn {
+      order: 2;
+    }
+    .nav--desktop {
+      display: flex;
+    }
+    .menu {
+      display: none;
     }
   }
 </style>
